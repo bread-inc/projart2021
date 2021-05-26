@@ -15,8 +15,9 @@ class QuizzesTableSeeder extends Seeder
     public function run()
     {
         DB::table('quizzes')->delete();
-        for ($i = 1; $i <= 3; $i ++) {
+        for ($i = 1; $i <= 5; $i ++) {
             DB::table('quizzes')->insert([
+                'region_id' => rand(1,3),
                 'title' => "Quiz N°$i",
                 'description' => "Description $i. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 'ponderation' => rand(-10, 10),

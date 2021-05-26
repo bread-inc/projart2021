@@ -9,7 +9,11 @@ class Quiz extends Model
 {
     use HasFactory;
 
-    protected $fillable=['title','description','ponderation'];
+    protected $fillable=['region_id','title','description','ponderation'];
+
+    public function region() {
+        return $this->belongsTo(Region::class);    
+    }
 
     public function questions() {
         return $this->hasMany(Question::class);
