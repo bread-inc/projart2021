@@ -44,4 +44,9 @@ class User extends Authenticatable
     public function scores() {
         return $this->hasMany(Score::class);    
     }
+
+    public function badges()
+    {
+        return $this->belongsToMany(Badge::class);
+    }
 }

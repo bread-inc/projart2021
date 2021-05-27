@@ -14,4 +14,8 @@ class Region extends Model
     public function quizzes() {
         return $this->hasMany(Quiz::class);
     }
+
+    public function badges() {
+        return $this->morphMany(Badge::class, 'badgeable');
+    }
 }
