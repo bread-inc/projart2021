@@ -14,19 +14,21 @@ To install the app, you need to follow the next steps :
 
 2. Pull the last version of the project : `cd projart2021` `git pull` ;
 
-3. Update the `.env` file (database access e.g.) ;
+3. Download the vendor and node modules folders : `composer install` ;
 
-4. Update the `.gitignore` file, to remove the `node_modules/` and `vendor/` folders and the `.env` file ;
+4. Update the `.env` file (database access e.g.) ;
 
-4. Launch the app : `php artisan serve` ;
+5. Update the `.gitignore` file and add the `node_modules/` and `vendor/` folders and the `.env` file to avoid pushing them ;
 
-5. *In development environnement, create the `database.sqlite` file ;*
+6. Launch the app : `php artisan serve` ;
 
-6. Migrate all the tables : `php artisan migrate:install`, `php artisan migrate` ;
+7. *In development environnement, create the `database.sqlite` file ;*
 
-7. Feed the table : `php artisan db:seed` ;
+8. Migrate all the tables : `php artisan migrate:install`, `php artisan migrate` ;
 
-8. Start the app : `php artisan serve`.
+9. Feed the table : `php artisan db:seed` ;
+
+10. Start the app : `php artisan serve`.
 
 ### General informations
 
