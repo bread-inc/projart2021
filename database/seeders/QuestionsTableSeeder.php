@@ -17,7 +17,7 @@ class QuestionsTableSeeder extends Seeder
         DB::table('questions')->delete();
         for ($i = 1; $i <= 15; $i++) {
             DB::table('questions')->insert([
-                'quiz_id' => rand(1,3),
+                'quiz_id' => rand(1,5),
                 'picture' => "/img/img$i.jpg",
                 'coord_x' => rand(1, 1000),
                 'coord_y' => rand(1, 1000),

@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RegionController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +22,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+
+// ##### Test routes #####
 Route::get('/adminOnly', function() {
     return "Admin only";
 })->middleware("admin");
@@ -28,3 +33,21 @@ Route::get('/adminOnly', function() {
 Route::get('/userOnly', function() {
     return "User only";
 })->middleware("auth");
+
+
+// ##### User routes #####
+Route::resource('user', UserController::class)->only(['index', 'create']);
+
+Route::resource('user', UserController::class)->only(['show'])
+    ->middleware('auth');
+
+Route::resource('user', UserController::class)->except(['index', 'create', 'show'])
+    ->middleware('admin');
+
+
+// ##### Region routes #####
+Route::prefix('region')->group(function () {
+    Route::get('/', [RegionController::class, "index"]);
+    Route::get('/{id}', [RegionController::class, "show"]);
+    Route::get('/{id}/scores', [RegionController::class, "scores"]);
+});

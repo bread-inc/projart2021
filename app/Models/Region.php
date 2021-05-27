@@ -11,7 +11,7 @@ class Region extends Model
 
     protected $fillable=['name','center_x','center_y'];
 
-    public function quiz() {
+    public function quizzes() {
         return $this->hasMany(Quiz::class);
     }
 }

@@ -17,7 +17,7 @@ class CluesTableSeeder extends Seeder
         DB::table('clues')->delete();
         for ($i = 1; $i <= 45; $i++) {
             DB::table('clues')->insert([
-                'question_id' => rand(1,10),
+                'question_id' => rand(1,15),
                 'radius' => rand(1, 1000),
                 'description' => "Description $i. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             ]);

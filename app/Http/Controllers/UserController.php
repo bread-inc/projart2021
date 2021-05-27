@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -13,7 +14,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users=User::paginate(10);
+        $links=$users->render();
+
+        return compact('users', 'links');
     }
 
     /**
@@ -23,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return "Creating new user";
     }
 
     /**
@@ -45,7 +49,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return compact('user');
     }
 
     /**
@@ -56,7 +61,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return compact('user');
     }
 
     /**
@@ -79,6 +85,29 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::findOrFail($id)->delete();
+        return redirect()->back();
+    }
+
+    /** 
+     * Set 
+     * 
+     * @param Request $request
+     * @return null
+     */
+    private function setAdmin($request) {
+        if (!$request->has('admin')) {
+           $request->merge(['admin'=>0]);
+        }
+    }
+
+    /** 
+     * Set 
+     * 
+     * @param int $id
+     * @return bool
+     */
+    private function isAdmin($id) {
+        return User::findOrFail($id)->isAdmin;
     }
 }
