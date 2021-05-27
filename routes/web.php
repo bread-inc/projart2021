@@ -19,11 +19,11 @@ use App\Http\Controllers\QuizController;
 */
 
 // ##### Test routes #####
-Route::get('/adminOnly', function() {
-    return "Admin only";
+Route::get('/adminOnly', function () {
+    return view('admin_page');
 })->middleware("admin");
 
-Route::get('/userOnly', function() {
+Route::get('/userOnly', function () {
     return "User only";
 })->middleware("auth");
 
