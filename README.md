@@ -20,7 +20,13 @@ To install the app, you need to follow the next steps :
 
 4. Launch the app : `php artisan serve` ;
 
-5. Migrate, seed, etc.
+5. *In development environnement, create the `database.sqlite` file ;*
+
+6. Migrate all the tables : `php artisan migrate:install`, `php artisan migrate` ;
+
+7. Feed the table : `php artisan db:seed` ;
+
+8. Start the app : `php artisan serve`.
 
 ### General informations
 
@@ -29,7 +35,7 @@ The default users created at seeding are :
 - {`pseudo => admin`, `email => admin@gmx.ch`, `password => admin`}
 - {`pseudo => user`, `email => user@gmx.ch`, `password => user`}
 
-**Please only use those users for developpment purpose !**
+**Please only use those users for development purpose !**
 
 ### Collaboration
 
