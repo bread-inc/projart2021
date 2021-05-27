@@ -9,7 +9,7 @@ class Badge extends Model
 {
     use HasFactory;
 
-    protected $fillable=['label', 'description', 'pictogram', 'color', 'type', 'criterium'];
+    protected $fillable=['label', 'description', 'pictogram', 'color', 'type', 'criterium', 'badgeable_id', 'badgeable_type'];
 
     public function users()
     {
