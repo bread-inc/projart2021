@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Score;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return "Dashboard";
+    }
+
+    /**
+     * Show the top 10 scores.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function scoreboard() {
+        $topScores = Score::orderBy('score', 'desc')->get()->take(10);
+
+        foreach ($topScores as $score) {
+            // Calling the quiz and users linked to the scores
+            $score->user;
+            $score->quiz;
+        }
+        return ["Global scoreboard", compact('topScores')];
     }
 }

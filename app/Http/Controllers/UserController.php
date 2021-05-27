@@ -50,7 +50,16 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        return compact('user');
+        $visitorId = auth()->id();
+
+        $isVisitorMyself = $visitorId == $user->id; // if true, display edit button
+        $isVisitorAdmin = User::findOrFail($visitorId)->isAdmin == true;
+
+        // Calling the user badges and scores
+        $user->badges;
+        $user->scores;
+
+        return compact('user', 'isVisitorMyself', 'isVisitorAdmin');
     }
 
     /**

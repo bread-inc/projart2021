@@ -18,15 +18,6 @@ use App\Http\Controllers\QuizController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-
 // ##### Test routes #####
 Route::get('/adminOnly', function() {
     return "Admin only";
@@ -35,6 +26,19 @@ Route::get('/adminOnly', function() {
 Route::get('/userOnly', function() {
     return "User only";
 })->middleware("auth");
+
+// ##### Auth routes #####
+Auth::routes();
+
+
+// ##### Public routes #####
+Route::get('/', function () {
+    return "Login or continue without registering page";
+});
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/scoreboard', [HomeController::class, 'scoreboard']);
+
 
 
 // ##### User routes #####
