@@ -17,6 +17,10 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+    public function rankDashboardUser()
+    {
+        return view('globalRanking');
+    }
     /**
      * Show the application dashboard.
      *
@@ -24,7 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return "Dashboard";
+        return view('dashboard');
     }
 
     /**
@@ -40,6 +44,7 @@ class HomeController extends Controller
             $score->user;
             $score->quiz;
         }
+
         return ["Global scoreboard", compact('topScores')];
     }
 }
