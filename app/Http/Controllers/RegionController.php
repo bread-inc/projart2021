@@ -27,12 +27,22 @@ class RegionController extends Controller
      */
     public function show($id) {
         $region = Region::findOrFail($id);
-        return compact('region');
+        $quizzes = $region->quizzes()->get();
+
+        // Ajouter les badges
+
+        return compact('region', 'quizzes');
     }
 
     public function scores($id) {
-        $quizzes = Region::findOrFail($id)->quizzes->all();
+        $region = Region::findOrFail($id);
+        $quizzes = $region->quizzes->all();
+        $scores = [];
 
-        return $quizzes;
+        foreach ($quizzes as $quiz) {
+            array_push($scores, $quiz->scores()->get());
+        }
+
+        return compact('region', 'scores');
     }
 }

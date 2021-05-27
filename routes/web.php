@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegionController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\QuizController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +53,9 @@ Route::prefix('region')->group(function () {
     Route::get('/{id}', [RegionController::class, "show"]);
     Route::get('/{id}/scores', [RegionController::class, "scores"]);
 });
+
+// ##### Quiz routes #####
+Route::resource('quiz', QuizController::class)->only(['index', 'show']);
+
+Route::resource('quiz', QuizController::class)->except(['index', 'show'])
+    ->middleware('admin');
