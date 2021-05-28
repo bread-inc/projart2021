@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Region;
+use App\Models\Badge;
 
 class RegionController extends Controller
 {
@@ -28,10 +29,9 @@ class RegionController extends Controller
     public function show($id) {
         $region = Region::findOrFail($id);
         $quizzes = $region->quizzes()->get();
+        $badges = $region->badges()->get();
 
-        // Ajouter les badges
-
-        return compact('region', 'quizzes');
+        return compact('region', 'quizzes', 'badges');
     }
 
     public function scores($id) {

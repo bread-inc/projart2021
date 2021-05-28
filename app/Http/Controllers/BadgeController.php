@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Badge;
+use App\Models\Region;
 use App\Models\Quiz;
 
-class QuizController extends Controller
+class BadgeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,10 @@ class QuizController extends Controller
      */
     public function index()
     {
-        $quizzes = Quiz::all();
-        return compact('quizzes');
+        $badges = Badge::paginate(10);
+        $links = $badges->render();
+
+        return compact('badges','links');
     }
 
     /**
@@ -47,12 +51,10 @@ class QuizController extends Controller
      */
     public function show($id)
     {
-        $quiz = Quiz::findOrFail($id);
-        $questions = $quiz->questions;
-        $scores = $quiz->scores;
-        $badges = $quiz->badges;
+        $badge = Badge::findOrFail($id);
+        $type = $badge->badgeable()->get();
 
-        return compact('quiz');
+        return compact('badge', 'type');
     }
 
     /**
@@ -63,7 +65,7 @@ class QuizController extends Controller
      */
     public function edit($id)
     {
-        return Quiz::findOrFail($id);
+        //
     }
 
     /**
@@ -86,6 +88,14 @@ class QuizController extends Controller
      */
     public function destroy($id)
     {
-        return "Destroying $id";
+        //
+    }
+
+    public function users($id)
+    {
+        $badge = Badge::findOrFail($id);
+        $users = $badge->users()->get();
+
+        return compact('badge', 'users');
     }
 }
