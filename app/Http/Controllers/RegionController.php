@@ -9,10 +9,8 @@ use App\Models\Badge;
 class RegionController extends Controller
 {
 
-    public function goAllRegion()
-    {
 
-    }
+
 
     /**
      * Display a listing of the resource.
@@ -23,7 +21,7 @@ class RegionController extends Controller
         $regions=Region::paginate(10);
         $links=$regions->render();
 
-        return compact('regions','links');
+        return view('allRegion')->with(compact('regions','links'));
     }
 
     /**
@@ -34,10 +32,10 @@ class RegionController extends Controller
      */
     public function show($id) {
         $region = Region::findOrFail($id);
-        $quizzes = $region->quizzes()->get();
-        $badges = $region->badges()->get();
+       // $quizzes = $region->quizzes()->get();
+        //$badges = $region->badges()->get();
 
-        return compact('region', 'quizzes', 'badges');
+        return view('quizList')->with(compact('region'));
     }
 
     public function scores($id) {

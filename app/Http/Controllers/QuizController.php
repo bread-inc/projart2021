@@ -19,6 +19,18 @@ class QuizController extends Controller
     }
 
     /**
+     *Display the quiz
+     */
+    public function afficheQuiz($id)
+    {
+        $quiz = Quiz::findOrFail($id);
+
+        return view('quizStart')->with(compact('quiz'));
+
+    }
+
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
