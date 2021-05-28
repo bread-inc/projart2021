@@ -8,6 +8,12 @@ use App\Models\Badge;
 
 class RegionController extends Controller
 {
+
+    public function goAllRegion()
+    {
+
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -20,7 +20,10 @@ class HomeController extends Controller
     public function globalRanking()
     {
         $arrayScore = $this->scoreboard();
-        return view('globalRanking')->with('arrayScore', $arrayScore);
+
+
+
+        return view('globalRanking')->with('arrayScores', $arrayScore);
     }
 
     /**
@@ -40,13 +43,6 @@ class HomeController extends Controller
      */
     public function scoreboard() {
         $topScores = Score::orderBy('score', 'desc')->get()->take(10);
-
-        foreach ($topScores as $score) {
-            // Calling the quiz and users linked to the scores
-            $score->user;
-            $score->quiz;
-        }
-
-        return ["Global scoreboard", compact('topScores')];
+        return compact('topScores');
     }
 }
