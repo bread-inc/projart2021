@@ -16,7 +16,7 @@ class Admin
      * @return mixed
      */
     public function handle($request, Closure $next) {
-        if ($request->user()->isAdmin) {
+        if (isset($request->user()->isAdmin) && $request->user()->isAdmin) {
             return $next($request);
         }
         return redirect()->back();

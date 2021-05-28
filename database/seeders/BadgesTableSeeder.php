@@ -23,8 +23,8 @@ class BadgesTableSeeder extends Seeder
                 'color' => 'Rouge',
                 'type' => 'score',
                 'criterium' => 'criterium'.$i,
-                'badgeable_type' => $i % 2 == 0 ? 'Region' : 'Quiz',
-                'badgeable_id' => rand(0, 3)
+                'badgeable_type' => $i % 2 == 0 ? 'App\Models\Region' : 'App\Models\Quiz',
+                'badgeable_id' => rand(1, 3)
             ]);
         }
     }

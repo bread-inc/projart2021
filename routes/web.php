@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\BadgeController;
 
 
 /*
@@ -19,11 +20,11 @@ use App\Http\Controllers\QuizController;
 */
 
 // ##### Test routes #####
-Route::get('/adminOnly', function() {
-    return "Admin only";
+Route::get('/adminOnly', function () {
+    return view('admin_page');
 })->middleware("admin");
 
-Route::get('/userOnly', function() {
+Route::get('/userOnly', function () {
     return "User only";
 })->middleware("auth");
 
@@ -58,6 +59,13 @@ Route::prefix('region')->group(function () {
     Route::get('/', [RegionController::class, "index"]);
     Route::get('/{id}', [RegionController::class, "show"]);
     Route::get('/{id}/scores', [RegionController::class, "scores"]);
+});
+
+// ##### Badge routes #####
+Route::prefix('badge')->group(function () {
+    Route::get('/', [BadgeController::class, "index"]);
+    Route::get('/{id}', [BadgeController::class, "show"]);
+    Route::get('/{id}/users', [BadgeController::class, "users"]);
 });
 
 // ##### Quiz routes #####
