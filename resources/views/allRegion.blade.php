@@ -1,24 +1,12 @@
 @extends('.layouts.app')
-<h1>GlobalRanking</h1>
+<h1>Region</h1>
 @section('content')
-@php
-    $index = 0;
-@endphp
-@foreach($arrayScores as $score)
-@foreach($score as $scores)
-@php
-    $index ++;
-@endphp
-    <div>
-        @csrf
-    <label>{{$index}}</label>
-    <label >{{$scores->user['pseudo']}}</label>
-    <label >{{$scores->score}}</label>
-    <table>
-        <tr>
-        </tr>
-    </table>
-    </div>
-@endforeach
+
+@foreach ($regions as $region )
+<div class="d-flex flex-column">
+    <a href="/region/{{$region->id}}" class="btn btn-light" >{{$region->name}}</a>
+    <img class="p2" src="" alt="">
+</div>
+
 @endforeach
 @endsection
