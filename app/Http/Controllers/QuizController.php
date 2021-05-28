@@ -14,8 +14,11 @@ class QuizController extends Controller
      */
     public function index()
     {
-        $quizzes = Quiz::all();
-        return compact('quizzes');
+        $elements = Quiz::all();
+        $title = "Tous les quizzes";
+        $elementType = "quiz";
+
+        return view("admin.index", compact('elements', 'elementType', 'title'));
     }
 
     /**
@@ -52,7 +55,7 @@ class QuizController extends Controller
         $scores = $quiz->scores;
         $badges = $quiz->badges;
 
-        return compact('quiz');
+        return view("admin.show_quiz", compact('quiz'));
     }
 
     /**
@@ -87,5 +90,18 @@ class QuizController extends Controller
     public function destroy($id)
     {
         return "Destroying $id";
+    }
+
+    /**
+     * Show profile, for users (not admin)
+     */
+    public function profile($id)
+    {
+        $quiz = Quiz::findOrFail($id);
+        $questions = $quiz->questions;
+        $scores = $quiz->scores;
+        $badges = $quiz->badges;
+
+        return compact('quiz');
     }
 }

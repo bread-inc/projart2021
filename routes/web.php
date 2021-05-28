@@ -73,3 +73,13 @@ Route::resource('quiz', QuizController::class)->only(['index', 'show']);
 
 Route::resource('quiz', QuizController::class)->except(['index', 'show'])
     ->middleware('admin');
+
+
+// ##### Admin routes #####
+Route::prefix('admin')->group(function () {
+    Route::get('/', [HomeController::class, "adminDashboard"])->middleware('admin');
+    Route::resource('badge', BadgeController::class);
+    Route::resource('quiz', QuizController::class);
+    Route::resource('user', UserController::class);
+
+});

@@ -14,10 +14,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users=User::paginate(10);
-        $links=$users->render();
+        $elements=User::all();
+        $title = "Tous les utilisateurs";
+        $elementType = "user";
 
-        return compact('users', 'links');
+        return view("admin.index", compact('elements', 'elementType', 'title'));
     }
 
     /**
@@ -52,14 +53,11 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $visitorId = auth()->id();
 
-        $isVisitorMyself = $visitorId == $user->id; // if true, display edit button
-        $isVisitorAdmin = User::findOrFail($visitorId)->isAdmin == true;
-
         // Calling the user badges and scores
         $user->badges;
         $user->scores;
 
-        return compact('user', 'isVisitorMyself', 'isVisitorAdmin');
+        return view("admin.show_user", compact('user'));
     }
 
     /**

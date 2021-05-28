@@ -16,10 +16,11 @@ class BadgeController extends Controller
      */
     public function index()
     {
-        $badges = Badge::paginate(10);
-        $links = $badges->render();
+        $elements = Badge::all();
+        $title = "Tous les badges";
+        $elementType = "badge";
 
-        return compact('badges','links');
+        return view("admin.index", compact('elements', 'elementType', 'title'));
     }
 
     /**
@@ -51,10 +52,12 @@ class BadgeController extends Controller
      */
     public function show($id)
     {
-        $badge = Badge::findOrFail($id);
-        $type = $badge->badgeable()->get();
+        $element = Badge::findOrFail($id);
+        $title = "Un badge en particulier";
+        $type = $element->badgeable()->get();
+        $elementType = "badge";
 
-        return compact('badge', 'type');
+        return view("admin.show", compact('element', 'elementType', 'type', 'title'));
     }
 
     /**

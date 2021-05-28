@@ -49,4 +49,11 @@ class HomeController extends Controller
 
         return ["Global scoreboard", compact('topScores')];
     }
+
+    /**
+     * 
+     */
+    public function adminDashboard() {
+        return view("admin.dashboard");
+    }
 }
