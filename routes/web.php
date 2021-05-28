@@ -36,7 +36,9 @@ Route::get('/', function () {
     return "Login or continue without registering page";
 });
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/globalRanking', [HomeController::class, 'globalRanking']);
+Route::get('/home', [HomeController::class, 'index']);
 Route::get('/scoreboard', [HomeController::class, 'scoreboard']);
 
 

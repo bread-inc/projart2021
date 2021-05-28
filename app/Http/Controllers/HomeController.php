@@ -17,10 +17,12 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    public function rankDashboardUser()
+    public function globalRanking()
     {
-        return view('globalRanking');
+        $arrayScore = $this->scoreboard();
+        return view('globalRanking')->with('arrayScore', $arrayScore);
     }
+
     /**
      * Show the application dashboard.
      *

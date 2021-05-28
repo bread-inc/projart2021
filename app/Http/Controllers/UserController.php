@@ -98,9 +98,9 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-    /** 
-     * Set 
-     * 
+    /**
+     * Set
+     *
      * @param Request $request
      * @return null
      */
@@ -110,9 +110,9 @@ class UserController extends Controller
         }
     }
 
-    /** 
-     * Set 
-     * 
+    /**
+     * Set
+     *
      * @param int $id
      * @return bool
      */
