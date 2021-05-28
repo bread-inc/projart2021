@@ -55,11 +55,7 @@ class UserController extends Controller
         $isVisitorMyself = $visitorId == $user->id; // if true, display edit button
         $isVisitorAdmin = User::findOrFail($visitorId)->isAdmin == true;
 
-        // Calling the user badges and scores
-        $user->badges;
-        $user->scores;
-
-        return compact('user', 'isVisitorMyself', 'isVisitorAdmin');
+        return view('user.user_page')->with('user', $user);
     }
 
     /**
