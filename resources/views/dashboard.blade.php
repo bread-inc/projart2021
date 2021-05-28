@@ -1,7 +1,7 @@
 @extends('.layouts.app')
 <h1>DashboardUser</h1>
 @section('content')
-<a href="/profile" class="btn btn-light" >Profile</a>
+<a href="user/{{Auth::id()}}" class="btn btn-light" >Profile</a>
 <a href="/globalRanking" class="btn btn-light">Global Ranking</a>
 <a href="/region" class="btn btn-light">Region</a>
 @if(Auth::check() and Auth::user()->isAdmin)
