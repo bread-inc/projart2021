@@ -6,7 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\BadgeController;
-
+use App\Http\Controllers\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,6 +88,10 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/', [HomeController::class, "adminDashboard"])->middleware('admin');
     Route::resource('badge', BadgeController::class);
+
     Route::resource('quiz', QuizController::class);
+    Route::prefix('quiz/{quiz_id}')->group(function () {
+        Route::resource('question', QuestionController::class);
+    });
     Route::resource('user', UserController::class);
 });

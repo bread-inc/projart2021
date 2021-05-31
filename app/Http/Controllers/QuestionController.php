@@ -5,31 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Quiz;
 
-class QuizController extends Controller
+class QuestionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $quizzes = Quiz::all();
-
-        foreach ($quizzes as $quiz) {
-            $quiz->user;
-            $quiz->region;
-        }
-
-        return view("admin.quizzes.index_quizzes", compact('quizzes'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($quiz_id)
     {
         //
     }
@@ -51,14 +34,11 @@ class QuizController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($quiz_id, $id)
     {
-        $quiz = Quiz::findOrFail($id);
-        $questions = $quiz->questions;
-        $scores = $quiz->scores;
-        $badges = $quiz->badges;
-
-        return view("admin.quizzes.show_quiz", compact('quiz'));
+        $question = Quiz::find($quiz_id)->questions()->find($id);
+        $question->clues;
+        return view('admin.quizzes.questions.show_question', compact('question'));
     }
 
     /**
@@ -69,7 +49,7 @@ class QuizController extends Controller
      */
     public function edit($id)
     {
-        return Quiz::findOrFail($id);
+        //
     }
 
     /**
@@ -92,19 +72,6 @@ class QuizController extends Controller
      */
     public function destroy($id)
     {
-        return "Destroying $id";
-    }
-
-    /**
-     * Show profile, for users (not admin)
-     */
-    public function profile($id)
-    {
-        $quiz = Quiz::findOrFail($id);
-        $questions = $quiz->questions;
-        $scores = $quiz->scores;
-        $badges = $quiz->badges;
-
-        return compact('quiz');
+        //
     }
 }
