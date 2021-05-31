@@ -21,7 +21,8 @@ window.Vue = require('vue').default;
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-Vue.component('tmpl-badge', require('./components/tmpl_badge.vue').default);
+Vue.component('tmpl-badge', require('./components/badges/tmpl_badges.vue').default);
+Vue.component('badge', require('./components/badges/badge.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

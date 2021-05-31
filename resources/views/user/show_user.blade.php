@@ -12,12 +12,8 @@
                 </div>
             </div>
             
-            @include('user.tmpl_user_badges', ['user' => $user])
-
             <div id="app">
-                @foreach ($user->badges as $badge)
-                   <tmpl-badge :badge="{{ $badge }}"></tmpl-badge>
-                @endforeach
+                <tmpl-badge :badges="{{ $user->badges }}"></tmpl-badge>
             </div>
             
         </div>

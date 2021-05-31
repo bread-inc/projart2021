@@ -57,7 +57,7 @@ class UserController extends Controller
         $user->badges;
         $user->scores;
 
-        return view("admin.show_user", compact('user'));
+        return view("user.show_user", compact('user'));
     }
 
     /**
