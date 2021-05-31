@@ -12,8 +12,8 @@
 @endphp
     <div class="GeneralRanking">
     <label>{{$index}}</label>
-    <label >{{$scores->user['pseudo']}}</label>
-    <label >{{$scores->score}}</label>
+    <label>{{$scores->user['pseudo']}}</label>
+    <label>{{$scores->score}}</label>
     </div>
 @endforeach
 @endforeach

@@ -7,12 +7,9 @@
     <label>{{$quizze->description}}</label>
     <img class="p2" src="" alt="">
 </div>
-<div class="d-flex flex-column" id ="popularQuiz">
-    Les plus populaire
-</div>
-<div class="d-flex flex-column" id ="recentQuiz">
-    Récemment ajouté
-</div>
-<div class="d-flex flex-column">classement général<div>
+
 @endforeach
+<div class="d-flex flex-column">classement général<div>
+<div class="d-flex flex-column" id ="popularQuiz">Les plus populaire</div>
+<div class="d-flex flex-column" id ="recentQuiz">Récemment ajouté</div>
 @endsection
