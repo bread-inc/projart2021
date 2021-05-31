@@ -16,6 +16,10 @@ class UserController extends Controller
         }
     }
 
+    private function generateAvatar($email) {
+        return "http://gravatar.com/avatar/" . md5(strtolower(trim($email))) . "?size=64&d=identicon";
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -47,6 +51,8 @@ class UserController extends Controller
     public function store(UserCreateRequest $request)
     {   
         $this->setAdmin($request); // permet la gestion de la case à cocher (champ admin)
+        $email = $request->email;
+        $request->merge(['avatar' => $this->generateAvatar($email)]);
         $user = User::create($request->all());
         return redirect(route('user.index'))->withOk("L'utilisateur " . $user->pseudo . " a été créé.");
     }
@@ -141,25 +147,6 @@ class UserController extends Controller
         }
 
         return redirect("admin/user/$user->id")->withOk("Le(s) badge(s) ont été attribués à l'utilisateur $user->pseudo.");
-
-
-
-        /*
-
-
-        for ($i=1; $i < 15; $i++) { 
-            DB::table('badge_user')->insert([
-                'badge_id' => $i,
-                'user_id' => 1
-            ]);
-            DB::table('badge_user')->insert([
-                'badge_id' => $i,
-                'user_id' => 2
-            ]);
-        }
-        $this->setAdmin($request); // permet la gestion de la case à cocher (champ admin)
-        $user = User::create($request->all());
-        return redirect(route('user.index'))->withOk("L'utilisateur " . $user->pseudo . " a été créé.");*/
     }
 
     public function deleteBadge($user_id, $badge_id) {

@@ -21,6 +21,7 @@ class UsersTableSeeder extends Seeder
                 'pseudo' => $newUser,
                 'email' => $newUser . '@gmx.ch',
                 'password' => Hash::make($newUser),
+                'avatar' => "http://gravatar.com/avatar/" . md5(strtolower(trim($newUser . '@gmx.ch'))) . "?size=64&d=identicon",
                 'isAdmin' => $newUser == "admin" ? 1 : 0 ]);
         }
     }

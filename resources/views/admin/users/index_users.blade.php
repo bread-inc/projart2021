@@ -11,7 +11,8 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Administrateur</th>
+            <th>Rôle</th>
+            <th></th>
             <th>Pseudonyme</th>
             <th>E-mail</th>
             <th>Actions</th>
@@ -26,6 +27,7 @@
                 <span class="badge badge-danger">admin</span>
                 @endif
             </td>
+            <td><img src="{{$user->avatar}}"></td>
             <td>{{$user->pseudo}}</td>
             <td>{{$user->email}}</td>
 

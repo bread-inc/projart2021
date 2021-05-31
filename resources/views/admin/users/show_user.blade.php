@@ -8,6 +8,9 @@
 <a class="btn btn-warning" href="{{route('user.edit', [$user->id])}}">Edit</a>
 
 <div>
+    <label>Avatar</label>
+    <img src="{{$user->avatar}}">
+    
     <div class="form-group">
         <div class="col-sm-6 ml-4">
             @if($user->isAdmin)
