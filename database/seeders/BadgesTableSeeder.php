@@ -4,9 +4,12 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Badge;
 
 class BadgesTableSeeder extends Seeder
 {
+    // Example tag : <i class="fas {{css-class}}"></i>
+
     /**
      * Run the database seeds.
      *
@@ -19,7 +22,7 @@ class BadgesTableSeeder extends Seeder
             DB::table('badges')->insert([
                 'label' => 'Badge'.$i,
                 'description' => 'Lorem ipsum dolor amet decanta'.$i,
-                'pictogram' => 'url/vers/le/badge'.$i,
+                'pictogram' => Badge::PICTOGRAMS[rand(0, sizeof(Badge::PICTOGRAMS)-1)],
                 'color' => 'Rouge',
                 'type' => 'score',
                 'criterium' => 'criterium'.$i,

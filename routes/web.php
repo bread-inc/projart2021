@@ -34,7 +34,7 @@ Auth::routes();
 
 // ##### Public routes #####
 Route::get('/', function () {
-    return "Login or continue without registering page";
+    return "<a href='/login'>Login</a> or continue <a href='/home'>without registering page</a>";
 });
 
 
@@ -45,6 +45,7 @@ Route::get('/scoreboard', [HomeController::class, 'scoreboard']);
 
 
 // ##### User routes #####
+/*
 Route::resource('user', UserController::class)->only(['index', 'create']);
 
 Route::resource('user', UserController::class)->only(['show'])
@@ -52,6 +53,7 @@ Route::resource('user', UserController::class)->only(['show'])
 
 Route::resource('user', UserController::class)->except(['index', 'create', 'show'])
     ->middleware('admin');
+*/
 
 
 // ##### Region routes #####
@@ -62,11 +64,13 @@ Route::prefix('region')->group(function () {
 });
 
 // ##### Badge routes #####
+/*
 Route::prefix('badge')->group(function () {
     Route::get('/', [BadgeController::class, "index"]);
     Route::get('/{id}', [BadgeController::class, "show"]);
     Route::get('/{id}/users', [BadgeController::class, "users"]);
 });
+*/
 
 // ##### Quiz routes #####
 Route::resource('quiz', QuizController::class)->only(['index', 'show']);
@@ -77,9 +81,13 @@ Route::resource('quiz', QuizController::class)->except(['index', 'show'])
 
 // ##### Admin routes #####
 Route::prefix('admin')->group(function () {
+    Route::get('user/{user_id}/addBadges', [UserController::class, "addBadges"])->name("user.addBadges");
+    Route::post('user/{user_id}/addBadges', [UserController::class, "storeBadges"])->name("user.storeBadges");
+    Route::post('user/{user_id}/badge/{badge_id}', [UserController::class, "deleteBadge"]);
+    Route::post('user/{user_id}/score/{score_id}', [UserController::class, "deleteScore"]);
+
     Route::get('/', [HomeController::class, "adminDashboard"])->middleware('admin');
     Route::resource('badge', BadgeController::class);
     Route::resource('quiz', QuizController::class);
     Route::resource('user', UserController::class);
-
 });

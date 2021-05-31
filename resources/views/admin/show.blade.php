@@ -1,4 +1,4 @@
-@extends('.layouts.app')
+@extends('.admin.template')
 <h1>Show static page</h1>
 
 @section('content')

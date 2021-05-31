@@ -1,0 +1,84 @@
++--------+-----------+--------------------------+------------------+------------------------------------------------------------------------+------------+
+| Domain | Method    | URI                      | Name             | Action                                                                 | Middleware |
++--------+-----------+--------------------------+------------------+------------------------------------------------------------------------+------------+
+|        | GET|HEAD  | /                        |                  | Closure                                                                | web        |
+|        | GET|HEAD  | admin                    |                  | App\Http\Controllers\HomeController@adminDashboard                     | web        |
+|        |           |                          |                  |                                                                        | admin      |
+|        | GET|HEAD  | admin/badge              | badge.index      | App\Http\Controllers\BadgeController@index                             | web        |
+|        | POST      | admin/badge              | badge.store      | App\Http\Controllers\BadgeController@store                             | web        |
+|        | GET|HEAD  | admin/badge/create       | badge.create     | App\Http\Controllers\BadgeController@create                            | web        |
+|        | GET|HEAD  | admin/badge/{badge}      | badge.show       | App\Http\Controllers\BadgeController@show                              | web        |
+|        | PUT|PATCH | admin/badge/{badge}      | badge.update     | App\Http\Controllers\BadgeController@update                            | web        |
+|        | DELETE    | admin/badge/{badge}      | badge.destroy    | App\Http\Controllers\BadgeController@destroy                           | web        |
+|        | GET|HEAD  | admin/badge/{badge}/edit | badge.edit       | App\Http\Controllers\BadgeController@edit                              | web        |
+|        | GET|HEAD  | admin/quiz               | quiz.index       | App\Http\Controllers\QuizController@index                              | web        |
+|        | POST      | admin/quiz               | quiz.store       | App\Http\Controllers\QuizController@store                              | web        |
+|        | GET|HEAD  | admin/quiz/create        | quiz.create      | App\Http\Controllers\QuizController@create                             | web        |
+|        | GET|HEAD  | admin/quiz/{quiz}        | quiz.show        | App\Http\Controllers\QuizController@show                               | web        |
+|        | PUT|PATCH | admin/quiz/{quiz}        | quiz.update      | App\Http\Controllers\QuizController@update                             | web        |
+|        | DELETE    | admin/quiz/{quiz}        | quiz.destroy     | App\Http\Controllers\QuizController@destroy                            | web        |
+|        | GET|HEAD  | admin/quiz/{quiz}/edit   | quiz.edit        | App\Http\Controllers\QuizController@edit                               | web        |
+|        | GET|HEAD  | admin/user               | user.index       | App\Http\Controllers\UserController@index                              | web        |
+|        | POST      | admin/user               | user.store       | App\Http\Controllers\UserController@store                              | web        |
+|        | GET|HEAD  | admin/user/create        | user.create      | App\Http\Controllers\UserController@create                             | web        |
+|        | GET|HEAD  | admin/user/{user}        | user.show        | App\Http\Controllers\UserController@show                               | web        |
+|        | PUT|PATCH | admin/user/{user}        | user.update      | App\Http\Controllers\UserController@update                             | web        |
+|        | DELETE    | admin/user/{user}        | user.destroy     | App\Http\Controllers\UserController@destroy                            | web        |
+|        | GET|HEAD  | admin/user/{user}/edit   | user.edit        | App\Http\Controllers\UserController@edit                               | web        |
+|        | GET|HEAD  | adminOnly                |                  | Closure                                                                | web        |
+|        |           |                          |                  |                                                                        | admin      |
+|        | GET|HEAD  | api/user                 |                  | Closure                                                                | api        |
+|        |           |                          |                  |                                                                        | auth:api   |
+|        | GET|HEAD  | badge                    |                  | App\Http\Controllers\BadgeController@index                             | web        |
+|        | GET|HEAD  | badge/{id}               |                  | App\Http\Controllers\BadgeController@show                              | web        |
+|        | GET|HEAD  | badge/{id}/users         |                  | App\Http\Controllers\BadgeController@users                             | web        |
+|        | GET|HEAD  | globalRanking            |                  | App\Http\Controllers\HomeController@globalRanking                      | web        |
+|        | GET|HEAD  | home                     |                  | App\Http\Controllers\HomeController@index                              | web        |
+|        | POST      | login                    |                  | App\Http\Controllers\Auth\LoginController@login                        | web        |
+|        |           |                          |                  |                                                                        | guest      |
+|        | GET|HEAD  | login                    | login            | App\Http\Controllers\Auth\LoginController@showLoginForm                | web        |
+|        |           |                          |                  |                                                                        | guest      |
+|        | POST      | logout                   | logout           | App\Http\Controllers\Auth\LoginController@logout                       | web        |
+|        | GET|HEAD  | password/confirm         | password.confirm | App\Http\Controllers\Auth\ConfirmPasswordController@showConfirmForm    | web        |
+|        |           |                          |                  |                                                                        | auth       |
+|        | POST      | password/confirm         |                  | App\Http\Controllers\Auth\ConfirmPasswordController@confirm            | web        |
+|        |           |                          |                  |                                                                        | auth       |
+|        | POST      | password/email           | password.email   | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | web        |
+|        | GET|HEAD  | password/reset           | password.request | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | web        |
+|        | POST      | password/reset           | password.update  | App\Http\Controllers\Auth\ResetPasswordController@reset                | web        |
+|        | GET|HEAD  | password/reset/{token}   | password.reset   | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web        |
+|        | GET|HEAD  | quiz                     | quiz.index       | App\Http\Controllers\QuizController@index                              | web        |
+|        | POST      | quiz                     | quiz.store       | App\Http\Controllers\QuizController@store                              | web        |
+|        |           |                          |                  |                                                                        | admin      |
+|        | GET|HEAD  | quiz/create              | quiz.create      | App\Http\Controllers\QuizController@create                             | web        |
+|        |           |                          |                  |                                                                        | admin      |
+|        | GET|HEAD  | quiz/{quiz}              | quiz.show        | App\Http\Controllers\QuizController@show                               | web        |
+|        | PUT|PATCH | quiz/{quiz}              | quiz.update      | App\Http\Controllers\QuizController@update                             | web        |
+|        |           |                          |                  |                                                                        | admin      |
+|        | DELETE    | quiz/{quiz}              | quiz.destroy     | App\Http\Controllers\QuizController@destroy                            | web        |
+|        |           |                          |                  |                                                                        | admin      |
+|        | GET|HEAD  | quiz/{quiz}/edit         | quiz.edit        | App\Http\Controllers\QuizController@edit                               | web        |
+|        |           |                          |                  |                                                                        | admin      |
+|        | GET|HEAD  | region                   |                  | App\Http\Controllers\RegionController@index                            | web        |
+|        | GET|HEAD  | region/{id}              |                  | App\Http\Controllers\RegionController@show                             | web        |
+|        | GET|HEAD  | region/{id}/scores       |                  | App\Http\Controllers\RegionController@scores                           | web        |
+|        | POST      | register                 |                  | App\Http\Controllers\Auth\RegisterController@register                  | web        |
+|        |           |                          |                  |                                                                        | guest      |
+|        | GET|HEAD  | register                 | register         | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web        |
+|        |           |                          |                  |                                                                        | guest      |
+|        | GET|HEAD  | scoreboard               |                  | App\Http\Controllers\HomeController@scoreboard                         | web        |
+|        | GET|HEAD  | user                     | user.index       | App\Http\Controllers\UserController@index                              | web        |
+|        | POST      | user                     | user.store       | App\Http\Controllers\UserController@store                              | web        |
+|        |           |                          |                  |                                                                        | admin      |
+|        | GET|HEAD  | user/create              | user.create      | App\Http\Controllers\UserController@create                             | web        |
+|        | GET|HEAD  | user/{user}              | user.show        | App\Http\Controllers\UserController@show                               | web        |
+|        |           |                          |                  |                                                                        | auth       |
+|        | PUT|PATCH | user/{user}              | user.update      | App\Http\Controllers\UserController@update                             | web        |
+|        |           |                          |                  |                                                                        | admin      |
+|        | DELETE    | user/{user}              | user.destroy     | App\Http\Controllers\UserController@destroy                            | web        |
+|        |           |                          |                  |                                                                        | admin      |
+|        | GET|HEAD  | user/{user}/edit         | user.edit        | App\Http\Controllers\UserController@edit                               | web        |
+|        |           |                          |                  |                                                                        | admin      |
+|        | GET|HEAD  | userOnly                 |                  | Closure                                                                | web        |
+|        |           |                          |                  |                                                                        | auth       |
++--------+-----------+--------------------------+------------------+------------------------------------------------------------------------+------------+

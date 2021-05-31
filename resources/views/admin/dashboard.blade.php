@@ -1,4 +1,4 @@
-@extends('.layouts.app')
+@extends('.admin.template')
 <h1>Dashboard Admin Pro League</h1>
 
 @section('content')

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+ use App\Http\Requests\CreateBadgeRequest;
 use App\Models\Badge;
 use App\Models\Region;
 use App\Models\Quiz;
@@ -16,11 +17,9 @@ class BadgeController extends Controller
      */
     public function index()
     {
-        $elements = Badge::all();
-        $title = "Tous les badges";
-        $elementType = "badge";
+        $badges = Badge::all();
 
-        return view("admin.index", compact('elements', 'elementType', 'title'));
+        return view("admin.badges.index_badges", compact('badges'));
     }
 
     /**
@@ -30,7 +29,8 @@ class BadgeController extends Controller
      */
     public function create()
     {
-        //
+        $badge_list = Badge::PICTOGRAMS;
+        return view('admin.badges.create_badge', compact('badge_list'));
     }
 
     /**
@@ -39,9 +39,19 @@ class BadgeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateBadgeRequest $request)
     {
-        //
+        $badge = Badge::create([
+            'label' => $request->label,
+            'description' => $request->description,
+            'pictogram' => $request->pictogram,
+            'color' => $request->color,
+            'type' => $request->type,
+            'criterium' => $request->criterium,
+            'badgeable_type' => $request->type == "region" ? 'App\Models\Region' : 'App\Models\Quiz',
+            'badgeable_id' => rand(1, 3) // !!!!! À MODIFIER PAR RAPPORT AU FRONT !!!!!!
+        ]);
+        return redirect(route('badge.index'))->withOk("Le badge " . $badge->label . " a été créé.");
     }
 
     /**
@@ -52,12 +62,10 @@ class BadgeController extends Controller
      */
     public function show($id)
     {
-        $element = Badge::findOrFail($id);
-        $title = "Un badge en particulier";
-        $type = $element->badgeable()->get();
-        $elementType = "badge";
+        $badge = Badge::findOrFail($id);
+        //$type = $badge->badgeable()->get();
 
-        return view("admin.show", compact('element', 'elementType', 'type', 'title'));
+        return view("admin.badges.show_badge", compact('badge'));
     }
 
     /**

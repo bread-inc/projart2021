@@ -4,9 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Badge;
+use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\UserCreateRequest;
 
 class UserController extends Controller
 {
+    private function setAdmin($request) {
+        if (!$request->has('isAdmin')) {
+           $request->merge(['isAdmin'=>0]);
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,11 +23,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $elements=User::all();
-        $title = "Tous les utilisateurs";
-        $elementType = "user";
+        $users = User::all();
 
-        return view("admin.index", compact('elements', 'elementType', 'title'));
+        return view("admin.users.index_users", compact('users'));
     }
 
     /**
@@ -28,7 +35,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return "Creating new user";
+        return view('admin.users.create_user');
     }
 
     /**
@@ -37,9 +44,11 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(UserCreateRequest $request)
+    {   
+        $this->setAdmin($request); // permet la gestion de la case à cocher (champ admin)
+        $user = User::create($request->all());
+        return redirect(route('user.index'))->withOk("L'utilisateur " . $user->pseudo . " a été créé.");
     }
 
     /**
@@ -57,7 +66,7 @@ class UserController extends Controller
         $user->badges;
         $user->scores;
 
-        return view("admin.show_user", compact('user'));
+        return view("admin.users.show_user", compact('user'));
     }
 
     /**
@@ -69,7 +78,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return compact('user');
+        return view("admin.users.edit_user", compact('user'));
     }
 
     /**
@@ -79,9 +88,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
-        //
+        $this->setAdmin($request);
+        User::findOrFail($id)->update($request->all());
+        return redirect(route('user.index'))->withOk("L'utilisateur " . $request->input('pseudo') . " a été modifié");
     }
 
     /**
@@ -99,22 +110,69 @@ class UserController extends Controller
     /**
      * Set
      *
-     * @param Request $request
-     * @return null
-     */
-    private function setAdmin($request) {
-        if (!$request->has('admin')) {
-           $request->merge(['admin'=>0]);
-        }
-    }
-
-    /**
-     * Set
-     *
      * @param int $id
      * @return bool
      */
     private function isAdmin($id) {
         return User::findOrFail($id)->isAdmin;
+    }
+
+    public function addBadges($user_id) {
+        $user = User::findOrFail($user_id);
+        $user->badges;
+        $badges = Badge::all();
+
+        return view('admin.users.add_badges', compact('user', 'badges'));
+
+        //return redirect("admin/user/$user->id")->withOk("Le(s) badge(s) a été ajouté de l'utilisateur $user_id.");
+    }
+
+    public function storeBadges(Request $request)
+    {
+
+        $user = User::findOrFail($request->user);
+
+        foreach ($request->badges as $badge_id) {
+            $badge = Badge::find($badge_id);
+
+            if(empty($user->badges->find($badge_id))) {
+                $user->badges()->attach($badge);  
+            }    
+        }
+
+        return redirect("admin/user/$user->id")->withOk("Le(s) badge(s) ont été attribués à l'utilisateur $user->pseudo.");
+
+
+
+        /*
+
+
+        for ($i=1; $i < 15; $i++) { 
+            DB::table('badge_user')->insert([
+                'badge_id' => $i,
+                'user_id' => 1
+            ]);
+            DB::table('badge_user')->insert([
+                'badge_id' => $i,
+                'user_id' => 2
+            ]);
+        }
+        $this->setAdmin($request); // permet la gestion de la case à cocher (champ admin)
+        $user = User::create($request->all());
+        return redirect(route('user.index'))->withOk("L'utilisateur " . $user->pseudo . " a été créé.");*/
+    }
+
+    public function deleteBadge($user_id, $badge_id) {
+        $user = User::findOrFail($user_id);
+        $user->badges()->detach($badge_id);
+        return redirect("admin/user/$user->id")->withOk("Le badge $badge_id a été retiré de l'utilisateur $user_id.");
+    }
+
+    public function deleteScore($user_id, $score_id) {
+        $user = User::findOrFail($user_id);
+
+        // Ne marche pas encore
+
+        return redirect("admin/user/$user->id")->withOk("Le score $score_id a été retiré de l'utilisateur $user_id.");
     }
 }
