@@ -18,16 +18,6 @@ class QuizController extends Controller
         return compact('quizzes');
     }
 
-    /**
-     *Display the quiz
-     */
-    public function afficheQuiz($id)
-    {
-        $quiz = Quiz::findOrFail($id);
-
-        return view('quizStart')->with(compact('quiz'));
-
-    }
 
 
     /**

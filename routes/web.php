@@ -6,7 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\BadgeController;
-
+use App\Http\Controllers\GameController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +61,10 @@ Route::prefix('region')->group(function () {
     Route::get('/{id}/scores', [RegionController::class, "scores"]);
 });
 
+Route::prefix('quiz')->group(function () {
+    Route::get('/{id}/start', [GameController::class, "scores"]);
+});
+
 // ##### Badge routes #####
 Route::prefix('badge')->group(function () {
     Route::get('/', [BadgeController::class, "index"]);
@@ -68,8 +72,9 @@ Route::prefix('badge')->group(function () {
     Route::get('/{id}/users', [BadgeController::class, "users"]);
 });
 
+
+
 // ##### Quiz routes #####
 Route::resource('quiz', QuizController::class)->only(['index', 'show']);
-
 Route::resource('quiz', QuizController::class)->except(['index', 'show'])
     ->middleware('admin');
