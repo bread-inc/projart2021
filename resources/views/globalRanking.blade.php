@@ -4,20 +4,16 @@
 @php
     $index = 0;
 @endphp
+<h2>Score general</h2>
 @foreach($arrayScores as $score)
 @foreach($score as $scores)
 @php
     $index ++;
 @endphp
-    <div>
-        @csrf
+    <div class="GeneralRanking">
     <label>{{$index}}</label>
     <label >{{$scores->user['pseudo']}}</label>
     <label >{{$scores->score}}</label>
-    <table>
-        <tr>
-        </tr>
-    </table>
     </div>
 @endforeach
 @endforeach

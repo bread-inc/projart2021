@@ -61,8 +61,10 @@ Route::prefix('region')->group(function () {
     Route::get('/{id}/scores', [RegionController::class, "scores"]);
 });
 
-Route::prefix('quiz')->group(function () {
-    Route::get('/{id}/start', [GameController::class, "scores"]);
+// ##### Game controller route #####
+Route::prefix('quizz')->group(function () {
+    Route::get('/{id}/start', [GameController::class, "afficheQuiz"]);
+    Route::get('/{id}/game', [GameController::class, "startQuiz"]);
 });
 
 // ##### Badge routes #####

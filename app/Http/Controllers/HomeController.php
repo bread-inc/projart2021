@@ -45,4 +45,6 @@ class HomeController extends Controller
         $topScores = Score::orderBy('score', 'desc')->get()->take(10);
         return compact('topScores');
     }
+
+
 }

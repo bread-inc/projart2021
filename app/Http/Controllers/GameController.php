@@ -17,10 +17,16 @@ class GameController extends Controller
     public function afficheQuiz($id)
     {
         $quiz = Quiz::findOrFail($id);
-        dd($quiz);
         return view('quizStart')->with(compact('quiz'));
 
     }
+
+    public function startQuiz($id)
+    {
+
+        return view('game');
+    }
+
 
 
 
