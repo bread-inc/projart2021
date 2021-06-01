@@ -54,6 +54,9 @@ Route::resource('user', UserController::class)->only(['show'])
 Route::resource('user', UserController::class)->except(['index', 'create', 'show'])
     ->middleware('admin');
 */
+Route::prefix('user')->group(function () {
+    Route::get('{user_id}', [UserController::class, 'showUser']);
+});
 
 
 // ##### Region routes #####
