@@ -17,7 +17,7 @@ class RegionController extends Controller
         $regions=Region::paginate(10);
         $links=$regions->render();
 
-        return compact('regions','links');
+        return view('allRegion')->with(compact('regions','links'));
     }
 
     /**

@@ -10,6 +10,7 @@ use App\Http\Controllers\RegionController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ClueController;
+use App\Http\Controllers\GameController;
 
 /*
 |--------------------------------------------------------------------------
