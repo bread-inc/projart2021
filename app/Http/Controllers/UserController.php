@@ -76,6 +76,19 @@ class UserController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showUser($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view("profile", compact('user'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
