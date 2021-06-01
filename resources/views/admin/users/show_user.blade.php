@@ -70,7 +70,7 @@ L'utilisateur n'a pas encore de score.
 <hr>
 <h3>Les badges de {{$user->pseudo}}</h3>
 
-<a class="btn btn-primary" href="{{route('user.addBadges', [$user->id])}}">Attribuer un nouveau badge</a>
+<a class="btn btn-primary" href="{{route('user.addBadges', [$user->id])}}">Modifier les badges de l'utilisateur</a>
 
 @if(sizeof($user->badges) != 0)
 <div class="row">
@@ -78,14 +78,8 @@ L'utilisateur n'a pas encore de score.
     <div class="col-12 col-sm-4 col-md-3 mb-2">
         <div class="card" style="background-color: {{$badge->color}};">
             <div class="card-body">
-                <img src="{{$badge->pictogram}}" class="float-left rounded-circle" alt="{{$badge->label}}">
-                <h5 class="card-title">{{$badge->label}}</h5>
+                <h5 class="card-title"><i class="fas {{$badge->pictogram}}"></i> {{$badge->label}}</h5>
                 <p class="card-text">{{$badge->description}}</p>
-
-                <form class="d-inline" method="POST" action="{{$user->id}}/badge/{{$badge->id}}" accept-charset="UTF-8">
-                    @csrf
-                    <input class="btn btn-danger" onclick="return confirm('Vraiment retirer le badge de cet utilisateur ?')" type="submit" value="Supprimer">
-                </form>
             </div>
         </div>
     </div>

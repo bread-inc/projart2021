@@ -10,6 +10,10 @@ class BadgesTableSeeder extends Seeder
 {
     // Example tag : <i class="fas {{css-class}}"></i>
 
+    private function randomHexColor() {
+        return "#" . substr(md5(rand()), 0, 6);
+    }
+
     /**
      * Run the database seeds.
      *
@@ -23,7 +27,7 @@ class BadgesTableSeeder extends Seeder
                 'label' => 'Badge'.$i,
                 'description' => 'Lorem ipsum dolor amet decanta'.$i,
                 'pictogram' => Badge::PICTOGRAMS[rand(0, sizeof(Badge::PICTOGRAMS)-1)],
-                'color' => 'Rouge',
+                'color' => $this->randomHexColor(),
                 'type' => 'score',
                 'criterium' => 'criterium'.$i,
                 'badgeable_type' => $i % 2 == 0 ? 'App\Models\Region' : 'App\Models\Quiz',

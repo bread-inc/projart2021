@@ -148,24 +148,27 @@ class UserController extends Controller
 
     public function storeBadges(Request $request)
     {
+        $badges = Badge::all();
 
-        $user = User::findOrFail($request->user);
-
-        foreach ($request->badges as $badge_id) {
-            $badge = Badge::find($badge_id);
-
-            if(empty($user->badges->find($badge_id))) {
-                $user->badges()->attach($badge);  
-            }    
+        $user = User::find($request->user);
+        $userOldBadges = $user->badges;
+        
+        // Si le badge est dans la liste des nouveaux, mais pas des anciens, l'ajouter ;
+        foreach ($badges as $badge) {
+            if(in_array($badge->id, $request->badges) && empty($userOldBadges->find($badge->id))) {
+                $newBadge = Badge::find($badge->id);
+                $user->badges()->attach($newBadge);
+            }
         }
 
-        return redirect("admin/user/$user->id")->withOk("Le(s) badge(s) ont été attribués à l'utilisateur $user->pseudo.");
-    }
-
-    public function deleteBadge($user_id, $badge_id) {
-        $user = User::findOrFail($user_id);
-        $user->badges()->detach($badge_id);
-        return redirect("admin/user/$user->id")->withOk("Le badge $badge_id a été retiré de l'utilisateur $user_id.");
+        // Si le badge est dans la liste des anciens, mais pas des nouveaux, le supprimer ;
+        foreach ($userOldBadges as $old_badge) {
+            if(!in_array($old_badge->id, $request->badges)) {
+                $user->badges()->detach($old_badge->id);
+            }
+        }
+        
+        return redirect("admin/user/$user->id")->withOk("Le(s) badge(s) de l'utilisateur $user->pseudo ont été modifiés.");
     }
 
     public function deleteScore($user_id, $score_id) {

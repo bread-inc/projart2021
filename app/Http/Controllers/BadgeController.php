@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
- use App\Http\Requests\CreateBadgeRequest;
+use App\Http\Requests\CreateBadgeRequest;
 use App\Models\Badge;
 use App\Models\Region;
 use App\Models\Quiz;
@@ -29,8 +29,8 @@ class BadgeController extends Controller
      */
     public function create()
     {
-        $badge_list = Badge::PICTOGRAMS;
-        return view('admin.badges.create_badge', compact('badge_list'));
+        $pictograms_list = Badge::PICTOGRAMS;
+        return view('admin.badges.create_badge', compact('pictograms_list'));
     }
 
     /**
@@ -63,9 +63,10 @@ class BadgeController extends Controller
     public function show($id)
     {
         $badge = Badge::findOrFail($id);
+        $pictograms_list = Badge::PICTOGRAMS;
         //$type = $badge->badgeable()->get();
 
-        return view("admin.badges.show_badge", compact('badge'));
+        return view("admin.badges.show_badge", compact('badge', 'pictograms_list'));
     }
 
     /**
@@ -76,7 +77,9 @@ class BadgeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $badge = Badge::findOrFail($id);
+        $pictograms_list = Badge::PICTOGRAMS;
+        return view('admin.badges.edit_badge', compact('badge','pictograms_list'));
     }
 
     /**
@@ -88,7 +91,17 @@ class BadgeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Badge::findOrFail($id)->update([
+            'label' => $request->label,
+            'description' => $request->description,
+            'pictogram' => $request->pictogram,
+            'color' => $request->color,
+            'type' => $request->type,
+            'criterium' => $request->criterium,
+            'badgeable_type' => $request->type == "region" ? 'App\Models\Region' : 'App\Models\Quiz',
+            'badgeable_id' => rand(1, 3) // !!!!! À MODIFIER PAR RAPPORT AU FRONT !!!!!!
+        ]);
+        return redirect(route('badge.index'))->withOk("Le badge " . $id . " a été modifié avec succès.");
     }
 
     /**
@@ -99,7 +112,10 @@ class BadgeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $badge = Badge::findOrFail($id);
+        $badge->delete();
+
+        return redirect(route('badge.index'))->withOk("Le badge $id a été supprimé avec succès.");
     }
 
     public function users($id)
