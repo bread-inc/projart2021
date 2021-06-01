@@ -117,8 +117,17 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($quiz_id, $id)
     {
-        return "Deleting clue $id";
+        $question = Question::find($id);
+        
+        // Deleting the clues linked to the question
+        foreach ($question->clues as $clue) {
+            $clue->delete();
+        }
+
+        // Deleting the question itself
+        $question->delete();
+        return redirect(route('quiz.show', [$quiz_id]))->withOk("La question " . $id . " a été supprimée.");
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\QuizRequest;
 use Illuminate\Http\Request;
 use App\Models\Quiz;
+use App\Models\Region;
 
 class QuizController extends Controller
 {
@@ -31,7 +33,8 @@ class QuizController extends Controller
      */
     public function create()
     {
-        //
+        $regions = Region::all();
+        return view("admin.quizzes.create_quiz", compact("regions"));
     }
 
     /**
@@ -40,9 +43,11 @@ class QuizController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(QuizRequest $request)
     {
-        //
+        $request->merge(['user_id' => auth()->id()]);
+        $quiz = Quiz::create($request->all());
+        return redirect(route('quiz.index'))->withOk("Le quiz " . $quiz->title . " a été créé avec succès.");
     }
 
     /**
@@ -69,7 +74,9 @@ class QuizController extends Controller
      */
     public function edit($id)
     {
-        return Quiz::findOrFail($id);
+        $quiz = Quiz::findOrFail($id);
+        $regions = Region::all();
+        return view('admin.quizzes.edit_quiz', compact('quiz', 'regions'));
     }
 
     /**
@@ -80,8 +87,9 @@ class QuizController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {        
+        Quiz::findOrFail($id)->update($request->all());
+        return redirect(route('quiz.index'))->withOk("Le quiz " . $id . " a été modifié avec succès.");
     }
 
     /**

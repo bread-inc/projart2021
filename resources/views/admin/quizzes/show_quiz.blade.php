@@ -3,7 +3,7 @@
 @section('content')
 
 <a href="{{ url()->previous() }}" class="btn btn-secondary">Retour</a>
-<a class="btn btn-warning" href="">Modifier</a>
+<a class="btn btn-warning" href="{{route('quiz.edit', [$quiz->id])}}">Modifier</a>
 
 <h1>{{$quiz->title}}</h1>
 
@@ -44,9 +44,18 @@
             <td>{{$question->id}}</td>
             <td>{{$question->description}}</td>
             <td>
-                <a href="{{route('question.show',[$quiz->id,$question->id])}}" class="btn btn-primary">Show</a> 
-                <a class="btn btn-warning" href="{{route('question.edit', [$quiz->id, $question->id])}}">Modifier</a>
-                <a href="#">Delete</a>
+                
+                <a href="{{route('question.show',[$quiz->id,$question->id])}}" class="btn btn-primary">Afficher</a> 
+                <a href="{{route('question.edit', [$quiz->id, $question->id])}}" class="btn btn-warning">Modifier</a>
+                <form class="d-inline" method="POST" action="{{route('question.destroy', [$quiz->id, $question->id])}}" accept-charset="UTF-8">
+                    @csrf
+                    @method('DELETE')
+                    <input class="btn btn-danger" 
+                        onclick="return confirm('Supprimer ce question supprimera aussi les {{sizeof($question->clues)}} indices liés à cette question. Voulez-vous tout de même procéder ?')" 
+                        type="submit" 
+                        value="Supprimer"
+                    >
+                </form>
             </td>
         </tr>
 @endforeach
@@ -64,14 +73,16 @@
             <th>#</th>
             <th>Badge</th>
             <th>Description</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
 @foreach ($quiz->badges as $badge)
         <tr>
-            <td><a href="{{route('badge.show', [$badge->id])}}" target="_blank">{{$badge->id}}</a></td>
+            <td>{{$badge->id}}</td>
             <td><i class="fas {{$badge->pictogram}}"></i> {{$badge->label}}</td>
             <td>{{$badge->description}}</td>
+            <td><a href="{{route('badge.show', [$badge->id])}}" class="btn btn-primary">Afficher</a></td>
         </tr>
 @endforeach
     </tbody>
