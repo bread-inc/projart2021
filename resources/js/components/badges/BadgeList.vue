@@ -1,6 +1,6 @@
 <template>
   <div class="badges container">
-    <badge-item v-for="badge in badges" :key="badge" v-bind="{ badge }"></badge-item>
+    <badge-item v-for="badge in badges" :key="badge" :badge="badge"></badge-item>
   </div>
 </template>
 

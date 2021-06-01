@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Score;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -19,8 +20,8 @@ class HomeController extends Controller
 
     public function globalRanking()
     {
-        $arrayScore = $this->scoreboard();
-        return view('globalRanking')->with('arrayScore', $arrayScore);
+        $scores = $this->scoreboard();
+        return view('globalRanking')->with('scores', $scores);
     }
 
     /**
@@ -39,8 +40,24 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function scoreboard() {
-        $topScores = Score::orderBy('score', 'desc')->get()->take(10);
-        return compact('topScores');
+        $scores = Score::groupBy('user_id')
+            ->selectRaw('sum(score) as total, user_id')
+            ->pluck('total', 'user_id');
+
+        $rankings = [];
+        $i = 0;
+
+        foreach ($scores as $score) {
+            $user_id = $i + 1; 
+            $pseudo = User::findOrFail($user_id)->pseudo;
+            array_push($rankings, ["user_id" => $user_id, "pseudo" => $pseudo, "score" => $score]);
+            $i++;
+        }
+
+        $score = array_column($rankings, 'score');
+        array_multisort($score, SORT_DESC, $rankings);
+
+        return json_encode($rankings);
     }
 
     /**
