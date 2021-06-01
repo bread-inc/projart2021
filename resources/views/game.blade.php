@@ -12,9 +12,7 @@
         <a href="/game_clue" class="btn btn-info">Indice</a>
     </div>
 </div>
-
-<div id="app">
-    <example-component></example-component>
- </div>
+ <div id="vue-app">
+    <test></test>
+</div>
 @endsection
-
