@@ -40,18 +40,11 @@ class HomeController extends Controller
      */
     public function scoreboard() {
         $topScores = Score::orderBy('score', 'desc')->get()->take(10);
-
-        foreach ($topScores as $score) {
-            // Calling the quiz and users linked to the scores
-            $score->user;
-            $score->quiz;
-        }
-
-        return ["Global scoreboard", compact('topScores')];
+        return compact('topScores');
     }
 
     /**
-     * 
+     *
      */
     public function adminDashboard() {
         return view("admin.dashboard");
