@@ -100,7 +100,19 @@ class QuizController extends Controller
      */
     public function destroy($id)
     {
-        return "Destroying $id";
+        $quiz = Quiz::find($id);  
+        // Deleting the questions linked to the quiz
+        foreach ($quiz->questions as $question) {
+            // Deleting the clues linked to the question
+            foreach ($question->clues as $clue) {
+                $clue->delete();
+            }
+            $question->delete();
+        }
+        // Deleting the quiz itself
+        $quiz->delete();
+
+        return redirect(route('quiz.index'))->withOk("Le quiz " . $id . " a été supprimé avec succès.");
     }
 
     /**

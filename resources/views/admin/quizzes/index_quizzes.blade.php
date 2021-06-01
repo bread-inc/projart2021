@@ -30,7 +30,7 @@
                 <form class="d-inline" method="POST" action="{{route('quiz.destroy', [$quiz->id])}}" accept-charset="UTF-8">
                     @csrf
                     @method('DELETE')
-                    <input class="btn btn-danger" onclick="return confirm('Vraiment supprimer ce quiz ?')" type="submit" value="Supprimer">
+                    <input class="btn btn-danger" onclick="return confirm('Supprimer ce quiz entrainera la suppression de ses {{sizeof($quiz->questions)}} questions et indices liés. Voulez-vous procéder à sa suppression ?')" type="submit" value="Supprimer">
                 </form>
             </td>
         </tr>
