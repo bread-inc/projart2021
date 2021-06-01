@@ -3,10 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+
+use App\Http\Controllers\BadgeController;
+
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\QuizController;
-use App\Http\Controllers\BadgeController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\ClueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,8 +93,13 @@ Route::prefix('admin')->group(function () {
     Route::resource('badge', BadgeController::class);
 
     Route::resource('quiz', QuizController::class);
+
     Route::prefix('quiz/{quiz_id}')->group(function () {
         Route::resource('question', QuestionController::class);
+
+        Route::prefix('question/{question_id}')->group(function() {
+            Route::resource('clue', ClueController::class);
+        });
     });
     Route::resource('user', UserController::class);
 });

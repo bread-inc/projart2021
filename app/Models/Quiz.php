@@ -9,6 +9,8 @@ class Quiz extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable=['region_id', 'user_id','title','description','ponderation'];
 
     public function region() {

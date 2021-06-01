@@ -9,6 +9,8 @@ class Region extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable=['name','center_x','center_y'];
 
     public function quizzes() {

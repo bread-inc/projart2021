@@ -9,7 +9,9 @@ class Clue extends Model
 {
     use HasFactory;
 
-    protected $fillable=['id_question','description','radius'];
+    public $timestamps = false;
+
+    protected $fillable=['question_id','description','radius'];
 
     public function question() {
         return $this->belongsTo(Question::class);    

@@ -2,13 +2,15 @@
 @section('content')
 
 <a href="{{ url()->previous() }}" class="btn btn-secondary" >Retour</a>
-<a class="btn btn-warning" href="">Edit</a>
+<a class="btn btn-warning" href="{{route('question.edit', [$question->quiz_id, $question->id])}}">Modifier</a>
 
 <h1>Question {{$question->id}}, Quiz {{$question->quiz_id}}</h1>
 
 <div class="form-group">
     <label for="picture">Image</label><br>
-    <input type="file" id="picture" name="picture" accept="image/png, image/jpeg">
+    <img src="{{$question->picture}}" alt="{{$question->description}}">
+
+    <!--<input type="file" id="picture" name="picture" accept="image/png, image/jpeg">-->
     
     {!! $errors->first('picture', '<small class="help-block">:message</small>') !!}
 </div>
@@ -35,13 +37,14 @@
 
 <h3>Les indices de la question</h3>
 
-<a class="btn btn-primary" href="#">Nouvel indice</a>
+<a class="btn btn-primary" href="{{route('clue.create', [$question->quiz_id, $question->id])}}">Nouvel indice</a>
 
 <table class="table">
     <thead>
         <tr>
             <th>#</th>
             <th>Indice</th>
+            <th>Rayon</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -50,10 +53,14 @@
         <tr>
             <td>{{$clue->id}}</td>
             <td>{{$clue->description}}</td>
+            <td>{{$clue->radius}} [m]</td>
             <td>
-                <a href="{{ "#"/*route('clue.show',[$quiz->id,$question->id, $clue->id]) */}}" class="btn btn-primary">Show</a> 
-                <a href="#">Edit</a> 
-                <a href="#">Delete</a>
+                <a class="btn btn-warning" href="{{route('clue.edit', [$question->quiz_id, $question->id, $clue->id])}}">Edit</a>
+                <form class="d-inline" method="POST" action="{{route('clue.destroy', [$question->quiz_id, $question->id, $clue->id])}}" accept-charset="UTF-8">
+                    @csrf
+                    @method('DELETE')
+                    <input class="btn btn-danger" onclick="return confirm('Vraiment supprimer cet indice ?')" type="submit" value="Supprimer">
+                </form>
             </td>
         </tr>
 @endforeach
