@@ -1,7 +1,7 @@
 <template>
     <tr>
         <th scope="row">{{ score.rank }}</th>
-        <th>{{ score.pseudo}}</th>
+        <th><a :href="'user/' + score.user_id">{{ score.pseudo}}</a></th>
         <th>{{ score.score}}</th>
     </tr>
 </template>
