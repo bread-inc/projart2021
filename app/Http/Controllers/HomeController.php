@@ -18,12 +18,6 @@ class HomeController extends Controller
         //$this->middleware('auth');
     }
 
-    public function globalRanking()
-    {
-        $scores = $this->scoreboard();
-        return view('globalRanking')->with('scores', $scores);
-    }
-
     /**
      * Show the application dashboard.
      *
