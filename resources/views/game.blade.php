@@ -13,6 +13,6 @@
     </div>
 </div>
  <div id="vue-app">
-    <test></test>
+    <testleaf></testleaf>
 </div>
 @endsection
