@@ -15,6 +15,10 @@
     </div>
 </div>
  <div id="vue-app">
-    <testleaf></testleaf>
+    <testleaf :questions = "{{$questions}}">
+    </testleaf>
 </div>
 @endsection
+
+
+

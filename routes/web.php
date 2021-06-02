@@ -11,6 +11,7 @@ use App\Http\Controllers\QuizController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ClueController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\ScoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +43,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/globalRanking', [HomeController::class, 'globalRanking']);
+Route::get('/globalRanking', [ScoreController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/scoreboard', [HomeController::class, 'scoreboard']);
 
