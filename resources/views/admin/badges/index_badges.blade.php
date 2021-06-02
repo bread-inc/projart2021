@@ -13,6 +13,8 @@
             <th>#</th>
             <th>Badge</th>
             <th>Description</th>
+            <th>Type</th>
+            <th>Critère</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -22,6 +24,8 @@
         <td>{{$badge->id}}</td>
         <td><i class="fas {{$badge->pictogram}} mr-1"></i> {{$badge->label}}</td>
         <td>{{$badge->description}}</td>
+        <td>{{$badge->type}}</td>
+        <td>{{$badge->criterium}}</td>
 
         <td>
             <a class="btn btn-primary" href="{{route('badge.show', [$badge->id])}}">Show</a>
