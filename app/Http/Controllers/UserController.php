@@ -45,7 +45,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\UserCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(UserCreateRequest $request)
@@ -103,7 +103,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\UserUpdateRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -149,11 +149,10 @@ class UserController extends Controller
     public function storeBadges(Request $request)
     {
         $badges = Badge::all();
-
         $user = User::find($request->user);
         $userOldBadges = $user->badges;
         
-        // Si le badge est dans la liste des nouveaux, mais pas des anciens, l'ajouter ;
+        // Checking in the new badges list the one to add to the user ;
         foreach ($badges as $badge) {
             if(in_array($badge->id, $request->badges) && empty($userOldBadges->find($badge->id))) {
                 $newBadge = Badge::find($badge->id);
@@ -161,7 +160,7 @@ class UserController extends Controller
             }
         }
 
-        // Si le badge est dans la liste des anciens, mais pas des nouveaux, le supprimer ;
+        // Checking in the old badges list the one to remove from the user ;
         foreach ($userOldBadges as $old_badge) {
             if(!in_array($old_badge->id, $request->badges)) {
                 $user->badges()->detach($old_badge->id);
@@ -172,9 +171,8 @@ class UserController extends Controller
     }
 
     public function deleteScore($user_id, $score_id) {
+        // Sounds good, doesn't work (for now)
         $user = User::findOrFail($user_id);
-
-        // Ne marche pas encore
 
         return redirect("admin/user/$user->id")->withOk("Le score $score_id a été retiré de l'utilisateur $user_id.");
     }

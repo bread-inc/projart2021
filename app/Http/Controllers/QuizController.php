@@ -117,6 +117,9 @@ class QuizController extends Controller
 
     /**
      * Show profile, for users (not admin)
+     * 
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function profile($id)
     {

@@ -87,28 +87,28 @@ Route::prefix('quizz')->group(function () {
 // ##### Quiz routes #####
 Route::resource('quiz', QuizController::class)->only(['index', 'show']);
 
-Route::resource('quiz', QuizController::class)->except(['index', 'show'])
-    ->middleware('admin');
-
 
 // ##### Admin routes #####
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('admin')->group(function () {
+    Route::get('/', [HomeController::class, "adminDashboard"]);
+
     Route::get('user/{user_id}/addBadges', [UserController::class, "addBadges"])->name("user.addBadges");
     Route::post('user/{user_id}/addBadges', [UserController::class, "storeBadges"])->name("user.storeBadges");
     Route::post('user/{user_id}/badge/{badge_id}', [UserController::class, "deleteBadge"]);
     Route::post('user/{user_id}/score/{score_id}', [UserController::class, "deleteScore"]);
 
-    Route::get('/', [HomeController::class, "adminDashboard"])->middleware('admin');
     Route::resource('badge', BadgeController::class);
 
     Route::resource('quiz', QuizController::class);
 
     Route::prefix('quiz/{quiz_id}')->group(function () {
+
         Route::resource('question', QuestionController::class);
 
         Route::prefix('question/{question_id}')->group(function() {
-            Route::resource('clue', ClueController::class);
+            Route::resource('clue', ClueController::class)->except(['index', 'show']);
         });
     });
-    Route::resource('user', UserController::class);
+
+    Route::resource('user', UserController::class); // Attention aux méthodes publiques, à voir si cela fonctionne avec le middleware
 });

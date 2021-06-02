@@ -20,15 +20,13 @@ To install the app, you need to follow the next steps :
 
 5. Update the `.gitignore` file and add the `node_modules/` and `vendor/` folders and the `.env` file to avoid pushing them ;
 
-6. Launch the app : `php artisan serve` ;
+6. *In development environnement, create the `database.sqlite` file ;*
 
-7. *In development environnement, create the `database.sqlite` file ;*
+7. Migrate all the tables : `php artisan migrate:install`, `php artisan migrate` ;
 
-8. Migrate all the tables : `php artisan migrate:install`, `php artisan migrate` ;
+8. Feed the table : `php artisan db:seed` ;
 
-9. Feed the table : `php artisan db:seed` ;
-
-10. Start the app : `php artisan serve`.
+9. Start the app : `php artisan serve`.
 
 ### General informations
 

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\CreateBadgeRequest;
 use App\Models\Badge;
 use App\Models\Region;
@@ -36,7 +35,7 @@ class BadgeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\CreateBadgeRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(CreateBadgeRequest $request)
@@ -85,11 +84,11 @@ class BadgeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\CreateBadgeRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateBadgeRequest $request, $id)
     {
         Badge::findOrFail($id)->update([
             'label' => $request->label,
@@ -118,6 +117,12 @@ class BadgeController extends Controller
         return redirect(route('badge.index'))->withOk("Le badge $id a été supprimé avec succès.");
     }
 
+    /**
+     * Return the users who got the specified badge.
+     * 
+     * @param int $id 
+     * @return 
+     */
     public function users($id)
     {
         $badge = Badge::findOrFail($id);

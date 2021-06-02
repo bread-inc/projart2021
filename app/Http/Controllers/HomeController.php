@@ -61,9 +61,11 @@ class HomeController extends Controller
     }
 
     /**
-     *
+     * Show the admin Dashboard
      */
     public function adminDashboard() {
+        // Could be replaced by just a route, if no further info needed
+
         return view("admin.dashboard");
     }
 }
