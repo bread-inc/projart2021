@@ -24,12 +24,9 @@ class GameController extends Controller
 
     public function startQuiz($id)
     {
-        /*
-        @foreach ($question as $questions )
-<label>{{$questions->description}}</label>
-@endforeach */
 
-       // $question = DB::select('select * from questions where quiz_id = ?',[$id]);
+
+        $quiz = Quiz::findOrFail($id);
        $coordArray = [];
        $question = Quiz::findOrFail($id)->questions;
          $tesJson = json_encode($question);
@@ -39,20 +36,19 @@ class GameController extends Controller
             array_push($coordArray, ["coord_x" => $question->coord_x, "coord_y" => $question->coord_y]);
          }
 
-        json_encode($question);
         $cordone = json_encode($coordArray);
 
         //dd($tesJson);
-        return view('game')->with('questions',$cordone);
+        return view('game')->with('cordone',$cordone)->with('question',$question)->with('quiz',$quiz);
     }
 
     /**
      * When a quiz is over, we test if the connected user should receive some badges.
-     * 
+     *
      * @param Quiz $quiz the quiz completed
      * @param int $score the score marked
      * @param int $time the time used to complete the quiz, in seconds
-     * 
+     *
      * @return Badge[] the new badges unlocked (the array can be empty)
      */
     private function checkingBadges(Quiz $quiz, $score, $time) {
@@ -73,7 +69,7 @@ class GameController extends Controller
                 } else {
                     $userGetsANewBadge = $this->validateTimeBadge($badge->criterium, $time);
                 }
-    
+
                 if($userGetsANewBadge) {
                     $this->attributeBadgeToUser(auth()->id(), $badge->id);
                     array_push($newBadges, Badge::find($badge->id));
@@ -85,10 +81,10 @@ class GameController extends Controller
 
     /**
      * Testing if the badge is already owned by the user.
-     * 
+     *
      * @param int $user_id score to beat
      * @param int $badge_id score achieved
-     * 
+     *
      * @return bool badge unlocked
      */
     private function userHasBadgeAlready($user_id, $badge_id) {
@@ -97,10 +93,10 @@ class GameController extends Controller
 
     /**
      * Testing if the badge's criterium is met.
-     * 
+     *
      * @param int $criterium percentage of quizzes with a +50 score completed
      * @param Region $region the region to check
-     * 
+     *
      * @return bool badge unlocked
      */
     private function validateRegionalBadge($criterium, $region) {
@@ -114,10 +110,10 @@ class GameController extends Controller
 
     /**
      * Testing if the badge's criterium is met.
-     * 
+     *
      * @param int $criterium score to beat
      * @param int $time score achieved
-     * 
+     *
      * @return bool badge unlocked
      */
     private function validateScoreBadge($criterium, $score) {
@@ -127,10 +123,10 @@ class GameController extends Controller
 
     /**
      * Testing if the badge's criterium is met.
-     * 
+     *
      * @param int $criterium time to beat in minutes
      * @param int $time time achieved in seconds
-     * 
+     *
      * @return bool badge unlocked
      */
     private function validateTimeBadge($criterium, $time) {
@@ -141,7 +137,7 @@ class GameController extends Controller
 
     /**
      * Adding the badge $badge_id to the user $user_id
-     * 
+     *
      * @param int $user_id the user receiving the badge
      * @param int $badge_id the badge to add
      */
@@ -160,7 +156,7 @@ class GameController extends Controller
 
         // Checking if the user gets new badges
         $newBadges = $this->checkingBadges($quiz, $score, $time);
-        
+
         return view('game_completed')->with(compact('quiz', 'score', 'time', 'startTime', 'newBadges'));
     }
 

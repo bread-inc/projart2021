@@ -1,9 +1,10 @@
 @extends('.layouts.app')
 @section('content')
-<h1>{{$quiz->title}}</h1>
+<p>{{$quiz->title}}</p>
+
 
 <div class = "question">
-@foreach ($quiz->questions as $question )
+    @foreach ($quiz->questions as $question )
     <p>Question : {{$question->description}}</p>
 @endforeach
 </div>
@@ -15,7 +16,7 @@
     </div>
 </div>
  <div id="vue-app">
-    <testleaf :questions = "{{$questions}}">
+    <testleaf :cordone = "{{$cordone}}">
     </testleaf>
 </div>
 @endsection

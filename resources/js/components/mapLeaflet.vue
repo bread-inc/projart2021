@@ -13,7 +13,7 @@
       layer-type="base"
       name="OpenStreetMap"
     ></l-tile-layer>
-    <l-circle-marker :lat-lng="[questions[0].coord_x, questions[0].coord_y]" :radius="50" />
+    <l-circle-marker :lat-lng="[cordone[0].coord_x, cordone[0].coord_y]" :radius="50" />
   </l-map>
     <button @click="onLocationFound">New indice</button>
   </div>
@@ -23,10 +23,11 @@ import { LMap, LTileLayer, LCircleMarker,LMarker,LPopup } from "@vue-leaflet/vue
 import {ref, computed} from 'vue';
 export default {
     setup(props){
-        const test = 0;
-        return{test};
+        const test = 6;
+        return{test}
+
     },
-    props: ["questions"],
+    props: ["cordone"],
   components: {
     LMap,
     LTileLayer,
@@ -48,11 +49,10 @@ export default {
     },
 
     onLocationFound(location){
-
         let locatPersone = location.latlng;
         let testChiffre = 46.78170795836792;
         console.log(locatPersone.lat);
-        return(locatPersone);
+     return(locatPersone);
 
     },
      changeIcon() {
