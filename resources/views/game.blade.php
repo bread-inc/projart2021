@@ -2,9 +2,6 @@
 @section('content')
 <h1>Game</h1>
 <div class = "question">
-@foreach ($question as $questions )
-<label>{{$questions->description}}</label>
-@endforeach
 </div>
 <div class = "menu">
     <div class="d-flex justify-content-center">
@@ -13,6 +10,10 @@
     </div>
 </div>
  <div id="vue-app">
-    <testleaf></testleaf>
+    <testleaf :questions = "{{$questions}}">
+    </testleaf>
 </div>
 @endsection
+
+
+
