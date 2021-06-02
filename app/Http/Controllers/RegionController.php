@@ -14,10 +14,9 @@ class RegionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $regions=Region::paginate(10);
-        $links=$regions->render();
+        $regions=Region::all();
 
-        return view('allRegion')->with(compact('regions','links'));
+        return view('allRegion')->with('regions', $regions);
     }
 
     /**

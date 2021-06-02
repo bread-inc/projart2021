@@ -57,6 +57,11 @@ class HomeController extends Controller
         $score = array_column($rankings, 'score');
         array_multisort($score, SORT_DESC, $rankings);
 
+        for ($i=0; $i < sizeof($rankings); $i++) 
+        {
+            $rankings[$i]["rank"] = $i+1;
+        }
+
         return json_encode($rankings);
     }
 

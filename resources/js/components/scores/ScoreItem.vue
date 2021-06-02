@@ -1,6 +1,6 @@
 <template>
     <tr>
-        <th scope="row">{{ index }}</th>
+        <th scope="row">{{ score.rank }}</th>
         <th>{{ score.pseudo}}</th>
         <th>{{ score.score}}</th>
     </tr>
