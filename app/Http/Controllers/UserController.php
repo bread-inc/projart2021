@@ -7,9 +7,12 @@ use App\Models\User;
 use App\Models\Badge;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Requests\UserCreateRequest;
+use App\Http\Traits\ScoreboardTrait;
 
 class UserController extends Controller
 {
+    use ScoreboardTrait;
+
     private function setAdmin($request) {
         if (!$request->has('isAdmin')) {
            $request->merge(['isAdmin'=>0]);
@@ -84,8 +87,9 @@ class UserController extends Controller
     public function showUser($id)
     {
         $user = User::findOrFail($id);
+        $scores = $this->scoreboard();
 
-        return view("profile", compact('user'));
+        return view("profile", compact('user', 'scores'));
     }
 
     /**

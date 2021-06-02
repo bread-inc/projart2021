@@ -1,17 +1,20 @@
 <template>
-    <div class="regions container">
-        <region-item v-for="region in regions" :key="region" v-bind="{ region }"></region-item>
-    </div>
+  <div class="regions card-group">
+    <region-item
+      v-for="region in regions"
+      :key="region"
+      v-bind="{ region }"
+    ></region-item>
+  </div>
 </template>
 
 <script>
-import RegionItem from './RegionItem.vue';
+import RegionItem from "./RegionItem.vue";
 
 export default {
-    components : {
-        "region-item" : RegionItem,
-    },
-    props : ["regions"],
-    
-}
+  components: {
+    "region-item": RegionItem,
+  },
+  props: ["regions"],
+};
 </script>
