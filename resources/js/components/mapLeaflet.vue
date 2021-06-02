@@ -1,65 +1,62 @@
 <template>
-<div class="test">
-</div>
-<label>{{test}}</label>
 <div id="game-map">
   <l-map
-  @ready="onReady"
-  @locationfound="onLocationFound"
-  ref="map"
-  v-model:zoom="zoom">
+    ref="map"
+    :zoom="zoom"
+    :center="[
+      userLocation.lat || defaultLocation.lat,
+      userLocation.lng || defaultLocation.lng
+    ]"
+  >
     <l-tile-layer
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       layer-type="base"
       name="OpenStreetMap"
     ></l-tile-layer>
-    <l-circle-marker :lat-lng="[cordone[0].coord_x, cordone[0].coord_y]" :radius="50" />
+ <l-marker :lat-lng="[userLocation.lat || defaultLocation.lat,
+      userLocation.lng || defaultLocation.lng]">
+        </l-marker>
   </l-map>
-    <button @click="onLocationFound">New indice</button>
-  </div>
+   </div>
 </template>
 <script>
-import { LMap, LTileLayer, LCircleMarker,LMarker,LPopup } from "@vue-leaflet/vue-leaflet";
-import {ref, computed} from 'vue';
+import { LMap, LTileLayer, LMarker} from "@vue-leaflet/vue-leaflet";
+import { icon } from "leaflet";
 export default {
-    setup(props){
-        const test = 6;
-        return{test}
-
-    },
-    props: ["cordone"],
-  components: {
-    LMap,
-    LTileLayer,
-    LCircleMarker,
-    LMarker,
-    LPopup,
+  components: {LMap, LTileLayer, LMarker},
+  props: {
+    defaultLocation: {
+      type: Object,
+      default: () => ({
+        lat: 46.78170795836792,
+        lng: 6.647425889233018
+      })
+    }
   },
   data() {
     return {
-      zoom: 16,
+      userLocation: {},
+      zoom: 18,
     };
   },
-   methods: {
-    log(a) {
-      console.log(a);
-    },
-    onReady (mapObject) {
-    mapObject.locate({setView: true, maxZoom: 16});
-    },
-
-    onLocationFound(location){
-        let locatPersone = location.latlng;
-        let testChiffre = 46.78170795836792;
-        console.log(locatPersone.lat);
-     return(locatPersone);
-
-    },
-     changeIcon() {
-
-     },
-
+  mounted() {
+    this.getUserPosition();
   },
+  methods: {
+    async getUserPosition() {
+      // check if API is supported
+      if (navigator.geolocation) {
+        // get  geolocation
+        navigator.geolocation.getCurrentPosition(pos => {
+          // set user location
+          this.userLocation = {
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude
+          };
+        });
+      }
+    }
+  }
 };
 </script>
 
