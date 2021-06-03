@@ -156,18 +156,23 @@ class UserController extends Controller
         $user = User::find($request->user);
         $userOldBadges = $user->badges;
         
-        // Checking in the new badges list the one to add to the user ;
-        foreach ($badges as $badge) {
-            if(in_array($badge->id, $request->badges) && empty($userOldBadges->find($badge->id))) {
-                $newBadge = Badge::find($badge->id);
-                $user->badges()->attach($newBadge);
+        // if $request is empty, directly clear all user's badges
+        if(empty($request->badges)) {
+            $user->badges()->detach();
+        } else {
+            // Checking in the new badges list the one to add to the user ;
+            foreach ($badges as $badge) {
+                if(in_array($badge->id, $request->badges) && empty($userOldBadges->find($badge->id))) {
+                    $newBadge = Badge::find($badge->id);
+                    $user->badges()->attach($newBadge);
+                }
             }
-        }
 
-        // Checking in the old badges list the one to remove from the user ;
-        foreach ($userOldBadges as $old_badge) {
-            if(!in_array($old_badge->id, $request->badges)) {
-                $user->badges()->detach($old_badge->id);
+            // Checking in the old badges list the one to remove from the user ;
+            foreach ($userOldBadges as $old_badge) {
+                if(!in_array($old_badge->id, $request->badges)) {
+                    $user->badges()->detach($old_badge->id);
+                }
             }
         }
         

@@ -26,7 +26,7 @@ class Quiz extends Model
     }
 
     public function scores() {
-        return $this->hasMany(Score::class)->withTimestamps();
+        return $this->hasMany(Score::class);
     }
 
     public function badges() {
