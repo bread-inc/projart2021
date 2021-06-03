@@ -1,4 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
+
 /* Global CSS variables */
 :root {
-    --accent-color : #000000;
+    /* Colors */
+    --dark-primary : #333333;
+    --dark-secondary : #787878;
+
+    --red-primary : #b82133;
+    --red-secondary : #BF4452;
+
+    --orange-primary : #FF6100;
+    --orange-secondary : #FF9554;
+
+    --light-primary : #fff8f8; 
+    --light-secondary : #d9d9d9;
+
+    --gradient-orange : 255, 97, 0;
+    --gradient-red : 184, 33, 51;
+
+    /* Font-sizes */
+    --h1-fs : 32px;
+    --h2-fs : 20px;
+    --h3-fs : 16px;
+    --p-fs : 14px;
+}
+
+html {
+    color: var(--dark-primary);
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+body {
+    background-color: var(--light-primary);
+}
+
+/* Font families */
+
+/* Font weights : 100 : thin | 300 : light | 400 : regular | 500 : medium | 700 : bold | 900 : black */
+
+h1 {
+    font-size: var(--h1-fs);
+    font-weight: 900;
+}
+
+h2 {
+    font-size: var(--h2-fs);
+    font-weight: 700;
+}
+
+h3 {
+    font-size: var(--h3-fs);
+    font-weight: 500;
+}
+
+p {
+    font-size: var(--p-fs);
+    font-weight: 400;
 }
