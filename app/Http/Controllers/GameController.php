@@ -24,22 +24,16 @@ class GameController extends Controller
 
     public function startQuiz($id)
     {
+        $data = [];
+        $data["quiz"] = Quiz::findOrFail($id);
+        $data["questions"] = [];
+        
+        foreach (Quiz::findOrFail($id)->questions as $question) {
+            array_push($data["questions"], $question, $question->clues);
+        }
+        
 
-
-        $quiz = Quiz::findOrFail($id);
-       $coordArray = [];
-       $question = Quiz::findOrFail($id)->questions;
-         $tesJson = json_encode($question);
-
-         foreach($question as $question)
-         {
-            array_push($coordArray, ["coord_x" => $question->coord_x, "coord_y" => $question->coord_y]);
-         }
-
-        $cordone = json_encode($coordArray);
-
-        //dd($tesJson);
-        return view('game')->with('cordone',$cordone)->with('question',$question)->with('quiz',$quiz);
+        return view('game')->with('data', json_encode($data));
     }
 
     /**
