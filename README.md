@@ -1,4 +1,4 @@
-<p align="center"><img src="/public/images/logo/logo.png" width="400"></p>
+<p align="center"><img src="/public/images/logo/logo.png" width="250"></p>
 
 
 ## About SwissGuesser
