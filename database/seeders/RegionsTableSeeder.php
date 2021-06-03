@@ -12,16 +12,19 @@ class RegionsTableSeeder extends Seeder
             "name" => "Neuchâtel",
             "center_x" => 46.9958656,
             "center_y" => 6.9335267,
+            "image" => "/images/regions/1.jpg"
         ],
         [
             "name" => "Yverdon-les-Bains",
             "center_x" => 46.7752422,
             "center_y" => 6.6205454,
+            "image" => "/images/regions/2.jpg"
         ],
         [
             "name" => "Genève",
             "center_x" => 46.2050242,
             "center_y" => 6.1090692,
+            "image" => "/images/regions/3.jpg"
         ]
     ];
     /**

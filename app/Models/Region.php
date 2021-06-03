@@ -11,7 +11,7 @@ class Region extends Model
 
     public $timestamps = false;
 
-    protected $fillable=['name','center_x','center_y'];
+    protected $fillable=['name','center_x','center_y', 'image'];
 
     public function quizzes() {
         return $this->hasMany(Quiz::class);
