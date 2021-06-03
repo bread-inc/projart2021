@@ -90,8 +90,10 @@
     <div class="row my-4">
         <div class="col-12">
             <h2>Classement général</h2>
-
-            <!-- Top 10 + utilisateur & -1 -->
+            
+            <div id="vue-app">
+                <score-list :scores="{{ $scores }}"></score-list>
+            </div>
 
             <a href="{{route('global-ranking')}}" class="btn btn-primary">Voir le classement</a>
         </div>

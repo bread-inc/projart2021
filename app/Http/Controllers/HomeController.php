@@ -7,9 +7,12 @@ use App\Models\Score;
 use App\Models\User;
 use App\Models\Badge;
 use App\Models\Region;
+use App\Http\Traits\ScoreboardTrait;
 
 class HomeController extends Controller
 {
+    use ScoreboardTrait;
+
     /**
      * Shows the landing page, where the visitor can login, register, or continue with no account.
      */
@@ -29,6 +32,7 @@ class HomeController extends Controller
     public function home()
     {
         $region = Region::findOrFail(1);
+        $scores = $this->scoreboard();
         // Dashboard for auth users
         if(auth()->id()) {
             $user = User::find(auth()->id());
@@ -42,10 +46,10 @@ class HomeController extends Controller
             $badges = $user->badges;
             // - Classement général top10, avec la position de User + la personne devant
 
-            return view('dashboard', compact('user', 'region', 'badges'));
+            return view('dashboard', compact('user', 'region', 'badges', 'scores'));
         } else {
             $badges = Badge::all();
-            return view('dashboard', compact('region', 'badges'));
+            return view('dashboard', compact('region', 'badges', 'scores'));
         }
     }
 
