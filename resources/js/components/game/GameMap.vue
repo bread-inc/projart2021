@@ -1,14 +1,18 @@
 <template>
-<h3>{{ data.quiz.title }}</h3>
-<p>{{ data.quiz.description }}</p>
-<p>{{ data.questions[indexQuestion]}} </p>
-<p>{{ data.questions[indexQuestion].clues[indexClue]}}</p>
-  <button class="btn btn-info" @click="this.getUserPosition">locate</button>
-  <button class="btn btn-info" @click="this.nextClue">Clues</button>
+  <h3>{{ data.quiz.title }}</h3>
+  <p>Quiz : {{ data.quiz.description }}</p>
+  <p>Question : {{ currentQuestion.description }}</p>
+  <p>Clue : {{ currentClue.description }}</p>
+  <p>{{}}</p>
+  <div class="mb-2">
+    <button class="btn btn-info mr-2" @click="this.getUserPosition">Locate</button>
+    <button class="btn btn-info mr-2" @click="this.nextClue">Clues</button>
+  </div>
   <div id="game-map">
     <l-map
       ref="map"
       :zoom="zoom"
+      @ready="storemap"
       :center="[
         userLocation.lat || defaultLocation.lat,
         userLocation.lng || defaultLocation.lng,
@@ -49,20 +53,45 @@ export default {
         lng: 6.647425889233018,
       }),
     },
-    data : Object,
+    data: Object,
+  },
+  computed: {
+    currentQuestion() {
+      return this.data.questions[this.indexQuestion];
+    },
+    currentClue() {
+      return this.currentQuestion.clues[this.indexClue];
+    }
   },
   data() {
     return {
       userLocation: {},
       zoom: 18,
-      indexQuestion : 0,
-      indexClue : 0,
+      indexQuestion: 0,
+      indexClue: 0,
     };
   },
-  mounted() {
-    this.getUserPosition();
+  init() {
+    this.mapleaf = null;
   },
+  async beforeMount() {
+    // Leaflet imports
+    const { circleMarker } = await import("leaflet/dist/leaflet-src.esm");
+
+    // Set current position
+    this.getUserPosition();
+
+    circleMarker(this.userLocation, { radius: 8 });
+
+    // Waits until ready to show
+    this.mapIsReady = true;
+  },
+
   methods: {
+    storemap(mapObject) {
+      this.mapleaf = mapObject;
+    },
+
     async getUserPosition() {
       // check if API is supported
       if (navigator.geolocation) {
@@ -76,17 +105,19 @@ export default {
         });
       }
     },
+
     centerUpdated(center) {
       this.center = center;
     },
-    nextQuestion() {
-        this.indexQuestion++;
-    },
-    nextClue() {
-        let maxClue = this.data.questions[this.indexQuestion].clues.length;
-        if (this.indexClue < maxClue-1) this.indexClue++;
-    }
 
+    nextQuestion() {
+      this.indexQuestion++;
+    },
+
+    nextClue() {
+      let cluesLength = this.data.questions[this.indexQuestion].clues.length;
+      if (this.indexClue < cluesLength - 1) this.indexClue++;
+    },
   },
 };
 </script>

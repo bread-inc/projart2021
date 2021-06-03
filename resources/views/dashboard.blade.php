@@ -30,7 +30,7 @@
             <div class="col-12">
             @if(isset($region) && !empty($region))
                 <h2>À {{$region->name}} <i class="fal fa-location-arrow fa-xs"></i></h2>
-                <quiz-list :quizzes="{{ $region->quizzes }}"></quiz-list>
+                <quiz-list class="mb-2" :quizzes="{{ $region->quizzes }}"></quiz-list>
             @else
                 <h2>Impossible de détecter la position</h2>
                 Afficher des quizzes aléatoires ?
