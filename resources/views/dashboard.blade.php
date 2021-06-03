@@ -48,11 +48,11 @@
             <h2>Derniers quizzes réalisés</h2>
 
             <ul>
-            @foreach ($user->scores as $completedQuiz)
+            @foreach ($user->scores()->orderBy('created_at', 'desc')->get() as $completedQuiz)
                 <li>
                     <b>{{$completedQuiz->quiz->title}}</b><br>
                     Score : {{$completedQuiz->score}}<br>
-                    Date : ###
+                    Date : {{$completedQuiz->created_at->format('d.m.Y')}}
                 </li>
             @endforeach
             </ul>
@@ -67,12 +67,19 @@
         </div>
 
         <div class="col-12">
+            <ul>
         @foreach ($badges as $badge)
-            <span class="fa-stack fa-2x">
-                <i class="fas fa-square fa-stack-2x" style="color:{{auth()->check() ? $badge->color : 'grey'}}"></i>
-                <i class="fas {{$badge->pictogram}} fa-stack-1x fa-inverse"></i>
-            </span>
+                <li>
+                    <span class="fa-stack fa-2x">
+                        <i class="fas fa-square fa-stack-2x" style="color:{{auth()->check() ? $badge->color : 'grey'}}"></i>
+                        <i class="fas {{$badge->pictogram}} fa-stack-1x fa-inverse"></i>
+                    </span>
+                    @if(auth()->check())
+                    {{$badge->pivot->created_at}}
+                @endif
+                </li>
         @endforeach
+            </ul>
         </div>
 
     @if(auth()->check())

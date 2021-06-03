@@ -43,7 +43,7 @@ class HomeController extends Controller
             // - Bouton voir toutes les régions
             // - Derniers quizzes réalisés + bouton "voir historique des quizzes"
             // - Mes badges + bouton "voir tous les badges"
-            $badges = $user->badges;
+            $badges = $user->badges()->orderBy('created_at', 'desc')->get();
             // - Classement général top10, avec la position de User + la personne devant
 
             return view('dashboard', compact('user', 'region', 'badges', 'scores'));
