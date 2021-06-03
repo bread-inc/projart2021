@@ -24,95 +24,91 @@ use App\Http\Controllers\ScoreController;
 |
 */
 
-// Prefix for production usage
-Route::prefix('bread')->group(function () {
+// ##### Test routes #####
+Route::get('/adminOnly', function () {
+    return view('admin_page');
+})->middleware("admin");
 
-    // ##### Test routes #####
-    Route::get('/adminOnly', function () {
-        return view('admin_page');
-    })->middleware("admin");
+Route::get('/userOnly', function () {
+    return "User only";
+})->middleware("auth");
 
-    Route::get('/userOnly', function () {
-        return "User only";
-    })->middleware("auth");
-
-    // ##### Auth routes #####
-    Auth::routes();
+// ##### Auth routes #####
+Auth::routes();
 
 
-    // ##### Public routes #####
-    Route::get('/', [HomeController::class, 'landingPage']);
+// ##### Public routes #####
+Route::get('/', [HomeController::class, 'landingPage']);
 
 
-    Route::get('/globalRanking', [ScoreController::class, 'index'])->name('global-ranking');
-    Route::get('/home', [HomeController::class, 'home'])->name('home');
-    Route::get('/scoreboard', [HomeController::class, 'scoreboard']);
+Route::get('/globalRanking', [ScoreController::class, 'index'])->name('global-ranking');
+Route::get('/home', [HomeController::class, 'home'])->name('home');
+Route::get('/scoreboard', [HomeController::class, 'scoreboard']);
 
 
 
-    // ##### User routes #####
-    /*
-    Route::resource('user', UserController::class)->only(['index', 'create']);
+// ##### User routes #####
+/*
+Route::resource('user', UserController::class)->only(['index', 'create']);
 
-    Route::resource('user', UserController::class)->only(['show'])
-        ->middleware('auth');
+Route::resource('user', UserController::class)->only(['show'])
+    ->middleware('auth');
 
-    Route::resource('user', UserController::class)->except(['index', 'create', 'show'])
-        ->middleware('admin');
-    */
-    Route::prefix('user')->group(function () {
-        Route::get('{user_id}', [UserController::class, 'showUser']);
-    });
-
-
-    // ##### Region routes #####
-    Route::prefix('region')->group(function () {
-        Route::get('/', [RegionController::class, "index"]);
-        Route::get('/{id}', [RegionController::class, "show"]);
-        Route::get('/{id}/scores', [RegionController::class, "scores"]);
-    });
-
-    // ##### Badge routes #####
-    /*
-    Route::prefix('badge')->group(function () {
-        Route::get('/', [BadgeController::class, "index"]);
-        Route::get('/{id}', [BadgeController::class, "show"]);
-        Route::get('/{id}/users', [BadgeController::class, "users"]);
-    });
-    */
-    // ##### Game controller route #####
-    Route::prefix('quizz')->group(function () {
-        Route::get('/{id}/start', [GameController::class, "afficheQuiz"]);
-        Route::get('/{id}/game', [GameController::class, "startQuiz"]);
-        Route::get('/{id}/completed', [GameController::class, "endGame"])->name('game.completed');
-    });
-
-    // ##### Quiz routes #####
-    Route::resource('quiz', QuizController::class)->only(['index', 'show']);
+Route::resource('user', UserController::class)->except(['index', 'create', 'show'])
+    ->middleware('admin');
+*/
+Route::prefix('user')->group(function () {
+    Route::get('{user_id}', [UserController::class, 'showUser']);
+});
 
 
-    // ##### Admin routes #####
-    Route::prefix('admin')->middleware('admin')->group(function () {
-        Route::get('/', [HomeController::class, "adminDashboard"]);
+// ##### Region routes #####
+Route::prefix('region')->group(function () {
+    Route::get('/', [RegionController::class, "index"]);
+    Route::get('/{id}', [RegionController::class, "show"]);
+    Route::get('/{id}/scores', [RegionController::class, "scores"]);
+});
 
-        Route::get('user/{user_id}/addBadges', [UserController::class, "addBadges"])->name("user.addBadges");
-        Route::post('user/{user_id}/addBadges', [UserController::class, "storeBadges"])->name("user.storeBadges");
-        Route::post('user/{user_id}/badge/{badge_id}', [UserController::class, "deleteBadge"]);
-        Route::post('user/{user_id}/score/{score_id}', [UserController::class, "deleteScore"]);
+// ##### Badge routes #####
+/*
+Route::prefix('badge')->group(function () {
+    Route::get('/', [BadgeController::class, "index"]);
+    Route::get('/{id}', [BadgeController::class, "show"]);
+    Route::get('/{id}/users', [BadgeController::class, "users"]);
+});
+*/
+// ##### Game controller route #####
+Route::prefix('quizz')->group(function () {
+    Route::get('/{id}/start', [GameController::class, "afficheQuiz"]);
+    Route::get('/{id}/game', [GameController::class, "startQuiz"]);
+    Route::get('/{id}/completed', [GameController::class, "endGame"])->name('game.completed');
+});
 
-        Route::resource('badge', BadgeController::class);
+// ##### Quiz routes #####
+Route::resource('quiz', QuizController::class)->only(['index', 'show']);
 
-        Route::resource('quiz', QuizController::class);
 
-        Route::prefix('quiz/{quiz_id}')->group(function () {
+// ##### Admin routes #####
+Route::prefix('admin')->middleware('admin')->group(function () {
+    Route::get('/', [HomeController::class, "adminDashboard"]);
 
-            Route::resource('question', QuestionController::class);
+    Route::get('user/{user_id}/addBadges', [UserController::class, "addBadges"])->name("user.addBadges");
+    Route::post('user/{user_id}/addBadges', [UserController::class, "storeBadges"])->name("user.storeBadges");
+    Route::post('user/{user_id}/badge/{badge_id}', [UserController::class, "deleteBadge"]);
+    Route::post('user/{user_id}/score/{score_id}', [UserController::class, "deleteScore"]);
 
-            Route::prefix('question/{question_id}')->group(function() {
-                Route::resource('clue', ClueController::class)->except(['index', 'show']);
-            });
+    Route::resource('badge', BadgeController::class);
+
+    Route::resource('quiz', QuizController::class);
+
+    Route::prefix('quiz/{quiz_id}')->group(function () {
+
+        Route::resource('question', QuestionController::class);
+
+        Route::prefix('question/{question_id}')->group(function() {
+            Route::resource('clue', ClueController::class)->except(['index', 'show']);
         });
-
-        Route::resource('user', UserController::class); // Attention aux méthodes publiques, à voir si cela fonctionne avec le middleware
     });
+
+    Route::resource('user', UserController::class); // Attention aux méthodes publiques, à voir si cela fonctionne avec le middleware
 });
