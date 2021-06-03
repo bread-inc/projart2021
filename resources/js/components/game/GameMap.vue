@@ -84,7 +84,6 @@ export default {
     },
     nextClue() {
         let maxClue = this.data.questions[this.indexQuestion].clues.length;
-        console.log(maxClue)
         if (this.indexClue < maxClue-1) this.indexClue++;
     }
 

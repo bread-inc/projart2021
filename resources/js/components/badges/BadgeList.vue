@@ -1,10 +1,13 @@
 <template>
   <div class="badges card-group">
-    <badge-item
+    <ul>
+      <badge-item
       v-for="badge in badges"
       :key="badge"
       :badge="badge"
+      :auth="auth"
     ></badge-item>
+    </ul>
   </div>
 </template>
 
@@ -15,6 +18,6 @@ export default {
   components: {
     "badge-item": BadgeItem,
   },
-  props: ["badges"],
+  props: ["badges", "auth"],
 };
 </script>

@@ -2,8 +2,8 @@
 node_modules/
 npm-debug.log
 yarn-error.log
-/public/js
-/public/css
+public/js
+public/css
 
 # Laravel 4 specific
 bootstrap/compiled.php

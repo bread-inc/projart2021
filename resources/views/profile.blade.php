@@ -15,7 +15,7 @@
     <div id="vue-app">
         <div class="row">
             <div class="col-sm">
-                <badge-list :badges="{{ $user->badges }}"></badge-list>
+                <badge-list :badges="{{ $user->badges()->orderBy('created_at', 'DESC')->get() }}" :auth="{{ auth()->check() }}"></badge-list>
             </div>
             <div class="col-sm">
                 <score-list :scores="{{ $scores }}"></score-list>
