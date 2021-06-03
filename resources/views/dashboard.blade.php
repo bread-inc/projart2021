@@ -1,6 +1,7 @@
 @extends('.layouts.app')
-<h1>DashboardUser</h1>
+
 @section('content')
+<h1>DashboardUser</h1>
 <div class="menu">
     <div class="d-flex justify-content-center">
 
@@ -32,14 +33,14 @@
 
             <ul>
             @foreach ($region->quizzes as $quiz)
-                <li><a href="/quiz/{{$quiz->id}}/start">{{$quiz->title}}</a></li>
+                <li><a href="quiz/{{$quiz->id}}/start">{{$quiz->title}}</a></li>
             @endforeach
             </ul>
         @else
             <h2>Impossible de détecter la position</h2>
             Afficher des quizzes aléatoires ?
         @endif
-            <a href="/region" class="btn btn-primary">Voir toutes les régions</a>
+            <a href="region" class="btn btn-primary">Voir toutes les régions</a>
         </div>
     </div>
     @if(auth()->check())
