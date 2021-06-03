@@ -25,7 +25,6 @@ export default {
     setup(props){
         const test = 6;
         return{test}
-
     },
     props: ["cordone"],
   components: {

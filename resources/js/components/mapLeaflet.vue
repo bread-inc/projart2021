@@ -1,4 +1,6 @@
 <template>
+  <button class="btn btn-info" @click="this.getUserPosition">locate</button>
+  <label>{{cordone}}</label>
 <div id="game-map">
   <l-map
     ref="map"
@@ -7,6 +9,7 @@
       userLocation.lat || defaultLocation.lat,
       userLocation.lng || defaultLocation.lng
     ]"
+    @update:center="centerUpdated"
   >
     <l-tile-layer
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -15,23 +18,28 @@
     ></l-tile-layer>
  <l-marker :lat-lng="[userLocation.lat || defaultLocation.lat,
       userLocation.lng || defaultLocation.lng]">
-        </l-marker>
+       <l-popup>
+         You are here
+        </l-popup>
+</l-marker>
+
   </l-map>
    </div>
 </template>
 <script>
-import { LMap, LTileLayer, LMarker} from "@vue-leaflet/vue-leaflet";
-import { icon } from "leaflet";
+import { LMap, LTileLayer, LMarker, LPopup,LCircleMarker} from "@vue-leaflet/vue-leaflet";
 export default {
-  components: {LMap, LTileLayer, LMarker},
+  components: {LMap, LTileLayer, LMarker, LPopup, LCircleMarker},
   props: {
+
     defaultLocation: {
       type: Object,
       default: () => ({
         lat: 46.78170795836792,
         lng: 6.647425889233018
       })
-    }
+    },
+    props: ["cordone"],
   },
   data() {
     return {
@@ -55,7 +63,10 @@ export default {
           };
         });
       }
-    }
+    },
+    centerUpdated(center){
+        this.center = center;
+    },
   }
 };
 </script>
