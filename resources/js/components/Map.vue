@@ -10,7 +10,8 @@ export default {
   name: "LeafletMap",
   data() {
     return {
-      map: null
+      map: null,
+      indiceCircle:{}
     };
   },
   mounted() {
@@ -27,16 +28,27 @@ export default {
 
   L.marker(e.latlng).addTo(this.map)
       .bindPopup("Vous etes ici").openPopup();
-  L.circle(e.latlng, radius).addTo(this.map);
+  L.circle( e.latlng, radius).addTo(this.map);
 }
 this.map.on('locationfound', onLocationFound);
 L.marker([46.78170795836792, 6.646725435477321]).addTo(this.map)
+L.marker([indiceCircle.lat,  indiceCircle.lng]).addTo(this.map)
+
 .bindPopup("Reponse").openPopup();
   },
   beforeDestroy() {
     if (this.map) {
       this.map.remove();
     }
+  },
+  method: {
+    creaIndice(){
+            this.indiceCircle = {
+            lat: 46.783823675203024,
+            lng: 6.645928812723402,
+            radius: 50,
+            }
+        },
   }
 };
 </script>
