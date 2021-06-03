@@ -38,13 +38,11 @@ Auth::routes();
 
 
 // ##### Public routes #####
-Route::get('/', function () {
-    return "<a href='/login'>Login</a> or continue <a href='/home'>without registering page</a>";
-});
+Route::get('/', [HomeController::class, 'landingPage']);
 
 
-Route::get('/globalRanking', [ScoreController::class, 'index']);
-Route::get('/home', [HomeController::class, 'index']);
+Route::get('/globalRanking', [ScoreController::class, 'index'])->name('global-ranking');
+Route::get('/home', [HomeController::class, 'home'])->name('home');
 Route::get('/scoreboard', [HomeController::class, 'scoreboard']);
 
 

@@ -65,6 +65,9 @@
                             </div>
                         </div>
                     </form>
+
+                    <a href="{{route('register')}}">Créer un compte</a>
+                    <a class="btn btn-secondary" href="{{route('home')}}">Continuer sans se connecter</a>
                 </div>
             </div>
         </div>

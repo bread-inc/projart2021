@@ -5,31 +5,52 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Score;
 use App\Models\User;
+use App\Models\Badge;
+use App\Models\Region;
 
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * Shows the landing page, where the visitor can login, register, or continue with no account.
      */
-    public function __construct()
-    {
-        //$this->middleware('auth');
+    public function landingPage() {
+        if(auth()->id()) {
+            return redirect(route('home'));
+        } else {
+            return redirect(route('login'));
+        }
     }
 
     /**
-     * Show the application dashboard.
+     * Shows the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function home()
     {
-        return view('dashboard');
+        $region = Region::findOrFail(1);
+        // Dashboard for auth users
+        if(auth()->id()) {
+            $user = User::find(auth()->id());
+
+            // On a besoin de : 
+            // - Liste des quiz de la région géolocalisée
+            
+            // - Bouton voir toutes les régions
+            // - Derniers quizzes réalisés + bouton "voir historique des quizzes"
+            // - Mes badges + bouton "voir tous les badges"
+            $badges = $user->badges;
+            // - Classement général top10, avec la position de User + la personne devant
+
+            return view('dashboard', compact('user', 'region', 'badges'));
+        } else {
+            $badges = Badge::all();
+            return view('dashboard', compact('region', 'badges'));
+        }
     }
 
     /**
-     * Show the admin Dashboard
+     * Shows the admin Dashboard
      */
     public function adminDashboard() {
         // Could be replaced by just a route, if no further info needed

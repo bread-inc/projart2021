@@ -22,7 +22,13 @@
 @foreach($badges as $badge)
     <tr>
         <td>{{$badge->id}}</td>
-        <td><i class="fas {{$badge->pictogram}} mr-1"></i> {{$badge->label}}</td>
+        <td>
+            <span class="fa-stack">
+                <i class="fas fa-circle fa-stack-2x" style="color:{{$badge->color}}"></i>
+                <i class="fas {{$badge->pictogram}} fa-stack-1x fa-inverse"></i>
+            </span>
+            {{$badge->label}}
+        </td>
         <td>{{$badge->description}}</td>
         <td>{{$badge->type}}</td>
         <td>{{$badge->criterium}}</td>
