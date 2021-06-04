@@ -8,9 +8,9 @@
     </div>
 </div>
 
-{{-- @endsection
+@endsection
 
-<div id="vue-app">
+{{-- <div id="vue-app">
     <testleaf :cordone = "{{ $cordone }}"></testleaf>
 </div>
 @endsection --}}

@@ -7,6 +7,7 @@
   <div class="mb-2">
     <button class="btn btn-info mr-2" @click="this.getUserPosition">Locate</button>
     <button class="btn btn-info mr-2" @click="this.nextClue">Clues</button>
+    <button class="btn btn-info mr-2" @click="this.getDistance">Distance</button>
   </div>
   <div id="game-map">
     <l-map
@@ -32,6 +33,14 @@
       >
         <l-popup> You are here </l-popup>
       </l-marker>
+      <l-circle
+        :lat-lng="[
+          currentQuestion.coord_x,
+          currentQuestion.coord_y
+          ]"
+        :radius="parseInt(currentQuestion.radius)"
+        color="red"
+          />
     </l-map>
   </div>
 </template>
@@ -42,9 +51,10 @@ import {
   LMarker,
   LPopup,
   LCircleMarker,
+  LCircle
 } from "@vue-leaflet/vue-leaflet";
 export default {
-  components: { LMap, LTileLayer, LMarker, LPopup, LCircleMarker },
+  components: { LMap, LTileLayer, LMarker, LPopup, LCircleMarker, LCircle },
   props: {
     defaultLocation: {
       type: Object,
@@ -104,6 +114,11 @@ export default {
           };
         });
       }
+    },
+
+    getDistance() {
+      let distance = this.mapleaf.distance(this.userLocation,[this.currentQuestion.coord_x, this.currentQuestion.coord_y]);
+      console.log(distance);
     },
 
     centerUpdated(center) {
