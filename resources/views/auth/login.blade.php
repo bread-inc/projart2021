@@ -6,7 +6,7 @@
     <div class="row mt-5">
         <div class="col-12">
             <div id="login-logo">
-                <img src="{{asset('storage/images/logo/logo.png')}}" alt="SwissGuesser">
+                <img src="{{asset('images/logo/logo.png')}}" alt="SwissGuesser">
             </div>
         </div>
     </div>
