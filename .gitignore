@@ -17,4 +17,5 @@ storage/*.key
 Homestead.yaml
 Homestead.json
 /.vagrant
-public/js/vue.js
+public/js/
+public/css/
