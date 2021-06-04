@@ -1,11 +1,13 @@
 <template>
-  <div class="quizzes card-group">
+<div class="horizontal-slider-container">
+  <div class="horizontal-slider">
     <quiz-item 
       v-for="quiz in quizzes"
       :key="quiz"
       :quiz="quiz"
     ></quiz-item>
   </div>
+</div>
 </template>
 
 <script>
