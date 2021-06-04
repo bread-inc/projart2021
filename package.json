@@ -23,8 +23,7 @@
         "sass": "^1.32.11",
         "sass-loader": "^11.0.1",
         "vue": "^3.0.11",
-        "vue-loader": "^16.2.0",
-        "webpackbar": "*"
+        "vue-loader": "^16.2.0"
     },
     "dependencies": {
         "leaflet": "^1.7.1"
