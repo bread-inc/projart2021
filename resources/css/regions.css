@@ -1,0 +1,28 @@
+.region-container, .region {
+    height: 150px;
+}
+
+.region {
+    overflow: hidden;
+    border-radius: 15px;
+    background-color: var(--dark-secondary);
+}
+
+.region>img {
+    height: 150px;
+    width: auto;
+}
+
+.region>.card-text {
+    position: absolute;
+    bottom: 0;
+    background-color: whitesmoke;
+    width: inherit;
+    border-radius: 15px;
+    padding:12px;
+}
+
+.region>.card-text>h4 {
+    margin: 0;
+    text-align: center;
+}

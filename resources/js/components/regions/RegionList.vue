@@ -1,11 +1,11 @@
 <template>
-  <div class="regions card-group">
+<div class="row my-5">
     <region-item
       v-for="region in regions"
       :key="region"
       v-bind="{ region }"
     ></region-item>
-  </div>
+</div>
 </template>
 
 <script>

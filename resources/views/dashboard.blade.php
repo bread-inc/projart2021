@@ -34,7 +34,7 @@
                 <h2>Impossible de détecter la position</h2>
                 Afficher des quizzes aléatoires ?
             @endif
-                <a href="/region" class="btn btn-border">Voir toutes les régions</a>
+                <a href="{{route('region.index')}}" class="btn btn-border">Voir toutes les régions</a>
             </div>
         </div>
         @if(auth()->check())

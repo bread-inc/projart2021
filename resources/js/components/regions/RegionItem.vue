@@ -1,12 +1,14 @@
 <template>
-    <a :href="'/region/' + region.id">
-        <div class="region card" style="width: 18rem;">
-        <img :src="region.image" class="card-img-top" alt="">
-        <div class="card-body">
-            <h5 class="card-title">{{ region.name }}</h5>
+<div class="col-6 region-container my-2">
+    <a :href="'region/' + region.id">
+        <div class="region">
+            <div class="card-text">
+                <h4>{{ region.name }}</h4>
+            </div>
+            <img :src="'storage' +region.image" :alt="region.name">
         </div>
-    </div>
     </a>
+</div>
 </template>
 
 <script>
