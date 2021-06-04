@@ -21,5 +21,8 @@
 <script>
 export default {
   props: ["badge", "auth"],
+   mounted() {
+            console.log('Component mounted.')
+        }
 };
 </script>
