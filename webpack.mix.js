@@ -12,11 +12,11 @@ const mix = require('laravel-mix');
  */
 
  mix.styles([
-    'public/css/root.css',
-    'public/css/normalize.css',
-    'public/css/general.css',
-    'public/css/components.css',
-    'public/css/login.css',
+    'resources/css/root.css',
+    'resources/css/normalize.css',
+    'resources/css/general.css',
+    'resources/css/components.css',
+    'resources/css/login.css',
 ], 'public/css/all.css');
 
 mix.js('resources/js/app.js', 'public/js')
