@@ -1,21 +1,8 @@
 @extends('.layouts.app')
 <h1>DashboardUser</h1>
 @section('content')
-<div class="menu">
-    <div class="d-flex justify-content-center">
 
-    @if(auth()->check())
-        <a href="user/{{$user->id}}">
-            <img class="rounded-circle" src="{{$user->avatar}}" title="Profil" alt="Profil">
-            <span>Profil</span>
-        </a>
-    @endif
-
-    @if(auth()->check() and auth()->user()->isAdmin)
-        <a href='admin' class='btn btn-warning'>dashboard Admin</a>
-    @endif
-    </div>
-</div>
+@include('public.components.menu')
 
 <div class="container">
     <div id="vue-app">
@@ -35,7 +22,7 @@
                 <h2>Impossible de détecter la position</h2>
                 Afficher des quizzes aléatoires ?
             @endif
-                <a href="/region" class="btn btn-primary">Voir toutes les régions</a>
+                <a href="/region" class="btn btn-border">Voir toutes les régions</a>
             </div>
         </div>
         @if(auth()->check())
@@ -52,7 +39,7 @@
                     </li>
                 @endforeach
                 </ul>
-                <a href="#" class="btn btn-primary">Tous mes quizzes</a>
+                <a href="#" class="btn btn-border">Tous mes quizzes</a>
             </div>
         </div>
         @endif
@@ -67,11 +54,11 @@
     
         @if(auth()->check())
             <div class="col-12">
-                <a href="user/{{$user->id}}#badges" class="btn btn-primary">Tous mes badges</a>
+                <a href="user/{{$user->id}}#badges" class="btn btn-border">Tous mes badges</a>
             </div>
         @else
             <div class="col-12">
-                <a href="{{route('login')}}" class="btn btn-primary">Se connecter</a>
+                <a href="{{route('login')}}" class="btn btn-border">Se connecter</a>
             </div>
         @endif
         </div>
