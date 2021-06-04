@@ -1,3 +1,6 @@
+@import url("./normalize.css");
+
+/* Noto Sans JP */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
 
 /* Global CSS variables */
@@ -20,9 +23,10 @@
 
     /* Font-sizes */
     --h1-fs : 32px;
-    --h2-fs : 20px;
-    --h3-fs : 16px;
-    --p-fs : 14px;
+    --h2-fs : 24px;
+    --h3-fs : 20px;
+    --p-fs : 18px;
+    --sm-fs : 14px;
 }
 
 html {
@@ -37,6 +41,10 @@ body {
 /* Font families */
 
 /* Font weights : 100 : thin | 300 : light | 400 : regular | 500 : medium | 700 : bold | 900 : black */
+
+h1, h2, h3, h4, h5, h6, p, a {
+    font-family: 'Noto Sans JP', sans-serif;
+}
 
 h1 {
     font-size: var(--h1-fs);
@@ -56,4 +64,9 @@ h3 {
 p {
     font-size: var(--p-fs);
     font-weight: 400;
+}
+
+small {
+    font-size: var(--sm-fs);
+    font-weight: 300;
 }

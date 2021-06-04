@@ -11,9 +11,20 @@ const mix = require('laravel-mix');
  |
  */
 
+mix.styles([
+    'public/css/root.css',
+    'public/css/normalize.css',
+    'public/css/general.css',
+    'public/css/components.css',
+    'public/css/login.css',
+], 'public/css/all.css');
+
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sourceMaps();
 
 mix.js('resources/js/vue.js', 'public/js')
     .vue();
+
+
+    
