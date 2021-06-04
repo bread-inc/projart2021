@@ -1,7 +1,8 @@
 <template>
   <button class="btn btn-info" @click="getUserPosition">locate</button>
   <button class="btn btn-warning" @click="creaIndice"> indice</button>
-  <button class="btn btn-warning" @click="findDistance"> find </button>
+  <button class="btn btn-warning" @click="checkDistance"> find </button>
+   <button class="btn btn-warning" @click="locateEvry"> localisationauto </button>
 <div id="game-map">
   <l-map
     ref="map"
@@ -11,23 +12,20 @@
       userLocation.lat || defaultLocation.lat,
       userLocation.lng || defaultLocation.lng
     ]"
-    @update:center="centerUpdated"
+
   >
     <l-tile-layer
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       layer-type="base"
       name="OpenStreetMap"
     ></l-tile-layer>
- <l-marker :lat-lng="[userLocation.lat || defaultLocation.lat,
-      userLocation.lng || defaultLocation.lng]">
+ <l-marker :lat-lng="[userLocation.lat || defaultLocation.lat,userLocation.lng || defaultLocation.lng]">
        <l-popup>
          You are here
         </l-popup>
+<l-circle :lat-lng="[userLocation.lat || 0, userLocation.lng || 0]" :radius="10" color="blue" />
 </l-marker>
 <l-marker :lat-lng="[questionLocation.lat,questionLocation.lng]">
-       <l-popup>
-         You are here
-        </l-popup>
 </l-marker>
 <l-circle :lat-lng="[indiceCircle.lat || 0,indiceCircle.lng || 0]" :radius="indiceCircle.radius || 0" color="red" />
   </l-map>
@@ -51,15 +49,12 @@ export default {
       default: () => ({
         lat: 46.783823675203024,
         lng: 6.645928812723402,
-        radius: 50,
+        radius: 300,
       })
     },
   },
   computed:{
-      returnPosUser()
-      {
-          return this.userLocation.lng;
-      }
+
   },
   data() {
     return {
@@ -67,6 +62,8 @@ export default {
       indiceCircle: {},
       distanceQuestionPosuser:0,
       zoom: 18,
+      distanceOk: false,
+
     };
   },
   init(){
@@ -99,27 +96,53 @@ export default {
         this.indiceCircle = {
         lat: 46.783823675203024,
         lng: 6.645928812723402,
-        radius: 50,
+        radius: 350, //premier 750
         }
     },
 
     findDistance() {
     let distance = this.mapleaf.distance([this.userLocation.lat|| 0, this.userLocation.lng || 0] ,[this.questionLocation.lat, this.questionLocation.lng]);
     this.distanceQuestionPosuser = distance;
-    console.log(distance);
-   // console.log(this.distanceQuestionPosuser);
     },
 
+    //store object map from leaflet
     storemap(mapObject) {
     this.mapleaf = mapObject
     },
 
+    checkDistance()
+    {
+        this.findDistance();
+        console.log(this.distanceQuestionPosuser);
+        if(this.questionLocation.radius < this.distanceQuestionPosuser )
+        {
 
-    centerUpdated(center){
-        this.center = center;
-        //console.log(this.center = center);
+            console.log("ouvre page réssayer");
+            this.distanceOK = false;
+
+        }else{
+        this.distanceOK = true;
+        console.log("ouvre page okaywithscore");
+        }
+
 
     },
+
+    locateEvry()
+    {
+        let interval = window.setInterval(function()
+        {
+            this.getUserPosition();
+        }, 500);
+
+        interval;
+    },
+
+    findRandomPosition()
+    {
+
+    },
+
 
   }
 };
