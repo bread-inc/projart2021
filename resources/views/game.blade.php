@@ -4,7 +4,7 @@
 </div>
 <div class="container">
     <div id="vue-app">
-        <game-map :data="{{ $data }}"></game-map>
+        <game-container :data="{{ $data }}"></game-container>
     </div>
 </div>
 

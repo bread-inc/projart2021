@@ -3,7 +3,7 @@ import BadgeList from './components/badges/BadgeList.vue';
 import ScoreList from './components/scores/ScoreList.vue';
 import RegionList from './components/regions/RegionList.vue';
 import QuizList from './components/quizzes/QuizList.vue';
-import GameMap from './components/game/GameMap.vue';
+import GameContainer from './components/game/GameContainer.vue';
 
 // Game imports
 import test from './components/Map.vue';
@@ -19,7 +19,7 @@ const app = createApp({
         'score-list' : ScoreList,
         'region-list' : RegionList,
         'quiz-list' : QuizList,
-        'game-map' : GameMap,
+        'game-container' : GameContainer,
         "test": test,
         "comp":ExampleComponent,
         "testleaf": testMap,

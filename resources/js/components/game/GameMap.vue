@@ -1,13 +1,14 @@
 <template>
-  <h3>{{ data.quiz.title }}</h3>
-  <p>Quiz : {{ data.quiz.description }}</p>
-  <p>Question : {{ currentQuestion.description }}</p>
-  <p>Clue : {{ currentClue.description }}</p>
-  <p>{{}}</p>
-  <div class="mb-2">
-    <button class="btn btn-info mr-2" @click="this.getUserPosition">Locate</button>
-    <button class="btn btn-info mr-2" @click="this.nextClue">Clues</button>
-    <button class="btn btn-info mr-2" @click="this.getDistance">Distance</button>
+  <div class="row mb-2">
+    <button class="btn btn-warning mr-2 col" @click="this.getUserPosition">
+      Locate
+    </button>
+    <button
+      class="btn btn-warning mr-2 col"
+      @click="this.getDistance"
+    >
+      Distance
+    </button>
   </div>
   <div id="game-map">
     <l-map
@@ -34,13 +35,11 @@
         <l-popup> You are here </l-popup>
       </l-marker>
       <l-circle
-        :lat-lng="[
-          currentQuestion.coord_x,
-          currentQuestion.coord_y
-          ]"
-        :radius="parseInt(currentQuestion.radius)"
+        v-if="clue.radius"
+        :lat-lng="[question.coord_x, question.coord_y]"
+        :radius="parseInt(clue.radius)"
         color="red"
-          />
+      />
     </l-map>
   </div>
 </template>
@@ -51,9 +50,10 @@ import {
   LMarker,
   LPopup,
   LCircleMarker,
-  LCircle
+  LCircle,
 } from "@vue-leaflet/vue-leaflet";
 export default {
+  name: 'GameMap',
   components: { LMap, LTileLayer, LMarker, LPopup, LCircleMarker, LCircle },
   props: {
     defaultLocation: {
@@ -63,22 +63,13 @@ export default {
         lng: 6.647425889233018,
       }),
     },
-    data: Object,
-  },
-  computed: {
-    currentQuestion() {
-      return this.data.questions[this.indexQuestion];
-    },
-    currentClue() {
-      return this.currentQuestion.clues[this.indexClue];
-    }
+    question: Object,
+    clue: "",
   },
   data() {
     return {
       userLocation: {},
       zoom: 18,
-      indexQuestion: 0,
-      indexClue: 0,
     };
   },
   init() {
@@ -96,6 +87,8 @@ export default {
     // Waits until ready to show
     this.mapIsReady = true;
   },
+
+  emits: ['getDistance'],
 
   methods: {
     storemap(mapObject) {
@@ -117,24 +110,19 @@ export default {
     },
 
     getDistance() {
-      let distance = this.mapleaf.distance(this.userLocation,[this.currentQuestion.coord_x, this.currentQuestion.coord_y]);
-      console.log(distance);
+      let distance = this.mapleaf.distance(this.userLocation, [
+        this.question.coord_x,
+        this.question.coord_y,
+      ]);
+      this.$emit("getDistance", distance);
     },
 
     centerUpdated(center) {
       this.center = center;
     },
-
-    nextQuestion() {
-      this.indexQuestion++;
-    },
-
-    nextClue() {
-      let cluesLength = this.data.questions[this.indexQuestion].clues.length;
-      if (this.indexClue < cluesLength - 1) this.indexClue++;
-    },
   },
-};
+}
+  
 </script>
 
 <style>
