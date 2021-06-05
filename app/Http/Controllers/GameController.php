@@ -29,7 +29,8 @@ class GameController extends Controller
         $data["questions"] = [];
         
         foreach (Quiz::findOrFail($id)->questions as $question) {
-            array_push($data["questions"], $question, $question->clues);
+            $question["clues"] = $question->clues;
+            array_push($data["questions"], $question);
         }
         
 

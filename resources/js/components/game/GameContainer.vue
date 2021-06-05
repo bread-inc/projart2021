@@ -12,17 +12,24 @@
       <p>Question : {{ fixQuestion.description }}</p>
       <p v-if="fixClue">Clue : {{ fixClue.description }}</p>
     </div>
-    <question-validation    
+    <question-validation
       v-if="showQuestionValidation"
       @close="(showQuestionValidation = false), this.questionIndex++"
     >
-      You validated the question {{ parseInt(distance) }} meters from the objective
+      You validated the question {{ parseInt(distance) }} meters from the
+      objective
     </question-validation>
     <question-failure
       v-if="showQuestionFailure"
-      @close="(showQuestionFailure = false)">
-        You failed the question {{ parseInt(distance) }} meters from the objective
+      @close="showQuestionFailure = false"
+    >
+      You failed the question {{ parseInt(distance) }} meters from the objective
     </question-failure>
+    <quiz-success 
+      v-if="showQuizSuccess"
+      @close="endQuiz">
+      Congratulations you finished the quiz!
+    </quiz-success>
     <game-map
       :question="fixQuestion || 0"
       :clue="fixClue || 0"
@@ -34,14 +41,16 @@
 <script>
 import GameMap from "./GameMap.vue";
 import QuestionValidation from "./modals/QuestionValidation.vue";
-import QuestionFailure from "./modals/QuestionFailure.vue"
+import QuestionFailure from "./modals/QuestionFailure.vue";
+import QuizSuccess from "./modals/QuizSuccess.vue";
 
 export default {
   name: "GameContainer",
   components: {
     "game-map": GameMap,
     "question-validation": QuestionValidation,
-    "question-failure" : QuestionFailure,
+    "question-failure": QuestionFailure,
+    "quiz-success": QuizSuccess,
   },
   props: {
     data: Object,
@@ -53,16 +62,19 @@ export default {
       clueIndex: -1,
       showQuestionValidation: false,
       showQuestionFailure: false,
+      showQuizSuccess: false,
     };
   },
   computed: {
-      fixQuestion() {
-          return this.data.questions[this.questionIndex];
-      }, 
-      fixClue() {
-          return this.fixQuestion.clues[this.clueIndex]; 
-      }
-
+    fixQuestion() {
+      return this.data.questions[this.questionIndex];
+    },
+    fixClue() {
+      return this.fixQuestion.clues[this.clueIndex];
+    },
+    postRoute() {
+      return 'quizz/' + this.data.quiz.id + '/game/completed';
+    }
   },
   watch: {
     questionIndex() {
@@ -74,14 +86,10 @@ export default {
       return this.data.questions[this.questionIndex];
     },
     currentClue() {
-        console.log(this.currentQuestion().clues[this.clueIndex])
       return this.currentQuestion().clues[this.clueIndex];
     },
     nextQuestion() {
       this.questionIndex++;
-      if (this.questionIndex >= this.data.questions) {
-          console.log("ENDGAME");
-      }
     },
 
     nextClue() {
@@ -89,12 +97,27 @@ export default {
       if (this.clueIndex < cluesLength - 1) this.clueIndex++;
     },
 
+    endQuiz() {
+      console.log(this.postRoute)
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", this.postRoute, true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify({
+          value: this.testData
+      }));
+    },
+
     validate(distance) {
       this.distance = distance;
       let tolerance = this.fixQuestion.radius;
       if (distance < tolerance) {
-        console.log("Validated");
-        this.showQuestionValidation = true;
+        if (this.questionIndex >= this.data.questions.length - 1) {
+          this.showQuizSuccess = true;
+        } else {
+          this.showQuestionValidation = true;
+          // Auto next question
+          // this.nextQuestion();
+        }
       } else {
         this.showQuestionFailure = true;
       }
