@@ -4,10 +4,10 @@
       Locate
     </button>
     <button
-      class="btn btn-warning mr-2 col"
+      class="btn btn-success mr-2 col"
       @click="this.getDistance"
     >
-      Distance
+      Validate
     </button>
   </div>
   <div id="game-map">

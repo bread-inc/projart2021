@@ -3,17 +3,17 @@
 			<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
-              <h4 class="modal-title">Success</h4>
+              <h4 class="modal-title">Failure</h4>
 						</div>
 						<div class="modal-body">
 								<slot></slot>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-primary" @click="$emit('close')">Next question</button>
+							<button type="button" class="btn btn-primary" @click="$emit('close')">Try again</button>
 						</div>
 				</div>
 			</div>
-		</div>
+		</div>`
 </template>
 
 <script>
