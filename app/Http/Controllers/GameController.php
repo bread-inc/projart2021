@@ -18,7 +18,7 @@ class GameController extends Controller
     public function displayQuiz($id)
     {
         $quiz = Quiz::findOrFail($id);
-        return view('quiz_info')->with(compact('quiz'));
+        return view('public.quizzes.quiz_info', compact('quiz'));
     }
 
     public function startQuiz($id)

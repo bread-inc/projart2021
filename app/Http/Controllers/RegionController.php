@@ -17,7 +17,7 @@ class RegionController extends Controller
     public function index() {
         $regions=Region::all();
 
-        return view('allRegion')->with('regions', $regions);
+        return view('public.regions.index')->with('regions', $regions);
     }
 
     /**
@@ -31,7 +31,7 @@ class RegionController extends Controller
         // $quizzes = $region->quizzes()->get();
          //$badges = $region->badges()->get();
 
-         return view('quizList')->with(compact('region'));
+         return view('public.regions.region_show')->with(compact('region'));
     }
 
     public function scores($id) {

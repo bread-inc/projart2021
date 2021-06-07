@@ -41,7 +41,7 @@
 
             @foreach ($region->quizzes as $quiz)
             <div class="col-6">
-                <a href="{{route('game.start', [$quiz->id])}}" class="quiz quiz-2x">
+                <a href="{{route('game.info', [$quiz->id])}}" class="quiz quiz-2x">
                     <div class="quiz-thumb" style="background-image: url('');">
                         <h5>{{$quiz->title}}</h5>
                     </div>
