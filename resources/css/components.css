@@ -280,4 +280,17 @@ input[type=text], input[type=password], input[type=email] {
     box-shadow: 3px -2px 10px 0px #00000040;
 }
 
+/* Logout form */
+#logout-form {
+    display: inline;
+}
+
+.menu-btn {
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: var(--red-primary);
+    font-size: var(--sm-fs);
+    font-weight: 600;
+}
 

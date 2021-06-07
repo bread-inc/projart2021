@@ -79,20 +79,6 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function showUser($id)
-    {
-        $user = User::findOrFail($id);
-        $scores = $this->scoreboard();
-
-        return view("profile", compact('user', 'scores'));
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -184,5 +170,33 @@ class UserController extends Controller
         $user = User::findOrFail($user_id);
 
         return redirect("admin/user/$user->id")->withOk("Le score $score_id a été retiré de l'utilisateur $user_id.");
+    }
+
+    /**
+     * Display the user profile. The route is public.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showUser($id)
+    {
+        $user = User::findOrFail($id);
+        $scores = $this->scoreboard();
+
+        return view("public.users.profile", compact('user', 'scores'));
+    }
+
+    /**
+     * Edit the user profile (public)
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editProfile($id)
+    {
+        $user = User::findOrFail($id);
+        $scores = $this->scoreboard();
+
+        return view("public.users.profile_edit", compact('user'));
     }
 }
