@@ -1,11 +1,10 @@
 <template>
 <div class="col-6 region-container my-2">
     <a :href="'region/' + region.id">
-        <div class="region">
+        <div class="region" :style="'background-image:url(storage' +region.image + ');'">
             <div class="card-text">
                 <h4>{{ region.name }}</h4>
             </div>
-            <img :src="'storage' +region.image" :alt="region.name">
         </div>
     </a>
 </div>

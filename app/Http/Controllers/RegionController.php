@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Region;
 use App\Models\Badge;
+use Illuminate\Database\Eloquent\Collection;
 
 class RegionController extends Controller
 {
@@ -38,10 +39,13 @@ class RegionController extends Controller
         $quizzes = $region->quizzes->all();
         $scores = [];
 
+        $mergedScores = new Collection;
+
         foreach ($quizzes as $quiz) {
             array_push($scores, $quiz->scores()->get());
+            $mergedScores = $mergedScores->merge($quiz->scores()->get());
         }
 
-        return compact('region', 'scores');
+        return view('public.regions.regional_scores', compact('region', 'mergedScores'));
     }
 }

@@ -1,8 +1,11 @@
 <template>
     <tr>
-        <th scope="row">{{ score.rank }}</th>
-        <th><a :href="'//user/' + score.user_id">{{ score.pseudo}}</a></th>
-        <th>{{ score.score}}</th>
+        <td scope="row">{{ score.rank }}</td>
+        <td><img src="#" :alt="score.pseudo" class="rounded-circle"></td>
+        <td>
+            <a :href="'/user/' + score.user_id"><b>{{ score.pseudo}}</b></a>
+            <small>{{ score.score}} pts</small>
+        </td>
     </tr>
 </template>
 

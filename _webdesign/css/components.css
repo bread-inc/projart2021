@@ -110,3 +110,20 @@ input[type=text], input[type=password], input[type=email] {
     text-align: center;
     padding-top: 5px;
 }
+
+/* FontAwesome */
+.fa-gradient {
+	background: -webkit-gradient(linear, left top, right top, from(var(--orange-primary)), to(var(--red-primary)));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* Badges */
+.badge {
+    border-radius: 20px;
+}
+
+.badge i {
+    padding: 15px;
+    font-size: 45px;
+}

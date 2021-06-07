@@ -140,7 +140,12 @@
         </div>
     </div>
     <hr>
-    <section id="badges" class="container bg-white">
+    <nav class="tabs-bar">
+        <button class="tab-button tab-selected" onclick="">Badges</button>
+        <button class="tab-button" onclick="">Favoris</button>
+        <button class="tab-button" onclick="">Scores</button>
+    </nav>
+    <section id="badges" class="container bg-white pt-3">
         <div class="row">
             <div class="col-4 text-center mb-3">
                 <a href="#">
@@ -167,5 +172,69 @@
         </div>
     </section>
     </div>
+
+    <div class="badge-detail d-none" id="badge-id">
+        <a href="#"><i class="fas fa-times fa-2x fa-gradient"></i></a>
+        <div class="badge-detail-container">
+            <div class="badge" style="background-color:#6a38db">
+                <i class="fas fa-cookie-bite"></i>
+            </div>
+            <div class="badge-description">
+                <h2>Le dévoreur</h2>
+                <h4>Tu as dévoré 20 quizzes.</h4>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <section id="scores" class="container bg-white py-3">
+        <table class="score-table"  style="height: 100vh;">
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><img src="https://play-lh.googleusercontent.com/IeNJWoKYx1waOhfWF6TiuSiWBLfqLb18lmZYXSgsH1fvb8v1IYiZr5aYWe0Gxu-pVZX3" alt="" class="rounded-circle"></td>
+                    <td>
+                        <a href="#"><b>Pseudo</b></a>
+                        <small>points</small>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td><img src="https://play-lh.googleusercontent.com/IeNJWoKYx1waOhfWF6TiuSiWBLfqLb18lmZYXSgsH1fvb8v1IYiZr5aYWe0Gxu-pVZX3" alt="" class="rounded-circle"></td>
+                    <td>
+                        <a href="#"><b>Pseudo</b></a>
+                        <small>points</small>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td><img src="https://play-lh.googleusercontent.com/IeNJWoKYx1waOhfWF6TiuSiWBLfqLb18lmZYXSgsH1fvb8v1IYiZr5aYWe0Gxu-pVZX3" alt="" class="rounded-circle"></td>
+                    <td>
+                        <a href="#"><b>Pseudo</b></a>
+                        <small>points</small>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td><img src="https://play-lh.googleusercontent.com/IeNJWoKYx1waOhfWF6TiuSiWBLfqLb18lmZYXSgsH1fvb8v1IYiZr5aYWe0Gxu-pVZX3" alt="" class="rounded-circle"></td>
+                    <td>
+                        <a href="#"><b>Pseudo</b></a>
+                        <small>points</small>
+                    </td>
+                </tr>
+
+                <tr class="my-score">
+                    <td>2</td>
+                    <td><img src="https://play-lh.googleusercontent.com/IeNJWoKYx1waOhfWF6TiuSiWBLfqLb18lmZYXSgsH1fvb8v1IYiZr5aYWe0Gxu-pVZX3" alt="" class="rounded-circle"></td>
+                    <td>
+                        <a href="#"><b>Pseudo</b></a>
+                        <small>points</small>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </section>
 </body>
 </html>

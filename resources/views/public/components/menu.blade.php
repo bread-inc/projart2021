@@ -1,3 +1,5 @@
-@if(auth()->check() and auth()->user()->isAdmin)
-    <a href='admin' class='btn btn-warning'>dashboard Admin</a>
-@endif
+<nav class="navbar py-3">
+    <div class="container p-0">
+        <a href="{{url()->previous()}}"><i class="fas fa-angle-left fa-2x fa-gradient"></i></a>
+    </div>
+</nav>

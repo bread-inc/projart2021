@@ -1,8 +1,11 @@
 @extends('.layouts.app')
 
 @section('content')
+
+@include('public.components.menu')
+
 <div class="container">
-    <div class="row my-5">
+    <div class="row mt-5 mb-3">
         <div class="col-8">
             <h1>Toutes les régions</h1>
         </div>

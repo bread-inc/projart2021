@@ -2,8 +2,6 @@
 
 @section('content')
 
-@include('public.components.menu')
-
 <div class="container">
     <div id="vue-app">
         <div class="row my-5">
