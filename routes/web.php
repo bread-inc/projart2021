@@ -76,9 +76,9 @@ Route::prefix('badge')->group(function () {
 });
 */
 // ##### Game controller route #####
-Route::prefix('quizz')->group(function () {
-    Route::get('/{id}/start', [GameController::class, "afficheQuiz"])->name('game.start'); // Attention aux noms des méthodes et des routes !!
-    Route::get('/{id}/play', [GameController::class, "startQuiz"])->name('game.play');
+Route::prefix('quiz')->group(function () {
+    Route::get('/{id}/info', [GameController::class, "displayQuiz"])->name('game.info'); // Attention aux noms des méthodes et des routes !!
+    Route::get('/{id}/start', [GameController::class, "startQuiz"])->name('game.start');
     Route::get('/{id}/game/completed', [GameController::class, "endGame"])->name('game.completed');
 });
 

@@ -44,7 +44,7 @@
                     <div class="horizontal-slider">
                         @foreach ($user->scores()->orderBy('created_at', 'desc')->get() as $completedQuiz)
                         <!-- element-->
-                        <a href="#" class="quiz quiz-3x">
+                        <a href="{{route('game.info', [$completedQuiz->quiz->id])}}" class="quiz quiz-3x">
                             <div class="quiz-thumb" style="background-image: url('');">
                                 <h5>{{$completedQuiz->quiz->title}}</h5>
                             </div>
