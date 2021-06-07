@@ -3,10 +3,7 @@
     <button class="btn btn-warning mr-2 col" @click="this.getUserPosition">
       Locate
     </button>
-    <button
-      class="btn btn-success mr-2 col"
-      @click="this.getDistance"
-    >
+    <button class="btn btn-success mr-2 col" @click="this.getDistance">
       Validate
     </button>
   </div>
@@ -53,7 +50,7 @@ import {
   LCircle,
 } from "@vue-leaflet/vue-leaflet";
 export default {
-  name: 'GameMap',
+  name: "GameMap",
   components: { LMap, LTileLayer, LMarker, LPopup, LCircleMarker, LCircle },
   props: {
     defaultLocation: {
@@ -80,7 +77,7 @@ export default {
     const { circleMarker } = await import("leaflet/dist/leaflet-src.esm");
 
     // Set current position
-    this.getUserPosition();
+    await this.getUserPosition();
 
     circleMarker(this.userLocation, { radius: 8 });
 
@@ -88,7 +85,7 @@ export default {
     this.mapIsReady = true;
   },
 
-  emits: ['getDistance'],
+  emits: ["getDistance"],
 
   methods: {
     storemap(mapObject) {
@@ -121,12 +118,9 @@ export default {
       this.center = center;
     },
   },
-}
-  
+};
 </script>
 
 <style>
-#game-map {
-  height: 300px;
-}
+
 </style>
