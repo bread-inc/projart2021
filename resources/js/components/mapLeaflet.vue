@@ -2,8 +2,7 @@
   <button class="btn btn-info" @click="getUserPosition">locate</button>
   <button class="btn btn-warning" @click="creaIndice"> indice</button>
   <button class="btn btn-warning" @click="checkDistance"> find </button>
-
- <button class="btn btn-warning" @click="locateEvry"> test rayon random circle </button>
+  <button class="btn btn-warning" @click="rndCircle1()"> test rnd circle 1 </button>
  <div v-if="this.validateDistane">
     <game-popup-success>
  </game-popup-success>
@@ -33,10 +32,13 @@
          You are here
         </l-popup>
 <l-circle @ready="storeCircle" :lat-lng="[userLocation.lat || 0, userLocation.lng || 0]" :radius="10" color="blue" />
+<l-circle @ready="storeCirlceRnd" :lat-lng="[questionLocation.lat || 0, questionLocation.lng || 0]" :radius="600" color="green" />
+<l-circle :lat-lng="[indiceCircleRnd.lat || 0, indiceCircleRnd.lng || 0]" :radius="300" color="orange" />
 </l-marker>
 <l-marker :lat-lng="[questionLocation.lat,questionLocation.lng]">
 </l-marker>
 <l-circle :lat-lng="[indiceCircle.lat || 0,indiceCircle.lng || 0]" :radius="indiceCircle.radius || 0" color="red" />
+
   </l-map>
    </div>
 </template>
@@ -75,6 +77,7 @@ export default {
     return {
       userLocation: {},
       indiceCircle: {},
+      indiceCircleRnd: {},
       test: 125,
       distanceQuestionPosuser:0,
       zoom: 18,
@@ -85,6 +88,7 @@ export default {
   init(){
       this.mapleaf = null;
       this.circleLeaflet = null;
+      this.circleLeafletRnd = null
   },
    async beforeMount() {
     // HERE is where to load Leaflet components!
@@ -125,7 +129,11 @@ export default {
         }
         console.log(this.indiceCircle.lat);
 
-        this.findRandomPosition(this.indiceCircle.lat,this.indiceCircle.lng,this.indiceCircle.radius);
+
+    },
+
+    creaIndice2()
+    {
 
     },
 
@@ -143,6 +151,11 @@ export default {
     {
 
         this.circleLeaflet = circleObject;
+    },
+
+    storeCirlceRnd(circleObject)
+    {
+        this.circleLeafletRnd = circleObject;
     },
 
     checkDistance()
@@ -164,26 +177,80 @@ export default {
 
     },
 
-    locateEvry()
-    {
-        let interval = window.setInterval(function()
+
+        testRandomCircle(r)
         {
-            this.getUserPosition();
-        }, 500);
+        let x = 0;
+        let y = 0;
+        do{
+            let max = r/2;
+            let min = -(r/2);
+            x = Math.random() * (max- min) + min;
+            y = Math.random() * (max- min) + min;
 
-        interval;
-    },
-
-    findRandomPosition(lat,lng,radius)
-    {
-     this.circleLeaflet.setLatLng(lat,lng)
-     this.circleLeaflet.setRadius(radius);
-     let cercle = this.circleLeaflet;
-     console.log(cercle)
-    },
+        }while((Math.pow(x,2) + Math.pow(y,2)) >= Math.pow(r/2,2))
 
 
-  }
+        return [x,y];
+        },
+
+        /**
+         * generate random point in a rectangle
+         */
+        plotrandom(bounds)
+        {
+
+            var southWest = bounds.getSouthWest();
+            var northEast = bounds.getNorthEast();
+            var lngSpan = northEast.lng - southWest.lng;
+            var latSpan = northEast.lat - southWest.lat;
+
+
+            var point = [southWest.lat + latSpan * Math.random(),southWest.lng + lngSpan * Math.random()];
+
+            return point;
+
+        },
+
+        /**
+         * r = radius circle -> distance max
+         * coordXY = objet avec coordonée latng du cercle avec circle.getLatLng();
+         * bound = bound du cercle avec circle.getBounds();
+         */
+        rndTest(r,coordXY,bound)
+            {
+            let i=0;
+            let plot;
+            do{
+            plot = this.plotrandom(
+                bound);
+            i++;
+            }while(this.mapleaf.distance(plot,coordXY) > r)
+
+            return plot
+            },
+
+        /**
+         * genrate random circle1
+         */
+        rndCircle1()
+        {
+           let coordXY = this.circleLeafletRnd.getLatLng();
+           let bound = this.circleLeafletRnd.getBounds();
+           let radius = 300;
+
+           let newClue = this.rndTest(radius,coordXY,bound);
+
+            this.indiceCircleRnd = {
+            lat: newClue[0],
+            lng: newClue[1],
+            radius: 300,
+            }
+            return newClue;
+
+            },
+
+     }
 };
 </script>
 
