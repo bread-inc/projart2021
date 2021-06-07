@@ -139,10 +139,9 @@ class GameController extends Controller
         User::find($user_id)->badges()->attach(Badge::find($badge_id));
     }
 
-    public function endGame($id)
+    public function endGame(Request $request)
     {
-        $quiz = Quiz::findOrFail($id);
-        dd($quiz);
+        dd($request);
 
         // Hard-coded score and time
         $score = rand(55, 95);
