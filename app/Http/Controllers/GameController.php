@@ -143,6 +143,7 @@ class GameController extends Controller
     public function endGame($id)
     {
         $quiz = Quiz::findOrFail($id);
+        dd($quiz);
 
         // Hard-coded score and time
         $score = rand(55, 95);
@@ -150,7 +151,7 @@ class GameController extends Controller
         $time = time()-$startTime;
 
         // Checking if the user gets new badges
-        $newBadges = $this->checkingBadges($quiz, $score, $time);
+        // $newBadges = $this->checkingBadges($quiz, $score, $time);
 
         return view('game_completed')->with(compact('quiz', 'score', 'time', 'startTime', 'newBadges'));
     }

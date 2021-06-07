@@ -4,7 +4,7 @@
 </div>
 <div class="container">
     <div id="vue-app">
-        <game-container :data="{{ $data }}"></game-container>
+        <game-container :data="{{ $data }}" :csrf="{{ csrf_token() }}"></game-container>
     </div>
 </div>
 

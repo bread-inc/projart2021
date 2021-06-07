@@ -1,12 +1,7 @@
 <template>
   <div class="game container">
     <div class="row mb-2">
-      <button class="btn btn-info mr-2 col" @click="this.nextQuestion">
-        Next Question
-      </button>
-      <button class="btn btn-info mr-2 col" @click="this.nextClue">
-        Next Clue
-      </button>
+      <button class="btn btn-info mr-2 col" @click="this.nextClue">Clue</button>
     </div>
     <div class="debug">
       <p>Question : {{ fixQuestion.description }}</p>
@@ -25,9 +20,7 @@
     >
       You failed the question {{ parseInt(distance) }} meters from the objective
     </question-failure>
-    <quiz-success 
-      v-if="showQuizSuccess"
-      @close="endQuiz">
+    <quiz-success v-if="showQuizSuccess" @close="endQuiz" :csrf="csrf">
       Congratulations you finished the quiz!
     </quiz-success>
     <game-map
@@ -54,6 +47,7 @@ export default {
   },
   props: {
     data: Object,
+    csrf: ["csrf"]
   },
   data() {
     return {
@@ -63,6 +57,7 @@ export default {
       showQuestionValidation: false,
       showQuestionFailure: false,
       showQuizSuccess: false,
+      testData: 2,
     };
   },
   computed: {
@@ -72,9 +67,6 @@ export default {
     fixClue() {
       return this.fixQuestion.clues[this.clueIndex];
     },
-    postRoute() {
-      return 'quizz/' + this.data.quiz.id + '/game/completed';
-    }
   },
   watch: {
     questionIndex() {
@@ -97,14 +89,18 @@ export default {
       if (this.clueIndex < cluesLength - 1) this.clueIndex++;
     },
 
-    endQuiz() {
-      console.log(this.postRoute)
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", this.postRoute, true);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.send(JSON.stringify({
-          value: this.testData
-      }));
+    async endQuiz() {
+      const resp = await fetch('game/completed', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        }),
+      body: JSON.stringify({id: this.testData})
+    });
+    if (!resp.ok) return;
+    const respItem = await resp.json();
+    window.location = "game/completed";
     },
 
     validate(distance) {

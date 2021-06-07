@@ -9,7 +9,11 @@
 								<slot></slot>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-primary" @click="$emit('close')">End Quiz</button>
+							<form action="game/completed" method="post">
+							<input type="hidden" name="_token" value="{{csrf}}">
+							<button class="btn btn-primary">End quiz</button>
+							</form>
+							<!-- <button type="button" class="btn btn-primary" @click="$emit('close')">End Quiz</button> -->
 						</div>
 				</div>
 			</div>
@@ -20,6 +24,7 @@
 export default {
   name: "QuestionValidation",
   emits: ["close"],
+  props: ["csrf"],
   methods: {
     close() {
       this.$emit("close");
