@@ -10,7 +10,7 @@ import test from './components/Map.vue';
 import ExampleComponent from './components/ExampleComponent.vue';
 import 'leaflet/dist/leaflet.css';
 import testMap from './components/mapLeaflet.vue';
-
+import GameDesktopMap from './components/GameDesktopMap.vue';
 import { createApp } from 'vue';
 
 const app = createApp({
@@ -23,5 +23,6 @@ const app = createApp({
         "test": test,
         "comp":ExampleComponent,
         "testleaf": testMap,
+        "game-desktop-map":GameDesktopMap,
     }
 }).mount('#vue-app')
