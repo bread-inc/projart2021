@@ -17,13 +17,13 @@
 </div>
 
 <nav id="tabs-bar">
-    <button id="btn-badges" class="tab-button tab-selected" onclick="">Badges</button>
-    <button id="btn-favorites" class="tab-button" onclick="">Favoris</button>
-    <button id="btn-scores" class="tab-button" onclick="">Scores</button>
+    <a id="btn-badges" class="tab-button tab-selected" href="#badges">Badges</a>
+    <a id="btn-favorites" class="tab-button" href="#favorites">Favoris</a>
+    <a id="btn-scores" class="tab-button" href="#scores">Scores</a>
 </nav>
 
 <div id="vue-app">
-    <section id="badges" class="container bg-white py-3">
+    <section id="badges" class="page container bg-white py-3">
         <badge-list :badges="{{ $user->badges()->orderBy('created_at', 'DESC')->get() }}" :auth="{{ auth()->check() }}"></badge-list>
     </section>
     
@@ -41,9 +41,7 @@
         </div>
     </div>
 
-    <hr>Favoris
-
-    <section id="favorites" class="container bg-white py-3">
+    <section id="favorites" class="page container bg-white py-3">
         <div class="row">
             @foreach (Quiz::all() as $favoriteQuiz)
             <div class="col-6">
@@ -60,9 +58,7 @@
         </div>
     </section>
 
-    <hr>Scores
-
-    <section id="scores" class="container bg-white py-3">
+    <section id="scores" class="page container bg-white py-3">
         <!-- Ajouter la class "my-score" à la <tr> de l'utilisateur -->
         <score-list :scores="{{ $scores }}"></score-list>
     </section>

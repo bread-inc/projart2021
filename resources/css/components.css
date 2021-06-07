@@ -211,6 +211,7 @@ input[type=text], input[type=password], input[type=email] {
     font-size: var(--sm-fs);
     font-weight: 600;
     text-transform: uppercase;
+    text-align: center;
     padding: 5px 0;
     border-radius: 20px 20px 0px 0px;
     color: var(--dark-secondary);
