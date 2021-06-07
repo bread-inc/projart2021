@@ -2,6 +2,9 @@
   <div class="game container">
     <div class="row mb-2">
       <button class="btn btn-info mr-2 col" @click="this.nextClue">Clue</button>
+      <button class="btn btn-info mr-2 col" @click="this.skipQuestion">
+        Skip
+      </button>
     </div>
     <div class="debug">
       <p>Question : {{ fixQuestion.description }}</p>
@@ -20,7 +23,15 @@
     >
       You failed the question {{ parseInt(distance) }} meters from the objective
     </question-failure>
-    <quiz-success v-if="showQuizSuccess" @close="endQuiz" :csrf="csrf">
+    <quiz-success
+      v-show="showQuizSuccess"
+      :questionCounter="questionCounter"
+      :clueCounter="clueCounter"
+      :totalDistance="totalDistance"
+      :startTime="startTime"
+      :failedValidations="failedValidations"
+      @close="endQuiz"
+    >
       Congratulations you finished the quiz!
     </quiz-success>
     <game-map
@@ -47,17 +58,20 @@ export default {
   },
   props: {
     data: Object,
-    csrf: ["csrf"]
   },
   data() {
     return {
       distance: "",
+      totalDistance: 0,
       questionIndex: 0,
+      questionCounter: 0,
       clueIndex: -1,
+      clueCounter: 0,
+      startTime: Date.now(),
+      failedValidations: 0,
       showQuestionValidation: false,
       showQuestionFailure: false,
       showQuizSuccess: false,
-      testData: 2,
     };
   },
   computed: {
@@ -86,21 +100,26 @@ export default {
 
     nextClue() {
       let cluesLength = this.data.questions[this.questionIndex].clues.length;
-      if (this.clueIndex < cluesLength - 1) this.clueIndex++;
+      if (this.clueIndex < cluesLength - 1)
+        this.clueIndex++, this.clueCounter++;
+    },
+
+    skipQuestion() {
+      this.nextQuestion();
+      this.clueCounter -= this.clueIndex + 1;
     },
 
     async endQuiz() {
-      const resp = await fetch('game/completed', {
-      method: 'POST',
-      credentials: 'same-origin',
-      headers: new Headers({
-        'Content-Type': 'application/json',
+      const resp = await fetch("completed", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: new Headers({
+          "Content-Type": "application/json",
         }),
-      body: JSON.stringify({id: this.testData})
-    });
-    if (!resp.ok) return;
-    const respItem = await resp.json();
-    window.location = "game/completed";
+        body: JSON.stringify({ id: "testdata" }),
+      });
+      if (!resp.ok) return;
+      const respItem = await resp.json();
     },
 
     validate(distance) {
@@ -108,13 +127,20 @@ export default {
       let tolerance = this.fixQuestion.radius;
       if (distance < tolerance) {
         if (this.questionIndex >= this.data.questions.length - 1) {
+          this.questionCounter++;
+          this.totalDistance += parseInt(this.distance);
           this.showQuizSuccess = true;
         } else {
+          this.questionCounter++;
+          this.totalDistance += parseInt(this.distance);
+
           this.showQuestionValidation = true;
+
           // Auto next question
           // this.nextQuestion();
         }
       } else {
+        this.failedValidation++;
         this.showQuestionFailure = true;
       }
     },

@@ -10,7 +10,11 @@
 						</div>
 						<div class="modal-footer">
 							<form action="game/completed" method="post">
-							<input type="hidden" name="_token" value="{{csrf}}">
+							<input type="hidden" name="questionCounter" :value="questionCounter">
+							<input type="hidden" name="clueCounter" :value="clueCounter">
+							<input type="hidden" name="totalDistance" :value="totalDistance">
+							<input type="hidden" name="startTime" :value="startTime">
+							<input type="hidden" name="failedValidations" :value="failedValidations">
 							<button class="btn btn-primary">End quiz</button>
 							</form>
 							<!-- <button type="button" class="btn btn-primary" @click="$emit('close')">End Quiz</button> -->
@@ -24,7 +28,13 @@
 export default {
   name: "QuestionValidation",
   emits: ["close"],
-  props: ["csrf"],
+  props: {
+	  questionCounter : Number,
+	  clueCounter : Number,
+	  totalDistance : Number,
+	  startTime: Number,
+	  failedValidations: Number,
+  },
   methods: {
     close() {
       this.$emit("close");
