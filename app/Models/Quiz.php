@@ -11,7 +11,7 @@ class Quiz extends Model
 
     public $timestamps = false;
 
-    protected $fillable=['region_id', 'user_id','title','description','ponderation'];
+    protected $fillable=['region_id', 'user_id','title','description','difficulty'];
 
     public function region() {
         return $this->belongsTo(Region::class);    
@@ -31,5 +31,9 @@ class Quiz extends Model
 
     public function badges() {
         return $this->morphMany(Badge::class, 'badgeable');
+    }
+
+    public function favorites() {
+        return $this->hasMany(Favorites::class);
     }
 }

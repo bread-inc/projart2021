@@ -21,20 +21,13 @@ class BadgeUserTableSeeder extends Seeder
     public function run()
     {
         DB::table('badge_user')->delete();
-        for ($i=1; $i < 15; $i++) { 
-            $date1 = $this->randDate();
-            $date2 = $this->randDate();
+        for ($i=1; $i <= 15; $i++) { 
+            $date = $this->randDate();
             DB::table('badge_user')->insert([
                 'badge_id' => $i,
-                'user_id' => 1,
-                'created_at' => $date1,
-                'updated_at' => $date1
-            ]);
-            DB::table('badge_user')->insert([
-                'badge_id' => $i,
-                'user_id' => 2,
-                'created_at' => $date2,
-                'updated_at' => $date2
+                'user_id' => rand(1, 5),
+                'created_at' => $date,
+                'updated_at' => $date,
             ]);
         }
     }

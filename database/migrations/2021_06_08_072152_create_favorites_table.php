@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateQuizzesTable extends Migration
+class CreateFavoritesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,15 +14,12 @@ class CreateQuizzesTable extends Migration
      */
     public function up()
     {
-        Schema::create('quizzes', function (Blueprint $table) {
+        Schema::create('favorites', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('description');
-            $table->float('difficulty');
-            $table->integer('region_id')->unsigned();
-            $table->foreign('region_id')
+            $table->integer('quiz_id')->unsigned();
+            $table->foreign('quiz_id')
                 ->references('id')
-                ->on('regions')
+                ->on('quizzes')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
             $table->integer('user_id')->unsigned();
@@ -47,6 +44,6 @@ class CreateQuizzesTable extends Migration
                 $table->dropForeign('quiz_user_id_foreign');
             });
         }
-        Schema::dropIfExists('quizzes');
+        Schema::dropIfExists('favorites');
     }
 }

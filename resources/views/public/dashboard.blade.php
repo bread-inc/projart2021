@@ -42,10 +42,10 @@
                 
                 <div class="horizontal-slider-container">
                     <div class="horizontal-slider">
-                        @foreach ($user->scores()->orderBy('created_at', 'desc')->get() as $completedQuiz)
+                        @foreach ($user->scores()->orderBy('created_at', 'desc')->take(3)->get() as $completedQuiz)
                         <!-- element-->
                         <a href="{{route('game.info', [$completedQuiz->quiz->id])}}" class="quiz quiz-3x">
-                            <div class="quiz-thumb" style="background-image: url('');">
+                            <div class="quiz-thumb" style="background-image: url('{{$completedQuiz->quiz->questions->first()->picture}}');">
                                 <h5>{{$completedQuiz->quiz->title}}</h5>
                             </div>
                             <div class="label">
@@ -68,7 +68,7 @@
             </div>
         @if(auth()->check())
             <div class="col-12">
-                <badge-list :badges="{{ $user->badges()->orderBy('created_at', 'DESC')->get() }}" :auth="{{ auth()->check() }}"></badge-list>
+                <badge-list :badges="{{ $user->badges()->orderBy('created_at', 'DESC')->take(3)->get() }}" :auth="{{ auth()->check() }}"></badge-list>
             </div>
     
         

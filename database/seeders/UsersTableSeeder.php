@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class UsersTableSeeder extends Seeder
 {
-    private $defaultUsersList = ['admin', 'user'];
     /**
      * Run the database seeds.
      *
@@ -16,13 +15,25 @@ class UsersTableSeeder extends Seeder
      */
     public function run() {
         DB::table('users')->delete();
-        foreach($this->defaultUsersList as $newUser) {
+
+        // Creating admin
+        DB::table('users')->insert([
+            'pseudo' => 'admin',
+            'email' => 'admin@gmx.ch',
+            'password' => Hash::make('admin'),
+            'avatar' => "http://gravatar.com/avatar/" . md5(strtolower(trim('admin@gmx.ch'))) . "?size=64&d=identicon",
+            'isAdmin' => 1]
+        );
+
+        // Creating 4 other users
+        for ($i=2; $i <= 5; $i++) { 
             DB::table('users')->insert([
-                'pseudo' => $newUser,
-                'email' => $newUser . '@gmx.ch',
-                'password' => Hash::make($newUser),
-                'avatar' => "http://gravatar.com/avatar/" . md5(strtolower(trim($newUser . '@gmx.ch'))) . "?size=64&d=identicon",
-                'isAdmin' => $newUser == "admin" ? 1 : 0 ]);
+                'pseudo' => 'user' . $i,
+                'email' => 'user' . $i . '@gmx.ch',
+                'password' => Hash::make('user' . $i),
+                'avatar' => "http://gravatar.com/avatar/" . md5(strtolower(trim('user' . $i . '@gmx.ch'))) . "?size=64&d=identicon",
+                'isAdmin' => 0 ]
+            );
         }
     }
 }

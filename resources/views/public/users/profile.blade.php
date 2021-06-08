@@ -43,14 +43,14 @@
 
     <section id="favorites" class="page container bg-white py-3">
         <div class="row">
-            @foreach (Quiz::all() as $favoriteQuiz)
+            @foreach ($user->favorites->sortBy('quiz_id') as $favoriteQuiz)
             <div class="col-6">
                 <a href="#" class="quiz quiz-2x">
-                    <div class="quiz-thumb" style="background-image: url('');">
-                        <h5>{{$favoriteQuiz->title}}</h5>
+                    <div class="quiz-thumb" style="background-image: url('{{$favoriteQuiz->quiz->questions->first()->picture}}');">
+                        <h5>{{$favoriteQuiz->quiz->title}}</h5>
                     </div>
                     <div class="label">
-                        <small>{{ "date "}}</small>
+                        <small>Difficulté : {{$favoriteQuiz->quiz->difficulty}}</small>
                     </div>
                 </a>
             </div>

@@ -22,23 +22,14 @@ class ScoresTableSeeder extends Seeder
     {
         DB::table('scores')->delete();
 
-        for ($i=1; $i <= 5; $i++) {
-            $date1 = $this->randDate();
-            $date2 = $this->randDate();
+        for ($i=1; $i <= 50; $i++) {
+            $date = $this->randDate();
             DB::table('scores')->insert([
-                'quiz_id' => $i,
-                'user_id' => 1,
-                'score' => rand(15, 150),
-                'created_at' => $date1,
-                'updated_at' => $date1
-            ]);
-            
-            DB::table('scores')->insert([
-                'quiz_id' => $i,
-                'user_id' => 2,
-                'score' => rand(15, 150),
-                'created_at' => $date2,
-                'updated_at' => $date2
+                'quiz_id' => rand(1,5),
+                'user_id' => rand(1,5),
+                'score' => rand(1, 100),
+                'created_at' => $date,
+                'updated_at' => $date,
             ]);
         }
     }
