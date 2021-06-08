@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'SwissGuesser') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/vue.js') }}" defer></script>
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
     <!-- Internal styles -->
+    <link rel="icon" type="image/png" href="{{ asset('storage/images/logo/favicon.png') }}" />
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">
 </head>
 <body>
