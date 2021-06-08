@@ -35,9 +35,9 @@
     </div>
 
     <div class="form-group">
-        <label for="ponderation">Pondération</label><br>
-        <input type="number" name="ponderation" value="{{old('ponderation')}}" class="form-control">
-        {!! $errors->first('ponderation', '<small class="help-block">:message</small>') !!}
+        <label for="difficulty">Difficulté</label><br>
+        <input type="number" name="difficulty" value="{{old('difficulty')}}" class="form-control">
+        {!! $errors->first('difficulty', '<small class="help-block">:message</small>') !!}
     </div>
 
     <input type="submit" value="Créer le quiz" class="btn btn-primary">

@@ -8,17 +8,12 @@
 
 <div class="form-group">
     <label for="picture">Image</label><br>
-    <img src="{{$question->picture}}" alt="{{$question->description}}">
-
-    <!--<input type="file" id="picture" name="picture" accept="image/png, image/jpeg">-->
-    
-    {!! $errors->first('picture', '<small class="help-block">:message</small>') !!}
+    <img src="{{asset($question->picture)}}" alt="{{$question->description}}">
 </div>
 
 <div class="form-group">
     <label for="description">Question</label><br>
     <textarea class="form-control" id="description" disabled>{{$question->description}}</textarea>
-    {!! $errors->first('description', '<small class="help-block">:message</small>') !!}
 </div>
 
 <div class="form-group">
@@ -26,11 +21,9 @@
 
     <br><label for="coord_x">Coordonnée X</label>
     <input class="form-control" name="coord_x" type="text" value="{{$question->coord_x}}" disabled>
-    {!! $errors->first('coord_x', '<small class="help-block">:message</small>') !!}
 
     <br><label for="coord_y">Coordonnée Y</label>
     <input class="form-control" name="coord_y" type="text" value="{{$question->coord_y}}" disabled>
-    {!! $errors->first('coord_y', '<small class="help-block">:message</small>') !!}
 </div>
 
 <hr>

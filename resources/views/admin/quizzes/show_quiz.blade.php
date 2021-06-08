@@ -20,8 +20,8 @@
 </div>
 
 <div class="form-group">
-    <label for="ponderation">Pondération</label><br>
-    <input type="number" value="{{$quiz->ponderation}}" class="form-control" disabled>
+    <label for="difficulty">Difficulté</label><br>
+    <input type="number" value="{{$quiz->difficulty}}" class="form-control" disabled>
 </div>
 
 <hr>

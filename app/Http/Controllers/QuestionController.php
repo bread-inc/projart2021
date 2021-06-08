@@ -36,7 +36,7 @@ class QuestionController extends Controller
         // Saving image
         $image = $request->file('picture');
         $name = "Q$quiz_id"."Q$nextId.".$image->getClientOriginalExtension();
-        $destinationPath = public_path('/images/questions');
+        $destinationPath = public_path('storage/images/questions');
         $image->move($destinationPath, $name);
 
         // Saving object in DB
@@ -45,7 +45,7 @@ class QuestionController extends Controller
             "coord_x" => $request->coord_x,
             "coord_y" => $request->coord_y,
             "radius" => $request->radius,
-            "picture" => "/images/questions" . $name,
+            "picture" => "storage/images/questions" . $name,
             "quiz_id" => $request->quiz_id
         ];
         
@@ -100,10 +100,10 @@ class QuestionController extends Controller
 
             // Saving image
             $name = "Q$quiz_id"."Q$id.".$image->getClientOriginalExtension();
-            $destinationPath = public_path('/images/questions');
+            $destinationPath = public_path('storage/images/questions');
             $image->move($destinationPath, $name);
 
-            $updatedData["picture"] = "/images/questions/" . $name;
+            $updatedData["picture"] = "storage/images/questions/" . $name;
         }
 
         Question::findOrFail($id)->update($updatedData);

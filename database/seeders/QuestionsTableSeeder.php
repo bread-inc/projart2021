@@ -19,7 +19,7 @@ class QuestionsTableSeeder extends Seeder
             $quiz_id = rand(1,5);
             DB::table('questions')->insert([
                 'quiz_id' => $quiz_id,
-                'picture' => "/images/questions/Q$quiz_id" . "Q$i.jpg",
+                'picture' => "storage/images/questions/Q$quiz_id" . "Q$i.jpg",
                 'coord_x' => rand(1, 1000),
                 'coord_y' => rand(1, 1000),
                 'radius' => rand(10, 100),

@@ -27,7 +27,7 @@ class QuizRequest extends FormRequest
             "title" => "required|min:5|max:60",
             "description" => "required|max:255",
             "region_id" => "required",
-            "ponderation" => "required"
+            "difficulty" => "required"
         ];
     }
 }

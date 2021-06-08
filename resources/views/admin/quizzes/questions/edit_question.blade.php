@@ -11,7 +11,7 @@
 
     <div class="form-group">
         <label for="picture">Image</label><br>
-        <img src="{{$question->picture}}" alt="{{$question->description}}">
+        <img src="{{asset($question->picture)}}" alt="{{$question->description}}">
 
         <input type="file" id="picture" name="picture" accept="image/png, image/jpeg">
         
