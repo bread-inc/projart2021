@@ -6,9 +6,6 @@
     <button class="btn btn-success mr-2 col" @click="this.getDistance">
       Validate
     </button>
-    <button class="btn btn-warning" @click="randCoord()">
-      test rnd circle 1
-    </button>
   </div>
   <div id="game-map">
     <l-map
@@ -31,31 +28,28 @@
           userLocation.lat || defaultLocation.lat,
           userLocation.lng || defaultLocation.lng,
         ]"
+        color="red"
       >
         <l-popup> You are here </l-popup>
+      </l-marker>
+      <l-marker
+        :lat-lng="[question.coord_x, question.coord_y]"
+      >
+        <l-popup> Question here </l-popup>
       </l-marker>
       <l-circle
         v-if="clue.radius"
         @ready="storeClue"
-        :lat-lng="[question.coord_x, question.coord_y]"
+        :lat-lng="this.clueLocation"
         :radius="parseInt(clue.radius)"
         color="red"
-      />
-      <l-circle
-        v-if="0"
-        :lat-lng="[question.coord_x, question.coord_y]"
-        :radius="parseInt(question.radius)"
+        fillOpacity: 0.5
       />
       <l-circle
         @ready="storeCircle"
         :lat-lng="[question.coord_x, question.coord_y]"
-        :radius="parseInt(question.radius / 10)"
-        color="green"
-      />
-      <l-circle
-        v-if="this.randCircleMarker"
-        :lat-lng="randCoord()"
         :radius="parseInt(question.radius)"
+        color="none"
       />
     </l-map>
   </div>
@@ -88,12 +82,14 @@ export default {
     return {
       userLocation: {},
       zoom: 18,
+      clueLocation: Array,
     };
   },
 
   watch: {
-    clue(){
-      this.clueCoords = randCoord();
+    // Updates the clue circles coordinates when a new clue is activated
+    clue: function(newVal, oldVal) {
+      this.newClue(newVal.radius * 0.65);
     }
   },
 
@@ -117,6 +113,12 @@ export default {
   emits: ["getDistance"],
 
   methods: {
+
+    // Updates clue circle coordinates when called
+    newClue(radius) {
+      this.clueLocation = this.randCoord(radius);
+    },
+
     storeMap(mapObject) {
       this.mapleaf = mapObject;
     },
@@ -129,25 +131,21 @@ export default {
       this.clueCircleMarker = circleObject;
     },
 
+    // Attemps to get the current user position
     async getUserPosition() {
-      // check if API is supported
       if (navigator.geolocation) {
-        console.log("get  geolocation");
         navigator.geolocation.getCurrentPosition((pos) => {
-          console.log("set user location");
           this.userLocation = {
             lat: pos.coords.latitude,
             lng: pos.coords.longitude,
-          }; //centre de la carte
+          }; 
              this.mapleaf.panTo([this.userLocation.lat,
         this.userLocation.lng])
         });
       }
-
-
-
     },
 
+    // Returns the distance from the question to parent component
     getDistance() {
       let distance = this.mapleaf.distance(this.userLocation, [
         this.question.coord_x,
@@ -160,19 +158,29 @@ export default {
       this.center = center;
     },
 
-    randCoord() {
-      let r = this.clue.radius;
+    /**
+     * Returns a random generated coordinate within 0.65 of the given radius
+     * COORDS = [question.coord_x, question.coord_y]
+     * 
+     * @param {number} radius The radius of the clue
+     * @return {[lat, lng]} Randomly generated coordinates
+     */
+    randCoord(radius) {
+      let r = radius;
       let coord = this.randCircleMarker.getLatLng();
       let bound = this.randCircleMarker.getBounds();
 
       let newClue = this.findPoint(r, coord, bound);
 
-      console.log([this.question.coord_x, this.question.coord_y]);
-      console.log(newClue);
-
       return newClue;
     },
 
+    /**
+     * Returns a point within the given bounds
+     * 
+     * @param {bounds} bounds The bounds of the reference circle
+     * @return {[lat, lng]} The coordinates of a randomly generated point
+     */
     randPlot(bounds) {
       var southWest = bounds.getSouthWest();
       var northEast = bounds.getNorthEast();
@@ -187,6 +195,14 @@ export default {
       return point;
     },
 
+    /**
+     *  Returns a point within the given radius from the coords
+     * 
+     * @param {number} r The tolerance radius
+     * @param {[lat, lng]} coord The coordinates of the question
+     * @param {bounds} bounds The bounds of the reference circle
+     * @return {[lat, lng]} Randomly generated coordiantes
+     */
     findPoint(r, coord, bounds) {
       let plot;
 
