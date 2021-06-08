@@ -2,7 +2,7 @@
   <div class="game container">
     <div class="row mb-2">
       <button class="btn btn-info mr-2 col" @click="this.nextClue">Clue</button>
-      <button class="btn btn-info mr-2 col" @click="this.skipQuestion">
+      <button class="btn btn-info mr-2 col" @click="this.skipQuestion" v-if="questionIndex < this.data.questions.length - 1">
         Skip
       </button>
     </div>
