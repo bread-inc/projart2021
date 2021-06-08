@@ -3,8 +3,12 @@
     <button class="btn btn-warning mr-2 col" @click="this.getUserPosition">
       Locate
     </button>
-     <button class="btn btn-warning mr-2 col" @click="peuplageMap">
+    <p>{{regions[0].quizzes}}</p>
+     <button class="btn btn-warning mr-2 col" @click="peupleMap">
       peupler la carte
+    </button>
+    <button @click="testData()">
+        Data
     </button>
   </div>
   <div id="game-map">
@@ -13,8 +17,8 @@
       :zoom="zoom"
       @ready="storemap"
       :center="[
-        userLocation.lat || defaultLocation.lat,
-        userLocation.lng || defaultLocation.lng,
+        userLocation.lat || 0,
+        userLocation.lng || 0,
       ]"
       @update:center="centerUpdated"
     >
@@ -25,13 +29,22 @@
       ></l-tile-layer>
       <l-marker
         :lat-lng="[
-          userLocation.lat || defaultLocation.lat,
-          userLocation.lng || defaultLocation.lng,
+          userLocation.lat || 0,
+          userLocation.lng || 0,
         ]"
       >
         <l-popup> You are here </l-popup>
       </l-marker>
-      <l-circle @ready="storeCircle" :lat-lng="[46.78170795836792, 6.647425889233018,]" :radius="300" color="blue" />
+
+      <l-marker
+        :lat-lng="[
+          46.78170795836792, 6.647425889233018
+        ]"
+        @ready="storemarker"
+      >
+        <l-popup> You are here </l-popup>
+      </l-marker>
+
     </l-map>
   </div>
 </template>
@@ -47,24 +60,20 @@ import {
 export default {
   components: { LMap, LTileLayer, LMarker, LPopup, LCircleMarker, LCircle },
   props: {
-    defaultLocation: {
-      type: Object,
-      default: () => ({
-        lat: 46.78170795836792,
-        lng: 6.647425889233018,
-      }),
-    },
-    question: Object,
+   regions: Object,
   },
   data() {
     return {
       userLocation: {},
       zoom: 18,
+      arrayRegions: [],
     };
   },
+
   init() {
     this.mapleaf = null;
     this.circleLeaflet = null;
+
   },
   async beforeMount() {
     // Leaflet imports
@@ -72,9 +81,6 @@ export default {
 
     // Set current position
     await this.getUserPosition();
-
-    circleMarker(this.userLocation, { radius: 8 });
-
     // Waits until ready to show
     this.mapIsReady = true;
   },
@@ -89,6 +95,23 @@ export default {
     {
 
         this.circleLeaflet = circleObject;
+    },
+
+    //peuplage de la map avec tout les regions
+   async peupleMap(){
+            const { marker } = await import("leaflet/dist/leaflet-src.esm");
+            const { popup} = await import("leaflet/dist/leaflet-src.esm");
+            var pop = popup;
+            this.regions.forEach(element => {
+
+            var markert = marker([element.center_x,element.center_y],{title:element.name});
+
+            markert.addTo(this.mapleaf);
+            markert.bindPopup('');
+
+       });
+
+       console.log(regions);
     },
     async getUserPosition() {
       // check if API is supported
@@ -111,6 +134,7 @@ export default {
             var northEast = bounds.getNorthEast();
             var lngSpan = northEast.lng - southWest.lng;
             var latSpan = northEast.lat - southWest.lat;
+            // sera remplacer par les point des région
             let pointsRand =[];
             let NomQuiz = "nom du quiz : ";
 
@@ -129,10 +153,8 @@ export default {
 
         },
 
-    peuplageMap()
-    {
-            this.plotrandom(this.circleLeaflet.getBounds());
-    },
+
+
 
 
     getDistance() {
@@ -147,6 +169,7 @@ export default {
       this.center = center;
     },
   },
+
 };
 </script>
 

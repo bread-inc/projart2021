@@ -45,6 +45,8 @@ Route::get('scoreboard', [HomeController::class, 'scoreboard'])->name('scoreboar
 
 
 
+
+
 // ##### User routes #####
 /*
 Route::resource('user', UserController::class)->only(['index', 'create']);
@@ -59,6 +61,8 @@ Route::prefix('user')->group(function () {
     Route::get('{user_id}', [UserController::class, 'showUser'])->name('profile.show');
 });
 
+//route mapDesktop
+Route::get('mapDesktop', [RegionController::class, "mapDesktop"])->name('map.desktop');
 
 // ##### Region routes #####
 Route::prefix('region')->group(function () {
