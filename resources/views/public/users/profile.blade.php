@@ -49,7 +49,7 @@
             @foreach ($user->favorites->sortBy('quiz_id') as $favoriteQuiz)
             <div class="col-6">
                 <a href="{{route('game.info', [$favoriteQuiz->quiz->id])}}" class="quiz quiz-2x">
-                    <div class="quiz-thumb" style="background-image: url('{{asset("storage" . $favoriteQuiz->quiz->questions->first()->picture)}}');">
+                    <div class="quiz-thumb" style="background-image: url('{{asset($favoriteQuiz->quiz->questions->first()->picture)}}');">
                         <h5>{{$favoriteQuiz->quiz->title}}</h5>
                     </div>
                     <div class="label">

@@ -71,6 +71,7 @@ input[type=text], input[type=password], input[type=email] {
 .quiz>.quiz-thumb{
     width: 100%; 
 
+    background-image : url('/storage/images/placeholder.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

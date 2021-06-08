@@ -2,15 +2,15 @@
 
 @section('content')
 
-<div class="container">
+<div class="container my-5">
     <div id="vue-app">
-        <div class="row mt-5 mb-3">
+        <div class="row mb-3">
             <div class="col-8">
                 <h1>{{$quiz->title}}</h1>
                 <small>Difficulté : {{$quiz->difficulty}}</small>
             </div>
             <div class="col-12 my-2">
-                <img src="{{asset("storage" . $quiz->questions->first()->picture)}}" class="rounded" alt="{{$quiz->title}}">
+                <img src="{{asset($quiz->questions->first()->picture)}}" class="rounded" alt="{{$quiz->title}}">
             </div>
             <div class="col-12">
                 <p>{{$quiz->description}}</p>

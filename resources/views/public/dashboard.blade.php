@@ -29,7 +29,31 @@
             <div class="col-12">
             @if(isset($region) && !empty($region))
                 <h2>à {{$region->name}} <i class="fal fa-location-arrow fa-xs"></i></h2>
-                <quiz-list class="mb-2" :quizzes="{{ $region->quizzes }}"></quiz-list>
+                <?php 
+                /* En attendant de corriger la vue
+                <quiz-list class="mb-2" :quizzes="{{ $region->quizzes }}"></quiz-list>*/ 
+                ?>
+
+                <div class="horizontal-slider-container">
+                    <div class="horizontal-slider">
+                        @foreach ($region->quizzes as $quiz)
+                        <!-- element-->
+                        <a href="{{route('game.info', [$quiz->id])}}" class="quiz quiz-3x">
+                            @if (file_exists(public_path() .'/'.$quiz->questions->first()->picture))
+                            <div class="quiz-thumb" style="background-image: url('{{asset($quiz->questions->first()->picture)}}');">
+                            @else
+                            <div class="quiz-thumb">
+                            @endif
+                                <h5>{{$quiz->title}}</h5>
+                            </div>
+                            <div class="label">
+                                <small>{{$quiz->difficulty}}</small>
+                            </div>
+                        </a>
+                        <!-- .element -->
+                        @endforeach
+                    </div>
+                </div>
             @else
                 <h2>Impossible de détecter la position</h2>
                 Afficher des quizzes aléatoires ?
@@ -49,7 +73,11 @@
                         @foreach ($user->scores()->orderBy('created_at', 'desc')->take(3)->get() as $completedQuiz)
                         <!-- element-->
                         <a href="{{route('game.info', [$completedQuiz->quiz->id])}}" class="quiz quiz-3x">
-                            <div class="quiz-thumb" style="background-image: url('{{asset("storage" . $completedQuiz->quiz->questions->first()->picture)}}');">
+                            @if (file_exists(public_path() .'/'.$completedQuiz->quiz->questions->first()->picture))
+                            <div class="quiz-thumb" style="background-image: url('{{asset($completedQuiz->quiz->questions->first()->picture)}}');">
+                            @else
+                            <div class="quiz-thumb">
+                            @endif
                                 <h5>{{$completedQuiz->quiz->title}}</h5>
                             </div>
                             <div class="label">
