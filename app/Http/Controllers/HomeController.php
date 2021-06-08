@@ -46,10 +46,10 @@ class HomeController extends Controller
             $badges = $user->badges()->orderBy('created_at', 'desc')->get();
             // - Classement général top10, avec la position de User + la personne devant
 
-            return view('dashboard', compact('user', 'region', 'badges', 'scores'));
+            return view('public.dashboard', compact('user', 'region', 'badges', 'scores'));
         } else {
             $badges = Badge::all();
-            return view('dashboard', compact('region', 'badges', 'scores'));
+            return view('public.dashboard', compact('region', 'badges', 'scores'));
         }
     }
 

@@ -18,10 +18,10 @@ class QuizzesTableSeeder extends Seeder
         for ($i = 1; $i <= 5; $i ++) {
             DB::table('quizzes')->insert([
                 'region_id' => rand(1,3),
-                'user_id' => rand(1,2),
+                'user_id' => rand(1,5),
                 'title' => "Quiz N°$i",
                 'description' => "Description $i. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                'ponderation' => rand(-10, 10),
+                'difficulty' => rand(1, 3),
             ]);
         }
     }

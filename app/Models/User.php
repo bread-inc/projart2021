@@ -56,4 +56,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Badge::class)->withTimestamps();;
     }
+
+    public function favorites() {
+        return $this->hasMany(Favorite::class);
+    }
 }
