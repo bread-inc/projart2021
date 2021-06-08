@@ -73,3 +73,22 @@ small {
     border-bottom-left-radius: 20px!important;
     border-bottom-right-radius: 20px!important;
 }
+
+/* Desktop design */
+@media screen and (min-width: 768px) {
+    body {
+        min-width: 100vw;
+        min-height: 100vh;
+    }
+
+    .gradient-background {
+        background-color: var(--red-primary);
+        background: linear-gradient(90deg, rgb(var(--gradient-orange)) 0%, rgb(var(--gradient-red)) 100%);
+        box-shadow: inset 82.1333px -82.1333px 82.1333px rgba(166, 53, 20, 0.194), inset -82.1333px 82.1333px 82.1333px rgba(255, 255, 255, 0.194);
+    }
+
+    #app {
+        min-width: 100vw;
+        min-height: 100vh;
+    }
+}

@@ -1,10 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.auth-layout')
 
 @section('content')
 
-<div class="container">
-    <div class="row mt-5">
-        <div class="col-12">
+<div class="container" id="login">
+    <div class="row mt-5 mt-md-0">
+        <div class="col-12 col-md-6">
+            <h1>Login</h1>
+        </div>
+        <div class="col-12 col-md-6">
             <div id="login-logo">
                 <img src="{{asset('storage/images/logo/logo.png')}}" alt="SwissGuesser">
             </div>
@@ -15,11 +18,11 @@
         @csrf
 
         <div class="row my-5">
-            <div class="col-12">
+            <div class="col-12 mx-auto">
                 <div class="form-group row">
-                    <h3 for="email" class="col-md-4 text-md-right">E-mail</h3>
+                    <h3 for="email" class="col-12">E-mail</h3>
 
-                    <div class="col-md-6">
+                    <div class="col-12">
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                         @error('email')
@@ -31,9 +34,9 @@
                 </div>
 
                 <div class="form-group row">
-                    <h3 for="password" class="col-md-4 text-md-right">Mot de passe</h3>
+                    <h3 for="password" class="col-12">Mot de passe</h3>
 
-                    <div class="col-md-6">
+                    <div class="col-12">
                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                         @error('password')
@@ -54,7 +57,7 @@
         </div>
         
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 mx-auto">
 
                 <button type="submit" class="btn btn-gradient">
                     Valider
