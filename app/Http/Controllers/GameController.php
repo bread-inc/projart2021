@@ -8,6 +8,7 @@ use App\Models\Badge;
 use App\Models\Quiz;
 use App\Models\Question;
 use App\Models\User;
+use DateTime;
 use Illuminate\Support\Facades\DB;
 
 class GameController extends Controller
@@ -140,18 +141,24 @@ class GameController extends Controller
     }
 
     public function endGame(Request $request)
-    {
-        dd($request);
+    {   
+        $id = $request->id;
+        $startTime = \Carbon\Carbon::createFromTimestampMs($request->startTime);
+        $now = 120;
+        $time = $now;
+        $questions = $request->questionCounter;
+        $clues = $request->clueCounter;
+        $distance = $request->totalDistance;
+        $failedAttemps = $request->failedValidations;
 
-        // Hard-coded score and time
-        $score = rand(55, 95);
-        $startTime = time()-rand(60, 600);
-        $time = time()-$startTime;
+        $quiz = Quiz::findOrFail($id);
+
+        $score = 100 - ($clues * 4) - ($questions * 2);
 
         // Checking if the user gets new badges
         // $newBadges = $this->checkingBadges($quiz, $score, $time);
 
-        return view('game_completed')->with(compact('quiz', 'score', 'time', 'startTime', 'newBadges'));
+        return view('game_completed')->with(compact('quiz', 'score', 'time', 'startTime'));
     }
 
     public static function renderTime($time) {

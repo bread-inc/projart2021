@@ -2,14 +2,17 @@
   <div class="game container">
     <div class="row mb-2">
       <button class="btn btn-info mr-2 col" @click="this.nextClue">Clue</button>
-      <button class="btn btn-info mr-2 col" @click="this.skipQuestion" v-if="questionIndex < this.data.questions.length - 1">
+      <button
+        class="btn btn-info mr-2 col"
+        @click="this.skipQuestion"
+      >
         Skip
       </button>
     </div>
     <div class="debug">
-      <p>Question : {{ fixQuestion.description }}</p>
-      <p v-if="fixClue">Clue : {{ fixClue.description }}</p>
-      <p v-if="fixClue">Clue : {{ fixClue.radius}}</p>
+      <p>Question : {{ currentQuestion.description }}</p>
+      <p v-if="currentClue">Clue : {{ currentClue.description }}</p>
+      <p v-if="currentClue">Clue : {{ currentClue.radius }}</p>
     </div>
     <question-validation
       v-if="showQuestionValidation"
@@ -26,6 +29,7 @@
     </question-failure>
     <quiz-success
       v-show="showQuizSuccess"
+      :id="data.quiz.id"
       :questionCounter="questionCounter"
       :clueCounter="clueCounter"
       :totalDistance="totalDistance"
@@ -36,8 +40,8 @@
       Congratulations you finished the quiz!
     </quiz-success>
     <game-map
-      :question="fixQuestion || 0"
-      :clue="fixClue || 0"
+      :question="currentQuestion || 0"
+      :clue="currentClue || 0"
       @getDistance="validate"
     ></game-map>
   </div>
@@ -76,11 +80,11 @@ export default {
     };
   },
   computed: {
-    fixQuestion() {
+    currentQuestion() {
       return this.data.questions[this.questionIndex];
     },
-    fixClue() {
-      return this.fixQuestion.clues[this.clueIndex];
+    currentClue() {
+      return this.currentQuestion.clues[this.clueIndex];
     },
   },
   watch: {
@@ -89,14 +93,9 @@ export default {
     },
   },
   methods: {
-    currentQuestion() {
-      return this.data.questions[this.questionIndex];
-    },
-    currentClue() {
-      return this.currentQuestion().clues[this.clueIndex];
-    },
     nextQuestion() {
       this.questionIndex++;
+      if (this.questionIndex >= this.data.questions.length -1) this.endQuiz();
     },
 
     nextClue() {
@@ -110,40 +109,30 @@ export default {
       this.clueCounter -= this.clueIndex + 1;
     },
 
-    async endQuiz() {
-      const resp = await fetch("completed", {
-        method: "POST",
-        credentials: "same-origin",
-        headers: new Headers({
-          "Content-Type": "application/json",
-        }),
-        body: JSON.stringify({ id: "testdata" }),
-      });
-      if (!resp.ok) return;
-      const respItem = await resp.json();
+    endQuiz() {
+      this.showQuizSuccess = true;
     },
 
     validate(distance) {
       this.distance = distance;
-      let tolerance = this.fixQuestion.radius;
+      let tolerance = this.currentQuestion.radius;
       if (distance < tolerance) {
         if (this.questionIndex >= this.data.questions.length - 1) {
-          this.questionCounter++;
-          this.totalDistance += parseInt(this.distance);
-          this.showQuizSuccess = true;
+          this.validateCounter();
+          this.endQuiz();
         } else {
-          this.questionCounter++;
-          this.totalDistance += parseInt(this.distance);
-
+          this.validateCounter();
           this.showQuestionValidation = true;
-
-          // Auto next question
-          // this.nextQuestion();
         }
       } else {
         this.failedValidations++;
         this.showQuestionFailure = true;
       }
+    },
+
+    validateCounter() {
+      this.questionCounter++;
+      this.totalDistance += parseInt(this.distance);
     },
   },
 };

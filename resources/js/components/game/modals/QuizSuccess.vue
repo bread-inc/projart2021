@@ -10,6 +10,7 @@
 						</div>
 						<div class="modal-footer">
 							<form action="game/completed" method="post">
+							<input type="hidden" name="id" :value="id">
 							<input type="hidden" name="questionCounter" :value="questionCounter">
 							<input type="hidden" name="clueCounter" :value="clueCounter">
 							<input type="hidden" name="totalDistance" :value="totalDistance">
@@ -29,6 +30,7 @@ export default {
   name: "QuestionValidation",
   emits: ["close"],
   props: {
+	  id : Number,
 	  questionCounter : Number,
 	  clueCounter : Number,
 	  totalDistance : Number,
