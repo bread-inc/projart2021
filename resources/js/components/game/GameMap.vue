@@ -95,15 +95,20 @@ export default {
     async getUserPosition() {
       // check if API is supported
       if (navigator.geolocation) {
-        // get  geolocation
+        console.log("get  geolocation");
         navigator.geolocation.getCurrentPosition((pos) => {
-          // set user location
+          console.log("set user location");
           this.userLocation = {
             lat: pos.coords.latitude,
             lng: pos.coords.longitude,
-          };
+          }; //centre de la carte
+             this.mapleaf.panTo([this.userLocation.lat,
+        this.userLocation.lng])
         });
       }
+
+
+
     },
 
     getDistance() {

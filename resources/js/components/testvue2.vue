@@ -15,7 +15,6 @@
           lol
         </l-tooltip>
       </l-marker>
-
       <l-marker :lat-lng="[47.41322, -1.219482]">
         <l-icon :icon-url="iconUrl" :icon-size="iconSize" />
       </l-marker>
