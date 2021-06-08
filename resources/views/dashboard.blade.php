@@ -88,7 +88,7 @@
                 <h2>Classement général</h2>
                 
                 <div id="vue-app">
-                    <score-list :scores="{{ $scores }}"></score-list>
+                    <score-list :scores="{{ $scores }}" :id="{{ Auth::id() }}"></score-list>
                 </div>
     
                 <a href="{{route('global-ranking')}}" class="btn btn-border">Voir le classement</a>

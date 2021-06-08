@@ -5,6 +5,7 @@
           v-for="score in scores"
           :key="score"
           :score="score"
+          :id="id"
         ></score-item>
   </tbody>
 </table>
@@ -17,6 +18,6 @@ export default {
   components: {
     "score-item": ScoreItem,
   },
-  props: ["scores", "index"],
+  props: ["scores", "id"],
 };
 </script>

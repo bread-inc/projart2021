@@ -25,7 +25,8 @@ trait ScoreboardTrait
         foreach ($scores as $score) {
             $user_id = $i + 1; 
             $pseudo = User::findOrFail($user_id)->pseudo;
-            array_push($rankings, ["user_id" => $user_id, "pseudo" => $pseudo, "score" => $score]);
+            $avatar = User::findOrFail($user_id)->avatar;
+            array_push($rankings, ["user_id" => $user_id, "pseudo" => $pseudo, "avatar" => $avatar, "score" => $score]);
             $i++;
         }
 
