@@ -1,6 +1,6 @@
 <template>
 <div class="col-4 text-center mb-3">
-  <a :href="'#badge' + badge.id">
+  <a :href="'#badges&id=' + badge.id">
       <div
         v-if="auth"
         class="badge"

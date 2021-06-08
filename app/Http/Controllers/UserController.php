@@ -182,8 +182,9 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $scores = $this->scoreboard();
+        $user_score = $this->getUserGlobalScore($id);
 
-        return view("public.users.profile", compact('user', 'scores'));
+        return view("public.users.profile", compact('user', 'scores', 'user_score'));
     }
 
     /**

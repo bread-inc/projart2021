@@ -40,4 +40,18 @@ trait ScoreboardTrait
 
         return json_encode($rankings);
     }
+
+    /**
+     * Returns the user's global score, the total of all his scores
+     * 
+     * @param int $user_id the user's id
+     * @return float the global score of the user $user_id
+     */
+    public function getUserGlobalScore($user_id) {
+        $scores = Score::groupBy('user_id')
+            ->selectRaw('sum(score) as total, user_id')
+            ->pluck('total', 'user_id');
+
+        return $scores[$user_id];
+    }
 }

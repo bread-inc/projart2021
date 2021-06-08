@@ -9,9 +9,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-6 text-center">
-            <img src="{{ $user->avatar }}" alt="{{ $user->pseudo }}" class="rounded-circle">
+            <img src="{{ $user->avatar }}" alt="{{ $user->pseudo }}" class="rounded-circle user-profile-img">
             <h2 class="m-0 mt-3">{{ $user->pseudo }}</h2>
-            <p><small>XXXX points</small></p>
+            <p><small>{{$user_score}} pts</small></p>
         </div>
     </div>
 </div>
@@ -26,27 +26,30 @@
     <section id="badges" class="page container bg-white py-3">
         <badge-list :badges="{{ $user->badges()->orderBy('created_at', 'DESC')->get() }}" :auth="{{ auth()->check() }}"></badge-list>
     </section>
-    
+
+    @foreach ($user->badges as $badge)
     <!-- Badge details, à injecter en JS au clic -->
-    <div class="badge-detail d-none" id="badge-id">
-        <a href="#"><i class="fas fa-times fa-2x fa-gradient"></i></a>
+    <div class="badge-detail" id="badge{{$badge->id}}">
+        <a href="#badges"><i class="fas fa-times fa-2x fa-gradient"></i></a>
         <div class="badge-detail-container">
-            <div class="badge" style="background-color:#6a38db">
-                <i class="fas fa-cookie-bite"></i>
+            <div class="badge" style="background-color:{{$badge->color}}">
+                <i class="fas {{$badge->pictogram}}"></i>
             </div>
             <div class="badge-description">
-                <h2>Le dévoreur</h2>
-                <h4>Tu as dévoré 20 quizzes.</h4>
+                <h2>{{$badge->label}}</h2>
+                <h4>{{$badge->description}}</h4>
             </div>
         </div>
     </div>
+    @endforeach
+    
 
     <section id="favorites" class="page container bg-white py-3">
         <div class="row">
             @foreach ($user->favorites->sortBy('quiz_id') as $favoriteQuiz)
             <div class="col-6">
-                <a href="#" class="quiz quiz-2x">
-                    <div class="quiz-thumb" style="background-image: url('{{$favoriteQuiz->quiz->questions->first()->picture}}');">
+                <a href="{{route('game.info', [$favoriteQuiz->quiz->id])}}" class="quiz quiz-2x">
+                    <div class="quiz-thumb" style="background-image: url('{{asset("storage" . $favoriteQuiz->quiz->questions->first()->picture)}}');">
                         <h5>{{$favoriteQuiz->quiz->title}}</h5>
                     </div>
                     <div class="label">

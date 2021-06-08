@@ -130,10 +130,4 @@ class QuizController extends Controller
 
         return compact('quiz');
     }
-
-    public static function getQuizImage($id) {
-        $quiz = Quiz::findOrFail($id);
-        $quizImage = $quiz->questions()->get()[rand(0, sizeof($quiz->questions()->get()) -1)]->picture;
-        return $quizImage;
-    }
 }

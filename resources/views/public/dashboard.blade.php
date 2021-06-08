@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="container">
-    <div id="vue-app">
-        <div class="row my-5">
+<div id="vue-app">
+    <section class="container my-5">
+        <div class="row">
             <div class="col-8">
                 <h1>
                     @if(auth()->check())
@@ -23,7 +23,9 @@
                 @endif
             </div>
         </div>
-        <div class="row my-5">
+    </section>
+    <section id="regions" class="container my-5">
+        <div class="row">
             <div class="col-12">
             @if(isset($region) && !empty($region))
                 <h2>à {{$region->name}} <i class="fal fa-location-arrow fa-xs"></i></h2>
@@ -35,8 +37,10 @@
                 <a href="{{route('region.index')}}" class="btn btn-border">Voir toutes les régions</a>
             </div>
         </div>
+    </section>
         @if(auth()->check())
-        <div class="row my-5">
+    <section id="last-quizzes" class="container my-5">
+        <div class="row">
             <div class="col-12">
                 <h2>Derniers quizzes réalisés</h2>
                 
@@ -45,7 +49,7 @@
                         @foreach ($user->scores()->orderBy('created_at', 'desc')->take(3)->get() as $completedQuiz)
                         <!-- element-->
                         <a href="{{route('game.info', [$completedQuiz->quiz->id])}}" class="quiz quiz-3x">
-                            <div class="quiz-thumb" style="background-image: url('{{$completedQuiz->quiz->questions->first()->picture}}');">
+                            <div class="quiz-thumb" style="background-image: url('{{asset("storage" . $completedQuiz->quiz->questions->first()->picture)}}');">
                                 <h5>{{$completedQuiz->quiz->title}}</h5>
                             </div>
                             <div class="label">
@@ -57,12 +61,13 @@
                     </div>
                 </div>
                 
-                <a href="#" class="btn btn-border">Tous mes quizzes</a>
+                <a href="user/{{$user->id}}#favorites" class="btn btn-border">Tous mes quizzes</a>
             </div>
         </div>
+    </section>
         @endif
-    
-        <div class="row my-5">
+    <section id="badges" class="container my-5">
+        <div class="row">
             <div class="col-12">
                 <h2>Derniers badges obtenus</h2>
             </div>
@@ -81,9 +86,10 @@
             </div>
         @endif
         </div>
+    </section>
     
-    
-        <div class="row my-5">
+    <section id="scoreboard" class="container bg-white py-5">    
+        <div class="row">
             <div class="col-12">
                 <h2>Classement général</h2>
                 
@@ -94,7 +100,6 @@
                 <a href="{{route('global-ranking')}}" class="btn btn-border">Voir le classement</a>
             </div>
         </div>
-    </div>
-    
-    </div>
+    </section>    
+</div>
 @endsection

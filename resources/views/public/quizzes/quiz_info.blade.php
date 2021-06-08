@@ -7,10 +7,10 @@
         <div class="row mt-5 mb-3">
             <div class="col-8">
                 <h1>{{$quiz->title}}</h1>
-                <small>Difficulté : {{$quiz->ponderation}}</small>
+                <small>Difficulté : {{$quiz->difficulty}}</small>
             </div>
             <div class="col-12 my-2">
-                <img src="{{App\Http\Controllers\QuizController::getQuizImage($quiz->id)}}" class="rounded" alt="{{$quiz->title}}">
+                <img src="{{asset("storage" . $quiz->questions->first()->picture)}}" class="rounded" alt="{{$quiz->title}}">
             </div>
             <div class="col-12">
                 <p>{{$quiz->description}}</p>
