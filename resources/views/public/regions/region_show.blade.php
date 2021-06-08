@@ -44,7 +44,11 @@
                 <div class="col-6"><!-- N'affiche que les quizzes avec question -->
 
                     <a href="{{route('game.info', [$quiz->id])}}" class="quiz quiz-2x">
-                        <div class="quiz-thumb"  style="background-image: url('{{$quiz->questions->first()["picture"])}};">
+                    @if (file_exists(public_path() .'/'.$quiz->questions->first()->picture))
+                        <div class="quiz-thumb" style="background-image: url('{{asset($quiz->questions->first()->picture)}}');">
+                    @else
+                        <div class="quiz-thumb">
+                    @endif
                             <h5>{{$quiz->title}}</h5>
                         </div>
                         <div class="label">
