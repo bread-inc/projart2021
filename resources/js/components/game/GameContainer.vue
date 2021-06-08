@@ -9,6 +9,7 @@
     <div class="debug">
       <p>Question : {{ fixQuestion.description }}</p>
       <p v-if="fixClue">Clue : {{ fixClue.description }}</p>
+      <p v-if="fixClue">Clue : {{ fixClue.radius}}</p>
     </div>
     <question-validation
       v-if="showQuestionValidation"
@@ -140,7 +141,7 @@ export default {
           // this.nextQuestion();
         }
       } else {
-        this.failedValidation++;
+        this.failedValidations++;
         this.showQuestionFailure = true;
       }
     },
