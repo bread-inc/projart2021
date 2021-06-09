@@ -1,5 +1,5 @@
 <template>
-  <div class="game container">
+  <div class="game">
     <div class="modals">
       <question-validation
         v-if="showQuestionValidation"
@@ -10,7 +10,7 @@
       </question-validation>
       <question-success
         v-if="showQuestionSuccess"
-        @close="(showQuestionSuccess = false), this.questionIndex++"
+        @close="(showQuestionSuccess = false), questionIndex++"
       >
         You validated the question {{ parseInt(distance) }} meters from the
         objective
@@ -41,16 +41,62 @@
         :clue="currentClue || 0"
         @getDistance="getDistance"
       ></game-map>
-      <div class="row mb-2">
-        <button class="btn btn-info mr-2 col" @click="this.nextClue">
-          Clue
-        </button>
-        <button class="btn btn-info mr-2 col" @click="this.skipQuestion">
-          Skip
-        </button>
+      <game-drawer>
+        <template v-slot:title>
+          <div v-if="showQuestionTab">
+            Question : {{ questionIndex + 1 }} / {{ data.questions.length }}
+          </div>
+          <div v-else>Indices</div>
+        </template>
+        <template v-slot:content>
+          <div v-if="showQuestionTab">
+            <p>{{ currentQuestion.description }}</p>
+             <v-pannellum
+              :src="'/360.jpg'"
+              style="height: 200px; width: auto;"
+              :minHfov="90"
+              :showZoom="true"
+              :autoload="false"
+              :compass="true"
+            ></v-pannellum>
+            <button class="btn btn-info mr-2 col" @click="skipQuestion">
+              Skip
+            </button>
+          </div>
+          <div v-else>
+            <p v-if="currentClue">Clue : {{ currentClue.description }}</p>
+            <button
+              v-if="clueIndex < currentQuestion.clues.length - 1"
+              class="btn btn-info mr-2 col"
+              @click="nextClue"
+            >
+              Clue
+            </button>
+          </div>
+        </template>
+      </game-drawer>
+      <div class="navigation">
+        <a
+          id="drawer-button"
+          href="#"
+          data-drawer-trigger
+          aria-controls="drawer-name"
+          aria-expanded="false"
+        >
+          <div class="d-flex flex-row">
+            <div class="p-2 flex-fill">
+              <button class="rounded-top" @click="showQuestionTab = true">
+                Question
+              </button>
+            </div>
+            <div class="p-2 flex-fill">
+              <button class="rounded-top" @click="showQuestionTab = false">
+                Indices
+              </button>
+            </div>
+          </div>
+        </a>
       </div>
-      <p>Question : {{ currentQuestion.description }}</p>
-      <p v-if="currentClue">Clue : {{ currentClue.description }}</p>
     </div>
   </div>
 </template>
@@ -61,6 +107,8 @@ import QuestionValidation from "./modals/QuestionValidation.vue";
 import QuestionSuccess from "./modals/QuestionSuccess.vue";
 import QuestionFailure from "./modals/QuestionFailure.vue";
 import QuizSuccess from "./modals/QuizSuccess.vue";
+import GameDrawer from "./drawer/GameDrawer.vue";
+import VuePannelum from "vue-pannellum";
 
 export default {
   name: "GameContainer",
@@ -70,6 +118,8 @@ export default {
     "question-success": QuestionSuccess,
     "question-failure": QuestionFailure,
     "quiz-success": QuizSuccess,
+    "game-drawer": GameDrawer,
+    "v-pannellum": VuePannelum,
   },
   props: {
     data: Object,
@@ -88,6 +138,7 @@ export default {
       showQuestionSuccess: false,
       showQuestionFailure: false,
       showQuizSuccess: false,
+      showQuestionTab: false,
     };
   },
   computed: {
@@ -118,7 +169,7 @@ export default {
   methods: {
     nextQuestion() {
       this.questionIndex++;
-      if (this.questionIndex >= this.data.questions.length - 1) this.endQuiz();
+      if (this.questionIndex > this.data.questions.length-1) this.endQuiz();
     },
 
     nextClue() {
@@ -166,3 +217,5 @@ export default {
 };
 </script>
 
+<style scoped>
+</style>
