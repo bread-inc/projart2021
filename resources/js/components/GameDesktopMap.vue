@@ -3,13 +3,10 @@
     <button class="btn btn-warning mr-2 col" @click="this.getUserPosition">
       Locate
     </button>
-    <p>{{regions[0].quizzes}}</p>
-     <button class="btn btn-warning mr-2 col" @click="peupleMap">
-      peupler la carte
-    </button>
-    <button @click="testData()">
-        Data
-    </button>
+<quiz-list>
+
+</quiz-list>
+
   </div>
   <div id="game-map">
     <l-map
@@ -33,7 +30,20 @@
           userLocation.lng || 0,
         ]"
       >
-        <l-popup> You are here </l-popup>
+
+        <l-popup @ready="pops"> You are here </l-popup>
+      </l-marker>
+        <l-marker v-for="region in regions"
+      :lat-lng="[
+        region.center_x || 0,
+        region.center_y|| 0,
+      ]">
+        <l-popup
+        @ready="popUpObject">
+
+            <quiz-list
+:quizzes='region.quizzes'></quiz-list>
+        </l-popup>
       </l-marker>
 
       <l-marker
@@ -57,8 +67,10 @@ import {
   LCircleMarker,
   LCircle,
 } from "@vue-leaflet/vue-leaflet";
+import QuizItem from "./quizzes/QuizItem.vue"
+import QuizList from "./quizzes/QuizList.vue"
 export default {
-  components: { LMap, LTileLayer, LMarker, LPopup, LCircleMarker, LCircle },
+  components: { LMap, LTileLayer, LMarker, LPopup, LCircleMarker, LCircle, "quiz-item" :QuizItem, "quiz-list" :QuizList},
   props: {
    regions: Object,
   },
@@ -73,6 +85,7 @@ export default {
   init() {
     this.mapleaf = null;
     this.circleLeaflet = null;
+    this.popupLeaflet = null;
 
   },
   async beforeMount() {
@@ -96,22 +109,42 @@ export default {
 
         this.circleLeaflet = circleObject;
     },
+    popUpObject(popupObject)
+    {
+
+        console.log(popupObject.getLatLng());
+
+    },
 
     //peuplage de la map avec tout les regions
    async peupleMap(){
             const { marker } = await import("leaflet/dist/leaflet-src.esm");
             const { popup} = await import("leaflet/dist/leaflet-src.esm");
+            const objectLenght = Object.keys(this.regions).length;
             var pop = popup;
-            this.regions.forEach(element => {
+            var tabPopup =[];
 
-            var markert = marker([element.center_x,element.center_y],{title:element.name});
+           for (let index = 0; index < objectLenght-1; index++) {
+               // console.log(this.regions[index]);
+                 var markert = marker([this.regions[index].center_x,this.regions[index].center_y],{title:this.regions[index].name});
+                  markert.addTo(this.mapleaf);
+                  //markert.bindPopup(this.regions[index].name)
 
-            markert.addTo(this.mapleaf);
-            markert.bindPopup('');
+                for (let index2 = 0; index2< this.regions[index].quizzes.length; index2++) {
+                  let title = this.regions[index].quizzes[index2].title;
+                  let description = this.regions[index].quizzes[index2].description;
+                tabPopup[index2] = this.regions[index].quizzes[index2];
 
-       });
 
-       console.log(regions);
+                }
+                console.log(tabPopup);
+              tabPopup.forEach(quiz => {
+                  console.log(quiz.id);
+                    markert.bindPopup("<quiz-item:quiz="+quiz+"></quiz-item>")
+              })
+
+           }
+
     },
     async getUserPosition() {
       // check if API is supported
@@ -144,7 +177,7 @@ export default {
                     var point = [southWest.lat + latSpan * Math.random(),southWest.lng + lngSpan * Math.random()];
                     pointsRand.push(point);
             }
-            console.log(pointsRand);
+            //console.log(pointsRand);
             for (var i = 0; i< nbrQuiz;i++)
             {
                    var marker = L.marker(pointsRand[i],{title:NomQuiz+ i});
@@ -152,10 +185,6 @@ export default {
             }
 
         },
-
-
-
-
 
     getDistance() {
       let distance = this.mapleaf.distance(this.userLocation, [
@@ -174,5 +203,9 @@ export default {
 </script>
 
 <style>
+#game-map{
+
+ height:600px;
+}
 
 </style>

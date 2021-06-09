@@ -9,16 +9,17 @@
                 <div class="row">
                     @if(auth()->check())
                         <div class="col-12"><h3>Bienvenue</h3></div>
-                        <div class="col-12"><h1>{{$user->pseudo}}</h1></div>
+                        <div class="col-12"><h1>{{auth()->user()->pseudo}}</h1></div>
                     @else
-                        <div class="col-12"><h1>SwissGuesser</h1></div>
+                    <div class="col-12"><h3>Bienvenue sur</h3></div>
+                    <div class="col-12"><h1>SwissGuesser</h1></div>
                     @endif
                 </div>
             </div>
             <div class="col-4">
                 @if(auth()->check())
-                    <a href="user/{{$user->id}}" class="profile-picture">
-                        <img class="rounded-circle" src="{{$user->avatar}}" title="Profil" alt="Profil">
+                    <a href="user/{{auth()->id()}}" class="profile-picture">
+                        <img class="rounded-circle" src="{{auth()->user()->avatar}}" title="Profil" alt="Profil">
                         <span>Profil</span>
                     </a>
                 @endif
@@ -27,10 +28,15 @@
     </section>
     <section id="desktop-welcome" class="container box d-none d-md-block p-md-3 my-md-0">
         <div class="row">
-            @if(auth())
+            @if(auth()->user())
             <div class="col-8"><h2><b>Préparez votre prochaine aventure</b></h2></div>
-            <div class="col-4"></div>
+            <div class="col-4"><img src="#"></div>
             @else
+            <div class="col-8"><h2><b>Connectez-vous pour préparer votre prochaine aventure</b></h2></div>
+            <div class="col-4">
+                <a href="{{route('login')}}" class="btn btn-gradient">Se connecter</a>
+                <a href="{{route('login')}}" class="btn btn-border">Créer un compte</a>
+            </div>
             @endif
         </div>
     </section>
@@ -116,11 +122,13 @@
                 <badge-list :badges="{{ $user->badges()->orderBy('created_at', 'DESC')->take(3)->get() }}" :auth="{{ auth()->check() }}"></badge-list>
             </div>
     
-        
             <div class="col-12">
                 <a href="user/{{$user->id}}#badges" class="btn btn-border">Tous mes badges</a>
             </div>
         @else
+            <div class="col-12 badges-disabled">
+                <badge-list :badges="{{ App\Models\Badge::all()->take(6) }}" :auth="{{ auth()->check() }}"></badge-list>
+            </div>
             <div class="col-12">
                 <a href="{{route('login')}}" class="btn btn-border">Se connecter</a>
             </div>

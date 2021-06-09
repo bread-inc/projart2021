@@ -49,7 +49,7 @@ a:hover, a:active, a:focus {
 }
 
 .btn-border {
-    background-color: transparent;
+    background-color: white;
     border: 1px solid var(--red-primary);
     color: var(--dark-primary);
 }

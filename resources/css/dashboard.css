@@ -1,4 +1,15 @@
-/* Test */
+.badges-disabled {
+    filter: blur(6px);
+}
+
+.badges-disabled+div {
+    position: relative;
+    top: -60%;
+    z-index: 100;
+}
+
+
+
 @media screen and (min-width: 768px) {
     body {
         display: grid;
@@ -18,6 +29,10 @@
         grid-column-end: -2;
         grid-row-start: 2;
         grid-row-end: 3;
+    }
+
+    main.grid-centered {
+        grid-column-end: 4;
     }
 
     .grid {
