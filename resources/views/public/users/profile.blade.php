@@ -23,7 +23,7 @@
 </nav>
 
 <div id="vue-app">
-    <section id="badges" class="page container bg-white py-3">
+    <section id="badges" class="page container bg-white py-4">
         <badge-list :badges="{{ $user->badges()->orderBy('created_at', 'DESC')->get() }}" :auth="{{ auth()->check() }}"></badge-list>
     </section>
 
@@ -44,7 +44,7 @@
     @endforeach
     
 
-    <section id="favorites" class="page container bg-white py-3">
+    <section id="favorites" class="page container bg-white py-4">
         <div class="row">
             @foreach ($user->favorites->sortBy('quiz_id') as $favoriteQuiz)
             <div class="col-6">
@@ -61,7 +61,7 @@
         </div>
     </section>
 
-    <section id="scores" class="page container bg-white py-3">
+    <section id="scores" class="page container bg-white py-4">
         <!-- Ajouter la class "my-score" à la <tr> de l'utilisateur -->
         <score-list :scores="{{ $scores }}"></score-list>
     </section>

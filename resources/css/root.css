@@ -27,3 +27,15 @@
     --sm-fs : 14px;
     --xs-fs : 12px;
 }
+
+@media screen and (min-width: 768px) {
+    :root {
+        /* Font-sizes */
+        --h1-fs : 50px;
+        --h2-fs : 28px;
+        --h3-fs : 20px;
+        --p-fs : 18px;
+        --sm-fs : 16px;
+        --xs-fs : 13px;
+    }
+}

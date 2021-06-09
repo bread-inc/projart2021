@@ -4,36 +4,55 @@
 
 @include('public.components.menu')
 
-<div class="container">
-    <div id="vue-app">
-        <div class="row my-3">
-            <div class="col-8">
-                <h1>{{$region->name}}</h1>
+<div class="container h-100">
+    <div id="vue-app" class="grid mb-3">
+        <section id="region-name">
+            <div class="row my-3">
+                <div class="col-8">
+                    <h1>{{$region->name}}</h1>
+                </div>
+                @if(auth()->check())
+                <div class="col-4">
+                    <a href="{{route('profile.show', [auth()->id()])}}" class="profile-picture">
+                        <img class="rounded-circle" src="{{auth()->user()->avatar}}" title="Profil" alt="Profil">
+                        <span>Profil</span>
+                    </a>
+                </div>
+                @endif
             </div>
-        </div>
+        </section>
 
-        <div class="row my-3">
-            <div class="col-12">
-                <h2>Les plus populaires</h2>
+        <section id="region-most-played" class="box">
+            <div class="row my-3">
+                <div class="col-12">
+                    <h2>Les plus populaires</h2>
+                </div>
             </div>
-        </div>
-        <quiz-list :quizzes="{{ $region->quizzes }}"></quiz-list>
+            <quiz-list :quizzes="{{ $region->quizzes }}"></quiz-list>
+        </section>
 
-        <div class="row my-3">
-            <div class="col-12">
-                <h2>Récemment ajoutés</h2>
+        <section id="region-recently-added" class="box">
+            <div class="row my-3">
+                <div class="col-12">
+                    <h2>Récemment ajoutés</h2>
+                </div>
             </div>
-        </div>
-        <quiz-list :quizzes="{{ $region->quizzes }}"></quiz-list>
+            <quiz-list :quizzes="{{ $region->quizzes }}"></quiz-list>
 
-        <div class="row my-3">
-            <div class="col-12">
-                <h2>Classement régional</h2>
+        </section>
+
+        <section id="region-scoreboard" class="box">
+            <div class="row my-3">
+                <div class="col-12">
+                    <h2>Classement régional</h2>
+                </div>
             </div>
-        </div>
 
-        <a href="{{route('region.scores', [$region->id])}}" class="btn btn-gradient">Afficher le classement</a>
+            <a href="{{route('region.scores', [$region->id])}}" class="btn btn-gradient">Afficher le classement</a>
 
+        </section>
+    </div>
+    <section id="region-all-quizzes mt-3" class="box">
         <div class="row my-3">
             <div class="col-12">
                 <h2>Tous les quizzes</h2>
@@ -59,6 +78,7 @@
                 @endif
             @endforeach
         </div>
-    </div>
+    </section>
+
 </div>
 @endsection

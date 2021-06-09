@@ -17,10 +17,12 @@ const mix = require('laravel-mix');
     'resources/css/general.css',
     'resources/css/components.css',
     'resources/css/dashboard.css',
+    'resources/css/menu.css',
     'resources/css/login.css',
     'resources/css/navbar.css',
     'resources/css/regions.css',
     'resources/css/user-profile.css',
+    'resources/css/scoreboard.css',
 ], 'public/css/all.css');
 
 mix.js('resources/js/app.js', 'public/js')

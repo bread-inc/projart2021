@@ -1,5 +1,5 @@
 <template>
-<div class="col-6 region-container my-2">
+<div class="col-6 col-md-4 region-container my-2">
     <a :href="'region/' + region.id">
         <div class="region" :style="'background-image:url(storage' +region.image + ');'">
             <div class="card-text">

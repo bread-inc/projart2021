@@ -22,11 +22,9 @@
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">
 </head>
 <body class="gradient-background">
-    <div id="app">
-        <main>
-            @yield('content')
-        </main>
-    </div>
+    <main>
+        @yield('content')
+    </main>
 
     <script src="{{ asset('js/app.js') }}" defer></script>
 </body>

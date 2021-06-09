@@ -2,17 +2,18 @@
 
 @section('content')
 
-<div id="vue-app">
-    <section class="container my-5">
+<div id="vue-app" class="grid">
+    <section class="container p-md-0 my-5 my-md-0" id="welcome">
         <div class="row">
             <div class="col-8">
-                <h1>
+                <div class="row">
                     @if(auth()->check())
-                        <b>Bienvenue</b> {{$user->pseudo}}
+                        <div class="col-12"><h3>Bienvenue</h3></div>
+                        <div class="col-12"><h1>{{$user->pseudo}}</h1></div>
                     @else
-                        <b>SwissGuesser</b>
+                        <div class="col-12"><h1>SwissGuesser</h1></div>
                     @endif
-                </h1>
+                </div>
             </div>
             <div class="col-4">
                 @if(auth()->check())
@@ -24,7 +25,16 @@
             </div>
         </div>
     </section>
-    <section id="regions" class="container my-5">
+    <section id="desktop-welcome" class="container box d-none d-md-block p-md-3 my-md-0">
+        <div class="row">
+            @if(auth())
+            <div class="col-8"><h2><b>Préparez votre prochaine aventure</b></h2></div>
+            <div class="col-4"></div>
+            @else
+            @endif
+        </div>
+    </section>
+    <section id="regions" class="container box p-md-3 my-5 my-md-0">
         <div class="row">
             <div class="col-12">
             @if(isset($region) && !empty($region))
@@ -58,12 +68,14 @@
                 <h2>Impossible de détecter la position</h2>
                 Afficher des quizzes aléatoires ?
             @endif
+            </div>
+            <div class="col-12">
                 <a href="{{route('region.index')}}" class="btn btn-border">Voir toutes les régions</a>
             </div>
         </div>
     </section>
-        @if(auth()->check())
-    <section id="last-quizzes" class="container my-5">
+    @if(auth()->check())
+    <section id="last-quizzes" class="container box p-md-3 my-5 my-md-0">
         <div class="row">
             <div class="col-12">
                 <h2>Derniers quizzes réalisés</h2>
@@ -94,7 +106,7 @@
         </div>
     </section>
         @endif
-    <section id="badges" class="container my-5">
+    <section id="badges" class="container box p-md-3 my-5 my-md-0">
         <div class="row">
             <div class="col-12">
                 <h2>Derniers badges obtenus</h2>
@@ -116,7 +128,7 @@
         </div>
     </section>
     
-    <section id="scoreboard" class="container bg-white py-5">    
+    <section id="scoreboard" class="container box p-md-3 bg-white py-5">    
         <div class="row">
             <div class="col-12">
                 <h2>Classement général</h2>

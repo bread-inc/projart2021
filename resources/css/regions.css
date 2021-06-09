@@ -32,6 +32,64 @@
 }
 
 /* Region views */
-#regional-scores {
 
+@media screen and (min-width: 768px) {
+    #regions-index-title {
+        grid-column-start: 1;
+        grid-column-end: -1;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+    #regions-index {
+        grid-column-start: 1;
+        grid-column-end: -1;
+        grid-row-start: 2;
+        grid-row-end: -1;
+    }
+
+    #region-name {
+        grid-column-start: 1;
+        grid-column-end: -1;
+        grid-row-start: 1;
+        grid-row-end: -1;
+    }
+
+    #region-most-played {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: 3;
+        z-index: 100;
+    }
+
+    #region-recently-added {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 4;
+        grid-row-end: -1;
+    }
+
+    #region-scoreboard {
+        grid-column-start: 5;
+        grid-column-end: -1;
+        grid-row-start: 2;
+        grid-row-end: -1;
+    }
+
+    #region-all-quizzes {
+
+    }
+
+    #regional-scores-title {
+        grid-column-start: 1;
+        grid-column-end: -1;
+        grid-row-start: 1;
+    }
+
+    #regional-scores {
+        grid-column-start: 1;
+        grid-column-end: -1;
+        grid-row-start: 2;
+        grid-row-end: -1;
+    }
 }
