@@ -45,12 +45,20 @@
             <div class="col-12">
             @if(isset($region) && !empty($region))
                 <h2>à {{$region->name}} <i class="fal fa-location-arrow fa-xs"></i></h2>
+
                 <?php 
-                /* En attendant de corriger la vue
-                <quiz-list class="mb-2" :quizzes="{{ $region->quizzes }}"></quiz-list>*/ 
+                $quizzesRegion = [];
+                foreach ($region->quizzes as $quiz) {
+                    if (file_exists(public_path() .'/'.$quiz->questions->first()->picture)) {
+                        $quiz["picture"] = $quiz->questions->first()->picture;
+                    }
+                    array_push($quizzesRegion, $quiz);
+                }
                 ?>
 
-                <div class="horizontal-slider-container">
+                <quiz-list id="2" class="mb-2" :quizzes="{{ json_encode($quizzesRegion) }}"></quiz-list>
+
+                {{-- <div class="horizontal-slider-container">
                     <div class="horizontal-slider">
                         @foreach ($region->quizzes as $quiz)
                         <!-- element-->
@@ -69,7 +77,7 @@
                         <!-- .element -->
                         @endforeach
                     </div>
-                </div>
+                </div> --}}
             @else
                 <h2>Impossible de détecter la position</h2>
                 Afficher des quizzes aléatoires ?
@@ -85,9 +93,24 @@
         <div class="row">
             <div class="col-12">
                 <h2>Derniers quizzes réalisés</h2>
+
+                <?php 
+                    $quizzesRecent = [];
+                    foreach ($user->scores()->orderBy('created_at', 'desc')->take(3)->get() as $completedQuiz) {
+                        $quiz = $completedQuiz->quiz;
+                        if (file_exists(public_path() .'/'.$quiz->questions->first()->picture)) {
+                            $quiz["picture"] = $quiz->questions->first()->picture;
+                        }
+                        $quiz["score"] = $completedQuiz;
+                        array_push($quizzesRecent, $quiz);
+                     }
+                ?>
+
+                <quiz-list id="1" class="mb-2" :quizzes="{{ json_encode($quizzesRecent) }}"></quiz-list>
                 
-                <div class="horizontal-slider-container">
+                {{-- <div class="horizontal-slider-container">
                     <div class="horizontal-slider">
+
                         @foreach ($user->scores()->orderBy('created_at', 'desc')->take(3)->get() as $completedQuiz)
                         <!-- element-->
                         <a href="{{route('game.info', [$completedQuiz->quiz->id])}}" class="quiz quiz-3x">
@@ -105,7 +128,7 @@
                         <!-- .element -->
                         @endforeach
                     </div>
-                </div>
+                </div> --}}
                 
                 <a href="user/{{$user->id}}#favorites" class="btn btn-border">Tous mes quizzes</a>
             </div>

@@ -1,12 +1,4 @@
 <template>
-  <div class="row mb-2">
-    <button class="btn btn-warning mr-2 col" @click="this.getUserPosition">
-      Locate
-    </button>
-    <button class="btn btn-success mr-2 col" @click="this.getDistance">
-      Validate
-    </button>
-  </div>
   <div id="game-map">
     <l-map
       ref="map"
@@ -18,6 +10,14 @@
       ]"
       @update:center="centerUpdated"
     >
+    <div class="buttons-container">
+      <button class="button" @click="getUserPosition">
+      Locate
+    </button>
+    <button class="button" @click="getDistance">
+      Validate
+    </button>
+    </div>
       <l-tile-layer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         layer-type="base"
@@ -215,3 +215,23 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.buttons-container {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  padding: 10px;
+  z-index: 99999;
+}
+
+.buttons-container > button {
+  background-color: white;
+  border: grey;
+  color: black;
+  padding: 10px;
+  text-align: center;
+  display: block;
+  border-radius: 100%;
+}
+</style>

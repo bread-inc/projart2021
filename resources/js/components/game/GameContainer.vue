@@ -169,7 +169,7 @@ export default {
   methods: {
     nextQuestion() {
       this.questionIndex++;
-      if (this.questionIndex > this.data.questions.length-1) this.endQuiz();
+      if (this.questionIndex >= this.data.questions.length-1) this.endQuiz();
     },
 
     nextClue() {
@@ -216,6 +216,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-</style>
