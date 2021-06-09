@@ -14,7 +14,7 @@
         </ul>
     </div>
 
-    @if (auth())
+    @if (auth()->user())
     <div class="menu-group">
         <h3>Mon compte</h3>
         <ul>

@@ -22,7 +22,7 @@
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">
 </head>
 <body class="gradient-background">
-    <main>
+    <main class="grid-centered">
         @yield('content')
     </main>
 
