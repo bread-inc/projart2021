@@ -10,7 +10,7 @@
 <div class="form-group">
     <label for="desc">Description</label><br>
     <textarea id="desc" class="form-control" disabled>{{$quiz->description}}</textarea>
-</div> 
+</div>
 
 <div class="form-group">
     <label for="region">Région</label><br>
@@ -44,15 +44,15 @@
             <td>{{$question->id}}</td>
             <td>{{$question->description}}</td>
             <td>
-                
-                <a href="{{route('question.show',[$quiz->id,$question->id])}}" class="btn btn-primary">Afficher</a> 
+
+                <a href="{{route('question.show',[$quiz->id,$question->id])}}" class="btn btn-primary">Afficher</a>
                 <a href="{{route('question.edit', [$quiz->id, $question->id])}}" class="btn btn-warning">Modifier</a>
                 <form class="d-inline" method="POST" action="{{route('question.destroy', [$quiz->id, $question->id])}}" accept-charset="UTF-8">
                     @csrf
                     @method('DELETE')
-                    <input class="btn btn-danger" 
-                        onclick="return confirm('Supprimer ce question supprimera aussi les {{sizeof($question->clues)}} indices liés à cette question. Voulez-vous tout de même procéder ?')" 
-                        type="submit" 
+                    <input class="btn btn-danger"
+                        onclick="return confirm('Supprimer ce question supprimera aussi les {{sizeof($question->clues)}} indices liés à cette question. Voulez-vous tout de même procéder ?')"
+                        type="submit"
                         value="Supprimer"
                     >
                 </form>
@@ -87,5 +87,7 @@
 @endforeach
     </tbody>
 </table>
+
+
 
 @endsection

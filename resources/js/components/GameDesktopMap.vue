@@ -30,20 +30,22 @@
           userLocation.lng || 0,
         ]"
       >
+        <l-popup @ready="storePopup"> You are here </l-popup>
 
-        <l-popup @ready="pops"> You are here </l-popup>
       </l-marker>
         <l-marker v-for="region in regions"
       :lat-lng="[
         region.center_x || 0,
         region.center_y|| 0,
       ]">
+      <l-icon icon-url="\storage\app\public\images\logoleaflet\zone.png"/>
         <l-popup
         @ready="popUpObject">
 
-            <quiz-list
+         <quiz-list
 :quizzes='region.quizzes'></quiz-list>
         </l-popup>
+
       </l-marker>
 
       <l-marker
@@ -60,6 +62,7 @@
 </template>
 <script>
 import {
+LIcon,
   LMap,
   LTileLayer,
   LMarker,
@@ -70,7 +73,7 @@ import {
 import QuizItem from "./quizzes/QuizItem.vue"
 import QuizList from "./quizzes/QuizList.vue"
 export default {
-  components: { LMap, LTileLayer, LMarker, LPopup, LCircleMarker, LCircle, "quiz-item" :QuizItem, "quiz-list" :QuizList},
+  components: { LMap, LTileLayer, LMarker, LPopup, LCircleMarker, LCircle, LIcon, "quiz-item" :QuizItem, "quiz-list" :QuizList},
   props: {
    regions: Object,
   },
@@ -82,10 +85,14 @@ export default {
     };
   },
 
+
+
   init() {
     this.mapleaf = null;
     this.circleLeaflet = null;
     this.popupLeaflet = null;
+    this.elem = null;
+
 
   },
   async beforeMount() {
@@ -104,17 +111,22 @@ export default {
     storemap(mapObject) {
       this.mapleaf = mapObject;
     },
+
+
     storeCircle(circleObject)
     {
 
         this.circleLeaflet = circleObject;
+
     },
     popUpObject(popupObject)
     {
 
-        console.log(popupObject.getLatLng());
+       this.popupLeaflet=popupObject;
+    console.log(this.popupLeaflet.isOpen());
 
     },
+
 
     //peuplage de la map avec tout les regions
    async peupleMap(){
@@ -193,6 +205,8 @@ export default {
       ]);
       this.$emit("getDistance", distance);
     },
+
+
 
     centerUpdated(center) {
       this.center = center;
