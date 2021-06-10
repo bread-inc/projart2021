@@ -17,13 +17,6 @@
         grid-template-rows: 15px auto 15px;
     }
 
-    #desktop-menu {
-        grid-column-start: 2;
-        grid-column-end: 2;
-        grid-row-start: 2;
-        grid-row-end: -2;
-    }
-
     main {
         grid-column-start: 4;
         grid-column-end: -2;
