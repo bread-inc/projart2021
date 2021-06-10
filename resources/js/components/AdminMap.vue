@@ -1,15 +1,5 @@
 <template>
-  <div class="row mb-2">
 
-<br><label for="coord_x">Coordonnée X</label>
-
-        <input class="form-control" name="coord_x" type="text" value=questionposition>
-        <small class="help-block">:message</small>') !!}
-
-        <br><label for="coord_y">Coordonnée Y</label>
-        <input class="form-control" name="coord_y" type="text" value="this.questionposition[1]">
-        <small class="help-block">:message</small>') !!}
-  </div>
   <div id="game-map">
     <l-map
       ref="map"
@@ -58,7 +48,6 @@ export default {
   components: { LMap, LTooltip, LTileLayer, LMarker, LPopup, LCircleMarker, LCircle, "quiz-item" :QuizItem, "quiz-list" :QuizList},
   props: {
    regions: Object,
-   questionposition : this.questionPosition,
   },
   data() {
     return {
@@ -114,6 +103,11 @@ export default {
 
         this.questionPosition[0] = latidueLong.lat;
         this.questionPosition[1] = latidueLong.lng;
+
+        var inputX = document.getElementById('x').value;
+    var inputY = document.getElementById('y').value;
+
+
     },
 
     //peuplage de la map avec tout les regions
