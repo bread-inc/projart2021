@@ -11,6 +11,7 @@ import ExampleComponent from './components/ExampleComponent.vue';
 import 'leaflet/dist/leaflet.css';
 import testMap from './components/mapLeaflet.vue';
 import GameDesktopMap from './components/GameDesktopMap.vue';
+import AdminMap from './components/AdminMap.vue';
 import { createApp } from 'vue';
 
 const app = createApp({
@@ -24,5 +25,6 @@ const app = createApp({
         "comp":ExampleComponent,
         "testleaf": testMap,
         "game-desktop-map":GameDesktopMap,
+        "admin-map":AdminMap,
     }
 }).mount('#vue-app')

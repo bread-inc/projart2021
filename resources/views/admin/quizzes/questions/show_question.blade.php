@@ -1,6 +1,8 @@
 @extends('.admin.template')
 @section('content')
 
+
+
 <a href="{{ url()->previous() }}" class="btn btn-secondary" >Retour</a>
 <a class="btn btn-warning" href="{{route('question.edit', [$question->quiz_id, $question->id])}}">Modifier</a>
 
@@ -17,7 +19,6 @@
 </div>
 
 <div class="form-group">
-    <div id="map">### CARTE ###</div>
 
     <br><label for="coord_x">Coordonnée X</label>
     <input class="form-control" name="coord_x" type="text" value="{{$question->coord_x}}" disabled>
