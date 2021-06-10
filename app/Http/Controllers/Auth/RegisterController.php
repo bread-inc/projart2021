@@ -68,6 +68,7 @@ class RegisterController extends Controller
             'pseudo' => $data['pseudo'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'avatar' => "http://gravatar.com/avatar/" . md5(strtolower(trim($data['email']))) . "?size=64&d=identicon",
         ]);
     }
 }

@@ -19,6 +19,20 @@
         <div class="row my-5">
             <div class="col-12 mx-auto">
                 <div class="form-group row">
+                    <h3 for="pseudo" class="col-12">Pseudonyme</h3>
+
+                    <div class="col-12">
+                        <input id="pseudo" type="pseudo" class="form-control @error('pseudo') is-invalid @enderror" name="pseudo" value="{{ old('pseudo') }}" required autocomplete="pseudo" autofocus>
+
+                        @error('pseudo')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row">
                     <h3 for="email" class="col-12">E-mail</h3>
 
                     <div class="col-12">

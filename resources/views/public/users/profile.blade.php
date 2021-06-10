@@ -29,7 +29,7 @@
 
     @foreach ($user->badges as $badge)
     <!-- Badge details, à injecter en JS au clic -->
-    <div class="badge-detail" id="badge{{$badge->id}}">
+    <div class="badge-detail d-none" id="badge{{$badge->id}}">
         <a href="#badges"><i class="fas fa-times fa-2x fa-gradient"></i></a>
         <div class="badge-detail-container">
             <div class="badge" style="background-color:{{$badge->color}}">
