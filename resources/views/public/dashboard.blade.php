@@ -101,7 +101,7 @@
                 <h2>Derniers quizzes réalisés</h2>
 
                 <?php 
-                    $quizzesRecent = [];
+                    /*** $quizzesRecent = [];
                     foreach ($user->scores()->orderBy('created_at', 'desc')->take(3)->get() as $completedQuiz) {
                         $quiz = $completedQuiz->quiz;
                         if (file_exists(public_path() .'/'.$quiz->questions->first()->picture)) {
@@ -109,12 +109,12 @@
                         }
                         $quiz["score"] = $completedQuiz;
                         array_push($quizzesRecent, $quiz);
-                     }
+                     } */
                 ?>
 
-                <quiz-list id="1" class="mb-2" :quizzes="{{ json_encode($quizzesRecent) }}"></quiz-list>
+                {{-- <quiz-list id="1" class="mb-2" :quizzes="{{ json_encode($quizzesRecent) }}"></quiz-list> --}}
                 
-                {{-- <div class="horizontal-slider-container">
+                <div class="horizontal-slider-container">
                     <div class="horizontal-slider">
 
                         @foreach ($user->scores()->orderBy('created_at', 'desc')->take(3)->get() as $completedQuiz)
@@ -134,7 +134,7 @@
                         <!-- .element -->
                         @endforeach
                     </div>
-                </div> --}}
+                </div>
                 
                 <a href="user/{{$user->id}}#favorites" class="btn btn-border">Tous mes quizzes</a>
             </div>
