@@ -22,7 +22,7 @@ class UserController extends Controller
     }
 
     private function generateAvatar($email) {
-        return "http://gravatar.com/avatar/" . md5(strtolower(trim($email))) . "?size=64&d=identicon";
+        return "http://gravatar.com/avatar/" . md5(strtolower(trim($email))) . "?size=256&d=robohash";
     }
 
     /**

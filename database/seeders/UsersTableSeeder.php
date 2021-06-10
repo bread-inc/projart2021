@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
             'pseudo' => 'admin',
             'email' => 'admin@gmx.ch',
             'password' => Hash::make('admin'),
-            'avatar' => "http://gravatar.com/avatar/" . md5(strtolower(trim('admin@gmx.ch'))) . "?size=64&d=identicon",
+            'avatar' => "http://gravatar.com/avatar/" . md5(strtolower(trim('admin@gmx.ch'))) . "?size=256&d=robohash",
             'isAdmin' => 1]
         );
 
@@ -31,7 +31,7 @@ class UsersTableSeeder extends Seeder
                 'pseudo' => 'user' . $i,
                 'email' => 'user' . $i . '@gmx.ch',
                 'password' => Hash::make('user' . $i),
-                'avatar' => "http://gravatar.com/avatar/" . md5(strtolower(trim('user' . $i . '@gmx.ch'))) . "?size=64&d=identicon",
+                'avatar' => "http://gravatar.com/avatar/" . md5(strtolower(trim('user' . $i . '@gmx.ch'))) . "?size=256&d=robohash",
                 'isAdmin' => 0 ]
             );
         }

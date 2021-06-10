@@ -1,6 +1,6 @@
 <nav id="desktop-menu">
     <div class="menu-logo">
-        <img src="{{asset('storage/images/logo/logo.png')}}" alt="SwissGuesser">
+        <img src="{{asset('storage/images/logo/logo-white.svg')}}" alt="SwissGuesser">
     </div>
 
     <a href="{{route('home')}}" class="btn btn-light btn-square">Tableau de bord</a>

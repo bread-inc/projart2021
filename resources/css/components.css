@@ -265,6 +265,7 @@ input[type=text], input[type=password], input[type=email] {
 }
 
 .score-table img {
+    background-color: var(--light-primary);
     max-width: 50px;
 }
 
