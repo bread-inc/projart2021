@@ -9,7 +9,6 @@ use App\Models\Badge;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Traits\ScoreboardTrait;
-use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {

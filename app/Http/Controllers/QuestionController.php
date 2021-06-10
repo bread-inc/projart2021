@@ -45,7 +45,7 @@ class QuestionController extends Controller
             "coord_x" => $request->coord_x,
             "coord_y" => $request->coord_y,
             "radius" => $request->radius,
-            "picture" => "storage/images/questions" . $name,
+            "picture" => "storage/images/questions/" . $name,
             "quiz_id" => $request->quiz_id
         ];
         

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Score;
 use App\Models\User;
 use App\Models\Badge;
 use App\Models\Region;
@@ -51,14 +49,5 @@ class HomeController extends Controller
             $badges = Badge::all();
             return view('public.dashboard', compact('region', 'badges', 'scores'));
         }
-    }
-
-    /**
-     * Shows the admin Dashboard
-     */
-    public function adminDashboard() {
-        // Could be replaced by just a route, if no further info needed
-
-        return view("admin.dashboard");
     }
 }

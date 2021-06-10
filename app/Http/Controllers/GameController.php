@@ -6,10 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Region;
 use App\Models\Badge;
 use App\Models\Quiz;
-use App\Models\Question;
 use App\Models\User;
-use DateTime;
-use Illuminate\Support\Facades\DB;
 
 class GameController extends Controller
 {

@@ -22,23 +22,11 @@ use App\Http\Controllers\ScoreController;
 |
 */
 
-// ##### Test routes #####
-Route::get('adminOnly', function () {
-    return view('admin_page');
-})->middleware("admin")->name('test.admin');
-
-Route::get('userOnly', function () {
-    return "User only";
-})->middleware("auth")->name('test.user');
-
 // ##### Auth routes #####
 Auth::routes();
 
-
 // ##### Public routes #####
 Route::get('/', [HomeController::class, 'landingPage']);
-
-
 Route::get('globalRanking', [ScoreController::class, 'index'])->name('global-ranking');
 Route::get('home', [HomeController::class, 'home'])->name('home');
 Route::get('scoreboard', [HomeController::class, 'scoreboard'])->name('scoreboard');
@@ -59,14 +47,6 @@ Route::prefix('region')->group(function () {
     Route::get('/{id}/scores', [RegionController::class, "scores"])->name('region.scores');
 });
 
-// ##### Badge routes #####
-/*
-Route::prefix('badge')->group(function () {
-    Route::get('/', [BadgeController::class, "index"]);
-    Route::get('/{id}', [BadgeController::class, "show"]);
-    Route::get('/{id}/users', [BadgeController::class, "users"]);
-});
-*/
 // ##### Game controller route #####
 Route::prefix('quiz')->group(function () {
     Route::get('/{id}/info', [GameController::class, "displayQuiz"])->name('game.info'); // Attention aux noms des méthodes et des routes !!
@@ -82,7 +62,7 @@ Route::resource('quiz', QuizController::class)->only(['index', 'show']);
 
 // ##### Admin routes #####
 Route::prefix('admin')->middleware('admin')->group(function () {
-    Route::get('/', [HomeController::class, "adminDashboard"])->name('admin.dashboard');
+    Route::get('/', function () {return redirect(route('quiz.index'));})->name('admin.dashboard');
 
     Route::get('user/{user_id}/addBadges', [UserController::class, "addBadges"])->name("user.addBadges");
     Route::post('user/{user_id}/addBadges', [UserController::class, "storeBadges"])->name("user.storeBadges");

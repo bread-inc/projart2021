@@ -20,6 +20,7 @@
 
 
     <!-- Styles -->
+    <link rel="icon" type="image/png" href="{{ asset('storage/images/logo/favicon-admin.png') }}" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -35,7 +36,10 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a href="{{route('quiz.index')}}" class="nav-link">Quizzes</a></li>
+                        <li class="nav-item"><a href="{{route('badge.index')}}" class="nav-link">Badges</a></li>
+                        <li class="nav-item"><a href="{{route('user.index')}}" class="nav-link">Utilisateurs</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -56,7 +60,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    {{ auth()->user()->pseudo }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

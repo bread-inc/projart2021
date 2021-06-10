@@ -1,6 +1,4 @@
 @extends('.admin.template')
-<h1>Index static page</h1>
-
 @section('content')
 
 <h1>Tous les badges</h1>
@@ -34,8 +32,8 @@
         <td>{{$badge->criterium}}</td>
 
         <td>
-            <a class="btn btn-primary" href="{{route('badge.show', [$badge->id])}}">Show</a>
-            <a class="btn btn-warning" href="{{route('badge.edit', [$badge->id])}}">Edit</a>
+            <a class="btn btn-primary" href="{{route('badge.show', [$badge->id])}}">Afficher</a>
+            <a class="btn btn-warning" href="{{route('badge.edit', [$badge->id])}}">Modifier</a>
             <form class="d-inline" method="POST" action="{{route('badge.destroy', [$badge->id])}}" accept-charset="UTF-8">
                 @csrf
                 @method('DELETE')

@@ -25,8 +25,8 @@
             <td><a href="{{route('user.show', [$quiz->user->id])}}" target="_blank">{{$quiz->user->pseudo}}</a></td>
 
             <td>
-                <a class="btn btn-primary" href="{{route('quiz.show', [$quiz->id])}}">Show</a>
-                <a class="btn btn-warning" href="{{route('quiz.edit', [$quiz->id])}}">Edit</a>
+                <a class="btn btn-primary" href="{{route('quiz.show', [$quiz->id])}}">Afficher</a>
+                <a class="btn btn-warning" href="{{route('quiz.edit', [$quiz->id])}}">Modifier</a>
                 <form class="d-inline" method="POST" action="{{route('quiz.destroy', [$quiz->id])}}" accept-charset="UTF-8">
                     @csrf
                     @method('DELETE')

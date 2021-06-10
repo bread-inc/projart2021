@@ -1,9 +1,7 @@
 @extends('.admin.template')
-<h1>Index static page</h1>
-
 @section('content')
 
-<h1>Tous les utilisateurs <b>tristes</b></h1>
+<h1>Tous les utilisateurs</h1>
 
 <a class="btn btn-primary float-left" href="{{route('user.create')}}">Nouvel utilisateur</a>
 
@@ -32,8 +30,8 @@
             <td>{{$user->email}}</td>
 
             <td>
-                <a class="btn btn-primary" href="{{route('user.show', [$user->id])}}">Show</a>
-                <a class="btn btn-warning" href="{{route('user.edit', [$user->id])}}">Edit</a>
+                <a class="btn btn-primary" href="{{route('user.show', [$user->id])}}">Afficher</a>
+                <a class="btn btn-warning" href="{{route('user.edit', [$user->id])}}">Modifier</a>
                 <form class="d-inline" method="POST" action="{{route('user.destroy', [$user->id])}}" accept-charset="UTF-8">
                     @csrf
                     @method('DELETE')
