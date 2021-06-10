@@ -47,7 +47,7 @@
     <section id="favorites" class="page container bg-white py-4">
         <div class="row">
             @foreach ($user->favorites->sortBy('quiz_id') as $favoriteQuiz)
-            <div class="col-6">
+            <div class="col-6 col-md-4">
                 <a href="{{route('game.info', [$favoriteQuiz->quiz->id])}}" class="quiz quiz-2x">
                     <div class="quiz-thumb" style="background-image: url('{{asset($favoriteQuiz->quiz->questions->first()->picture)}}');">
                         <h5>{{$favoriteQuiz->quiz->title}}</h5>

@@ -2,7 +2,11 @@
 
 @section('content')
 
-@include('public.components.menu')
+<nav class="navbar py-3 d-block d-md-none">
+    <div class="container p-0">
+        <a href="{{route('home')}}"><i class="fas fa-angle-left fa-2x fa-gradient"></i></a>
+    </div>
+</nav>
 
 <div class="grid">
     <div class="container" id="regions-index-title">

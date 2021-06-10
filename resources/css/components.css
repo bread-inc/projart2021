@@ -64,6 +64,7 @@ a:hover, a:active, a:focus {
 
 .profile-picture>img {
     max-width: 65px;
+    background-color: white;
 }
 
 /* Inputs */
