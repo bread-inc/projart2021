@@ -14,7 +14,7 @@ To install the app, you need to follow the next steps :
 
 2. Pull the last version of the project : `cd projart2021` `git pull` ;
 
-3. Download the vendor and node modules folders : `composer install` ;
+3. Download the vendor and node modules folders : `composer install` `npm i` ;
 
 4. Update the `.env` file (database access e.g.) ;
 
@@ -26,7 +26,9 @@ To install the app, you need to follow the next steps :
 
 8. Feed the table : `php artisan db:seed` ;
 
-9. Start the app : `php artisan serve`.
+9. Create the symbolic link between the `public` and `storage` folders : `php artisan storage:link` ;
+
+10. Start the app : `php artisan serve`.
 
 ### General informations
 

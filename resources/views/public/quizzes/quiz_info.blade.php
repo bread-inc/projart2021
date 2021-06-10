@@ -22,7 +22,18 @@
             <div class="col-12 text-center">
                 <a href="{{route('game.start', [$quiz->id])}}" class="btn btn-gradient mb-2 d-block d-md-none">Démarrer</a>
                 @if(auth()->user())
-                <a href="#" class="btn btn-border mb-2">Ajouter aux favoris</a>
+                    @if(!empty(auth()->user()->favorites->where('quiz_id', $quiz->id)->first()))
+                    <!-- If the quiz is already a user's favorite -->
+                    <form action="{{route('quiz.del-fav', [$quiz->id, auth()->id()])}}" method="post">
+                        @csrf
+                        <input type="submit" value="Retirer des favoris" class="btn btn-border mb-2">
+                    </form>
+                    @else
+                    <form action="{{route('quiz.add-fav', [$quiz->id, auth()->id()])}}" method="post">
+                        @csrf
+                        <input type="submit" value="Ajouter aux favoris" class="btn btn-border mb-2">
+                    </form>
+                    @endif
                 @else
                 <small>Connectez-vous pour ajouter ce quiz à vos favoris</small>
                 <a href="{{route('login')}}" class="btn btn-border mb-2">Se connecter</a>

@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Quiz;
 use App\Models\Badge;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Traits\ScoreboardTrait;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -199,5 +201,50 @@ class UserController extends Controller
         $scores = $this->scoreboard();
 
         return view("public.users.profile_edit", compact('user'));
+    }
+
+    /**
+     * Add a quiz to the user's favorites list
+     * 
+     * @param int $user_id
+     * @param int $quiz_id
+     */
+    public function addQuizToFavorite($quiz_id, $user_id) {
+        $user = User::findOrFail($user_id);
+
+        // If user has not the quiz alread in fav.
+        if(empty($user->favorites->where('quiz_id', $quiz_id)->first())) {
+            $quiz = Quiz::find($quiz_id);
+            // Checking if the quiz exists
+            if(!empty($quiz)) {
+                $user->favorites()->create([
+                    'user_id' => $user_id,
+                    'quiz_id' => $quiz_id
+                ]);
+                return redirect(route('game.info', [$quiz_id]))->withOk("Le quiz $quiz_id a été ajouté à vos favoris.");
+            } else {
+                return redirect(route('game.info', [$quiz_id]))->withOk("Le quiz n'existe pas.");
+            }
+        } else {
+            return redirect(route('game.info', [$quiz_id]))->withOk("Le quiz est déjà dans votre liste de favoris."); 
+        } 
+    }
+
+    /**
+     * Remove a quiz from the user's favorites list
+     * 
+     * @param int $user_id
+     * @param int $quiz_id
+     */
+    public function removeQuizFromFavorite($quiz_id, $user_id) {
+        $user = User::findOrFail($user_id);
+
+        // If user has not the quiz in fav.
+        if(empty($user->favorites->where('quiz_id', $quiz_id)->first())) {
+            return redirect(route('game.info', [$quiz_id]))->withOk("Le quiz sélectionné n'est pas dans vos favoris.");
+        } else {
+            $user->favorites->where('quiz_id', $quiz_id)->first()->delete();
+            return redirect(route('game.info', [$quiz_id]))->withOk("Le quiz $quiz_id a été retiré de vos favoris.");
+        }
     }
 }

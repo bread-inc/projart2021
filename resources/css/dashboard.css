@@ -11,6 +11,11 @@
 
 
 @media screen and (min-width: 768px) {
+    .dashboard-region-image {
+        border-radius: 20px;
+    }
+
+
     .grid-centered {
         display: grid;
         grid-template-columns: 15px 20% 15px auto 15px 20% 15px;
@@ -31,7 +36,7 @@
     .grid {
         display: grid;
         grid-template-columns:  23% 2% 23% 2% 50%;
-        grid-template-rows: 15% 30% 2% 53%;
+        grid-template-rows: 15vh 30vh 2vh 53vh;
         height: 100%;
     }
 

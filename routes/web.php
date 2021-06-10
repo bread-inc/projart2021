@@ -43,20 +43,8 @@ Route::get('globalRanking', [ScoreController::class, 'index'])->name('global-ran
 Route::get('home', [HomeController::class, 'home'])->name('home');
 Route::get('scoreboard', [HomeController::class, 'scoreboard'])->name('scoreboard');
 
-
-
-
-
 // ##### User routes #####
-/*
-Route::resource('user', UserController::class)->only(['index', 'create']);
 
-Route::resource('user', UserController::class)->only(['show'])
-    ->middleware('auth');
-
-Route::resource('user', UserController::class)->except(['index', 'create', 'show'])
-    ->middleware('admin');
-*/
 Route::prefix('user')->group(function () {
     Route::get('{user_id}', [UserController::class, 'showUser'])->name('profile.show');
 });
@@ -84,6 +72,8 @@ Route::prefix('quiz')->group(function () {
     Route::get('/{id}/info', [GameController::class, "displayQuiz"])->name('game.info'); // Attention aux noms des méthodes et des routes !!
     Route::get('/{id}/start', [GameController::class, "startQuiz"])->name('game.start');
     Route::post('/{id}/game/completed', [GameController::class, "endGame"])->name('game.completed');
+    Route::post('/{quiz_id}/info/{user_id}', [UserController::class, "addQuizToFavorite"])->name('quiz.add-fav');
+    Route::post('/{quiz_id}/info/{user_id}/remove', [UserController::class, "removeQuizFromFavorite"])->name('quiz.del-fav');
 });
 
 // ##### Quiz routes #####

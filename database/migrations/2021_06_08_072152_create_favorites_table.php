@@ -20,14 +20,14 @@ class CreateFavoritesTable extends Migration
             $table->foreign('quiz_id')
                 ->references('id')
                 ->on('quizzes')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
+                /*->onDelete('restrict')
+                ->onUpdate('restrict')*/;
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
+                /*->onDelete('restrict')
+                ->onUpdate('restrict')*/;
         });
     }
 

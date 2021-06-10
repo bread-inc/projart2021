@@ -22,9 +22,13 @@
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">
 </head>
 <body class="grid-centered">
-
     @include('public.components.desktop-menu')
     <main>
+        @if(session()->has('ok'))
+        <div class="alert alert-success alert-dismissible">
+            {!! session('ok') !!}
+        </div>
+        @endif
         @yield('content')
     </main>
 

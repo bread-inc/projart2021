@@ -30,7 +30,13 @@
         <div class="row">
             @if(auth()->user())
             <div class="col-8"><h2><b>Préparez votre prochaine aventure</b></h2></div>
-            <div class="col-4"><img src="#"></div>
+            <div class="col-4">
+                @if(isset($region))
+                <img class="dashboard-region-image" src="{{asset("storage" . $region->image)}}" alt="{{$region->name}}">
+                @else
+                <img class="dashboard-region-image" src="{{asset("storage/images/placeholder.png" )}}" alt="SwissGuesser">
+                @endif
+            </div>
             @else
             <div class="col-8"><h2><b>Connectez-vous pour préparer votre prochaine aventure</b></h2></div>
             <div class="col-4">
