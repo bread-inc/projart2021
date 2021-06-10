@@ -54,9 +54,17 @@ class RegionController extends Controller
      */
     public function show($id) {
         $region = Region::findOrFail($id);
-         //$quizzes = $region->quizzes()->get();
-         //$badges = $region->badges()->get();
-         return view('public.regions.region_show')->with(compact('region'));
+        $quizzes = $region->quizzes->all();
+        $scores = [];
+
+        $mergedScores = new Collection;
+
+        foreach ($quizzes as $quiz) {
+            array_push($scores, $quiz->scores()->get());
+            $mergedScores = $mergedScores->merge($quiz->scores()->get());
+        }
+
+        return view('public.regions.region_show')->with(compact('region', 'mergedScores'));
     }
 
     public function scores($id) {

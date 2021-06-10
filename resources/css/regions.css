@@ -34,6 +34,19 @@
 /* Region views */
 
 @media screen and (min-width: 768px) {
+    #regions-index>#vue-app, #regions-index>#vue-app>.row {
+        height: 100%;
+    }
+
+    .region-container {
+        height: 48%;
+        margin-bottom: 2%;
+    } 
+    
+    .region {
+        height: 100%;
+    }
+
     #regions-index-title {
         grid-column-start: 1;
         grid-column-end: -1;

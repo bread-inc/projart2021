@@ -1,5 +1,5 @@
 <template>
-<div class="row mb-5">
+<div class="row mb-5 m-md-0">
     <region-item
       v-for="region in regions"
       :key="region"
