@@ -103,4 +103,11 @@ small {
         box-shadow: 0px 0px 18px 4px rgba(0, 0, 0, 0.25);
     }
 
+    #page-title {
+        grid-column-start: 1;
+        grid-column-end: -1;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+
 }

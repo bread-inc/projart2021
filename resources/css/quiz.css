@@ -1,0 +1,10 @@
+@media screen and (min-width: 768px) {
+    #quiz-image {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: -1;
+        
+        align-content: flex-start;
+    }
+}

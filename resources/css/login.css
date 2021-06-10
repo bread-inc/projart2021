@@ -6,6 +6,9 @@
 
 /* Desktop design */
 @media screen and (min-width: 768px) {
+    #auth>main {
+        grid-column-end: 4;
+    }
     #login {
         margin-left: auto;
         margin-right: auto;

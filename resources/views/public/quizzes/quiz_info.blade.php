@@ -2,27 +2,42 @@
 
 @section('content')
 
-<div class="container my-5">
-    <div id="vue-app">
-        <div class="row mb-3">
+<div class="container my-5 m-md-0">
+    <div id="vue-app" class="grid">
+        <div class="row mb-3 mb-md-0" id="page-title">
             <div class="col-8">
                 <h1>{{$quiz->title}}</h1>
                 <small>Difficulté : {{$quiz->difficulty}}</small>
             </div>
+        </div>
+        
+        <div class="row box m-md-0" id="quiz-image">
             <div class="col-12 my-2">
                 <img src="{{asset($quiz->questions->first()->picture)}}" class="rounded" alt="{{$quiz->title}}">
             </div>
             <div class="col-12">
                 <p>{{$quiz->description}}</p>
             </div>
+
+            <div class="col-12 text-center">
+                <a href="{{route('game.start', [$quiz->id])}}" class="btn btn-gradient mb-2 d-block d-md-none">Démarrer</a>
+                @if(auth()->user())
+                <a href="#" class="btn btn-border mb-2">Ajouter aux favoris</a>
+                @else
+                <small>Connectez-vous pour ajouter ce quiz à vos favoris</small>
+                <a href="{{route('login')}}" class="btn btn-border mb-2">Se connecter</a>
+                @endif
+                <a href="{{url()->previous()}}">Retour</a>
+            </div>
         </div>
 
-        <div class="row">
+        <div class="row m-md-0 box" id="region-scoreboard">
             <div class="col-12">
+                <h3>Les meilleurs scores du quiz</h3>
                 <table class="score-table">
                     <tbody>
                         <?php $i = 1; ?>
-                        @foreach ($quiz->scores->sortByDesc('score') as $score)
+                        @foreach ($quiz->scores->take(10)->sortByDesc('score') as $score)
                         <tr>
                             <td>{{$i}}</td>
                             <td><img src="{{$score->user->avatar}}" alt="{{$score->user->pseudo}}" class="rounded-circle"></td>
@@ -35,13 +50,6 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-12 text-center">
-                <a href="{{route('game.start', [$quiz->id])}}" class="btn btn-gradient mb-2">Démarrer</a>
-                <a href="{{url()->previous()}}">Retour</a>
             </div>
         </div>
     </div>

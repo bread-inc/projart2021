@@ -21,7 +21,7 @@
     <link rel="icon" type="image/png" href="{{ asset('storage/images/logo/favicon.png') }}" />
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="grid-centered">
 
     @include('public.components.desktop-menu')
     <main>

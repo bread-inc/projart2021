@@ -23,6 +23,7 @@ const mix = require('laravel-mix');
     'resources/css/regions.css',
     'resources/css/user-profile.css',
     'resources/css/scoreboard.css',
+    'resources/css/quiz.css',
 ], 'public/css/all.css');
 
 mix.js('resources/js/app.js', 'public/js')
