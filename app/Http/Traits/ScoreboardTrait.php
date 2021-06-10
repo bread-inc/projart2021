@@ -52,6 +52,10 @@ trait ScoreboardTrait
             ->selectRaw('sum(score) as total, user_id')
             ->pluck('total', 'user_id');
 
-        return $scores[$user_id];
+        if (isset($scores[$user_id])) {
+            return $scores[$user_id];
+        } else {
+            return 0;
+        }
     }
 }
