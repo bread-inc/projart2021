@@ -3,7 +3,7 @@
 
 ## About SwissGuesser
 
-SwissGuesser is a non-profit project developed by 7 students from the Media Engineering department of the School of Management and Engineering Vaud.
+SwissGuesser is a non-profit project developed by 7 students from the Media Engineering department of the School of Management and Engineering Vaud. You can test the app [here](https://pingouin.heig-vd.ch/bread/).
 
 
 ## Installation
