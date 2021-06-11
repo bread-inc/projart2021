@@ -1,7 +1,7 @@
 <template>
   <div class="row mb-2">
-    <button class="btn btn-warning mr-2 col" @click="this.getUserPosition">
-      Locate
+    <button  class="btn-desk-locate" @click="this.getUserPosition">
+      <img id="loc" src="/images/locate.png">
     </button>
 <quiz-list>
 
@@ -38,7 +38,7 @@
         region.center_x || 0,
         region.center_y|| 0,
       ]">
-      <l-icon icon-url="\storage\app\public\images\logoleaflet\zone.png"/>
+      <l-icon />
         <l-popup
         @ready="popUpObject">
 
@@ -219,7 +219,7 @@ export default {
 <style>
 #game-map{
 
- height:600px;
+ /*height:600px;*/
 }
 
 </style>
