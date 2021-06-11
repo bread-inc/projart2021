@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateBadgeRequest;
 use App\Models\Badge;
-use App\Models\Region;
-use App\Models\Quiz;
 
 class BadgeController extends Controller
 {
@@ -120,8 +118,8 @@ class BadgeController extends Controller
     /**
      * Return the users who got the specified badge.
      * 
-     * @param int $id 
-     * @return 
+     * @param int $id the badge id
+     * @return array the users list who got the badge
      */
     public function users($id)
     {

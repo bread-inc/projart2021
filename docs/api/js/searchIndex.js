@@ -1,41 +1,6 @@
 Search.appendIndex(
     [
                 {
-            "fqsen": "\\App\\Console\\Kernel",
-            "name": "Kernel",
-            "summary": "",
-            "url": "classes/App-Console-Kernel.html"
-        },                {
-            "fqsen": "\\App\\Console\\Kernel\u003A\u003Aschedule\u0028\u0029",
-            "name": "schedule",
-            "summary": "Define\u0020the\u0020application\u0027s\u0020command\u0020schedule.",
-            "url": "classes/App-Console-Kernel.html#method_schedule"
-        },                {
-            "fqsen": "\\App\\Console\\Kernel\u003A\u003A\u0024commands",
-            "name": "commands",
-            "summary": "The\u0020Artisan\u0020commands\u0020provided\u0020by\u0020your\u0020application.",
-            "url": "classes/App-Console-Kernel.html#property_commands"
-        },                {
-            "fqsen": "\\App\\Exceptions\\Handler",
-            "name": "Handler",
-            "summary": "",
-            "url": "classes/App-Exceptions-Handler.html"
-        },                {
-            "fqsen": "\\App\\Exceptions\\Handler\u003A\u003Aregister\u0028\u0029",
-            "name": "register",
-            "summary": "Register\u0020the\u0020exception\u0020handling\u0020callbacks\u0020for\u0020the\u0020application.",
-            "url": "classes/App-Exceptions-Handler.html#method_register"
-        },                {
-            "fqsen": "\\App\\Exceptions\\Handler\u003A\u003A\u0024dontReport",
-            "name": "dontReport",
-            "summary": "A\u0020list\u0020of\u0020the\u0020exception\u0020types\u0020that\u0020are\u0020not\u0020reported.",
-            "url": "classes/App-Exceptions-Handler.html#property_dontReport"
-        },                {
-            "fqsen": "\\App\\Exceptions\\Handler\u003A\u003A\u0024dontFlash",
-            "name": "dontFlash",
-            "summary": "A\u0020list\u0020of\u0020the\u0020inputs\u0020that\u0020are\u0020never\u0020flashed\u0020for\u0020validation\u0020exceptions.",
-            "url": "classes/App-Exceptions-Handler.html#property_dontFlash"
-        },                {
             "fqsen": "\\App\\Http\\Controllers\\Auth\\ConfirmPasswordController",
             "name": "ConfirmPasswordController",
             "summary": "",
@@ -208,12 +173,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Http\\Controllers\\GameController\u003A\u003AdisplayQuiz\u0028\u0029",
             "name": "displayQuiz",
-            "summary": "Display\u0020the\u0020quiz",
+            "summary": "Display\u0020the\u0020quiz\u0027\u0020info\u0020page.",
             "url": "classes/App-Http-Controllers-GameController.html#method_displayQuiz"
         },                {
             "fqsen": "\\App\\Http\\Controllers\\GameController\u003A\u003AstartQuiz\u0028\u0029",
             "name": "startQuiz",
-            "summary": "",
+            "summary": "Display\u0020the\u00201st\u0020page\u0020of\u0020the\u0020quiz.",
             "url": "classes/App-Http-Controllers-GameController.html#method_startQuiz"
         },                {
             "fqsen": "\\App\\Http\\Controllers\\GameController\u003A\u003AcheckingBadges\u0028\u0029",
@@ -248,12 +213,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Http\\Controllers\\GameController\u003A\u003AendGame\u0028\u0029",
             "name": "endGame",
-            "summary": "",
+            "summary": "Once\u0020the\u0020quiz\u0020is\u0020over,\u0020checking\u0020the\u0020time,\u0020scores,\u0020etc.",
             "url": "classes/App-Http-Controllers-GameController.html#method_endGame"
         },                {
             "fqsen": "\\App\\Http\\Controllers\\GameController\u003A\u003ArenderTime\u0028\u0029",
             "name": "renderTime",
-            "summary": "",
+            "summary": "Formating\u0020a\u0020Carbon\u0020timestamp\u0020in\u0020minutes\u0020and\u0020secondes.",
             "url": "classes/App-Http-Controllers-GameController.html#method_renderTime"
         },                {
             "fqsen": "\\App\\Http\\Controllers\\HomeController",
@@ -263,12 +228,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Http\\Controllers\\HomeController\u003A\u003AlandingPage\u0028\u0029",
             "name": "landingPage",
-            "summary": "Shows\u0020the\u0020landing\u0020page,\u0020where\u0020the\u0020visitor\u0020can\u0020login,\u0020register,\u0020or\u0020continue\u0020with\u0020no\u0020account.",
+            "summary": "If\u0020the\u0020user\u0020is\u0020already\u0020logged\u0020in,\u0020returns\u0020the\u0020\u0027home\u0027\u0020view.\u0020Else,\u0020returns\u0020the\u0020\u0027login\u0027\u0020view.",
             "url": "classes/App-Http-Controllers-HomeController.html#method_landingPage"
         },                {
             "fqsen": "\\App\\Http\\Controllers\\HomeController\u003A\u003Ahome\u0028\u0029",
             "name": "home",
-            "summary": "Shows\u0020the\u0020application\u0020dashboard.",
+            "summary": "Shows\u0020the\u0020application\u0027s\u0020public\u0020dashboard.",
             "url": "classes/App-Http-Controllers-HomeController.html#method_home"
         },                {
             "fqsen": "\\App\\Http\\Controllers\\QuestionController",
@@ -363,7 +328,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Http\\Controllers\\RegionController\u003A\u003AmapDesktop\u0028\u0029",
             "name": "mapDesktop",
-            "summary": "",
+            "summary": "Sends\u0020the\u0020data\u0020for\u0020the\u0020desktop\u0020map\u0020and\u0020display\u0020the\u0020map\u0020page,\u0020with\u0020all\u0020region\u0027s\u0020quizzes.",
             "url": "classes/App-Http-Controllers-RegionController.html#method_mapDesktop"
         },                {
             "fqsen": "\\App\\Http\\Controllers\\RegionController\u003A\u003Ashow\u0028\u0029",
@@ -373,7 +338,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Http\\Controllers\\RegionController\u003A\u003Ascores\u0028\u0029",
             "name": "scores",
-            "summary": "",
+            "summary": "Display\u0020the\u0020scores\u0020view\u0020of\u0020the\u0020specified\u0020region.",
             "url": "classes/App-Http-Controllers-RegionController.html#method_scores"
         },                {
             "fqsen": "\\App\\Http\\Controllers\\ScoreController",
@@ -396,21 +361,6 @@ Search.appendIndex(
             "summary": "Store\u0020a\u0020newly\u0020created\u0020resource\u0020in\u0020storage.",
             "url": "classes/App-Http-Controllers-ScoreController.html#method_store"
         },                {
-            "fqsen": "\\App\\Http\\Controllers\\ScoreController\u003A\u003Ashow\u0028\u0029",
-            "name": "show",
-            "summary": "Display\u0020the\u0020specified\u0020resource.",
-            "url": "classes/App-Http-Controllers-ScoreController.html#method_show"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\ScoreController\u003A\u003Aedit\u0028\u0029",
-            "name": "edit",
-            "summary": "Show\u0020the\u0020form\u0020for\u0020editing\u0020the\u0020specified\u0020resource.",
-            "url": "classes/App-Http-Controllers-ScoreController.html#method_edit"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\ScoreController\u003A\u003Aupdate\u0028\u0029",
-            "name": "update",
-            "summary": "Update\u0020the\u0020specified\u0020resource\u0020in\u0020storage.",
-            "url": "classes/App-Http-Controllers-ScoreController.html#method_update"
-        },                {
             "fqsen": "\\App\\Http\\Controllers\\ScoreController\u003A\u003Adestroy\u0028\u0029",
             "name": "destroy",
             "summary": "Remove\u0020the\u0020specified\u0020resource\u0020from\u0020storage.",
@@ -423,12 +373,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Http\\Controllers\\UserController\u003A\u003AsetAdmin\u0028\u0029",
             "name": "setAdmin",
-            "summary": "",
+            "summary": "Set\u0020the\u0020user\u0020as\u0020administrator.",
             "url": "classes/App-Http-Controllers-UserController.html#method_setAdmin"
         },                {
             "fqsen": "\\App\\Http\\Controllers\\UserController\u003A\u003AgenerateAvatar\u0028\u0029",
             "name": "generateAvatar",
-            "summary": "",
+            "summary": "Generate\u0020the\u0020URL\u0020to\u0020the\u0020user\u0027s\u0020avatar\u0020image,\u0020hashing\u0020his\u0020email.",
             "url": "classes/App-Http-Controllers-UserController.html#method_generateAvatar"
         },                {
             "fqsen": "\\App\\Http\\Controllers\\UserController\u003A\u003Aindex\u0028\u0029",
@@ -468,22 +418,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Http\\Controllers\\UserController\u003A\u003AisAdmin\u0028\u0029",
             "name": "isAdmin",
-            "summary": "Set",
+            "summary": "Return\u0020if\u0020the\u0020selected\u0020user\u0020is\u0020an\u0020administrator",
             "url": "classes/App-Http-Controllers-UserController.html#method_isAdmin"
         },                {
             "fqsen": "\\App\\Http\\Controllers\\UserController\u003A\u003AaddBadges\u0028\u0029",
             "name": "addBadges",
-            "summary": "",
+            "summary": "Show\u0020the\u0020form\u0020for\u0020editing\u0020the\u0020badges\u0020of\u0020a\u0020user",
             "url": "classes/App-Http-Controllers-UserController.html#method_addBadges"
         },                {
             "fqsen": "\\App\\Http\\Controllers\\UserController\u003A\u003AstoreBadges\u0028\u0029",
             "name": "storeBadges",
-            "summary": "",
+            "summary": "Save\u0020the\u0020selected\u0020badges\u0020for\u0020the\u0020user.\u0020The\u0020user\u0027s\u0020id\u0020is\u0020stored\u0020in\u0020a\u0020form\u0027s\u0020hidden\u0020input.",
             "url": "classes/App-Http-Controllers-UserController.html#method_storeBadges"
         },                {
             "fqsen": "\\App\\Http\\Controllers\\UserController\u003A\u003AdeleteScore\u0028\u0029",
             "name": "deleteScore",
-            "summary": "",
+            "summary": "In\u0020development.\u0020Deletes\u0020a\u0020score\u0020a\u0020user\u0020achieved.",
             "url": "classes/App-Http-Controllers-UserController.html#method_deleteScore"
         },                {
             "fqsen": "\\App\\Http\\Controllers\\UserController\u003A\u003AshowUser\u0028\u0029",
@@ -493,7 +443,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Http\\Controllers\\UserController\u003A\u003AeditProfile\u0028\u0029",
             "name": "editProfile",
-            "summary": "Edit\u0020the\u0020user\u0020profile\u0020\u0028public\u0029",
+            "summary": "Edit\u0020the\u0020user\u0020profile\u0020\u0028public\u0029.\u0020In\u0020development.",
             "url": "classes/App-Http-Controllers-UserController.html#method_editProfile"
         },                {
             "fqsen": "\\App\\Http\\Controllers\\UserController\u003A\u003AaddQuizToFavorite\u0028\u0029",
@@ -533,7 +483,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Http\\Middleware\\Admin\u003A\u003Ahandle\u0028\u0029",
             "name": "handle",
-            "summary": "Handle\u0020an\u0020incoming\u0020request.",
+            "summary": "Handle\u0020an\u0020incoming\u0020request.\u0020To\u0020get\u0020through,\u0020the\u0020user\u0020must\u0020be\u0020an\u0020admin.",
             "url": "classes/App-Http-Middleware-Admin.html#method_handle"
         },                {
             "fqsen": "\\App\\Http\\Middleware\\Authenticate",
@@ -748,13 +698,48 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Http\\Traits\\ScoreboardTrait\u003A\u003Ascoreboard\u0028\u0029",
             "name": "scoreboard",
-            "summary": "Returns\u0020the\u0020global\u0020rankings\u0020data",
+            "summary": "Returns\u0020the\u0020global\u0020rankings\u0020data\u0020in\u0020JSON.",
             "url": "classes/App-Http-Traits-ScoreboardTrait.html#method_scoreboard"
         },                {
             "fqsen": "\\App\\Http\\Traits\\ScoreboardTrait\u003A\u003AgetUserGlobalScore\u0028\u0029",
             "name": "getUserGlobalScore",
             "summary": "Returns\u0020the\u0020user\u0027s\u0020global\u0020score,\u0020the\u0020total\u0020of\u0020all\u0020his\u0020scores",
             "url": "classes/App-Http-Traits-ScoreboardTrait.html#method_getUserGlobalScore"
+        },                {
+            "fqsen": "\\App\\Console\\Kernel",
+            "name": "Kernel",
+            "summary": "",
+            "url": "classes/App-Console-Kernel.html"
+        },                {
+            "fqsen": "\\App\\Console\\Kernel\u003A\u003Aschedule\u0028\u0029",
+            "name": "schedule",
+            "summary": "Define\u0020the\u0020application\u0027s\u0020command\u0020schedule.",
+            "url": "classes/App-Console-Kernel.html#method_schedule"
+        },                {
+            "fqsen": "\\App\\Console\\Kernel\u003A\u003A\u0024commands",
+            "name": "commands",
+            "summary": "The\u0020Artisan\u0020commands\u0020provided\u0020by\u0020your\u0020application.",
+            "url": "classes/App-Console-Kernel.html#property_commands"
+        },                {
+            "fqsen": "\\App\\Exceptions\\Handler",
+            "name": "Handler",
+            "summary": "",
+            "url": "classes/App-Exceptions-Handler.html"
+        },                {
+            "fqsen": "\\App\\Exceptions\\Handler\u003A\u003Aregister\u0028\u0029",
+            "name": "register",
+            "summary": "Register\u0020the\u0020exception\u0020handling\u0020callbacks\u0020for\u0020the\u0020application.",
+            "url": "classes/App-Exceptions-Handler.html#method_register"
+        },                {
+            "fqsen": "\\App\\Exceptions\\Handler\u003A\u003A\u0024dontReport",
+            "name": "dontReport",
+            "summary": "A\u0020list\u0020of\u0020the\u0020exception\u0020types\u0020that\u0020are\u0020not\u0020reported.",
+            "url": "classes/App-Exceptions-Handler.html#property_dontReport"
+        },                {
+            "fqsen": "\\App\\Exceptions\\Handler\u003A\u003A\u0024dontFlash",
+            "name": "dontFlash",
+            "summary": "A\u0020list\u0020of\u0020the\u0020inputs\u0020that\u0020are\u0020never\u0020flashed\u0020for\u0020validation\u0020exceptions.",
+            "url": "classes/App-Exceptions-Handler.html#property_dontFlash"
         },                {
             "fqsen": "\\App\\Models\\Badge",
             "name": "Badge",
@@ -763,12 +748,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Models\\Badge\u003A\u003Ausers\u0028\u0029",
             "name": "users",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020relation\u0020between\u0020a\u0020badge\u0020and\u0020the\u0020users\u0020who\u0020got\u0020the\u0020badge.",
             "url": "classes/App-Models-Badge.html#method_users"
         },                {
             "fqsen": "\\App\\Models\\Badge\u003A\u003Abadgeable\u0028\u0029",
             "name": "badgeable",
-            "summary": "",
+            "summary": "Can\u0020be\u0020morphed\u0020to\u0020a\u0020Region\u0020or\u0020a\u0020Quiz.",
             "url": "classes/App-Models-Badge.html#method_badgeable"
         },                {
             "fqsen": "\\App\\Models\\Badge\u003A\u003APICTO_1",
@@ -813,7 +798,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Models\\Clue\u003A\u003Aquestion\u0028\u0029",
             "name": "question",
-            "summary": "",
+            "summary": "Return\u0020the\u0020parent\u0020question\u0020of\u0020the\u0020clue.",
             "url": "classes/App-Models-Clue.html#method_question"
         },                {
             "fqsen": "\\App\\Models\\Clue\u003A\u003A\u0024timestamps",
@@ -833,12 +818,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Models\\Favorite\u003A\u003Auser\u0028\u0029",
             "name": "user",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020user\u0020who\u0020the\u0020favorite\u0020belongs.",
             "url": "classes/App-Models-Favorite.html#method_user"
         },                {
             "fqsen": "\\App\\Models\\Favorite\u003A\u003Aquiz\u0028\u0029",
             "name": "quiz",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020quiz\u0020who\u0020the\u0020favorite\u0020belongs.",
             "url": "classes/App-Models-Favorite.html#method_quiz"
         },                {
             "fqsen": "\\App\\Models\\Favorite\u003A\u003A\u0024timestamps",
@@ -858,12 +843,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Models\\Question\u003A\u003Aquiz\u0028\u0029",
             "name": "quiz",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020Quiz\u0020the\u0020Question\u0020is\u0020related\u0020to.",
             "url": "classes/App-Models-Question.html#method_quiz"
         },                {
             "fqsen": "\\App\\Models\\Question\u003A\u003Aclues\u0028\u0029",
             "name": "clues",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020Clues\u0020related\u0020to\u0020the\u0020Question.",
             "url": "classes/App-Models-Question.html#method_clues"
         },                {
             "fqsen": "\\App\\Models\\Question\u003A\u003A\u0024timestamps",
@@ -883,32 +868,32 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Models\\Quiz\u003A\u003Aregion\u0028\u0029",
             "name": "region",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020Region\u0020the\u0020Quiz\u0020is\u0020related\u0020to.",
             "url": "classes/App-Models-Quiz.html#method_region"
         },                {
             "fqsen": "\\App\\Models\\Quiz\u003A\u003Auser\u0028\u0029",
             "name": "user",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020User\u0020the\u0020Quiz\u0020is\u0020related\u0020to.",
             "url": "classes/App-Models-Quiz.html#method_user"
         },                {
             "fqsen": "\\App\\Models\\Quiz\u003A\u003Aquestions\u0028\u0029",
             "name": "questions",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020Questions\u0020related\u0020to\u0020the\u0020Quiz.",
             "url": "classes/App-Models-Quiz.html#method_questions"
         },                {
             "fqsen": "\\App\\Models\\Quiz\u003A\u003Ascores\u0028\u0029",
             "name": "scores",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020Scores\u0020related\u0020to\u0020the\u0020Quiz.",
             "url": "classes/App-Models-Quiz.html#method_scores"
         },                {
             "fqsen": "\\App\\Models\\Quiz\u003A\u003Abadges\u0028\u0029",
             "name": "badges",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020Badges\u0020morphed\u0020to\u0020the\u0020Quiz.",
             "url": "classes/App-Models-Quiz.html#method_badges"
         },                {
             "fqsen": "\\App\\Models\\Quiz\u003A\u003Afavorites\u0028\u0029",
             "name": "favorites",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020Favorites\u0020related\u0020to\u0020the\u0020Quiz.",
             "url": "classes/App-Models-Quiz.html#method_favorites"
         },                {
             "fqsen": "\\App\\Models\\Quiz\u003A\u003A\u0024timestamps",
@@ -928,12 +913,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Models\\Region\u003A\u003Aquizzes\u0028\u0029",
             "name": "quizzes",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020Quizzes\u0020related\u0020to\u0020the\u0020Region.",
             "url": "classes/App-Models-Region.html#method_quizzes"
         },                {
             "fqsen": "\\App\\Models\\Region\u003A\u003Abadges\u0028\u0029",
             "name": "badges",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020Badges\u0020morphed\u0020to\u0020the\u0020Region.",
             "url": "classes/App-Models-Region.html#method_badges"
         },                {
             "fqsen": "\\App\\Models\\Region\u003A\u003A\u0024timestamps",
@@ -953,12 +938,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Models\\Score\u003A\u003Auser\u0028\u0029",
             "name": "user",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020User\u0020the\u0020Score\u0020belongs\u0020to.",
             "url": "classes/App-Models-Score.html#method_user"
         },                {
             "fqsen": "\\App\\Models\\Score\u003A\u003Aquiz\u0028\u0029",
             "name": "quiz",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020Quiz\u0020the\u0020Score\u0020belongs\u0020to.",
             "url": "classes/App-Models-Score.html#method_quiz"
         },                {
             "fqsen": "\\App\\Models\\Score\u003A\u003A\u0024fillable",
@@ -973,22 +958,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Models\\User\u003A\u003Ascores\u0028\u0029",
             "name": "scores",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020scores\u0020the\u0020user\u0020achieved.",
             "url": "classes/App-Models-User.html#method_scores"
         },                {
             "fqsen": "\\App\\Models\\User\u003A\u003Aquizzes\u0028\u0029",
             "name": "quizzes",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020quizzes\u0020the\u0020user\u0020created.",
             "url": "classes/App-Models-User.html#method_quizzes"
         },                {
             "fqsen": "\\App\\Models\\User\u003A\u003Abadges\u0028\u0029",
             "name": "badges",
-            "summary": "",
+            "summary": "Returns\u0020all\u0020the\u0020badges\u0020a\u0020user\u0020has.",
             "url": "classes/App-Models-User.html#method_badges"
         },                {
             "fqsen": "\\App\\Models\\User\u003A\u003Afavorites\u0028\u0029",
             "name": "favorites",
-            "summary": "",
+            "summary": "Returns\u0020all\u0020the\u0020favorite\u0020quizzes\u0020a\u0020user\u0020has.",
             "url": "classes/App-Models-User.html#method_favorites"
         },                {
             "fqsen": "\\App\\Models\\User\u003A\u003A\u0024fillable",

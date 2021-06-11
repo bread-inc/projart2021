@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class CluesTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Creates 45 questions, randomly attributed
      *
      * @return void
      */

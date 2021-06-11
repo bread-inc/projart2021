@@ -13,6 +13,11 @@ class Clue extends Model
 
     protected $fillable=['question_id','description','radius'];
 
+    /**
+     * Return the parent question of the clue.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function question() {
         return $this->belongsTo(Question::class);    
     }

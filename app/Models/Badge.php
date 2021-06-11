@@ -19,11 +19,21 @@ class Badge extends Model
 
     protected $fillable=['label', 'description', 'pictogram', 'color', 'type', 'criterium', 'badgeable_id', 'badgeable_type'];
 
+    /**
+     * Returns the relation between a badge and the users who got the badge.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function users()
     {
         return $this->belongsToMany(User::class)->withTimestamps();;
     }
 
+    /**
+     * Can be morphed to a Region or a Quiz.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
     public function badgeable()
     {
         return $this->morphTo();

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class UsersTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Create the admin user and 4 other users.
      *
      * @return void
      */

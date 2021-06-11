@@ -11,10 +11,20 @@ class Score extends Model
 
     protected $fillable=['quiz_id, user_id, score'];
 
+    /**
+     * Returns the User the Score belongs to.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user() {
         return $this->belongsTo(User::class);    
     }
 
+    /**
+     * Returns the Quiz the Score belongs to.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function quiz() {
         return $this->belongsTo(Quiz::class);
     }

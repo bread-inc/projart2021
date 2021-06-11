@@ -11,8 +11,9 @@ use App\Models\User;
 trait ScoreboardTrait
 {
     /**
-     * Returns the global rankings data
+     * Returns the global rankings data in JSON.
      * 
+     * @return string|false The JSON encoded global scoreboard, or false if empty
      */
     public function scoreboard() {
         $scores = Score::groupBy('user_id')

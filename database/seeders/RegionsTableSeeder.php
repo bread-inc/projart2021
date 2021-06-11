@@ -28,7 +28,7 @@ class RegionsTableSeeder extends Seeder
         ]
     ];
     /**
-     * Run the database seeds.
+     * Creates the 3 initial region with the real name, coordinates and images.
      *
      * @return void
      */

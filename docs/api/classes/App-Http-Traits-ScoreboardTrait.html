@@ -119,9 +119,9 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Http-Traits-ScoreboardTrait.html#method_scoreboard">scoreboard()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                        &nbsp;: string|false    </span>
 </dt>
-<dd>Returns the global rankings data</dd>
+<dd>Returns the global rankings data in JSON.</dd>
 
         </dl>
 
@@ -147,7 +147,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/Http/Traits/ScoreboardTrait.php"><a href="files/app-http-traits-scoreboardtrait.html"><abbr title="app/Http/Traits/ScoreboardTrait.php">ScoreboardTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">50</span>
+    <span class="phpdocumentor-element-found-in__line">51</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns the user&#039;s global score, the total of all his scores</p>
@@ -194,14 +194,14 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/Http/Traits/ScoreboardTrait.php"><a href="files/app-http-traits-scoreboardtrait.html"><abbr title="app/Http/Traits/ScoreboardTrait.php">ScoreboardTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">17</span>
+    <span class="phpdocumentor-element-found-in__line">18</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Returns the global rankings data</p>
+        <p class="phpdocumentor-summary">Returns the global rankings data in JSON.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">scoreboard</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">scoreboard</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|false</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -209,9 +209,10 @@
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">string|false</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
+            <section class="phpdocumentor-description"><p>The JSON encoded global scoreboard, or false if empty</p>
+</section>
 
     
 </article>

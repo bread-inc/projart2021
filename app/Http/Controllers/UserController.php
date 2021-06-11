@@ -14,12 +14,22 @@ class UserController extends Controller
 {
     use ScoreboardTrait;
 
+    /**
+     * Set the user as administrator. 
+     * @param $request
+     * @return void
+     */
     private function setAdmin($request) {
         if (!$request->has('isAdmin')) {
            $request->merge(['isAdmin'=>0]);
         }
     }
 
+    /**
+     * Generate the URL to the user's avatar image, hashing his email.
+     * @param string $email the user's e-mail.
+     * @return string the URL : gravatar.com/avatar/[hashed e-mail]?size=256&d=robohash
+     */
     private function generateAvatar($email) {
         return "http://gravatar.com/avatar/" . md5(strtolower(trim($email))) . "?size=256&d=robohash";
     }
@@ -49,7 +59,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  App\Http\Requests\UserCreateRequest  $request
+     * @param  App\Http\Requests\UserCreateRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(UserCreateRequest $request)
@@ -64,7 +74,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -82,7 +92,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -94,7 +104,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  App\Http\Requests\UserUpdateRequest  $request
+     * @param  App\Http\Requests\UserUpdateRequest $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -118,15 +128,21 @@ class UserController extends Controller
     }
 
     /**
-     * Set
+     * Return if the selected user is an administrator
      *
-     * @param int $id
+     * @param int $id the user's id
      * @return bool
      */
     private function isAdmin($id) {
         return User::findOrFail($id)->isAdmin;
     }
 
+    /**
+     * Show the form for editing the badges of a user
+     * 
+     * @param int $user_id the user's id
+     * @return \Illuminate\Http\Response
+     */
     public function addBadges($user_id) {
         $user = User::findOrFail($user_id);
         $user->badges;
@@ -137,6 +153,12 @@ class UserController extends Controller
         //return redirect("admin/user/$user->id")->withOk("Le(s) badge(s) a été ajouté de l'utilisateur $user_id.");
     }
 
+    /**
+     * Save the selected badges for the user. The user's id is stored in a form's hidden input.
+     * 
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response returns the user.index page
+     */
     public function storeBadges(Request $request)
     {
         $badges = Badge::all();
@@ -154,7 +176,6 @@ class UserController extends Controller
                     $user->badges()->attach($newBadge);
                 }
             }
-
             // Checking in the old badges list the one to remove from the user ;
             foreach ($userOldBadges as $old_badge) {
                 if(!in_array($old_badge->id, $request->badges)) {
@@ -162,10 +183,15 @@ class UserController extends Controller
                 }
             }
         }
-        
         return redirect("admin/user/$user->id")->withOk("Le(s) badge(s) de l'utilisateur $user->pseudo ont été modifiés.");
     }
 
+    /**
+     * In development. Deletes a score a user achieved.
+     * @param int $user_id
+     * @param int $score_id
+     * @return \Illuminate\Http\Response
+     */
     public function deleteScore($user_id, $score_id) {
         // Sounds good, doesn't work (for now)
         $user = User::findOrFail($user_id);
@@ -176,7 +202,7 @@ class UserController extends Controller
     /**
      * Display the user profile. The route is public.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function showUser($id)
@@ -189,7 +215,7 @@ class UserController extends Controller
     }
 
     /**
-     * Edit the user profile (public)
+     * Edit the user profile (public). In development.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -197,7 +223,6 @@ class UserController extends Controller
     public function editProfile($id)
     {
         $user = User::findOrFail($id);
-        $scores = $this->scoreboard();
 
         return view("public.users.profile_edit", compact('user'));
     }
@@ -207,6 +232,7 @@ class UserController extends Controller
      * 
      * @param int $user_id
      * @param int $quiz_id
+     * @return \Illuminate\Http\Response
      */
     public function addQuizToFavorite($quiz_id, $user_id) {
         $user = User::findOrFail($user_id);
@@ -234,6 +260,7 @@ class UserController extends Controller
      * 
      * @param int $user_id
      * @param int $quiz_id
+     * @return \Illuminate\Http\Response
      */
     public function removeQuizFromFavorite($quiz_id, $user_id) {
         $user = User::findOrFail($user_id);

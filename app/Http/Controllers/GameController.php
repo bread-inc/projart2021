@@ -11,7 +11,10 @@ use App\Models\User;
 class GameController extends Controller
 {
    /**
-     *Display the quiz
+     * Display the quiz' info page.
+     * 
+     * @param int $id the quizz' id
+     * @return \Illuminate\Http\Response
      */
     public function displayQuiz($id)
     {
@@ -19,6 +22,12 @@ class GameController extends Controller
         return view('public.quizzes.quiz_info', compact('quiz'));
     }
 
+    /**
+     * Display the 1st page of the quiz.
+     * 
+     * @param int $id the quiz' id
+     * @return \Illuminate\Http\Response
+     */
     public function startQuiz($id)
     {
         $data = [];
@@ -30,7 +39,6 @@ class GameController extends Controller
             array_push($data["questions"], $question);
         }
         
-
         return view('game')->with('data', json_encode($data));
     }
 
@@ -132,11 +140,18 @@ class GameController extends Controller
      *
      * @param int $user_id the user receiving the badge
      * @param int $badge_id the badge to add
+     * @return void
      */
     private function attributeBadgeToUser($user_id, $badge_id) {
         User::find($user_id)->badges()->attach(Badge::find($badge_id));
     }
 
+    /**
+     * Once the quiz is over, checking the time, scores, etc.
+     * 
+     * @param Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response the end of game view
+     */
     public function endGame(Request $request)
     {   
         $id = $request->id;
@@ -158,6 +173,12 @@ class GameController extends Controller
         return view('game_completed')->with(compact('quiz', 'score', 'time', 'startTime'));
     }
 
+    /**
+     * Formating a Carbon timestamp in minutes and secondes.
+     * 
+     * @param int $time 
+     * @return string the formated time in minutes and secondes
+     */
     public static function renderTime($time) {
         return floor($time/60) . " min " . $time%60 . " secondes";
     }

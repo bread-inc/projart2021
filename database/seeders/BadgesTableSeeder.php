@@ -8,8 +8,6 @@ use App\Models\Badge;
 
 class BadgesTableSeeder extends Seeder
 {
-    // Example tag : <i class="fas {{css-class}}"></i>
-
     private $badge_type = ['score', 'time', 'region'];
 
     private function randomHexColor() {
@@ -17,7 +15,7 @@ class BadgesTableSeeder extends Seeder
     }
 
     /**
-     * Run the database seeds.
+     * Creates 15 badges
      *
      * @return void
      */

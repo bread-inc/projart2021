@@ -14,7 +14,7 @@ class BadgeUserTableSeeder extends Seeder
     }
 
     /**
-     * Run the database seeds.
+     * Creates 15 random badges attribution.
      *
      * @return void
      */

@@ -43,20 +43,41 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Returns the scores the user achieved.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function scores() {
         return $this->hasMany(Score::class);    
     }
 
+    
+    /**
+     * Returns the quizzes the user created.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function quizzes()
     {
         return $this->hasMany(Quiz::class);
     }
 
+    /**
+     * Returns all the badges a user has.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function badges()
     {
         return $this->belongsToMany(Badge::class)->withTimestamps();;
     }
 
+    /**
+     * Returns all the favorite quizzes a user has.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function favorites() {
         return $this->hasMany(Favorite::class);
     }

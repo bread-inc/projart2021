@@ -13,10 +13,20 @@ class Region extends Model
 
     protected $fillable=['name','center_x','center_y', 'image'];
 
+    /**
+     * Returns the Quizzes related to the Region.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function quizzes() {
         return $this->hasMany(Quiz::class);
     }
 
+    /**
+     * Returns the Badges morphed to the Region.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
     public function badges() {
         return $this->morphMany(Badge::class, 'badgeable');
     }

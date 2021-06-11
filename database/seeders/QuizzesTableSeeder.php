@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class QuizzesTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Creates 5 random quizzes
      *
      * @return void
      */

@@ -13,10 +13,20 @@ class Favorite extends Model
 
     protected $fillable=['quiz_id', 'user_id'];
 
+    /**
+     * Returns the user who the favorite belongs.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user() {
         return $this->belongsTo(User::class);    
     }
 
+    /**
+     * Returns the quiz who the favorite belongs.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function quiz() {
         return $this->belongsTo(Quiz::class);
     }

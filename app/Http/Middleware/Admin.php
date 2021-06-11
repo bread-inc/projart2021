@@ -9,10 +9,10 @@ use Illuminate\Http\RedirectResponse;
 class Admin
 {
     /**
-     * Handle an incoming request.
+     * Handle an incoming request. To get through, the user must be an admin.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next) {

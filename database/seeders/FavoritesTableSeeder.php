@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class FavoritesTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Attributes 10 random quizzes between the 5 users
      *
      * @return void
      */

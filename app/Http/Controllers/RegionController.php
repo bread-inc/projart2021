@@ -22,10 +22,12 @@ class RegionController extends Controller
         return view('public.regions.index')->with('regions', $regions);
     }
 
-    //envoie de data pour la map desktop
+    /**
+     * Sends the data for the desktop map and display the map page, with all region's quizzes.
+     * 
+     * @return \Illuminate\Http\Response
+     */
     public function mapDesktop() {
-
-
 
          $data =[];
          $regio =[];
@@ -67,6 +69,12 @@ class RegionController extends Controller
         return view('public.regions.region_show')->with(compact('region', 'mergedScores'));
     }
 
+    /**
+     * Display the scores view of the specified region.
+     * 
+     * @param int $id the region's id
+     * @return \Illuminate\Http\Response
+     */
     public function scores($id) {
         $region = Region::findOrFail($id);
         $quizzes = $region->quizzes->all();

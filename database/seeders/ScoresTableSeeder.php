@@ -14,7 +14,7 @@ class ScoresTableSeeder extends Seeder
     }
 
     /**
-     * Run the database seeds.
+     * Creates 50 randomly attributed scores, with a random value between 1 and 100.
      *
      * @return void
      */

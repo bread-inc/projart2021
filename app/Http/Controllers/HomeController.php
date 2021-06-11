@@ -12,7 +12,9 @@ class HomeController extends Controller
     use ScoreboardTrait;
 
     /**
-     * Shows the landing page, where the visitor can login, register, or continue with no account.
+     * If the user is already logged in, returns the 'home' view. Else, returns the 'login' view.
+     * 
+     * @return \Illuminate\Http\Response 
      */
     public function landingPage() {
         if(auth()->id()) {
@@ -23,7 +25,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Shows the application dashboard.
+     * Shows the application's public dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -37,7 +39,6 @@ class HomeController extends Controller
 
             // On a besoin de : 
             // - Liste des quiz de la région géolocalisée
-            
             // - Bouton voir toutes les régions
             // - Derniers quizzes réalisés + bouton "voir historique des quizzes"
             // - Mes badges + bouton "voir tous les badges"
