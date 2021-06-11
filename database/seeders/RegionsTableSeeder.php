@@ -25,16 +25,22 @@ class RegionsTableSeeder extends Seeder
             "center_x" => 46.2050242,
             "center_y" => 6.1090692,
             "image" => "/images/regions/3.jpg"
+        ],
+        [
+            "name" => "Morges",
+            "center_x" => 46.51482933892298, 
+            "center_y" => 6.4946666200118255,
+            "image" => "/images/regions/4.jpg"
         ]
     ];
     /**
-     * Creates the 3 initial region with the real name, coordinates and images.
+     * Creates the 4 initial region with the real name, coordinates and images.
      *
      * @return void
      */
     public function run()
     {
-        DB::table('quizzes')->delete();
+        DB::table('regions')->delete();
         foreach ($this->regions as $region) {
             DB::table('regions')->insert($region);
         }

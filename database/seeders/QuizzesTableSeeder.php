@@ -15,7 +15,17 @@ class QuizzesTableSeeder extends Seeder
     public function run()
     {
         DB::table('quizzes')->delete();
-        for ($i = 1; $i <= 5; $i ++) {
+
+        // Quiz Morges - ID : 1
+        DB::table('quizzes')->insert([
+            'region_id' => 4,
+            'user_id' => 1,
+            'title' => "La ville de Morges",
+            'description' => "Morges est une commune suisse du canton de Vaud, située au bord du Léman. Découvrez ces trésors cachés !",
+            'difficulty' => 3,
+        ]);
+
+        for ($i = 2; $i <= 5; $i ++) {
             DB::table('quizzes')->insert([
                 'region_id' => rand(1,3),
                 'user_id' => rand(1,5),
