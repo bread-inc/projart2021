@@ -45,8 +45,10 @@ height: 100%;
     padding: 10px;
     z-index: 99999;*/
   }
+
   
-  .buttons-container > button {
+  
+  .buttons-container > button {/*
     background-color: transparent;
     border: transparent;
     padding: 10px;
@@ -55,11 +57,13 @@ height: 100%;
     border-radius: 100%;
     height: 80px;
     width: 80px;
+    */
   }
 
   .leaflet-marker-icon .leaflet-zoom-hide .leaflet-interactive{
 
     height: 50px !important;
     width: 50px !important;
+
 
   }
