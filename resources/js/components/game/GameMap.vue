@@ -1,5 +1,5 @@
 <template>
-  <div id="game-map">
+  <div id="game-map-mobile">
     <l-map
       ref="map"
       :zoom="zoom"
@@ -10,14 +10,14 @@
       ]"
       @update:center="centerUpdated"
     >
-    <div class="buttons-container">
-      <button class="button" @click="getUserPosition">
-      Locate
-    </button>
-    <button class="button" @click="getDistance">
-      Validate
-    </button>
-    </div>
+      <div class="buttons-container">
+        <button class="bLocate " @click="getUserPosition">
+          <img id="loc" src="/images/locate.png" />
+        </button>
+        <button class="button-game bValidate" @click="getDistance">
+          <img id="loc" src="/images/validate.png" />
+        </button>
+      </div>
       <l-tile-layer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         layer-type="base"
@@ -32,19 +32,12 @@
       >
         <l-popup> You are here </l-popup>
       </l-marker>
-      <l-marker
-        :lat-lng="[question.coord_x, question.coord_y]"
-      >
+      <l-marker :lat-lng="[question.coord_x, question.coord_y]">
         <l-popup> Question here </l-popup>
       </l-marker>
-      <l-circle
-        v-if="clue.radius"
-        @ready="storeClue"
-        :lat-lng="this.clueLocation"
-        :radius="parseInt(clue.radius)"
-        color="red"
-        fillOpacity: 0.5
-      />
+      <l-circle v-if="clue.radius" @ready="storeClue"
+      :lat-lng="this.clueLocation" :radius="parseInt(clue.radius)" color="red"
+      fillOpacity: 0.5 />
       <l-circle
         @ready="storeCircle"
         :lat-lng="[question.coord_x, question.coord_y]"
@@ -88,9 +81,9 @@ export default {
 
   watch: {
     // Updates the clue circles coordinates when a new clue is activated
-    clue: function(newVal, oldVal) {
+    clue: function (newVal, oldVal) {
       this.newClue(newVal.radius * 0.65);
-    }
+    },
   },
 
   init() {
@@ -113,7 +106,6 @@ export default {
   emits: ["getDistance"],
 
   methods: {
-
     // Updates clue circle coordinates when called
     newClue(radius) {
       this.clueLocation = this.randCoord(radius);
@@ -138,9 +130,8 @@ export default {
           this.userLocation = {
             lat: pos.coords.latitude,
             lng: pos.coords.longitude,
-          }; 
-             this.mapleaf.panTo([this.userLocation.lat,
-        this.userLocation.lng])
+          };
+          this.mapleaf.panTo([this.userLocation.lat, this.userLocation.lng]);
         });
       }
     },
@@ -161,7 +152,7 @@ export default {
     /**
      * Returns a random generated coordinate within 0.65 of the given radius
      * COORDS = [question.coord_x, question.coord_y]
-     * 
+     *
      * @param {number} radius The radius of the clue
      * @return {[lat, lng]} Randomly generated coordinates
      */
@@ -177,7 +168,7 @@ export default {
 
     /**
      * Returns a point within the given bounds
-     * 
+     *
      * @param {bounds} bounds The bounds of the reference circle
      * @return {[lat, lng]} The coordinates of a randomly generated point
      */
@@ -197,7 +188,7 @@ export default {
 
     /**
      *  Returns a point within the given radius from the coords
-     * 
+     *
      * @param {number} r The tolerance radius
      * @param {[lat, lng]} coord The coordinates of the question
      * @param {bounds} bounds The bounds of the reference circle
@@ -217,21 +208,5 @@ export default {
 </script>
 
 <style scoped>
-.buttons-container {
-  position: absolute;
-  top: 5%;
-  right: 5%;
-  padding: 10px;
-  z-index: 99999;
-}
 
-.buttons-container > button {
-  background-color: white;
-  border: grey;
-  color: black;
-  padding: 10px;
-  text-align: center;
-  display: block;
-  border-radius: 100%;
-}
 </style>

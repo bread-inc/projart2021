@@ -25,6 +25,7 @@ const mix = require('laravel-mix');
     'resources/css/scoreboard.css',
     'resources/css/quiz.css',
     'resources/css/mapdesktop.css',
+    'resources/css/gameMobile.css',
 ], 'public/css/all.css');
 
 mix.js('resources/js/app.js', 'public/js')
