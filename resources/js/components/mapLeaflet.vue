@@ -257,7 +257,7 @@ export default {
 <style>
 #game-map{
 
- height:300px;
+ /*height:300px;*/
 }
 
 </style>
