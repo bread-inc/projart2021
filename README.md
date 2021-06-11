@@ -1,4 +1,4 @@
-<p align="center"><img src="/public/images/logo/logo.png" width="250"></p>
+<p align="center"><img src="/public/storage/images/logo/logo.png" width="250"></p>
 
 
 ## About SwissGuesser
@@ -35,23 +35,14 @@ To install the app, you need to follow the next steps :
 The default users created at seeding are :
 
 - {`pseudo => admin`, `email => admin@gmx.ch`, `password => admin`}
-- {`pseudo => user`, `email => user@gmx.ch`, `password => user`}
+- {`pseudo => user2`, `email => user2@gmx.ch`, `password => user2`}
 
-**Please only use those users for development purpose !**
+**Please only use those users for development purpose !*
 
-### Collaboration
+## Documentation
 
-1. Follow the installation steps;
+The documentation of the SwissGuesser Laravel app can be found here : [https://bread-inc.github.io/projart2021/](https://bread-inc.github.io/projart2021/)
 
-2. Start editing the project;
-
-3. When you're done, you can commit your edits or reviews to the main branch : `git add .` `git commit -m "Your message"` ;
-
-4. Push your commit : `git push`.
-
-## Additionnal elements
-
-The complete app static design can be found in the folder `/_webdesign/`.
 
 ## License
 
