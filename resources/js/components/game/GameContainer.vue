@@ -27,8 +27,7 @@
         :id="data.quiz.id"
         :questionCounter="questionCounter"
         :clueCounter="clueCounter"
-        :totalDistance="totalDistance"
-        :startTime="startTime"
+        :time="timer"
         :failedValidations="failedValidations"
         @close="endQuiz"
       >
@@ -41,6 +40,43 @@
         :clue="currentClue || 0"
         @getDistance="getDistance"
       ></game-map>
+      <div class="navigation">
+        <div
+          class="
+            navigation-buttons
+            row
+            justify-content-center
+            align-self-center
+          "
+        >
+          <a
+            id="drawer-button"
+            href="#"
+            data-drawer-trigger
+            aria-controls="drawer-name"
+            aria-expanded="false"
+          >
+            <div class="d-flex flex-row">
+              <div class="p-2 flex-fill">
+                <button
+                  class="rounded-top btn btn-gradient"
+                  @click="showQuestionTab = true"
+                >
+                  Question
+                </button>
+              </div>
+              <div class="p-2 flex-fill">
+                <button
+                  class="rounded-top btn btn-gradient"
+                  @click="showQuestionTab = false"
+                >
+                  Indices
+                </button>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
       <game-drawer>
         <template v-slot:title>
           <div v-if="showQuestionTab">
@@ -51,23 +87,24 @@
         <template v-slot:content>
           <div v-if="showQuestionTab">
             <p>{{ currentQuestion.description }}</p>
-             <v-pannellum
+            <v-pannellum
               :src="'/' + currentQuestion.picture"
-              style="height: 200px; width: auto;"
+              style="height: 200px; width: auto"
               :minHfov="90"
               :showZoom="true"
               :autoload="false"
               :compass="true"
             ></v-pannellum>
-            <button class="btn btn-info mr-2 col" @click="skipQuestion">
+            <button class="btn btn-gradient mr-2 col" @click="skipQuestion">
               Skip
             </button>
           </div>
           <div v-else>
-            <p v-if="currentClue">Clue : {{ currentClue.description }}</p>
+            <p v-if="currentClue">Indice : {{ currentClue.description }}</p>
+            <p v-else>Vous n'avez pas encore utilisé d'indice!</p>
             <button
               v-if="clueIndex < currentQuestion.clues.length - 1"
-              class="btn btn-info mr-2 col"
+              class="btn btn-gradient mr-2 col"
               @click="nextClue"
             >
               Clue
@@ -75,28 +112,6 @@
           </div>
         </template>
       </game-drawer>
-      <div class="navigation">
-        <a
-          id="drawer-button"
-          href="#"
-          data-drawer-trigger
-          aria-controls="drawer-name"
-          aria-expanded="false"
-        >
-          <div class="d-flex flex-row">
-            <div class="p-2 flex-fill">
-              <button class="rounded-top" @click="showQuestionTab = true">
-                Question
-              </button>
-            </div>
-            <div class="p-2 flex-fill">
-              <button class="rounded-top" @click="showQuestionTab = false">
-                Indices
-              </button>
-            </div>
-          </div>
-        </a>
-      </div>
     </div>
   </div>
 </template>
@@ -127,12 +142,12 @@ export default {
   data() {
     return {
       distance: "",
-      totalDistance: 0,
       questionIndex: 0,
       questionCounter: 0,
       clueIndex: -1,
       clueCounter: 0,
-      startTime: Date.now(),
+      timer: 0,
+      t: Number,
       failedValidations: 0,
       showQuestionValidation: false,
       showQuestionSuccess: false,
@@ -155,8 +170,10 @@ export default {
         this.showQuizSuccess ||
         this.showQuestionFailure
       ) {
+        this.stopTimer();
         return false;
       } else {
+        this.startTimer();
         return true;
       }
     },
@@ -169,7 +186,7 @@ export default {
   methods: {
     nextQuestion() {
       this.questionIndex++;
-      if (this.questionIndex >= this.data.questions.length-1) this.endQuiz();
+      if (this.questionIndex >= this.data.questions.length - 1) this.endQuiz();
     },
 
     nextClue() {
@@ -182,6 +199,19 @@ export default {
       this.questionIndex++;
       this.clueCounter -= this.clueIndex + 1;
       if (this.questionIndex >= this.data.questions.length) this.endQuiz();
+    },
+
+    incrementTimer() {
+      this.timer++;
+      console.log("timer incremented");
+    },
+
+    startTimer() {
+      this.t = setInterval(this.incrementTimer, 1000);
+    },
+
+    stopTimer() {
+      clearInterval(this.t);
     },
 
     endQuiz() {
@@ -214,7 +244,6 @@ export default {
 
     validateCounter() {
       this.questionCounter++;
-      this.totalDistance += parseInt(this.distance);
     },
   },
 };

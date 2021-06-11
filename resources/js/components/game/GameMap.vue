@@ -11,7 +11,7 @@
       @update:center="centerUpdated"
     >
       <div class="buttons-container">
-        <button class="bLocate " @click="getUserPosition">
+        <button class="button-game bLocate " @click="getUserPosition">
           <img id="loc" src="/images/locate.png" />
         </button>
         <button class="button-game bValidate" @click="getDistance">
@@ -31,9 +31,6 @@
         color="red"
       >
         <l-popup> You are here </l-popup>
-      </l-marker>
-      <l-marker :lat-lng="[question.coord_x, question.coord_y]">
-        <l-popup> Question here </l-popup>
       </l-marker>
       <l-circle v-if="clue.radius" @ready="storeClue"
       :lat-lng="clueLocation" :radius="parseInt(clue.radius)" color="red"

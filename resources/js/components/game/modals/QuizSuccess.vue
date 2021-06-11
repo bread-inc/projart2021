@@ -9,14 +9,13 @@
 								<slot></slot>
 						</div>
 						<div class="modal-footer">
-							<form action="game/completed" method="post">
+							<form class="row" action="game/completed" method="post">
 							<input type="hidden" name="id" :value="id">
 							<input type="hidden" name="questionCounter" :value="questionCounter">
 							<input type="hidden" name="clueCounter" :value="clueCounter">
-							<input type="hidden" name="totalDistance" :value="totalDistance">
-							<input type="hidden" name="startTime" :value="startTime">
+							<input type="hidden" name="time" :value="time">
 							<input type="hidden" name="failedValidations" :value="failedValidations">
-							<button class="btn btn-primary">End quiz</button>
+							<button class="btn btn-gradient">End quiz</button>
 							</form>
 							<!-- <button type="button" class="btn btn-primary" @click="$emit('close')">End Quiz</button> -->
 						</div>
@@ -33,8 +32,7 @@ export default {
 	  id : Number,
 	  questionCounter : Number,
 	  clueCounter : Number,
-	  totalDistance : Number,
-	  startTime: Number,
+	  time: Number,
 	  failedValidations: Number,
   },
   methods: {

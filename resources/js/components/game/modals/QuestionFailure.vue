@@ -9,7 +9,7 @@
 								<slot></slot>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-primary" @click="$emit('close')">Try again</button>
+							<button type="button" class="btn btn-gradient" @click="$emit('close')">Try again</button>
 						</div>
 				</div>
 			</div>

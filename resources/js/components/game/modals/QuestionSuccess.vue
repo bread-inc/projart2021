@@ -9,7 +9,7 @@
 								<slot></slot>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-primary" @click="$emit('close')">Next question</button>
+							<button type="button" class="btn btn-gradient" @click="$emit('close')">Next question</button>
 						</div>
 				</div>
 			</div>
