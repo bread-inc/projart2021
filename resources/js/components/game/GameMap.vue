@@ -36,7 +36,7 @@
         <l-popup> Question here </l-popup>
       </l-marker>
       <l-circle v-if="clue.radius" @ready="storeClue"
-      :lat-lng="this.clueLocation" :radius="parseInt(clue.radius)" color="red"
+      :lat-lng="clueLocation" :radius="parseInt(clue.radius)" color="red"
       fillOpacity: 0.5 />
       <l-circle
         @ready="storeCircle"
