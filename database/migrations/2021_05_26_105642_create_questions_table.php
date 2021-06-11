@@ -20,7 +20,8 @@ class CreateQuestionsTable extends Migration
             $table->float('coord_x');
             $table->float('coord_y');
             $table->integer('radius');
-            $table->string('description');
+            $table->text('description');
+            $table->text('end_text');
             $table->integer('quiz_id')->unsigned();
             $table->foreign('quiz_id')
                 ->references('id')
