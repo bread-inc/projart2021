@@ -52,7 +52,7 @@
           <div v-if="showQuestionTab">
             <p>{{ currentQuestion.description }}</p>
              <v-pannellum
-              :src="'/360.jpg'"
+              :src="'/' + currentQuestion.picture"
               style="height: 200px; width: auto;"
               :minHfov="90"
               :showZoom="true"
