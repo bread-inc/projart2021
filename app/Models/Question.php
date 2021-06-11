@@ -11,7 +11,7 @@ class Question extends Model
 
     public $timestamps = false;
 
-    protected $fillable=['quiz_id','picture','coord_x', 'coord_y', 'radius', 'description'];
+    protected $fillable=['quiz_id','picture','coord_x', 'coord_y', 'radius', 'description', 'end_text'];
 
     /**
      * Returns the Quiz the Question is related to.

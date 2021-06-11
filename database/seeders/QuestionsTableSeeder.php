@@ -17,7 +17,8 @@ class QuestionsTableSeeder extends Seeder
             'radius' => 20,
             'description' => "En prolongement du bord je me dresse;\n".
             "Pour laisser aux amoureux la vue sur le leman;\n".
-            "À deux pas des tulipes vous me trouverez."
+            "À deux pas des tulipes vous me trouverez.",
+            'end_text' => ""
         ],
         [
             'quiz_id' => 1,
@@ -27,7 +28,8 @@ class QuestionsTableSeeder extends Seeder
             'radius' => 50,
             'description' => "Sur une place au cœur de la ville je me situe;\n".
             "Perpendiculaire à Louis de Savoie vous me trouverez;\n".
-            "Observez bien ou vous pourriez me manquer."
+            "Observez bien ou vous pourriez me manquer.",
+            'end_text' => ""
         ],
         [
             'quiz_id' => 1,
@@ -37,7 +39,8 @@ class QuestionsTableSeeder extends Seeder
             'radius' => 50,
             'description' => "Entre argent et chaussures je me trouve;\n".
             "Prenez garde à ne pas passer tout droit;\n".
-            "Car pavé d’embûches votre route sera."
+            "Car pavé d’embûches votre route sera.",
+            'end_text' => ""
         ],
         [
             'quiz_id' => 1,
@@ -47,7 +50,8 @@ class QuestionsTableSeeder extends Seeder
             'radius' => 20,
             'description' => "Entouré de vert, je suis;\n".
             "Des Tulipes je suis la forteresse;\n".
-            "En bon voisin de la Morges, je trône."
+            "En bon voisin de la Morges, je trône.",
+            'end_text' => ""
         ],
         [
             'quiz_id' => 1,
@@ -57,7 +61,8 @@ class QuestionsTableSeeder extends Seeder
             'radius' => 80,
             'description' => "En gardien du port, je veille;\n".
             "À la croisée de la ville et de la nature vous me trouverez;\n".
-            "Même si je n’en suis pas loin, n’en faites pas tout un cinéma."
+            "Même si je n’en suis pas loin, n’en faites pas tout un cinéma.",
+            'end_text' => ""
         ],
         [
             'quiz_id' => 1,
@@ -67,7 +72,8 @@ class QuestionsTableSeeder extends Seeder
             'radius' => 30,
             'description' => "Mes hauteurs vous ne pouvez manquer;\n".
             "En face du légionnaire château je me situe;\n".
-            "Comme le soleil, à l’horizon je me trouve."
+            "Comme le soleil, à l’horizon je me trouve.",
+            'end_text' => ""
         ],
         [
             'quiz_id' => 1,
@@ -77,7 +83,8 @@ class QuestionsTableSeeder extends Seeder
             'radius' => 50,
             'description' => "À la frontière entre terre et lac;\n".
             "En face du Mont Blanc;\n".
-            "Quel meilleur endroit pour commencer une croisière ?"
+            "Quel meilleur endroit pour commencer une croisière ?",
+            'end_text' => ""
         ],
     ];
     
@@ -106,6 +113,7 @@ class QuestionsTableSeeder extends Seeder
                 'coord_y' => rand(1, 1000),
                 'radius' => rand(10, 100),
                 'description' => "Description $i. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                'end_text' => "Texte de fin $i. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             ]);
         }
     }
