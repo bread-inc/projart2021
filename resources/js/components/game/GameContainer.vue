@@ -52,7 +52,7 @@
           <div v-if="showQuestionTab">
             <p>{{ currentQuestion.description }}</p>
              <v-pannellum
-              :src="'/360.jpg'"
+              :src="'/' + currentQuestion.picture"
               style="height: 200px; width: auto;"
               :minHfov="90"
               :showZoom="true"
@@ -179,11 +179,14 @@ export default {
     },
 
     skipQuestion() {
-      this.nextQuestion();
+      this.questionIndex++;
       this.clueCounter -= this.clueIndex + 1;
+      if (this.questionIndex >= this.data.questions.length) this.endQuiz();
     },
 
     endQuiz() {
+      this.clueIndex = 0;
+      this.questionIndex = 0;
       this.showQuizSuccess = true;
     },
 
