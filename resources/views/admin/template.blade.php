@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,6 +22,11 @@
     <!-- Styles -->
     <link rel="icon" type="image/png" href="{{ asset('storage/images/logo/favicon-admin.png') }}" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .form-group img {
+            max-width: 100%;
+        }
+    </style>
 </head>
 <body>
     <div id="app">

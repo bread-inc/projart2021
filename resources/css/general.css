@@ -83,6 +83,10 @@ small {
     z-index: 100;
 }
 
+.form-group img {
+    max-width: 100%;
+}
+
 /* Desktop design */
 @media screen and (min-width: 768px) {
     body {

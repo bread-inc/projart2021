@@ -83,7 +83,7 @@ class QuestionsTableSeeder extends Seeder
     
     
     /**
-     * Creates 15 placeholder questions, attributed to a random quiz
+     * Creates 8 placeholder questions, attributed to a random quiz
      *
      * @return void
      */
@@ -98,7 +98,7 @@ class QuestionsTableSeeder extends Seeder
 
 
         for ($i = 8; $i <= 15; $i++) {
-            $quiz_id = rand(1,5);
+            $quiz_id = rand(2,5);
             DB::table('questions')->insert([
                 'quiz_id' => $quiz_id,
                 'picture' => "storage/images/questions/Q$quiz_id" . "Q$i.jpg",
