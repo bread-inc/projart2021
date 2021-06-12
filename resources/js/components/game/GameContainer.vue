@@ -79,13 +79,13 @@
       </div>
       <game-drawer>
         <template v-slot:title>
-          <div v-if="showQuestionTab">
+          <div v-show="showQuestionTab">
             Question : {{ questionIndex + 1 }} / {{ data.questions.length }}
           </div>
-          <div v-else>Indices</div>
+          <div v-show="!showQuestionTab">Indices</div>
         </template>
         <template v-slot:content>
-          <div v-if="showQuestionTab">
+          <div v-show="showQuestionTab">
             <p>{{ currentQuestion.description }}</p>
             <v-pannellum
               :src="'/' + currentQuestion.picture"
@@ -99,7 +99,7 @@
               Skip
             </button>
           </div>
-          <div v-else>
+          <div v-show="!showQuestionTab">
             <p v-if="currentClue">Indice : {{ currentClue.description }}</p>
             <p v-else>Vous n'avez pas encore utilisé d'indice!</p>
             <button

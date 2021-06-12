@@ -88,14 +88,8 @@ export default {
     this.randCircleMarker = null;
   },
   async beforeMount() {
-    // Leaflet imports
-    const { circleMarker } = await import("leaflet/dist/leaflet-src.esm");
-
     // Set current position
     await this.getUserPosition();
-
-    circleMarker(this.userLocation, { radius: 8 });
-
     // Waits until ready to show
     this.mapIsReady = true;
   },
