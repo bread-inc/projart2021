@@ -24,20 +24,9 @@
         {!! $errors->first('description', '<small class="help-block">:message</small>') !!}
     </div>
 
-    <div class="form-group">
-        <div id="vue-app">
+  <div id="vue-app">
             <admin-map></admin-map>
-        </div>
-
-        <br><label for="coord_x">Coordonnée X</label>
-        <input class="form-control" name="coord_x" type="text" value="{{old('coord_x')}}">
-        {!! $errors->first('coord_x', '<small class="help-block">:message</small>') !!}
-
-        <br><label for="coord_y">Coordonnée Y</label>
-        <input class="form-control" name="coord_y" type="text" value="{{old('coord_y')}}">
-        {!! $errors->first('coord_y', '<small class="help-block">:message</small>') !!}
-    </div>
-
+  </div>
     <div class="form-group">
         <label for="radius">Rayon</label>
         <input class="form-control" name="radius" type="range" min="30" max="3000" step="10" value="{{old('radius')}}">
@@ -47,5 +36,8 @@
     </div>
 
     <input type="submit" value="Créer" class="btn btn-primary">
+
 </form>
+
+
 @endsection
