@@ -3,15 +3,15 @@
 
   <div id="admin-map">
         <label for="coord_x">Coordonnée X</label>
-        <input class="form-control" name="coord_x" type="text" v-model="this.questionPosition[0]" placeholder="Cordone X" />
+        <input class="form-control" name="coord_x" type="text" v-model="this.valuex" placeholder="Cordone X" />
         <label for="coord_y">Coordonnée Y</label>
-        <input class="form-control" name="coord_y" type="text" v-model="this.questionPosition[1]" placeholder="Cordone Y" />
-        <label for="coord_y">Radius indice</label>
-        <input class="form-control" name="radius" v-model="this.radiusCircle" placeholder="Radius">
+        <input class="form-control" name="coord_y" type="text" v-model="this.valuey" placeholder="Cordone Y" />
+        <label for="radius">Radius indice</label>
+        <input class="form-control" name="radius" v-model.number="this.radiusCircle" placeholder="Radius">
 
 
     <l-map
-    v-on:click ="click"
+      @click ="click"
       ref="map"
       :zoom="zoom"
       @ready="storemap"
@@ -26,20 +26,14 @@
         layer-type="base"
         name="OpenStreetMap"
       ></l-tile-layer>
-          <l-circle @ready="storeCircle" :lat-lng="[questionPosition[0]|| 0, questionPosition[1]|| 0]" :radius="this.radiusCircle" color="blue" />
+          <l-circle @ready="storeCircle" :lat-lng="[this.valuex || 0, this.valuey|| 0]" :radius="this.radiusCircle" color="blue" />
       <l-marker
-      draggable
       @ready="storemarker"
         :lat-lng="[
-          questionPosition[0] || 0,
-          questionPosition[1]|| 0,
+          this.valuex || 0,
+          this.valuey || 0,
         ]"
-        @moveend="endMove"
       >
-       <l-popup>
-           <p>Distance x = {{questionPosition[0]}}</p>
-           <p>Distance y = {{questionPosition[1]}}</p>
-       </l-popup>
       </l-marker>
     </l-map>
      <input type="submit" value="Enregistrer les modifications" class="btn btn-primary">
@@ -70,7 +64,9 @@ export default {
       arrayRegions: [],
       questionPosition: [],
       field:'',
-      radiusCircle:0,
+      radiusCircle: 0,
+      valuex: 0,
+      valuey: 0,
     };
   },
 
@@ -104,17 +100,20 @@ export default {
     },
     storemap(mapObject) {
       this.mapleaf = mapObject;
-
     },
 
     click(test){
-        console.log(test.layerX);
-
-        let latlng = this.mapleaf.layerPointToLatLng([test.layerX, test.layerY]);
 
 
-        this.questionPosition[0] =latlng.lat;
-        this.questionPosition[1] =latlng.lng;
+
+       let x = test.layerX;
+       let y = test.layerY;
+
+
+       let  latiLongi = this.mapleaf.layerPointToLatLng([x , y]);
+
+        this.valuex =latiLongi.lat;
+        this.valuey =latiLongi.lng;
 
     },
 
@@ -130,22 +129,6 @@ export default {
 
     },
 
-    endMove()
-    {
-        console.log("endMove");
-        let latidueLong = this.makrerLeaf.getLatLng();
-
-        this.questionPosition[0] = latidueLong.lat;
-        this.questionPosition[1] = latidueLong.lng;
-
-      var inputX = document.getElementsByName("coord_x");
-        console.log(inputX);
-        inputX.value = (this.questionPosition[0]);
-
-    console.log(this.data);
-
-
-    },
 
     //peuplage de la map avec tout les regions
 

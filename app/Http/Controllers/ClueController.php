@@ -17,7 +17,8 @@ class ClueController extends Controller
      */
     public function create($quiz_id, $question_id)
     {
-        return view("admin.quizzes.questions.clues.create_clue", compact('quiz_id', 'question_id'));
+        $question = Question::findOrFail($question_id);
+        return view("admin.quizzes.questions.clues.create_clue", compact('quiz_id', 'question_id'))->with('question', $question);
     }
 
     /**
@@ -30,7 +31,7 @@ class ClueController extends Controller
     {
         // On contrôle que la question existe, et on récupère les informations pour la Vue de redirection
         $question = Question::find($request->question_id);
-        
+
         if(!empty($question)) {
 
             Clue::create([
@@ -38,7 +39,7 @@ class ClueController extends Controller
                 'radius' => $request->radius,
                 'description' => $request->description,
             ]);
-            
+
             return redirect(route('question.show', [$question->quiz_id, $question->id]))->withOk("L'indice " . $request->id . " a été créé.");
         }
 
@@ -53,8 +54,8 @@ class ClueController extends Controller
     public function edit($quiz_id, $question_id, $clue_id)
     {
         $clue = Clue::findOrFail($clue_id);
-
-        return view("admin.quizzes.questions.clues.edit_clue", compact('clue', 'quiz_id', 'question_id'));
+        $question = Question::findOrFail($question_id);
+        return view("admin.quizzes.questions.clues.edit_clue", compact('clue', 'quiz_id', 'question_id'))->with('question', $question)->with('clue', $clue);
     }
 
     /**
@@ -65,7 +66,8 @@ class ClueController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(ClueRequest $request, $quiz_id, $question_id, $clue_id)
-    { 
+
+    {
         Clue::findOrFail($clue_id)->update($request->all());
         return redirect(route('question.show', [$quiz_id, $question_id]))->withOk("L'indice " . $request->id . " a été modifié.");
     }
@@ -76,7 +78,7 @@ class ClueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($quiz_id, $question_id, $clue_id) // Debug : comment enlever ces paramètres inutiles ? 
+    public function destroy($quiz_id, $question_id, $clue_id) // Debug : comment enlever ces paramètres inutiles ?
     {
         Clue::findOrFail($clue_id)->delete();
         return redirect()->back();

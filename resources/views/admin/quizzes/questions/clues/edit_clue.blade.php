@@ -11,7 +11,7 @@
 
     <input type="hidden" name="id" value="{{$clue->id}}">
 
-    <small>À voir comment mettre en page, si on laisse ces selecteurs, 
+    <small>À voir comment mettre en page, si on laisse ces selecteurs,
         ou si on met juste dans le titre, p.e., les id du quiz et de la question</small>
 
     <div class="form-group">
@@ -27,16 +27,10 @@
         <textarea class="form-control" name="description">{{$clue->description}}</textarea>
         {!! $errors->first('description', '<small class="help-block">:message</small>') !!}
     </div>
-
-    <div class="form-group">
-        <label for="radius">Rayon</label>
-        <input class="form-control" name="radius" type="range" min="30" max="3000" step="10" value="{{$clue->radius}}">
-        {!! $errors->first('radius', '<small class="help-block">:message</small>') !!}
-
-        <small>Peut-être afficher en JS la valeur du slider ?</small>
+    <div id="vue-app">
+        <edit-clue-map :data="{{ $question }}"  :clue="{{ $clue }}"> </edit-clue-map>
     </div>
 
-    <input type="submit" value="Modifier" class="btn btn-primary">
 </form>
 
 @endsection

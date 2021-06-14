@@ -12,6 +12,9 @@ import 'leaflet/dist/leaflet.css';
 import testMap from './components/mapLeaflet.vue';
 import GameDesktopMap from './components/GameDesktopMap.vue';
 import AdminMap from './components/AdminMap.vue';
+import ClueMap from './components/ClueMap.vue';
+import EditAdminMap from './components/EditAdminMap.vue';
+import EditClueMap from './components/EditClueMap.vue';
 import { createApp } from 'vue';
 
 const app = createApp({
@@ -26,5 +29,8 @@ const app = createApp({
         "testleaf": testMap,
         "game-desktop-map":GameDesktopMap,
         "admin-map":AdminMap,
+        "clue-map":ClueMap,
+        "edit-admin-map":EditAdminMap,
+        "edit-clue-map": EditClueMap
     }
 }).mount('#vue-app')

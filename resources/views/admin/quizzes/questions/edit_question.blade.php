@@ -31,7 +31,7 @@
     </div>
 
     <div id="vue-app">
-        <admin-map></admin-map>
+        <edit-admin-map :data="{{ $question }}" ></edit-admin-map>
     </div>
 </form>
 

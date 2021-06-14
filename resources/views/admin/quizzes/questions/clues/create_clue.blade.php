@@ -8,7 +8,7 @@
 <form method="POST" action="{{route('clue.store', [$quiz_id, $question_id])}}" accept-charset="UTF-8">
     @csrf
 
-    <small>À voir comment mettre en page, si on laisse ces selecteurs, 
+    <small>À voir comment mettre en page, si on laisse ces selecteurs,
         ou si on met juste dans le titre, p.e., les id du quiz et de la question</small>
 
     <div class="form-group">
@@ -25,15 +25,9 @@
         {!! $errors->first('description', '<small class="help-block">:message</small>') !!}
     </div>
 
-    <div class="form-group">
-        <label for="radius">Rayon</label>
-        <input class="form-control" name="radius" type="range" min="30" max="3000" step="10" value="{{old('radius')}}">
-        {!! $errors->first('radius', '<small class="help-block">:message</small>') !!}
-
-        <small>Peut-être afficher en JS la valeur du slider ?</small>
+    <div id="vue-app">
+        <clue-map :data="{{ $question }}"> </clue-map>
     </div>
-
-    <input type="submit" value="Enregistrer">
 </form>
 
 @endsection
