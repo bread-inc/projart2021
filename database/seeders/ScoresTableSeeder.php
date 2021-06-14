@@ -25,7 +25,7 @@ class ScoresTableSeeder extends Seeder
         for ($i=1; $i <= 50; $i++) {
             $date = $this->randDate();
             DB::table('scores')->insert([
-                'quiz_id' => rand(1,5),
+                'quiz_id' => rand(1,3),
                 'user_id' => rand(1,5),
                 'score' => rand(1, 100),
                 'created_at' => $date,
