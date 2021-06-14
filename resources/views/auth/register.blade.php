@@ -22,7 +22,7 @@
                     <h3 for="pseudo" class="col-12">Pseudonyme</h3>
 
                     <div class="col-12">
-                        <input id="pseudo" type="pseudo" class="form-control @error('pseudo') is-invalid @enderror" name="pseudo" value="{{ old('pseudo') }}" required autocomplete="pseudo" autofocus>
+                        <input id="pseudo" type="text" class="form-control @error('pseudo') is-invalid @enderror" name="pseudo" value="{{ old('pseudo') }}" required autocomplete="pseudo" autofocus>
 
                         @error('pseudo')
                             <span class="invalid-feedback" role="alert">
