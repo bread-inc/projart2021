@@ -21,12 +21,12 @@ class CreateScoresTable extends Migration
             $table->foreign('quiz_id')
                 ->references('id')
                 ->on('quizzes')
-                ->onDelete('cascade');
+                ->onDelete('restrict');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete('cascade');
+                ->onDelete('restrict');
             $table->float('score');
 
         });

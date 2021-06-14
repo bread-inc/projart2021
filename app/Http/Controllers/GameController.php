@@ -167,15 +167,17 @@ class GameController extends Controller
         $exponent = 33.3 * $difficulty + 66.5;
         $score = $baseScore / 100 * $exponent;
 
-        // Checking if the user gets new badges
-        $newBadges = $this->checkingBadges($quiz, $score, $time);
         
-        if (Auth()->check()) {
-            Score::create([
-                'quiz_id' =>$request->id,
-                'user_id' =>$request->user()->id,
-                'score' => $score
-            ]);
+        if (auth()->check()) {
+            // Checking if the user gets new badges
+            $newBadges = $this->checkingBadges($quiz, $score, $time);
+            
+            $newScore = new Score();
+            $newScore->quiz_id = intval($request->id);
+            $newScore->user_id = $request->user()->id;
+            $newScore->score = $score;
+            $newScore->save();
+
             return view('game_completed')->with(compact('quiz', 'score', 'time'));
         } else {
             return view('game_completed')->with(compact('quiz', 'score', 'time'));
