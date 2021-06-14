@@ -7,6 +7,7 @@ use App\Models\Region;
 use App\Models\Badge;
 use App\Models\Quiz;
 use App\Models\User;
+use App\Models\Score;
 
 class GameController extends Controller
 {
@@ -154,24 +155,32 @@ class GameController extends Controller
      */
     public function endGame(Request $request)
     {   
-        $id = $request->id;
         $time = $request->time;
         $questions = $request->questionCounter;
         $clues = $request->clueCounter;
         $validations = $request->failedValidations;
 
-        $quiz = Quiz::findOrFail($id);
+        $quiz = Quiz::findOrFail($request->id);
         $difficulty = $quiz->difficulty;
 
         $baseScore = (100 * $questions) - ($clues * 3) - ($validations * 5) - floor($time/60);
         $exponent = 33.3 * $difficulty + 66.5;
         $score = $baseScore / 100 * $exponent;
 
-
         // Checking if the user gets new badges
         $newBadges = $this->checkingBadges($quiz, $score, $time);
-
-        return view('game_completed')->with(compact('quiz', 'score', 'time'));
+        
+        if (Auth()->check()) {
+            Score::create([
+                'quiz_id' =>$request->id,
+                'user_id' =>$request->user()->id,
+                'score' => $score
+            ]);
+            return view('game_completed')->with(compact('quiz', 'score', 'time'));
+        } else {
+            return view('game_completed')->with(compact('quiz', 'score', 'time'));
+        }
+        
     }
 
     /**
