@@ -19,7 +19,7 @@ class FavoritesTableSeeder extends Seeder
 
         for ($i=1; $i <= 10; $i++) {
             DB::table('favorites')->insert([
-                'quiz_id' => rand(1, 5),
+                'quiz_id' => rand(1, 3),
                 'user_id' => rand(1, 5),
             ]);
         }

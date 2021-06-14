@@ -31,9 +31,12 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UsersTableSeeder::class);
         $this->call(RegionsTableSeeder::class);
+        $this->call(QuizzesTableGlobalSeeder::class);
+        /*
         $this->call(QuizzesTableSeeder::class);
         $this->call(QuestionsTableSeeder::class);
         $this->call(CluesTableSeeder::class);
+        */
         $this->call(ScoresTableSeeder::class);
         $this->call(BadgesTableSeeder::class);
         $this->call(BadgeUserTableSeeder::class);
