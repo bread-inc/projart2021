@@ -31,14 +31,21 @@
   
   text-align: center;
   width: 100%;
-  
+  margin-bottom: 10px;
 
+}
+
+.BodyMap > .leaflet-bar  {
+
+  background-color: blueviolet;
+
+  
 }
 
 
 .btnSkip {
 
-  margin-top: 15px;
+  
   border: 0; 
   background-color: transparent;
 

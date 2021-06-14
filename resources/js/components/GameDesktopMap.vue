@@ -30,6 +30,9 @@
           userLocation.lng || 0,
         ]"
       >
+      <l-icon :iconUrl="`images/position.png`"
+        :icon-size="[45, 45]" />
+        
         <l-popup @ready="storePopup"> You are here </l-popup>
 
       </l-marker>
@@ -38,7 +41,8 @@
         region.center_x || 0,
         region.center_y|| 0,
       ]">
-      <l-icon />
+      <l-icon :iconUrl="`/images/marker.png`"
+         />
         <l-popup
         @ready="popUpObject">
 
@@ -54,6 +58,9 @@
         ]"
         @ready="storemarker"
       >
+
+      <l-icon :iconUrl="`images/position.png`"
+        :icon-size="[45, 45]" />
         <l-popup> You are here </l-popup>
       </l-marker>
 

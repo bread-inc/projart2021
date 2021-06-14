@@ -11,7 +11,7 @@
       @update:center="centerUpdated"
     >
       <div class="buttons-container">
-        <button class="button-game bLocate " @click="getUserPosition">
+        <button class="button-game bLocate" @click="getUserPosition">
           <img id="loc" src="/images/locate.png" />
         </button>
         <button class="button-game bValidate" @click="getDistance">
@@ -28,13 +28,14 @@
           userLocation.lat || defaultLocation.lat,
           userLocation.lng || defaultLocation.lng,
         ]"
-        color="red"
+        
       >
+        <l-icon :iconUrl="`/images/position.png`"
+        :icon-size="[45, 45]" />
         <l-popup> You are here </l-popup>
       </l-marker>
-      <l-circle v-if="clue.radius" @ready="storeClue"
-      :lat-lng="clueLocation" :radius="parseInt(clue.radius)" color="red"
-      fillOpacity: 0.5 />
+      <l-circle v-if="clue.radius" @ready="storeClue" :lat-lng="clueLocation"
+      :radius="parseInt(clue.radius)" color="red" fillOpacity: 0.5 />
       <l-circle
         @ready="storeCircle"
         :lat-lng="[question.coord_x, question.coord_y]"
@@ -49,13 +50,14 @@ import {
   LMap,
   LTileLayer,
   LMarker,
+  LIcon,
   LPopup,
   LCircleMarker,
   LCircle,
 } from "@vue-leaflet/vue-leaflet";
 export default {
   name: "GameMap",
-  components: { LMap, LTileLayer, LMarker, LPopup, LCircleMarker, LCircle },
+  components: { LMap, LTileLayer, LMarker, LIcon,LPopup, LCircleMarker, LCircle },
   props: {
     defaultLocation: {
       type: Object,
@@ -199,5 +201,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
