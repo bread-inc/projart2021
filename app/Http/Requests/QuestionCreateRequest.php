@@ -26,6 +26,7 @@ class QuestionCreateRequest extends FormRequest
         return [
             "picture" => "required|image|mimes:jpeg,jpg,png|max:2048",
             "description" => "required|max:255",
+            "end_text" => "string|required",
             "radius" => "required",
             "quiz_id" => "required",
             "coord_x" => "required",

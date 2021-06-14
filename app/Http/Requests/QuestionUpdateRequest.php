@@ -26,9 +26,10 @@ class QuestionUpdateRequest extends FormRequest
         return [
             "picture" => "image|mimes:jpeg,jpg,png|max:2048", // can't be required for the update
             "description" => "required|max:255",
+            "end_text" => "string|required",
             "radius" => "required",
             "coord_x" => "required",
-            "coord_y" => "required"
+            "coord_y" => "required",
         ];
     }
 }
