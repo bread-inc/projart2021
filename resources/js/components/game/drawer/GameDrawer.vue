@@ -5,7 +5,7 @@
       <div class="drawer__wrapper">
         <div class="drawer__header">
           <div class="drawer__title">
-            <slot name="title"></slot>
+            <slot id="titleQuestion" name="title"></slot>
           </div>
           <button
             class="drawer__close"
@@ -14,7 +14,7 @@
           ></button>
         </div>
         <div class="drawer__content">
-          <slot name="content"></slot>
+          <slot  name="content"></slot>
         </div>
       </div>
     </section>
@@ -222,7 +222,7 @@ drawer();
   overflow-y: auto;
   height: 100%;
   flex-grow: 1;
-  padding: 1.5rem;
+  /*padding: 1.5rem;*/
 }
 
 .drawer.is-active {

@@ -6,8 +6,15 @@
         @tryAgain="showQuestionValidation = false"
         @validate="validate"
       >
-        Are you sure you wish to validate?
+        Êtes vous sûr de vouloir valider la question?
       </question-validation>
+      <question-skip
+        v-if="showQuestionSkip"
+        @close="showQuestionSkip = false"
+        @skip="skipQuestion(), (showQuestionSkip = false)"
+      >
+      Êtes vous sûr de vouloir sauter la question?
+      </question-skip>
       <question-success
         v-if="showQuestionSuccess"
         @close="(showQuestionSuccess = false), questionIndex++"
@@ -79,29 +86,35 @@
       </div>
       <game-drawer>
         <template v-slot:title>
-          <div v-show="showQuestionTab">
-            Question : {{ questionIndex + 1 }} / {{ data.questions.length }}
+          <div id="TitleQuestion" v-show="showQuestionTab">
+            Question : {{ questionIndex + 1 }} sur {{ data.questions.length }}
           </div>
-          <div v-show="!showQuestionTab">Indices</div>
+          <div id="TitleIndice" v-show="!showQuestionTab">Indices</div>
         </template>
         <template v-slot:content>
           <div v-show="showQuestionTab">
-            <p>{{ currentQuestion.description }}</p>
+            <p class="textQuestion">{{ currentQuestion.description }}</p>
+            <button class="btnSkip" @click="(showQuestionSkip = true)">
+              Passer la question
+            </button>
+
             <v-pannellum
               :src="'/' + currentQuestion.picture"
-              style="height: 200px; width: auto"
-              :minHfov="90"
+              style="height: 43vh; width: auto"
+              :minHfov="30"
               :showZoom="true"
-              :autoload="false"
+              :autoload="true"
               :compass="true"
             ></v-pannellum>
-            <button class="btn btn-gradient mr-2 col" @click="skipQuestion">
-              Skip
-            </button>
+            <div class="SkipCenter"></div>
           </div>
           <div v-show="!showQuestionTab">
-            <p v-if="currentClue">Indice : {{ currentClue.description }}</p>
-            <p v-else>Vous n'avez pas encore utilisé d'indice!</p>
+            <p class="textQuestion" v-if="currentClue">
+              Indice : {{ currentClue.description }}
+            </p>
+            <p class="textQuestion" v-else>
+              Vous n'avez pas encore utilisé d'indice!
+            </p>
             <button
               v-if="clueIndex < currentQuestion.clues.length - 1"
               class="btn btn-gradient mr-2 col"
@@ -119,6 +132,7 @@
 <script>
 import GameMap from "./GameMap.vue";
 import QuestionValidation from "./modals/QuestionValidation.vue";
+import QuestionSkip from "./modals/QuestionSkip.vue";
 import QuestionSuccess from "./modals/QuestionSuccess.vue";
 import QuestionFailure from "./modals/QuestionFailure.vue";
 import QuizSuccess from "./modals/QuizSuccess.vue";
@@ -129,6 +143,7 @@ export default {
   name: "GameContainer",
   components: {
     "game-map": GameMap,
+    "question-skip": QuestionSkip,
     "question-validation": QuestionValidation,
     "question-success": QuestionSuccess,
     "question-failure": QuestionFailure,
@@ -154,6 +169,7 @@ export default {
       showQuestionFailure: false,
       showQuizSuccess: false,
       showQuestionTab: false,
+      showQuestionSkip: false,
     };
   },
   computed: {
@@ -165,6 +181,7 @@ export default {
     },
     playState() {
       if (
+        this.showQuestionSkip ||
         this.showQuestionValidation ||
         this.showQuestionSuccess ||
         this.showQuizSuccess ||
@@ -203,7 +220,6 @@ export default {
 
     incrementTimer() {
       this.timer++;
-      console.log("timer incremented");
     },
 
     startTimer() {
