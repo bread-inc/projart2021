@@ -24,18 +24,15 @@
         {!! $errors->first('description', '<small class="help-block">:message</small>') !!}
     </div>
 
-  <div id="vue-app">
-            <admin-map></admin-map>
-  </div>
     <div class="form-group">
-        <label for="radius">Rayon</label>
-        <input class="form-control" name="radius" type="range" min="30" max="3000" step="10" value="{{old('radius')}}">
-        {!! $errors->first('radius', '<small class="help-block">:message</small>') !!}
-
-        <small>Peut-être afficher en JS la valeur du slider ?</small>
+        <label for="end_text">Texte de fin</label><br>
+        <textarea class="form-control" id="end_text" name="end_text">{{old('end_text')}}</textarea>
+        {!! $errors->first('end_text', '<small class="help-block">:message</small>') !!}
     </div>
 
-    <input type="submit" value="Créer" class="btn btn-primary">
+    <div id="vue-app">
+        <admin-map></admin-map>
+    </div>
 
 </form>
 

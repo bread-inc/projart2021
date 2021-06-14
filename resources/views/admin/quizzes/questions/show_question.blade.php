@@ -19,12 +19,19 @@
 </div>
 
 <div class="form-group">
+    <label for="end_text">Texte de fin</label><br>
+    <textarea class="form-control" id="end_text" disabled>{{$question->end_text}}</textarea>
+</div>
 
+<div class="form-group">
     <br><label for="coord_x">Coordonnée X</label>
-    <input class="form-control" name="coord_x" type="text" value="{{$question->coord_x}}" disabled>
+    <input class="form-control" name="coord_x" type="number" value="{{$question->coord_x}}" disabled>
 
     <br><label for="coord_y">Coordonnée Y</label>
-    <input class="form-control" name="coord_y" type="text" value="{{$question->coord_y}}" disabled>
+    <input class="form-control" name="coord_y" type="number" value="{{$question->coord_y}}" disabled>
+
+    <br><label for="coord_y">Rayon [m]</label>
+    <input class="form-control" name="coord_y" type="number" value="{{$question->radius}}" disabled>
 </div>
 
 <hr>

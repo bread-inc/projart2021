@@ -42,6 +42,7 @@ class QuestionController extends Controller
         // Saving object in DB
         $newQuestion = [
             "description" => $request->description,
+            "end_text" => $request->end_text,
             "coord_x" => $request->coord_x,
             "coord_y" => $request->coord_y,
             "radius" => $request->radius,
