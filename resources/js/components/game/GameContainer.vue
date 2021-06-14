@@ -79,29 +79,29 @@
       </div>
       <game-drawer>
         <template v-slot:title>
-          <div v-show="showQuestionTab">
-            Question : {{ questionIndex + 1 }} / {{ data.questions.length }}
+          <div id="TitleQuestion" v-show="showQuestionTab">
+            Question : {{ questionIndex + 1 }} sur {{ data.questions.length }}
           </div>
-          <div v-show="!showQuestionTab">Indices</div>
+          <div id="TitleIndice" v-show="!showQuestionTab">Indices</div>
         </template>
         <template v-slot:content>
-          <div v-show="showQuestionTab">
-            <p>{{ currentQuestion.description }}</p>
+          <div  v-show="showQuestionTab">
+            <p class="textQuestion">{{ currentQuestion.description }}</p>
             <v-pannellum
               :src="'/' + currentQuestion.picture"
-              style="height: 200px; width: auto"
-              :minHfov="90"
+              style="height: 43vh; width: auto"
+              :minHfov="30"
               :showZoom="true"
-              :autoload="false"
+              :autoload="true"
               :compass="true"
             ></v-pannellum>
-            <button class="btn btn-gradient mr-2 col" @click="skipQuestion">
-              Skip
-            </button>
+            <div class="SkipCenter">
+              <button class="btnSkip" @click="skipQuestion">Passer la question</button>
+            </div>
           </div>
           <div v-show="!showQuestionTab">
-            <p v-if="currentClue">Indice : {{ currentClue.description }}</p>
-            <p v-else>Vous n'avez pas encore utilisé d'indice!</p>
+            <p class="textQuestion" v-if="currentClue">Indice : {{ currentClue.description }}</p>
+            <p class="textQuestion" v-else>Vous n'avez pas encore utilisé d'indice!</p>
             <button
               v-if="clueIndex < currentQuestion.clues.length - 1"
               class="btn btn-gradient mr-2 col"
@@ -203,7 +203,6 @@ export default {
 
     incrementTimer() {
       this.timer++;
-      console.log("timer incremented");
     },
 
     startTimer() {
