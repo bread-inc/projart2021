@@ -28,7 +28,7 @@
     </section>
     <section id="desktop-welcome" class="container box d-none d-md-block p-md-3 my-md-0">
         <div class="row">
-            @if(auth()->user())
+            @if(auth()->check())
             <div class="col-8"><h2><b>Préparez votre prochaine aventure</b></h2></div>
             <div class="col-4">
                 @if(isset($region))
@@ -46,6 +46,7 @@
             @endif
         </div>
     </section>
+    
     <section id="regions" class="container box p-md-3 my-5 my-md-0">
         <div class="row">
             <div class="col-12">
@@ -94,6 +95,7 @@
             </div>
         </div>
     </section>
+
     @if(auth()->check())
     <section id="last-quizzes" class="container box p-md-3 my-5 my-md-0">
         <div class="row">
@@ -140,7 +142,7 @@
             </div>
         </div>
     </section>
-        @endif
+    @endif
     <section id="badges" class="container box p-md-3 my-5 my-md-0">
         <div class="row">
             <div class="col-12">
@@ -155,8 +157,9 @@
                 <a href="user/{{$user->id}}#badges" class="btn btn-border">Tous mes badges</a>
             </div>
         @else
+        
             <div class="col-12 badges-disabled">
-                <badge-list :badges="{{ App\Models\Badge::all()->take(6) }}" :auth="{{ auth()->check() }}"></badge-list>
+                <badge-list :badges="{{ App\Models\Badge::all()->take(6) }}"></badge-list>
             </div>
             <div class="col-12">
                 <a href="{{route('login')}}" class="btn btn-border">Se connecter</a>
@@ -164,19 +167,23 @@
         @endif
         </div>
     </section>
-    
+
     <section id="scoreboard" class="container box p-md-3 bg-white py-5">    
         <div class="row">
             <div class="col-12">
                 <h2>Classement général</h2>
-                
+
                 <div id="vue-app">
+                    @if(auth()->check())
                     <score-list :scores="{{ $scores }}" :id="{{ Auth::id() }}"></score-list>
+                    @else
+                    <score-list :scores="{{ $scores }}"></score-list>
+                    @endif
                 </div>
     
                 <a href="{{route('global-ranking')}}" class="btn btn-border">Voir le classement</a>
             </div>
         </div>
-    </section>    
+    </section>
 </div>
 @endsection

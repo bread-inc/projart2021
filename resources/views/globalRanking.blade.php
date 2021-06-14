@@ -21,7 +21,11 @@
 
     <div class="container box" id="regional-scores">
         <div id="vue-app">
-            <score-list :scores="{{ $scores }}" :id="{{ auth()->check() }}"></score-list>
+            @if(auth()->check())
+            <score-list :scores="{{ $scores }}" :id="{{ Auth::id() }}"></score-list>
+            @else
+            <score-list :scores="{{ $scores }}"></score-list>
+            @endif
         </div>
     </div>
 </div>
