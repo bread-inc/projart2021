@@ -42,6 +42,151 @@ class QuizzesTableGlobalSeeder extends Seeder
         }
     }
 
+
+    private $quizzesBerne = [
+        "region_id" => 5, // Neuchâtel : 1, Yverdon : 2, Genève : 3, Morges : 4, Bern : 5
+        "quizzes" =>  [
+            // Début d'un quiz
+            [
+                "title" => "Les incontournables de Berne",
+                "description" => "Pourquoi c'est Berne la capitale de la Suisse, et pas une ville mieux ? Parce que Berne est une ville trop sympa ! Découvrez ses points d'intérêt.",
+                "difficulty" => 1,
+                "user_id" => 1, // = admin
+                "questions" => [
+                    // Début d'une question
+                    [
+                        'coord_x' => 46.9473322,
+                        'coord_y' => 7.4441067,
+                        'radius' => 50, // rayon de tolérance pour la validation de la question
+                        'description' => "Du haut de ma colline, j’observe l’Aar qui traverse la ville. Monument emblématique de la suisse, vous ne devriez pas avoir de mal à me trouver.",
+                        'end_text' => "Le Palais fédéral est l’élément central de la démocratie en Suisse. Sous son imposante coupole verte ornée de dorures, on y trouve le siège du Parlement. Les ailes est et ouest abritent quant à elles une partie du gouvernement et de l’administration fédérale.
+                        \nC’est avec ce bâtiment, long de 300 mètres, que le jeune Etat fédéral suisse de l’époque a voulu montrer son assurance. Au centre, on peut y observer le Palais du Parlement, inauguré en 1902, dans lequel se trouvent les salles du Conseil national et du Conseil des États, les bureaux des groupes parlementaires, un restaurant et une cafétéria ainsi que d’innombrables salles annexes. Dans la partie ouest, construite en 1857, on y trouve deux ministères, la Chancellerie fédérale, une bibliothèque et la salle de séance du Conseil fédéral. Finalement, deux autres départements se situent dans l’aile est, ouverte en 1892.",
+                        'clues' => [
+                            [
+                                "radius" => 1000, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
+                                "description" => "C’est aux abords de la vieille ville que vous me trouverez."
+                            ],
+                            [
+                                "radius" => 500, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
+                                "description" => "Ils paraît que le soleil est plus chaud au sud, ça tombe bien j’aime le soleil."
+                            ],
+                            [
+                                "radius" => 200, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
+                                "description" => "Mon chapeau vert et doré devrait vous guider."
+                            ],
+                            // Fin des indices
+                        ]
+                    ],
+                    // fin d'une question
+                    // Début d'une question
+                    [
+                        'coord_x' => 46.9481836,
+                        'coord_y' => 7.4434811,
+                        'radius' => 50, // rayon de tolérance pour la validation de la question
+                        'description' => "Si votre chemin s’est déjà arrêté à Berne, il est probable que nous nous soyions croisé sens même que vous vous en rendiez compte.",
+                        'end_text' => "La Tour de la Prison (Käfigturm), l’ancienne porte de la ville en haut de la Marktgasse, est un monument important de la vieille ville de Berne, classée au patrimoine mondial de l’UNESCO. Elle héberge maintenant le siège du Forum politique Berne. La tour a été construite entre 1256 et 1344, elle a servi de prison de 1641 à 1897. C’est en 1691 qu’une montre s’y est installée.",
+                        'clues' => [
+                            [
+                                "radius" => 1000, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
+                                "description" => "J’aime les magasins bien plus que la nature."
+                            ],
+                            [
+                                "radius" => 500, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
+                                "description" => "Ils paraît que le soleil est plus chaud au sud, ça tombe bien j’aime le soleil."
+                            ],
+                            [
+                                "radius" => 200, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
+                                "description" => "Levez les yeux où vous risquez de me passer dessous."
+                            ],
+                            // Fin des indices
+                        ]
+                    ],
+                    // fin d'une question
+                    // Début d'une question
+                    [
+                        'coord_x' => 46.9479781,
+                        'coord_y' => 7.4492994,
+                        'radius' => 50, // rayon de tolérance pour la validation de la question
+                        'description' => "Chaque jour des milliers de personnes passent sur mes pavés, pour aller au travail ou pour faire les magasins.",
+                        'end_text' => "La Kramgasse est l'une des rues principales de la vieille ville de Berne, le centre-ville médiéval. C'était le centre de la vie urbaine à Berne jusqu'au 19ème siècle. Aujourd'hui, c'est une rue commerçante populaire.
+                        \nVous pouvez apercevoir la Zytglogge (Tour de l’Horloge), c’est une horloge astronomique du 16ème siècle comportant un jacquemart et un carillon. L’horloge indique l’heure de Berne, soit 90 minutes de retard à l’heure d’été et 30 minutes de retard avec l’heure d’hiver.
+                        \nDevant la Zytglogge, se trouve la Fontaine des Zähringen. Sur cette fontaine se tient un ours debout sur ses pattes, à ses pieds repose un ourson dévorant du raisin. Cet animal, symbole de la ville de Berne, rappelle ses fondateurs les Zähringen. L’ours tient dans ses pattes d’un côté une bannière et de l’autre un bouclier.",
+                        'clues' => [
+                            [
+                                "radius" => 1000, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
+                                "description" => "Je suis entouré de bâtiments anciens."
+                            ],
+                            [
+                                "radius" => 500, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
+                                "description" => "Je me trouve derrière une grande porte."
+                            ],
+                            [
+                                "radius" => 200, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
+                                "description" => "Je suis l’une des rues principales de Berne."
+                            ],
+                            // Fin des indices
+                        ]
+                    ],
+                    // fin d'une question
+                    // Début d'une question
+                    [
+                        'coord_x' => 46.9472315,
+                        'coord_y' => 7.4507130,
+                        'radius' => 50, // rayon de tolérance pour la validation de la question
+                        'description' => "Je suis l’un des monuments les plus importants de la vieille ville.",
+                        'end_text' => "La plus grande et principale église du Moyen  ge tardif en Suisse domine majestueusement la vieille ville.  Cette cathédrale est le plus grand édifice religieux de Suisse. 
+                        \nEn 1421, la construction commence, plusieurs générations de maîtres d'ouvrage ont travaillé à ce chef-d'œuvre. Ce n’est qu’en 1893 que la tour a été achevée. Le portail, consacré au Jugement dernier, est une œuvre remarquable. Le point le plus haut est à 344 marches au-dessus de l'entrée, à savoir dans la tour de la Cathédrale haute de 100 mètres.
+                        \nDu haut du clocher, les visiteurs bénéficient d'un magnifique panorama sur la ville ainsi que jusqu'au Mittelland bernois et jusqu'aux montagnes enneigées de l'Oberland bernois.",
+                        'clues' => [
+                            [
+                                "radius" => 1000, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
+                                "description" => "Jamais loin de la foule, vous ne me trouverez pas sur les rues principales."
+                            ],
+                            [
+                                "radius" => 500, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
+                                "description" => "Si vous levez les yeux, il vous suffit de suivre ma pointe."
+                            ],
+                            [
+                                "radius" => 150, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
+                                "description" => "Je suis accompagné d’un parc qui se trouve vers ma face sud."
+                            ],
+                            // Fin des indices
+                        ]
+                    ],
+                    // fin d'une question
+                    // Début d'une question
+                    [
+                        'coord_x' => 46.9472315,
+                        'coord_y' => 7.4507130,
+                        'radius' => 50, // rayon de tolérance pour la validation de la question
+                        'description' => "Un endroit important de la ville, l'emblème de Berne y est bien représenté.",
+                        'end_text' => "Le Parc aux ours, c’est la maison des ours de Berne en plein cœur de la ville. Depuis 1513 jusqu’en 1857, la ville de Berne accueillait des ours au coeur même de la ville, puis par la suite dans la fosse aux ours et depuis 2009 au Parc aux ours. Berne a donné plusieurs dizaines de millions de francs pour le bien-être des ours, ses animaux emblématiques.
+                        \nDepuis la rive de l’Aar, on y voit un magnifique paysage entre l’ancienne fosse aux ours, la vieille ville, et le fleuve en contrebas. L’ancienne fosse aux ours (derrière vous), qui figure à l’inventaire fédéral des biens culturels d’importance nationale, a été conservée.",
+                        'clues' => [
+                            [
+                                "radius" => 1000, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
+                                "description" => "Vous devrez affronter la rivière pour parvenir à me trouver."
+                            ],
+                            [
+                                "radius" => 500, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
+                                "description" => "À l’Est de la vieille ville, je me trouve."
+                            ],
+                            [
+                                "radius" => 200, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
+                                "description" => "Faites attention aux ours !"
+                            ],
+                            // Fin des indices
+                        ]
+                    ],
+                    // fin d'une question
+                    // ... la suite des questions
+                ]
+            ],
+            // fin d'un quiz
+            // ... la suite des quizzes, si on en ajoute plus d'un à la fois
+        ]
+    ];
+
     private $quizzesHeig = [
         "region_id" => 2, // Neuchâtel : 1, Yverdon : 2, Genève : 3, Morges : 4
         "quizzes" =>  [
@@ -71,7 +216,7 @@ class QuizzesTableGlobalSeeder extends Seeder
                             ],
                             [
                                 "radius" => 100, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "au fond d'un couloir obscure. . . attention à ne pas vous perdre"
+                                "description" => "au fond d'un couloir obscure... attention à ne pas vous perdre"
                             ],
                             [
                                 "radius" => 50, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
@@ -258,15 +403,15 @@ class QuizzesTableGlobalSeeder extends Seeder
                             // Début des indices
                             [
                                 "radius" => 1000, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "Un peu de sport, ça vous dit ?"
                             ],
                             [
                                 "radius" => 500, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "À défaut d’être l’alpha et l’Omega, je suis voisin d’un delta"
                             ],
                             [
                                 "radius" => 100, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "Pour piquer une tête, vous êtes plutôt plage ou piscine ?"
                             ],
                             // Fin des indices
                         ]
@@ -287,15 +432,15 @@ class QuizzesTableGlobalSeeder extends Seeder
                             // Début des indices
                             [
                                 "radius" => 1000, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "Il m’est d’avis que vous devriez vous recentrer"
                             ],
                             [
                                 "radius" => 300, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "Guettez mes hauteurs"
                             ],
                             [
                                 "radius" => 150, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "Entre le château et l’église trône"
                             ],
                             // Fin des indices
                         ]
@@ -314,15 +459,15 @@ class QuizzesTableGlobalSeeder extends Seeder
                             // Début des indices
                             [
                                 "radius" => 1000, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "Seuls les piétons pourrons m’atteindre."
                             ],
                             [
                                 "radius" => 500, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "Mon bâtiment d’époque fait face au marché chaque samedi."
                             ],
                             [
                                 "radius" => 100, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "Si la fatigue vous prenait, asseyez-vous donc sur ce banc, face à la fontaine..."
                             ],
                             // Fin des indices
                         ]
@@ -343,15 +488,15 @@ class QuizzesTableGlobalSeeder extends Seeder
                             // Début des indices
                             [
                                 "radius" => 1000, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "Une nature abondante m’entoure."
                             ],
                             [
                                 "radius" => 500, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "Sur le chemin des amoureux du bord du lac vous me trouverez."
                             ],
                             [
                                 "radius" => 100, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "Gardé par un château, je me sens en sécurité."
                             ],
                             // Fin des indices
                         ]
@@ -370,15 +515,15 @@ class QuizzesTableGlobalSeeder extends Seeder
                             // Début des indices
                             [
                                 "radius" => 1000, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "De mes 4 tours, je garde les flots."
                             ],
                             [
                                 "radius" => 500, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "Parmi les nombreux ports Morgiens, le second est probablement le mieux gardé."
                             ],
                             [
                                 "radius" => 100, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "Parmi les nombreux ports Morgiens, le second est probablement le mieux gardé."
                             ],
                             // Fin des indices
                         ]
@@ -400,15 +545,15 @@ class QuizzesTableGlobalSeeder extends Seeder
                             // Début des indices
                             [
                                 "radius" => 1000, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "Levez les yeux, mes hauteurs vous appellent."
                             ],
                             [
                                 "radius" => 500, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "Chaque heure je sonne, tel un compas sonore."
                             ],
                             [
                                 "radius" => 100, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "Gardez la foi, vous êtes proche !"
                             ],
                             // Fin des indices
                         ]
@@ -434,15 +579,15 @@ class QuizzesTableGlobalSeeder extends Seeder
                             // Début des indices
                             [
                                 "radius" => 1000, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "Aux abords du lac je me situe."
                             ],
                             [
                                 "radius" => 500, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "Au centre des quais je suis."
                             ],
                             [
                                 "radius" => 100, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "..."
+                                "description" => "Suivez les bateaux, vous me trouverez !"
                             ],
                             // Fin des indices
                         ]
@@ -464,7 +609,7 @@ class QuizzesTableGlobalSeeder extends Seeder
         $this->createQuiz($this->quizzesMorges, 1, 1); // 1 quiz, 7 questions
         $this->createQuiz($this->quizzesHeig, 2, 8); // 1 quiz, 1 question
         $this->createQuiz($this->quizzesYverdon, 3, 9); // 1 quiz, 4 questions
-
-        // Total : 3 quizzes, 12 questions
+        $this->createQuiz($this->quizzesBerne, 4, 13); // 1 quiz, 5 questions
+        // Total : 4 quizzes, 17 questions
     }
 }

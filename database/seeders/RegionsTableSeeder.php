@@ -31,6 +31,12 @@ class RegionsTableSeeder extends Seeder
             "center_x" => 46.51482933892298, 
             "center_y" => 6.4946666200118255,
             "image" => "/images/regions/4.jpg"
+        ],
+        [
+            "name" => "Berne",
+            "center_x" => 46.51482933892298, 
+            "center_y" => 6.4946666200118255,
+            "image" => "/images/regions/5.jpg"
         ]
     ];
     /**

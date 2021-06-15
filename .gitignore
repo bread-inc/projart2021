@@ -6,6 +6,8 @@ public/js
 public/js/app.js
 public/js/app.js
 public/css
+.phpdoc/cache
+quizzes_PHP
 
 # Laravel 4 specific
 bootstrap/compiled.php
