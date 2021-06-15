@@ -3,6 +3,8 @@
     <l-map
       ref="map"
       :zoom="zoom"
+      :minZoom="minZoom"
+      :maxZoom="maxZoom"
       @ready="storeMap"
       :center="[
         userLocation.lat || defaultLocation.lat,
@@ -12,10 +14,10 @@
     >
       <div class="buttons-container">
         <button class="button-game bLocate" @click="getUserPosition">
-          <img id="loc" src="/images/locate.png" />
+          <img id="loc" src="/storage/images/locate.png" />
         </button>
         <button class="button-game bValidate" @click="getDistance">
-          <img id="loc" src="/images/validate.png" />
+          <img id="loc" src="/storage/images/validate.png" />
         </button>
       </div>
       <l-tile-layer
@@ -30,7 +32,7 @@
         ]"
         
       >
-        <l-icon :iconUrl="`/images/position.png`"
+        <l-icon :iconUrl="`/storage/images/position.png`"
         :icon-size="[45, 45]" />
         <l-popup> You are here </l-popup>
       </l-marker>
@@ -74,6 +76,9 @@ export default {
     return {
       userLocation: {},
       zoom: 18,
+      minZoom: 12,
+      maxZoom: 19,
+      
       clueLocation: Array,
     };
   },
