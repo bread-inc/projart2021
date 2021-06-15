@@ -13,7 +13,7 @@
       @update:center="centerUpdated"
     >
       <div class="buttons-container">
-        <button class="button-game bLocate" @click="getUserPosition">
+        <button class="button-game bLocate" @click="centerUser">
           <img id="loc" src="/storage/images/locate.png" />
         </button>
         <button class="button-game bValidate" @click="getDistance">
@@ -26,11 +26,12 @@
         name="OpenStreetMap"
       ></l-tile-layer>
       <l-marker
+      @ready="sycnhroPosUser"
         :lat-lng="[
           userLocation.lat || defaultLocation.lat,
           userLocation.lng || defaultLocation.lng,
         ]"
-        
+
       >
         <l-icon :iconUrl="`/storage/images/position.png`"
         :icon-size="[45, 45]" />
@@ -78,7 +79,7 @@ export default {
       zoom: 18,
       minZoom: 12,
       maxZoom: 19,
-      
+
       clueLocation: Array,
     };
   },
@@ -129,7 +130,7 @@ export default {
             lat: pos.coords.latitude,
             lng: pos.coords.longitude,
           };
-          this.mapleaf.panTo([this.userLocation.lat, this.userLocation.lng]);
+          console.log("synchroposition");
         });
       }
     },
@@ -143,8 +144,19 @@ export default {
       this.$emit("getDistance", distance);
     },
 
+     centerUser(){
+        this.getUserPosition();
+        this.mapleaf.panTo([this.userLocation.lat, this.userLocation.lng]);
+    },
+
     centerUpdated(center) {
       this.center = center;
+    },
+
+     sycnhroPosUser()
+    {
+        setInterval(this.getUserPosition, 5000);
+
     },
 
     /**
