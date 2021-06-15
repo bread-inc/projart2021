@@ -26,20 +26,24 @@
                     <h3>Vous avez terminé le quiz <b>{{$quiz->title}}</b> !</h3>
                     <h2 class="mt-5 mb-3">Votre score : {{$score}} pts</h2>
                     <p>Quiz réalisé en {{App\Http\Controllers\GameController::renderTime($time)}}.</p>
-
+                </div>
                     @if(auth()->check())
+                    <div class="col-12">
                         <h2 class="mt-5 mb-3">Vos nouveaux badges</h2>
+                    </div>
                         @if(!empty($newBadges))
-                        <ul>
-                            @foreach ($newBadges as $badge)
-                                <li>{{$badge->id}} - {{$badge->label}}</li>
-                            @endforeach
-                        </ul>
+                        @foreach ($newBadges as $badge)
+                        <div class="col-4 col-md-6 text-center mb-3">
+                            <div class="badge" style="background-color: {{$badge->color}};"
+                            ><i class="fas {{$badge->pictogram}}"></i></div>
+                            <div class="badge-label pt-2"><small>{{$badge->label}}</small></div>
+                        </div>
+                        @endforeach
                         @else
                         <p><i>Vous n'avez pas débloqué de nouveau badge.</i></p>
                         @endif
                     @endif
-
+                <div class="col-12">
                     <a href="{{route('home')}}" class="btn btn-gradient">Retour au menu</a>
                 </div>
             </div>

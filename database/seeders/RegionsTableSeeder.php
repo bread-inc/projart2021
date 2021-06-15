@@ -9,33 +9,33 @@ class RegionsTableSeeder extends Seeder
 {
     private $regions = [
         [
-            "name" => "Neuchâtel",
-            "center_x" => 46.9958656,
-            "center_y" => 6.9335267,
-            "image" => "/images/regions/1.jpg"
-        ],
-        [
             "name" => "Yverdon-les-Bains",
             "center_x" => 46.7752422,
             "center_y" => 6.6205454,
-            "image" => "/images/regions/2.jpg"
+            "image" => "/images/regions/1.jpg"
         ],
         [
             "name" => "Genève",
             "center_x" => 46.2050242,
             "center_y" => 6.1090692,
-            "image" => "/images/regions/3.jpg"
+            "image" => "/images/regions/2.jpg"
         ],
         [
             "name" => "Morges",
             "center_x" => 46.51482933892298, 
             "center_y" => 6.4946666200118255,
-            "image" => "/images/regions/4.jpg"
+            "image" => "/images/regions/3.jpg"
         ],
         [
             "name" => "Berne",
-            "center_x" => 46.51482933892298, 
-            "center_y" => 6.4946666200118255,
+            "center_x" => 46.94672996264548,
+            "center_y" => 7.446636242722897,
+            "image" => "/images/regions/4.jpg"
+        ],
+        [
+            "name" => "Chaux-de-Fonds",
+            "center_x" => 47.09634484226212, 
+            "center_y" => 6.817970161421444,
             "image" => "/images/regions/5.jpg"
         ]
     ];

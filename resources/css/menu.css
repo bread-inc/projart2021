@@ -44,7 +44,7 @@
 .menu-group>ul>li {
     height: auto;
     border-top: solid 1px var(--light-primary);
-    padding: 10px 0;
+    padding: 8px 0;
 }
 
 .menu-group>ul>li:last-of-type {

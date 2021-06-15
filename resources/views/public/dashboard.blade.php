@@ -31,11 +31,7 @@
             @if(auth()->check())
             <div class="col-8"><h2><b>Préparez votre prochaine aventure</b></h2></div>
             <div class="col-4">
-                @if(isset($region))
-                <img class="dashboard-region-image" src="{{asset("storage" . $region->image)}}" alt="{{$region->name}}">
-                @else
-                <img class="dashboard-region-image" src="{{asset("storage/images/placeholder.png" )}}" alt="SwissGuesser">
-                @endif
+                <img class="dashboard-region-image" src="{{asset("storage" . App\Models\Region::first()->image)}}" alt="{{App\Models\Region::first()->name}}">
             </div>
             @else
             <div class="col-8"><h2><b>Connectez-vous pour préparer votre prochaine aventure</b></h2></div>
@@ -50,48 +46,21 @@
     <section id="regions" class="container box p-md-3 my-5 my-md-0">
         <div class="row">
             <div class="col-12">
-            @if(isset($region) && !empty($region))
-                <h2>à {{$region->name}} <i class="fal fa-location-arrow fa-xs"></i></h2>
-
-                <?php 
-                $quizzesRegion = [];
-                foreach ($region->quizzes as $quiz) {
-                    if (file_exists(public_path() .'/'.$quiz->questions->first()->picture)) {
-                        $quiz["picture"] = $quiz->questions->first()->picture;
-                    }
-                    array_push($quizzesRegion, $quiz);
-                }
-                ?>
-
-                <quiz-list id="2" class="mb-2" :quizzes="{{ json_encode($quizzesRegion) }}"></quiz-list>
-
-                {{-- <div class="horizontal-slider-container">
-                    <div class="horizontal-slider">
-                        @foreach ($region->quizzes as $quiz)
-                        <!-- element-->
-                        <a href="{{route('game.info', [$quiz->id])}}" class="quiz quiz-3x">
-                            @if (file_exists(public_path() .'/'.$quiz->questions->first()->picture))
-                            <div class="quiz-thumb" style="background-image: url('{{asset($quiz->questions->first()->picture)}}');">
-                            @else
-                            <div class="quiz-thumb">
-                            @endif
-                                <h5>{{$quiz->title}}</h5>
-                            </div>
-                            <div class="label">
-                                <small>{{$quiz->difficulty}}</small>
-                            </div>
-                        </a>
-                        <!-- .element -->
-                        @endforeach
-                    </div>
-                </div> --}}
-            @else
-                <h2>Impossible de détecter la position</h2>
-                Afficher des quizzes aléatoires ?
-            @endif
+                <h2>Découvrez les régions</h2>
             </div>
+            @foreach ($regions as $region)
+            <div class="col-6 region-container">
+                <a href="{{route('region.show', [$region->id])}}">
+                    <div class="region" style="background-image:url('{{asset("storage" . $region->image)}}');">
+                        <div class="card-text">
+                            <h4>{{ $region->name }}</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @endforeach
             <div class="col-12">
-                <a href="{{route('region.index')}}" class="btn btn-border">Voir toutes les régions</a>
+                <a href="{{route('region.index')}}" class="btn btn-border">Découvrir toutes les régions</a>
             </div>
         </div>
     </section>

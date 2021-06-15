@@ -61,6 +61,7 @@ class GameController extends Controller
         $regionalBadgesToCheck = $region->badges;
         $allBadgesToCheck = $regionalBadgesToCheck->merge($quiz->badges);
 
+
         foreach ($allBadgesToCheck as $badge) {
             if(!$this->userHasBadgeAlready(auth()->id(), $badge->id)) {
                 if($badge->type == "region") {
@@ -133,7 +134,7 @@ class GameController extends Controller
     private function validateTimeBadge($criterium, $time) {
         // To have a Time Badge, your score needs to be smaller or equal to the criterium.
         // $criterium is in minutes, $time in seconds
-        return $time <= $criterium * 60;
+        return intval($time) <= $criterium * 60;
     }
 
     /**
@@ -167,7 +168,6 @@ class GameController extends Controller
         $exponent = 33.3 * $difficulty + 66.5;
         $score = $baseScore / 100 * $exponent;
 
-        
         if (auth()->check()) {
             // Checking if the user gets new badges
             $newBadges = $this->checkingBadges($quiz, $score, $time);
@@ -178,7 +178,7 @@ class GameController extends Controller
             $newScore->score = $score;
             $newScore->save();
 
-            return view('game_completed')->with(compact('quiz', 'score', 'time'));
+            return view('game_completed')->with(compact('quiz', 'score', 'time', 'newBadges'));
         } else {
             return view('game_completed')->with(compact('quiz', 'score', 'time'));
         }

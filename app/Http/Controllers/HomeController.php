@@ -31,7 +31,7 @@ class HomeController extends Controller
      */
     public function home()
     {
-        $region = Region::findOrFail(1);
+        $regions = Region::all()->take(4);
         $scores = $this->scoreboard();
         // Dashboard for auth users
         if(auth()->id()) {
@@ -39,10 +39,10 @@ class HomeController extends Controller
             $user = User::find(auth()->id());
             $badges = $user->badges()->orderBy('created_at', 'desc')->get();
 
-            return view('public.dashboard', compact('user', 'region', 'badges', 'scores'));
+            return view('public.dashboard', compact('user', 'regions', 'badges', 'scores'));
         } else {
             $badges = Badge::all();
-            return view('public.dashboard', compact('region', 'badges', 'scores'));
+            return view('public.dashboard', compact('regions', 'badges', 'scores'));
         }
     }
 }

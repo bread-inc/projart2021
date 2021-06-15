@@ -24,7 +24,7 @@ class BadgeUserTableSeeder extends Seeder
         for ($i=1; $i <= 15; $i++) { 
             $date = $this->randDate();
             DB::table('badge_user')->insert([
-                'badge_id' => $i,
+                'badge_id' => rand(1, 6),
                 'user_id' => rand(1, 5),
                 'created_at' => $date,
                 'updated_at' => $date,

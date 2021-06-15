@@ -10,6 +10,9 @@
 
 
 @media screen and (min-width: 768px) {
+    #regions .region-container {
+        height: 30%;
+    }
     .dashboard-region-image {
         border-radius: 20px;
     }

@@ -44,7 +44,7 @@ class QuizzesTableGlobalSeeder extends Seeder
 
 
     private $quizzesBerne = [
-        "region_id" => 5, // Neuchâtel : 1, Yverdon : 2, Genève : 3, Morges : 4, Bern : 5
+        "region_id" => 4, // Yverdon : 1, Genève : 2, Morges : 3, Berne : 4, CDF : 5
         "quizzes" =>  [
             // Début d'un quiz
             [
@@ -188,7 +188,7 @@ class QuizzesTableGlobalSeeder extends Seeder
     ];
 
     private $quizzesHeig = [
-        "region_id" => 2, // Neuchâtel : 1, Yverdon : 2, Genève : 3, Morges : 4
+        "region_id" => 1, // Yverdon : 1, Genève : 2, Morges : 3, Berne : 4, CDF : 5
         "quizzes" =>  [
             // Début d'un quiz
             [
@@ -238,7 +238,7 @@ class QuizzesTableGlobalSeeder extends Seeder
     // Fin des quizzes de l'HEIG
 
     private $quizzesYverdon = [
-        "region_id" => 2, // Neuchâtel : 1, Yverdon : 2, Genève : 3, Morges : 4, Berne : 5
+        "region_id" => 1, // Yverdon : 1, Genève : 2, Morges : 3, Berne : 4, CDF : 5
         "quizzes" =>  [
             // Début d'un quiz
             [
@@ -381,7 +381,7 @@ class QuizzesTableGlobalSeeder extends Seeder
     // Fin des quizzes d'Yverdon
 
     private $quizzesMorges = [
-        "region_id" => 4, // Neuchâtel : 1, Yverdon : 2, Genève : 3, Morges : 4
+        "region_id" => 3, // Yverdon : 1, Genève : 2, Morges : 3, Berne : 4, CDF : 5
         "quizzes" =>  [
             // Début d'un quiz
             [
