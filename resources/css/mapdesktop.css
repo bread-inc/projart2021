@@ -68,6 +68,13 @@
     
     }
 
+    .leaflet-popup {
+        position: absolute;
+        text-align: center;
+        margin-bottom: 20px;
+        transform: translate3d(0px, -140px, 0px);
+    }
+
     .leaflet-popup-content {
         
         width: 350px;
