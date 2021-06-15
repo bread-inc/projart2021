@@ -6,7 +6,7 @@
     <div class="container" id="regional-scores-title">
         <div class="row mb-3">
             <div class="col-8">
-                <h1>Classement global</h1>
+                <h1>Classement général</h1>
             </div>
             @if(auth()->check())
                 <div class="col-4">
