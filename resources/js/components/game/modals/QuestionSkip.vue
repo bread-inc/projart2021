@@ -3,9 +3,7 @@
 			<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
-              <h4 class="modal-title">
-                  Sauter la question?
-              </h4>
+
 						</div>
 						<div class="modal-body">
 								<slot></slot>
