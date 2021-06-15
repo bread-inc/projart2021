@@ -101,7 +101,7 @@
     <section id="badges" class="container box p-md-3 my-5 my-md-0">
         <div class="row">
             <div class="col-12">
-                <h2>Derniers badges obtenus</h2>
+                <h2>Vos derniers badges obtenus</h2>
             </div>
         @if(auth()->check())
             <div class="col-12">
@@ -126,8 +126,9 @@
     <section id="scoreboard" class="container box p-md-3 bg-white py-5">    
         <div class="row">
             <div class="col-12">
-                <h2>Les meilleurs SwissGuessers</h2>
-
+                <h2>Les meilleur·e·s Guessers</h2>
+            </div>
+            <div class="col-12">
                 <div id="vue-app">
                     @if(auth()->check())
                     <score-list :scores="{{ $scores }}" :id="{{ Auth::id() }}"></score-list>
@@ -135,7 +136,8 @@
                     <score-list :scores="{{ $scores }}"></score-list>
                     @endif
                 </div>
-    
+            </div>
+            <div class="col-12">
                 <a href="{{route('global-ranking')}}" class="btn btn-border">Voir le classement</a>
             </div>
         </div>

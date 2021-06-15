@@ -14,7 +14,7 @@ To install the app, you need to follow the next steps :
 
 2. Pull the last version of the project : `cd projart2021` `git pull` ;
 
-3. Download the vendor and node modules folders : `composer install` `npm i` ;
+3. Download the vendor and node modules folders : `composer i` `npm i` ;
 
 4. Update the `.env` file (database access e.g.) ;
 
@@ -28,6 +28,8 @@ To install the app, you need to follow the next steps :
 
 9. Create the symbolic link between the `public` and `storage` folders : `php artisan storage:link` ;
 
+10. Compile the last JS and CSS files : `npm run prod` *if it does not work, you can use `npm run watch`*; 
+
 10. Start the app : `php artisan serve`.
 
 ### General informations
@@ -35,14 +37,13 @@ To install the app, you need to follow the next steps :
 The default users created at seeding are :
 
 - {`pseudo => admin`, `email => admin@gmx.ch`, `password => admin`}
-- {`pseudo => user2`, `email => user2@gmx.ch`, `password => user2`}
+- {`pseudo => user`, `email => user@gmx.ch`, `password => user`}
 
 **Please only use those users for development purpose !*
 
 ## Documentation
 
 The documentation of the SwissGuesser Laravel app can be found here : [https://bread-inc.github.io/projart2021/](https://bread-inc.github.io/projart2021/)
-
 
 ## License
 

@@ -43,25 +43,28 @@
         </div>
 
         <div class="row m-md-0 box" id="region-scoreboard">
-            <div class="col-12">
-                <h3>Les meilleurs scores du quiz</h3>
-                <table class="score-table">
-                    <tbody>
-                        <?php $i = 1; ?>
-                        @foreach ($quiz->scores->take(10)->sortByDesc('score') as $score)
-                        <tr>
-                            <td>{{$i}}</td>
-                            <td><img src="{{$score->user->avatar}}" alt="{{$score->user->pseudo}}" class="rounded-circle"></td>
-                            <td>
-                                <a href="{{route('profile.show', [$score->user_id])}}"><b>{{$score->user->pseudo}}</b></a>
-                                <small>{{$score->score}} pts</small>
-                            </td>
-                        </tr>
-                        <?php $i ++; ?>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+            <h3>Les meilleurs scores du quiz</h3>
+            <table class="score-table">
+                <tbody>
+                    <?php $i = 1; ?>
+                    @foreach ($quiz->scores->take(10)->sortByDesc('score') as $score)
+                    
+                    @if(auth()->check() && $score->user_id == auth()->id())
+                    <tr class="my-score">
+                    @else
+                    <tr>
+                    @endif
+                        <td>{{$i}}</td>
+                        <td><img src="{{$score->user->avatar}}" alt="{{$score->user->pseudo}}" class="rounded-circle"></td>
+                        <td>
+                            <a href="{{route('profile.show', [$score->user_id])}}"><b>{{$score->user->pseudo}}</b></a>
+                            <small>{{$score->score}} pts</small>
+                        </td>
+                    </tr>
+                    <?php $i ++; ?>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

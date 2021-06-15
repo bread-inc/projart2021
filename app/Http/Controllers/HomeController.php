@@ -32,7 +32,7 @@ class HomeController extends Controller
     public function home()
     {
         $regions = Region::all()->take(4);
-        $scores = $this->scoreboard();
+        $scores = $this->scoreboardTop(3);
         // Dashboard for auth users
         if(auth()->id()) {
 

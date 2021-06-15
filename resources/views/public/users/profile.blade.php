@@ -17,9 +17,9 @@
 </div>
 
 <nav id="tabs-bar">
-    <a id="btn-badges" class="tab-button tab-selected" href="#badges">Badges</a>
-    <a id="btn-favorites" class="tab-button" href="#favorites">Favoris</a>
-    <a id="btn-scores" class="tab-button" href="#scores">Scores</a>
+    <a id="btn-badges" class="tab-button tab-selected" href="#badges">Mes badges</a>
+    <a id="btn-favorites" class="tab-button" href="#favorites">Mes favoris</a>
+    <a id="btn-scores" class="tab-button" href="#scores">Historique</a>
 </nav>
 
 <div id="vue-app">
@@ -64,8 +64,19 @@
     </section>
 
     <section id="scores" class="page container bg-white py-4">
-        <!-- Ajouter la class "my-score" à la <tr> de l'utilisateur -->
-        <score-list :scores="{{ $scores }}"></score-list>
+        <table class="score-table">
+            <tbody>
+                @foreach ($scores as $score)
+                    <tr>
+                        <td>{{$score->updated_at->format('d.m.Y')}}</td>
+                        <td>
+                            <a href="{{route('game.info', [$score->quiz_id])}}"><b>{{$score->quiz->title}}</b></a>
+                            <small>{{$score->score}} pts</small>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </section>
 </div>
 
