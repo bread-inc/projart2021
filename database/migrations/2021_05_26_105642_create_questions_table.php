@@ -17,8 +17,8 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('picture')->unique();
-            $table->float('coord_x');
-            $table->float('coord_y');
+            $table->decimal('coord_x', 8, 6);
+            $table->decimal('coord_y', 8, 6);
             $table->integer('radius');
             $table->text('description');
             $table->text('end_text');
