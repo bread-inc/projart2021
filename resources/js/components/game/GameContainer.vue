@@ -19,9 +19,7 @@
         @close="showQuestionSkip = false"
         @skip="skipQuestion(), (showQuestionSkip = false)"
       >
-      <div class="imageGamePopup">
-             <img src='/storage/images/skip.png' alt="skip image">
-        </div>
+
       <p>Êtes vous sûr de vouloir sauter la question?</p>
       </question-skip>
 
