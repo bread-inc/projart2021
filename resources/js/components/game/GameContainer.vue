@@ -4,30 +4,45 @@
       <question-validation
         v-if="showQuestionValidation"
         @tryAgain="showQuestionValidation = false"
-        @validate="validate"
-      >
-        Êtes vous sûr de vouloir valider la question?
+        @validate="validate">
+        <div class="imageGamePopup">
+             <img src='/storage/images/confirmeposition.png' alt="confirme image">
+              <h2>Attention !</h2>
+        </div>
+
+       <p>Êtes-vous sûr de vouloir valider votre position actuelle ? Vous perdez des points si vous n’avez pas trouvé le lieux.</p>
+
       </question-validation>
+
       <question-skip
         v-if="showQuestionSkip"
         @close="showQuestionSkip = false"
         @skip="skipQuestion(), (showQuestionSkip = false)"
       >
-      Êtes vous sûr de vouloir sauter la question?
+
+      <p>Êtes vous sûr de vouloir sauter la question?</p>
       </question-skip>
+
       <question-success
         v-if="showQuestionSuccess"
         @close="(showQuestionSuccess = false), questionIndex++"
       >
-        You validated the question {{ parseInt(distance) }} meters from the
-        objective
+       <div class="imageGamePopup">
+            <img class="imageGamePopup" src='/storage/images/bravo.png' alt="bravo image">
+             <h2>Bravo</h2>
+       </div>
+        <p> bravo vous avez validé la question à {{ parseInt(distance) }} de l'objectif</p>
+        <p>{{data.questions[0].end_text}}</p>
       </question-success>
       <question-failure
         v-if="showQuestionFailure"
         @close="showQuestionFailure = false"
-      >
-        You failed the question {{ parseInt(distance) }} meters from the
-        objective
+>
+     <div class="imageGamePopup">
+         <img class="imageGamePopup" src='/storage/images/Oops.png' alt="oops image">
+            <h2>Oops</h2>
+     </div>
+     <p>Dommage Vous n’êtes pas encore au bon endroit. Mais ne vous découragez pas !</p>
       </question-failure>
       <quiz-success
         v-show="showQuizSuccess"
@@ -38,7 +53,12 @@
         :failedValidations="failedValidations"
         @close="endQuiz"
       >
-        Congratulations you finished the quiz!
+      <div class="imageGamePopup">
+          <img class="imageGamePopup" src='/storage/images/bravo.png' alt="oops image">
+          <h2>Bravo !</h2>
+      </div>
+
+    <p>Super vous avez terminé le quizz, découvrzez votre score</p>
       </quiz-success>
     </div>
     <div class="interface" v-show="playState">
@@ -174,7 +194,9 @@ export default {
   },
   computed: {
     currentQuestion() {
+
       return this.data.questions[this.questionIndex];
+
     },
     currentClue() {
       return this.currentQuestion.clues[this.clueIndex];

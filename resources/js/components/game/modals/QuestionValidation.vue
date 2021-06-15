@@ -3,7 +3,6 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Validate ?</h4>
         </div>
         <div class="modal-body">
           <slot></slot>
@@ -13,10 +12,10 @@
             <button
               type="button"
               id="button-validate"
-              class="btn btn-gradient col"
+              class="rounded-top btn btn-gradient"
               @click="$emit('validate')"
             >
-              Validate
+              Confirmer
             </button>
             <button
               type="button"
@@ -24,7 +23,7 @@
               class="btn btn-border col"
               @click="$emit('tryAgain')"
             >
-              Try again
+              Annuler
             </button>
           </div>
         </div>
