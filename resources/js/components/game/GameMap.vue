@@ -42,8 +42,8 @@
       <l-circle
         @ready="storeCircle"
         :lat-lng="[question.coord_x, question.coord_y]"
-        :radius="parseInt(question.radius)"
-        color="none"
+        :radius="0"
+        color=""
       />
     </l-map>
   </div>
@@ -130,13 +130,13 @@ export default {
             lat: pos.coords.latitude,
             lng: pos.coords.longitude,
           };
-          console.log("synchroposition");
         });
       }
     },
 
     // Returns the distance from the question to parent component
     getDistance() {
+    this.getUserPosition;
       let distance = this.mapleaf.distance(this.userLocation, [
         this.question.coord_x,
         this.question.coord_y,
