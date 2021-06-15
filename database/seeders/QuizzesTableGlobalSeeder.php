@@ -235,6 +235,7 @@ class QuizzesTableGlobalSeeder extends Seeder
             // ... la suite des quizzes, si on en ajoute plus d'un à la fois
         ]
     ];
+    // Fin des quizzes de l'HEIG
 
     private $quizzesYverdon = [
         "region_id" => 2, // Neuchâtel : 1, Yverdon : 2, Genève : 3, Morges : 4, Berne : 5
@@ -377,6 +378,7 @@ class QuizzesTableGlobalSeeder extends Seeder
             // ... la suite des quizzes, si on en ajoute plus d'un à la fois
         ]
     ];
+    // Fin des quizzes d'Yverdon
 
     private $quizzesMorges = [
         "region_id" => 4, // Neuchâtel : 1, Yverdon : 2, Genève : 3, Morges : 4
@@ -598,6 +600,7 @@ class QuizzesTableGlobalSeeder extends Seeder
             // fin d'un quiz
         ]
     ];
+    // Fin des quizzes de Morges
     
     /**
      * Run the database seeds.
