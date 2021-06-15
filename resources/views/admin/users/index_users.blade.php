@@ -3,7 +3,7 @@
 
 <h1>Tous les utilisateurs</h1>
 
-<a class="btn btn-primary float-left" href="{{route('user.create')}}">Nouvel utilisateur</a>
+<a class="btn btn-primary float-left my-3" href="{{route('user.create')}}">Nouvel utilisateur</a>
 
 <table class="table">
     <thead>
@@ -25,7 +25,7 @@
                 <span class="badge badge-danger">admin</span>
                 @endif
             </td>
-            <td><img src="{{$user->avatar}}"></td>
+            <td><img src="{{$user->avatar}}" style="max-width: 60px; background-color: white; border-radius: 30px;"></td>
             <td>{{$user->pseudo}}</td>
             <td>{{$user->email}}</td>
 

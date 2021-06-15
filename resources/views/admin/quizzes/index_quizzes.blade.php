@@ -4,7 +4,7 @@
 
 <h1>Tous les quizzes</b></h1>
 
-<a class="btn btn-primary float-left" href="{{route('quiz.create')}}">Nouveau quiz</a>
+<a class="btn btn-primary float-left my-3" href="{{route('quiz.create')}}">Nouveau quiz</a>
 
 <table class="table">
     <thead>
@@ -21,7 +21,7 @@
         <tr>
             <td>{{$quiz->id}}</td>
             <td><b>{{$quiz->title}}</b></td>
-            <td><a href="#" target="_blank">{{$quiz->region->name}}</a></td>
+            <td>{{$quiz->region->name}}</td>
             <td><a href="{{route('user.show', [$quiz->user->id])}}" target="_blank">{{$quiz->user->pseudo}}</a></td>
 
             <td>

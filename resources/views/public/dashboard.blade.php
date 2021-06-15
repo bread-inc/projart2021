@@ -70,20 +70,6 @@
         <div class="row">
             <div class="col-12">
                 <h2>Derniers quizzes réalisés</h2>
-
-                <?php 
-                    /*** $quizzesRecent = [];
-                    foreach ($user->scores()->orderBy('created_at', 'desc')->take(3)->get() as $completedQuiz) {
-                        $quiz = $completedQuiz->quiz;
-                        if (file_exists(public_path() .'/'.$quiz->questions->first()->picture)) {
-                            $quiz["picture"] = $quiz->questions->first()->picture;
-                        }
-                        $quiz["score"] = $completedQuiz;
-                        array_push($quizzesRecent, $quiz);
-                     } */
-                ?>
-
-                {{-- <quiz-list id="1" class="mb-2" :quizzes="{{ json_encode($quizzesRecent) }}"></quiz-list> --}}
                 
                 <div class="horizontal-slider-container">
                     <div class="horizontal-slider">

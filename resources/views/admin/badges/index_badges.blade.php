@@ -3,7 +3,7 @@
 
 <h1>Tous les badges</h1>
 
-<a class="btn btn-primary" href="{{route('badge.create')}}">Nouveau badge</a>
+<a class="btn btn-primary my-3" href="{{route('badge.create')}}">Nouveau badge</a>
 
 <table class="table">
     <thead>
