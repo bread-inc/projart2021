@@ -8,7 +8,8 @@ use App\Models\Badge;
 
 class BadgesTableSeeder extends Seeder
 {
-    private function createBadges(array $badges) {
+    private function createBadges(array $badges)
+    {
         foreach ($badges as $badge) {
             DB::table('badges')->insert([
                 'label' => $badge["label"],
@@ -108,7 +109,29 @@ class BadgesTableSeeder extends Seeder
             'criterium' => 40,
             'badgeable_type' => 'App\Models\Quiz',
             'badgeable_id' => 1 // Quiz ID
-        ]
+        ],
+        // Début du badge
+        [
+            'label' => 'la Vendange des Siths',
+            'description' => 'Morges et principalement ses vignes (évidemment) n\'ont plus de secret pour toi',
+            'pictogram' => "fa-wine-glass-alt", // icône Fontawesome
+            'color' => "#BF4452", // couleur héxa du fond du badge
+            'type' => 'score', // region | score | time
+            'criterium' => 150, // %age des quizzes réussis dans la région | score minimal | temps maximal
+            'badgeable_type' => 'App\Models\Quiz', // XXX = Region | Quiz
+            'badgeable_id' => 3 // id de la Region ou du Quiz, il est affiché dans l'interface admin
+        ],
+        [
+            'label' => 'Aventurier de l\'Ouest',
+            'description' => "Les côtes de Morges n'ont presque plus de secrets pour toi !",
+            'pictogram' => "fa-ship", // icône Fontawesome
+            'color' => "#BF4452", // couleur héxa du fond du badge
+            'type' => 'score', // region | score | time
+            'criterium' => 200, // %age des quizzes réussis dans la région | score minimal | temps maximal
+            'badgeable_type' => 'App\Models\Quiz', // XXX = Region | Quiz
+            'badgeable_id' => 2 // id de la Region ou du Quiz, il est affiché dans l'interface admin
+        ],
+        // Fin du badge
     ];
 
     /**

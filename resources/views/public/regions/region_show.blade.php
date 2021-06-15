@@ -32,7 +32,20 @@
                     <h2>Les plus populaires</h2>
                 </div>
             </div>
-            <quiz-list :quizzes="{{ $region->quizzes }}"></quiz-list>
+            <div class="horizontal-slider-container">
+                <div class="horizontal-slider">
+                    @foreach ($region->quizzes as $quiz)
+                    <a href="{{route('game.info', [$quiz->id])}}" class="quiz quiz-3x">
+                        <div class="quiz-thumb" style="background-image: url('{{asset($quiz->questions->first()->picture)}}');">
+                            <h5>{{$quiz->title}}</h5>
+                        </div>
+                        <div class="label">
+                            <small>{{$quiz->difficulty}}</small>
+                        </div>
+                    </a>
+                    @endforeach
+                </div>
+                </div>
         </section>
 
 

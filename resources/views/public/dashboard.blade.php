@@ -140,7 +140,7 @@
     <section id="scoreboard" class="container box p-md-3 bg-white py-5">    
         <div class="row">
             <div class="col-12">
-                <h2>Classement général</h2>
+                <h2>Les meilleurs SwissGuessers</h2>
 
                 <div id="vue-app">
                     @if(auth()->check())
