@@ -38,7 +38,7 @@
         <l-popup> You are here </l-popup>
       </l-marker>
       <l-circle v-if="clue.radius" @ready="storeClue" :lat-lng="clueLocation"
-      :radius="parseInt(clue.radius)" color="red" fillOpacity: 0.5 />
+      :radius="parseInt(clue.radius)"/>
       <l-circle
         @ready="storeCircle"
         :lat-lng="[question.coord_x, question.coord_y]"
@@ -108,6 +108,7 @@ export default {
     // Updates clue circle coordinates when called
     newClue(radius) {
       this.clueLocation = this.randCoord(radius);
+
     },
 
     storeMap(mapObject) {
@@ -120,6 +121,7 @@ export default {
 
     storeClue(circleObject) {
       this.clueCircleMarker = circleObject;
+      this.clueCircleMarker.setStyle({fill: true,fillColor: "#FF9554",color:"#FF6100" });
     },
 
     // Attemps to get the current user position
@@ -155,7 +157,7 @@ export default {
 
      sycnhroPosUser()
     {
-        setInterval(this.getUserPosition, 2000);
+        setInterval(this.getUserPosition, 2500);
 
     },
 
