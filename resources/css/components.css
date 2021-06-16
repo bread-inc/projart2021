@@ -165,6 +165,21 @@ input[type=text], input[type=password], input[type=email] {
 .badge {
     border-radius: 20px;
     box-shadow: 0px 4px 10px 0px #00000059;
+
+    /* Test */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+}
+
+.badge-detail .badge {
+    width: 200px;
+    height: 200px;
+    z-index: 10;
+    display: inline-flex;
 }
 
 .badge i {
@@ -174,6 +189,10 @@ input[type=text], input[type=password], input[type=email] {
 }
 
 @media screen and (min-width: 768px) {
+    .badge-description, .badge-detail > a {
+        max-width: 500px;
+        margin: 0 auto;
+    }
     .badge i {
         font-size: 50px;
     }
