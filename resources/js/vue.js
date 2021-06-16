@@ -6,10 +6,7 @@ import QuizList from './components/quizzes/QuizList.vue';
 import GameContainer from './components/game/GameContainer.vue';
 
 // Game imports
-import test from './components/Map.vue';
-import ExampleComponent from './components/ExampleComponent.vue';
 import 'leaflet/dist/leaflet.css';
-import testMap from './components/mapLeaflet.vue';
 import GameDesktopMap from './components/GameDesktopMap.vue';
 import AdminMap from './components/AdminMap.vue';
 import ClueMap from './components/ClueMap.vue';
@@ -24,9 +21,6 @@ const app = createApp({
         'region-list' : RegionList,
         'quiz-list' : QuizList,
         'game-container' : GameContainer,
-        "test": test,
-        "comp":ExampleComponent,
-        "testleaf": testMap,
         "game-desktop-map":GameDesktopMap,
         "admin-map":AdminMap,
         "clue-map":ClueMap,

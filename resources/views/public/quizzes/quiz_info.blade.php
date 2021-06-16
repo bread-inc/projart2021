@@ -12,8 +12,8 @@
         </div>
         
         <div class="row box m-md-0" id="quiz-image">
-            <div class="col-12 my-2">
-                <img src="{{asset($quiz->questions->first()->picture)}}" class="rounded" alt="{{$quiz->title}}">
+            <div class="col-12 my-2 imgQuizContainer">
+                <img src="{{asset($quiz->questions->first()->picture)}}" class="rounded imgQuiz" alt="{{$quiz->title}}">
             </div>
             <div class="col-12">
                 <p>{{$quiz->description}}</p>

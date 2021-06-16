@@ -8,8 +8,7 @@
 								<slot></slot>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-border" @click="$emit('close')">Continuer</button>
-							<button type="button" class="btn btn-gradient" @click="$emit('skip')">Sauter</button>
+							<button type="button" class="btn btn-gradient" @click="$emit('close')">Fermer</button>
 						</div>
 				</div>
 			</div>
@@ -18,15 +17,12 @@
 
 <script>
 export default {
-  name: "QuestionValidation",
-  emits: ["close", "skip"],
+  name: "QuestionSkip",
+  emits: ["close"],
   methods: {
     close() {
       this.$emit("close");
     },
-    skip() {
-        this.$emit("skip");
-    }
   },
 };
 </script>

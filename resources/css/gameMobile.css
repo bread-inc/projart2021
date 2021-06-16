@@ -89,6 +89,15 @@
 
 }
 */
+
+.btn-gradient:active{
+
+
+  background:white;
+
+}
+
+
 #drawer-button > .btn{
 
   text-align: center;
