@@ -9,8 +9,8 @@
 								<slot></slot>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-border" @click="$emit('close')">Continuer</button>
-							<button type="button" class="btn btn-gradient" @click="$emit('skip')">Sauter</button>
+							<button type="button" class="btn btn-gradient" @click="$emit('close')">Annuler</button>
+							<button type="button" class="btn btn-border " @click="$emit('skip')">Passer la question</button>
 						</div>
 				</div>
 			</div>

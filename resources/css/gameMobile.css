@@ -18,7 +18,13 @@
 
 }
 
-#TitleQuestion,#TitleIndice{
+.btnAlone{
+
+  display: contents;
+
+}
+
+#TitleQuestion,#TitleIndice , .modal-title{
 
   font-size: 25px;
   font-weight: 900;

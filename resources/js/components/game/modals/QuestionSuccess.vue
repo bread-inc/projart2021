@@ -8,7 +8,7 @@
 								<slot></slot>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-gradient" @click="$emit('close')">Next question</button>
+							<button type="button" class="btn btn-gradient" @click="$emit('close')">Question suivante</button>
 						</div>
 				</div>
 			</div>

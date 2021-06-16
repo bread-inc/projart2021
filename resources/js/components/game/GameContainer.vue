@@ -20,9 +20,10 @@
         @skip="skipQuestion(), (showQuestionSkip = false)"
       >
       <div class="imageGamePopup">
-             <img src='/storage/images/skip.png' alt="skip image">
+             <img src='/storage/images/confirmeposition.png' alt="skip image">
+             <h2>Attention !</h2>
         </div>
-      <p>Êtes vous sûr de vouloir sauter la question?</p>
+      <p>Êtes vous sûr de vouloir passer la question?</p>
       </question-skip>
 
       <question-success
@@ -33,7 +34,7 @@
             <img class="imageGamePopup" src='/storage/images/bravo.png' alt="bravo image">
              <h2>Bravo</h2>
        </div>
-        <p> bravo vous avez validé la question à {{ parseInt(distance) }} de l'objectif</p>
+        <p> Bravo vous avez validé la question à {{ parseInt(distance) }} de l'objectif</p>
         <p>{{data.questions[0].end_text}}</p>
       </question-success>
       <question-failure
@@ -60,7 +61,7 @@
           <h2>Bravo !</h2>
       </div>
 
-    <p>Super vous avez terminé le quizz, découvrzez votre score</p>
+    <p>Super vous avez terminé le quizz, découvrez votre score</p>
       </quiz-success>
     </div>
     <div class="interface" v-show="playState">
