@@ -11,13 +11,12 @@
       :zoom="zoom"
       :minZoom="minZoom"
       :maxZoom="maxZoom"
-
       :zoomDelta= "0.25"
       :zoomSnap= "0"
       @ready="storemap"
       :center="[
-        userLocation.lat || 46.78129509765656,
-        userLocation.lng || 6.6471917511712135,
+     46.71424131967274,
+     8.34749917689746,
       ]"
       @update:center="centerUpdated"
     >
@@ -49,7 +48,7 @@
         </l-popup>
       </l-marker>
 
-      
+
     </l-map>
   </div>
 </template>
@@ -83,10 +82,10 @@ export default {
   data() {
     return {
       userLocation: {},
-      zoom: 18,
+      zoom: 8,
       minZoom: 8,
       maxZoom: 19,
-      
+
 
       arrayRegions: [],
     };
@@ -170,29 +169,6 @@ export default {
       }
     },
 
-    plotrandom(bounds) {
-      var southWest = bounds.getSouthWest();
-      var northEast = bounds.getNorthEast();
-      var lngSpan = northEast.lng - southWest.lng;
-      var latSpan = northEast.lat - southWest.lat;
-      // sera remplacer par les point des région
-      let pointsRand = [];
-      let NomQuiz = "nom du quiz : ";
-
-      let nbrQuiz = 5;
-      for (var i = 0; i < nbrQuiz; i++) {
-        var point = [
-          southWest.lat + latSpan * Math.random(),
-          southWest.lng + lngSpan * Math.random(),
-        ];
-        pointsRand.push(point);
-      }
-      //console.log(pointsRand);
-      for (var i = 0; i < nbrQuiz; i++) {
-        var marker = L.marker(pointsRand[i], { title: NomQuiz + i });
-        marker.addTo(this.mapleaf);
-      }
-    },
 
     getDistance() {
       let distance = this.mapleaf.distance(this.userLocation, [

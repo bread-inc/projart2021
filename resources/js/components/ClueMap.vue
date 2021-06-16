@@ -87,8 +87,6 @@ export default {
 
     },
 
-
-
     centerUpdated(center) {
       this.center = center;
     },
@@ -99,7 +97,7 @@ export default {
 
 <style>
 #clue-map{
-    height:200px;
+    height:400px;
 
 }
 
