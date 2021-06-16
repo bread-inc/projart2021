@@ -4,48 +4,74 @@
       <question-validation
         v-if="showQuestionValidation"
         @tryAgain="showQuestionValidation = false"
-        @validate="validate">
+        @validate="validate"
+      >
         <div class="imageGamePopup">
-             <img src='/storage/images/confirmeposition.png' alt="confirme image">
-              <h2>Attention !</h2>
+          <img
+            src="/storage/images/confirmeposition.png"
+            alt="confirme image"
+          />
+          <h2>Attention !</h2>
         </div>
 
-       <p>Êtes-vous sûr de vouloir valider votre position actuelle ? Vous perdez des points si vous n’avez pas trouvé le lieux.</p>
-
+        <p>
+          Êtes-vous sûr de vouloir valider votre position actuelle ? Vous perdez
+          des points si vous n’avez pas trouvé le lieux.
+        </p>
       </question-validation>
 
       <question-skip
         v-if="showQuestionSkip"
         @close="showQuestionSkip = false"
-        @skip="skipQuestion(), (showQuestionSkip = false)"
+        @skip="(showQuestionDescSkip = true), (showQuestionSkip = false)"
       >
-      <div class="imageGamePopup">
-             <img src='/storage/images/confirmeposition.png' alt="skip image">
-             <h2>Attention !</h2>
+        <div class="imageGamePopup">
+          <img src="/storage/images/confirmeposition.png" alt="skip image" />
+          <h2>Attention !</h2>
         </div>
-      <p>Êtes vous sûr de vouloir passer la question?</p>
+        <p>Êtes vous sûr de vouloir passer la question?</p>
       </question-skip>
+      <question-desc-skip
+        v-if="showQuestionDescSkip"
+        @close="(showQuestionDescSkip = false), skipQuestion()"
+      >
+        <p>{{ currentQuestion.end_text }}</p>
+      </question-desc-skip>
 
       <question-success
         v-if="showQuestionSuccess"
         @close="(showQuestionSuccess = false), questionIndex++"
       >
-       <div class="imageGamePopup">
-            <img class="imageGamePopup" src='/storage/images/bravo.png' alt="bravo image">
-             <h2>Bravo</h2>
-       </div>
-        <p> Bravo vous avez validé la question à {{ parseInt(distance) }} de l'objectif</p>
-        <p>{{currentQuestion.end_text}}</p>
+        <div class="imageGamePopup">
+          <img
+            class="imageGamePopup"
+            src="/storage/images/bravo.png"
+            alt="bravo image"
+          />
+          <h2>Bravo</h2>
+        </div>
+        <p>
+          Bravo vous avez validé la question à {{ parseInt(distance) }} de
+          l'objectif
+        </p>
+        <p>{{ currentQuestion.end_text }}</p>
       </question-success>
       <question-failure
         v-if="showQuestionFailure"
         @close="showQuestionFailure = false"
->
-     <div class="imageGamePopup">
-         <img class="imageGamePopup" src='/storage/images/Oops.png' alt="oops image">
-            <h2>Oops</h2>
-     </div>
-     <p>Dommage Vous n’êtes pas encore au bon endroit. Mais ne vous découragez pas !</p>
+      >
+        <div class="imageGamePopup">
+          <img
+            class="imageGamePopup"
+            src="/storage/images/Oops.png"
+            alt="oops image"
+          />
+          <h2>Oops</h2>
+        </div>
+        <p>
+          Dommage Vous n’êtes pas encore au bon endroit. Mais ne vous découragez
+          pas !
+        </p>
       </question-failure>
       <quiz-success
         v-show="showQuizSuccess"
@@ -56,12 +82,16 @@
         :failedValidations="failedValidations"
         @close="endQuiz"
       >
-      <div class="imageGamePopup">
-          <img class="imageGamePopup" src='/storage/images/bravo.png' alt="oops image">
+        <div class="imageGamePopup">
+          <img
+            class="imageGamePopup"
+            src="/storage/images/bravo.png"
+            alt="oops image"
+          />
           <h2>Bravo !</h2>
-      </div>
+        </div>
 
-     <p>Super vous avez terminé le quizz, découvrez votre score</p>
+        <p>Super vous avez terminé le quizz, découvrez votre score</p>
       </quiz-success>
     </div>
     <div class="interface" v-show="playState">
@@ -117,7 +147,7 @@
         <template v-slot:content>
           <div v-show="showQuestionTab">
             <p class="textQuestion">{{ currentQuestion.description }}</p>
-            <button class="btnSkip" @click="(showQuestionSkip = true)">
+            <button class="btnSkip" @click="showQuestionSkip = true">
               Passer la question
             </button>
 
@@ -156,6 +186,7 @@
 import GameMap from "./GameMap.vue";
 import QuestionValidation from "./modals/QuestionValidation.vue";
 import QuestionSkip from "./modals/QuestionSkip.vue";
+import QuestionDescriptionSkip from "./modals/QuestionDescpritionSkip.vue";
 import QuestionSuccess from "./modals/QuestionSuccess.vue";
 import QuestionFailure from "./modals/QuestionFailure.vue";
 import QuizSuccess from "./modals/QuizSuccess.vue";
@@ -171,6 +202,7 @@ export default {
     "question-success": QuestionSuccess,
     "question-failure": QuestionFailure,
     "quiz-success": QuizSuccess,
+    "question-desc-skip": QuestionDescriptionSkip,
     "game-drawer": GameDrawer,
     "v-pannellum": VuePannelum,
   },
@@ -193,13 +225,12 @@ export default {
       showQuizSuccess: false,
       showQuestionTab: false,
       showQuestionSkip: false,
+      showQuestionDescSkip: false,
     };
   },
   computed: {
     currentQuestion() {
-
       return this.data.questions[this.questionIndex];
-
     },
     currentClue() {
       return this.currentQuestion.clues[this.clueIndex];
@@ -210,7 +241,8 @@ export default {
         this.showQuestionValidation ||
         this.showQuestionSuccess ||
         this.showQuizSuccess ||
-        this.showQuestionFailure
+        this.showQuestionFailure ||
+        this.showQuestionDescSkip
       ) {
         this.stopTimer();
         return false;
