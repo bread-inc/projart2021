@@ -261,6 +261,7 @@ input[type=text], input[type=password], input[type=email] {
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: nowrap;
+    height: 60px;
 }
 
 #tabs-bar>.tab-button {
@@ -270,7 +271,7 @@ input[type=text], input[type=password], input[type=email] {
     font-weight: 600;
     text-transform: uppercase;
     text-align: center;
-    padding: 5px 0;
+    padding: 15px 0;
     border-radius: 20px 20px 0px 0px;
     color: var(--dark-secondary);
     box-shadow: 3px -3px 5px -1px #00000040;

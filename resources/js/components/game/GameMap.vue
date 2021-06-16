@@ -14,10 +14,10 @@
     >
       <div class="buttons-container">
         <button class="button-game bLocate" @click="centerUser">
-          <img id="loc" src="/storage/images/locate.png" />
+          <img id="loc" src="/bread/storage/images/locate.png" />
         </button>
         <button class="button-game bValidate" @click="getDistance">
-          <img id="loc" src="/storage/images/validate.png" />
+          <img id="loc" src="/bread/storage/images/validate.png" />
         </button>
       </div>
       <l-tile-layer
@@ -33,7 +33,7 @@
         ]"
 
       >
-        <l-icon :iconUrl="`/storage/images/position.png`"
+        <l-icon :iconUrl="`/bread/storage/images/position.png`"
         :icon-size="[45, 45]" />
         <l-popup> You are here </l-popup>
       </l-marker>

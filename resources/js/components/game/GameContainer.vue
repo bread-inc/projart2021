@@ -8,7 +8,7 @@
       >
         <div class="imageGamePopup">
           <img
-            src="/storage/images/confirmeposition.png"
+            src="/bread/storage/images/confirmeposition.png"
             alt="confirme image"
           />
           <h2>Attention !</h2>
@@ -26,7 +26,7 @@
         @skip="(showQuestionDescSkip = true), (showQuestionSkip = false)"
       >
         <div class="imageGamePopup">
-          <img src="/storage/images/confirmeposition.png" alt="skip image" />
+          <img src="/bread/storage/images/confirmeposition.png" alt="skip image" />
           <h2>Attention !</h2>
         </div>
         <p>Êtes vous sûr de vouloir passer la question?</p>
@@ -45,7 +45,7 @@
         <div class="imageGamePopup">
           <img
             class="imageGamePopup"
-            src="/storage/images/bravo.png"
+            src="/bread/storage/images/bravo.png"
             alt="bravo image"
           />
           <h2>Bravo</h2>
@@ -63,7 +63,7 @@
         <div class="imageGamePopup">
           <img
             class="imageGamePopup"
-            src="/storage/images/Oops.png"
+            src="/bread/storage/images/Oops.png"
             alt="oops image"
           />
           <h2>Oops</h2>
@@ -85,7 +85,7 @@
         <div class="imageGamePopup">
           <img
             class="imageGamePopup"
-            src="/storage/images/bravo.png"
+            src="/bread/storage/images/bravo.png"
             alt="oops image"
           />
           <h2>Bravo !</h2>
