@@ -21,7 +21,8 @@
     .grid-centered {
         display: grid;
         grid-template-columns: 15px 20% 15px auto 15px 20% 15px;
-        grid-template-rows: 15px auto 15px;
+        /*grid-template-rows: 15px auto 15px;*/
+        grid-template-rows: 15px 800px 15px;
     }
 
     main {
@@ -35,10 +36,22 @@
         grid-column-end: 4;
     }
 
+    #region-most-played{
+
+        max-height: 400px;
+    }
     .grid {
         display: grid;
         grid-template-columns:  23% 2% 23% 2% 50%;
-        grid-template-rows: 15% 30% 2% 53%;
+       /*
+       Avant
+       grid-template-rows: 15% 30% 2% 53%;*/
+       /*-------------------------------
+       Pas bon pour les régions bien rempli*/
+       grid-template-rows: 14% 37% 3% 56%;
+       /*-------------------------------
+       Pas bon pour les régions presque vides*/
+       /*grid-template-rows: 8% 20% 2% 53%;*/
         height: 100%;
     }
 
