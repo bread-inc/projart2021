@@ -1,6 +1,6 @@
 <template>
   <div class="row mb-2">
-    <button class="btn-desk-locate" @click="this.getUserPosition">
+    <button class="btn-desk-locate" @click="this.centerUser">
       <img id="loc" src="/storage/images/locate.png" />
     </button>
     <quiz-list> </quiz-list>
@@ -15,8 +15,8 @@
       :zoomSnap= "0"
       @ready="storemap"
       :center="[
-     46.71424131967274,
-     8.34749917689746,
+       userLocation.lat  || 46.71424131967274,
+        userLocation.lng || 8.34749917689746,
       ]"
       @update:center="centerUpdated"
     >
@@ -85,8 +85,6 @@ export default {
       zoom: 8,
       minZoom: 8,
       maxZoom: 19,
-
-
       arrayRegions: [],
     };
   },
@@ -98,8 +96,6 @@ export default {
     this.elem = null;
   },
   async beforeMount() {
-    // Leaflet imports
-    const { circleMarker } = await import("leaflet/dist/leaflet-src.esm");
 
     // Set current position
     await this.getUserPosition();
@@ -122,39 +118,6 @@ export default {
       console.log(this.popupLeaflet.isOpen());
     },
 
-    //peuplage de la map avec tout les regions
-    async peupleMap() {
-      const { marker } = await import("leaflet/dist/leaflet-src.esm");
-      const { popup } = await import("leaflet/dist/leaflet-src.esm");
-      const objectLenght = Object.keys(this.regions).length;
-      var pop = popup;
-      var tabPopup = [];
-
-      for (let index = 0; index < objectLenght - 1; index++) {
-        // console.log(this.regions[index]);
-        var markert = marker(
-          [this.regions[index].center_x, this.regions[index].center_y],
-          { title: this.regions[index].name }
-        );
-        markert.addTo(this.mapleaf);
-        //markert.bindPopup(this.regions[index].name)
-
-        for (
-          let index2 = 0;
-          index2 < this.regions[index].quizzes.length;
-          index2++
-        ) {
-          let title = this.regions[index].quizzes[index2].title;
-          let description = this.regions[index].quizzes[index2].description;
-          tabPopup[index2] = this.regions[index].quizzes[index2];
-        }
-        console.log(tabPopup);
-        tabPopup.forEach((quiz) => {
-          console.log(quiz.id);
-          markert.bindPopup("<quiz-item:quiz=" + quiz + "></quiz-item>");
-        });
-      }
-    },
     async getUserPosition() {
       // check if API is supported
       if (navigator.geolocation) {
@@ -167,6 +130,11 @@ export default {
           };
         });
       }
+    },
+
+    centerUser(){
+        this.getUserPosition();
+        this.mapleaf.panTo([this.userLocation.lat, this.userLocation.lng]);
     },
 
 
