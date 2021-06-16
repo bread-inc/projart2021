@@ -39,6 +39,8 @@ class GameController extends Controller
             $question["clues"] = $question->clues;
             array_push($data["questions"], $question);
         }
+
+        shuffle($data["questions"]);
         
         return view('game')->with('data', json_encode($data));
     }
