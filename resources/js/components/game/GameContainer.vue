@@ -223,7 +223,7 @@ export default {
       showQuestionSuccess: false,
       showQuestionFailure: false,
       showQuizSuccess: false,
-      showQuestionTab: false,
+      showQuestionTab: true,
       showQuestionSkip: false,
       showQuestionDescSkip: false,
     };

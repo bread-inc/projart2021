@@ -1,6 +1,6 @@
 <template>
   <div id="drawer-container">
-    <section class="drawer drawer--bottom" id="drawer-name" data-drawer-target>
+    <section class="drawer drawer--bottom is-active is-visible" id="drawer-name" data-drawer-target>
       <div class="drawer__overlay" data-drawer-close tabindex="-1"></div>
       <div class="drawer__wrapper">
         <div class="drawer__header">
@@ -164,7 +164,6 @@ var drawer = function () {
     //
     document.addEventListener('click', clickHandler, false);
     document.addEventListener('keydown', keydownHandler, false);
-
 
 };
 
