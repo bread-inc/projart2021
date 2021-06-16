@@ -72,6 +72,20 @@ class UserController extends Controller
     }
 
     /**
+     * Return if the selected user is an administrator
+     *
+     * @param int $id the user's id
+     * @return bool
+     */
+    private function isAdmin($id) {
+        return User::findOrFail($id)->isAdmin;
+    }
+
+/* ########################
+   #         CRUD         #
+   ########################*/
+
+    /**
      * Display the specified resource.
      *
      * @param  int $id
@@ -127,17 +141,39 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+/* ########################
+   #     End of CRUD      #
+   ########################*/
+
     /**
-     * Return if the selected user is an administrator
+     * Display the user profile. The route is public.
      *
-     * @param int $id the user's id
-     * @return bool
+     * @param  int $id
+     * @return \Illuminate\Http\Response
      */
-    private function isAdmin($id) {
-        return User::findOrFail($id)->isAdmin;
+    public function showUser($id)
+    {
+        $user = User::findOrFail($id);
+        $scores = $user->scores()->orderBy('updated_at', 'DESC')->get();
+        $user_score = $this->getUserGlobalScore($id);
+
+        return view("public.users.profile", compact('user', 'scores', 'user_score'));
     }
 
     /**
+     * Edit the user profile (public). In development.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editProfile($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view("public.users.profile_edit", compact('user'));
+    }
+
+   /**
      * Show the form for editing the badges of a user
      * 
      * @param int $user_id the user's id
@@ -192,40 +228,14 @@ class UserController extends Controller
      * @param int $score_id
      * @return \Illuminate\Http\Response
      */
+    /*
     public function deleteScore($user_id, $score_id) {
         // Sounds good, doesn't work (for now)
         $user = User::findOrFail($user_id);
 
         return redirect("admin/user/$user->id")->withOk("Le score $score_id a été retiré de l'utilisateur $user_id.");
     }
-
-    /**
-     * Display the user profile. The route is public.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function showUser($id)
-    {
-        $user = User::findOrFail($id);
-        $scores = $user->scores()->orderBy('updated_at', 'DESC')->get();
-        $user_score = $this->getUserGlobalScore($id);
-
-        return view("public.users.profile", compact('user', 'scores', 'user_score'));
-    }
-
-    /**
-     * Edit the user profile (public). In development.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function editProfile($id)
-    {
-        $user = User::findOrFail($id);
-
-        return view("public.users.profile_edit", compact('user'));
-    }
+    */
 
     /**
      * Add a quiz to the user's favorites list

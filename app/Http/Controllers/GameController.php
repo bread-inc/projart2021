@@ -62,7 +62,6 @@ class GameController extends Controller
         $regionalBadgesToCheck = $region->badges;
         $allBadgesToCheck = $regionalBadgesToCheck->merge($quiz->badges);
 
-
         foreach ($allBadgesToCheck as $badge) {
             if(!$this->userHasBadgeAlready(auth()->id(), $badge->id)) {
                 if($badge->type == "region") {
@@ -72,7 +71,6 @@ class GameController extends Controller
                 } else {
                     $userGetsANewBadge = $this->validateTimeBadge($badge->criterium, $time);
                 }
-
                 if($userGetsANewBadge) {
                     $this->attributeBadgeToUser(auth()->id(), $badge->id);
                     array_push($newBadges, Badge::find($badge->id));
