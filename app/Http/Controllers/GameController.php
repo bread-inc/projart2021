@@ -31,7 +31,6 @@ class GameController extends Controller
      */
     public function startQuiz($id)
     {
-        $data = [];
         $data["quiz"] = Quiz::findOrFail($id);
         $data["questions"] = [];
         
@@ -169,6 +168,7 @@ class GameController extends Controller
         $baseScore = (100 * $questions) - ($clues * 3) - ($validations * 5) - floor($time/60);
         $exponent = 33.3 * $difficulty + 66.5;
         $score = $baseScore / 100 * $exponent;
+        $score = $score > 0 ? $score : 0;
 
         if (auth()->check()) {
             // Checking if the user gets new badges
