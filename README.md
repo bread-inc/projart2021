@@ -30,7 +30,7 @@ To install the app, you need to follow the next steps :
 
 10. Compile the last JS and CSS files : `npm run prod` *if it does not work, you can use `npm run watch`*; 
 
-10. Start the app : `php artisan serve`.
+11. Start the app : `php artisan serve`.
 
 ### General informations
 

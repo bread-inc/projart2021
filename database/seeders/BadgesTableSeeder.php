@@ -35,7 +35,7 @@ class BadgesTableSeeder extends Seeder
             'type' => 'time', // region | score | time
             'criterium' => 120, // %age des quizzes réussis dans la région | score minimal | temps maximal
             'badgeable_type' => 'App\Models\Quiz', // XXX = Region | Quiz
-            'badgeable_id' => 2 // id de la Region ou du Quiz, il est affiché dans l'interface admin
+            'badgeable_id' => 4 // id de la Region ou du Quiz, il est affiché dans l'interface admin
         ],
         // Fin du badge
         //... suite des badges
@@ -51,7 +51,7 @@ class BadgesTableSeeder extends Seeder
             'type' => 'time', // region | score | time
             'criterium' => 60, // %age des quizzes réussis dans la région | score minimal | temps maximal
             'badgeable_type' => 'App\Models\Quiz', // XXX = Region | Quiz
-            'badgeable_id' => 4 // id de la Region ou du Quiz, il est affiché dans l'interface admin
+            'badgeable_id' => 6 // id de la Region ou du Quiz, il est affiché dans l'interface admin
         ],
         // Fin du badge
         // Début du badge
@@ -63,7 +63,7 @@ class BadgesTableSeeder extends Seeder
             'type' => 'score', // region | score | time
             'criterium' => 80, // %age des quizzes réussis dans la région | score minimal | temps maximal
             'badgeable_type' => 'App\Models\Quiz', // XXX = Region | Quiz
-            'badgeable_id' => 4 // id de la Region ou du Quiz, il est affiché dans l'interface admin
+            'badgeable_id' => 6 // id de la Region ou du Quiz, il est affiché dans l'interface admin
         ],
         // Fin du badge
         //... suite des badges
@@ -121,6 +121,8 @@ class BadgesTableSeeder extends Seeder
             'badgeable_type' => 'App\Models\Quiz', // XXX = Region | Quiz
             'badgeable_id' => 3 // id de la Region ou du Quiz, il est affiché dans l'interface admin
         ],
+        // Fin du badge
+        // Début du badge
         [
             'label' => 'Aventurier de l\'Ouest',
             'description' => "Les côtes de Morges n'ont presque plus de secrets pour toi !",

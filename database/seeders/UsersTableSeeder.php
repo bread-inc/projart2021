@@ -54,9 +54,9 @@ class UsersTableSeeder extends Seeder
         foreach ($this->users as $user) {
             DB::table('users')->insert([
                 'pseudo' => $user,
-                'email' => $user . '@gmx.ch',
+                'email' => strtolower($user) . '@gmx.ch',
                 'password' => Hash::make($user),
-                'avatar' => "http://gravatar.com/avatar/" . md5(strtolower(trim($user . '@gmx.ch'))) . "?size=256&d=robohash",
+                'avatar' => "http://gravatar.com/avatar/" . md5(strtolower(trim(strtolower($user) . '@gmx.ch'))) . "?size=256&d=robohash",
                 'isAdmin' => 0 ]
             );
         }

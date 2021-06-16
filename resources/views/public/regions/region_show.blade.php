@@ -12,11 +12,11 @@
     <div id="vue-app" class="grid mb-3">
         <section id="region-name">
             <div class="row my-3 m-md-0">
-                <div class="col-8">
+                <div class="col-9">
                     <h1>{{$region->name}}</h1>
                 </div>
                 @if(auth()->check())
-                <div class="col-4">
+                <div class="col-3">
                     <a href="{{route('profile.show', [auth()->id()])}}" class="profile-picture">
                         <img class="rounded-circle" src="{{auth()->user()->avatar}}" title="Profil" alt="Profil">
                         <span>Profil</span>

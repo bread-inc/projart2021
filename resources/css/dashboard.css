@@ -38,7 +38,7 @@
     .grid {
         display: grid;
         grid-template-columns:  23% 2% 23% 2% 50%;
-        grid-template-rows: 15vh 30vh 2vh 53vh;
+        grid-template-rows: 15% 30% 2% 53%;
         height: 100%;
     }
 

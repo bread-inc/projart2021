@@ -37,14 +37,10 @@
     }
     
     #h1Map{
-    
-        margin-top: 12px ;
-        margin-left: 400px;
+        left: 25%;
         position: absolute;
-        top:0;
+        top:25px;
         z-index: 999;
-    
-    
     }
     
     #loc{

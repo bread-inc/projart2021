@@ -8,8 +8,8 @@
             <div class="col-8">
                 <div class="row">
                     @if(auth()->check())
-                        <div class="col-12"><h3>Bienvenue</h3></div>
-                        <div class="col-12"><h1>{{auth()->user()->pseudo}}</h1></div>
+                        <div class="col-12"><h3 class="m-0">Bienvenue</h3></div>
+                        <div class="col-12"><h1 class="m-0">{{auth()->user()->pseudo}}</h1></div>
                     @else
                     <div class="col-12"><h3>Bienvenue sur</h3></div>
                     <div class="col-12"><h1>SwissGuesser</h1></div>

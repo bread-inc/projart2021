@@ -6,7 +6,7 @@
 
 <div class="grid">
     <div class="container" id="regional-scores-title">
-        <div class="row mb-3">
+        <div class="row mb-3 m-md-0">
             <div class="col-8">
                 <h1>Classement régional</h1>
                 <p>{{$region->name}}</p>
