@@ -50,7 +50,6 @@ trait ScoreboardTrait
      */
     public function scoreboardTop(int $n) {
         $rankings = json_decode($this->scoreboard());
-
         $rankings = array_slice($rankings, 0, $n);
 
         return json_encode($rankings);
