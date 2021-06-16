@@ -49,29 +49,7 @@ trait ScoreboardTrait
      * @return string|false JSON encoded scoreboard, false if empty
      */
     public function scoreboardTop(int $n) {
-        $scores = Score::groupBy('user_id')
-            ->selectRaw('sum(score) as total, user_id')
-            ->pluck('total', 'user_id');
-
-        $rankings = [];
-        $i = 0;
-
-        foreach ($scores as $score) {
-            $user_id = $i + 1; 
-            $pseudo = User::findOrFail($user_id)->pseudo;
-            $avatar = User::findOrFail($user_id)->avatar;
-            array_push($rankings, ["user_id" => $user_id, "pseudo" => $pseudo, "avatar" => $avatar, "score" => $score]);
-            $i++;
-        }
-
-        $score = array_column($rankings, 'score');
-        array_multisort($score, SORT_DESC, $rankings);
-
-        for ($i=0; $i < sizeof($rankings); $i++) 
-        {
-            $rankings[$i]["rank"] = $i+1;
-        }
-
+        $rankings = json_decode($this->scoreboard());
         $rankings = array_slice($rankings, 0, $n);
 
         return json_encode($rankings);

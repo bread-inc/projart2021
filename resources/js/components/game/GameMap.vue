@@ -155,7 +155,7 @@ export default {
 
      sycnhroPosUser()
     {
-        setInterval(this.getUserPosition, 5000);
+        setInterval(this.getUserPosition, 2000);
 
     },
 

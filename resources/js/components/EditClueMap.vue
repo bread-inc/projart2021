@@ -101,7 +101,7 @@ export default {
 
 <style>
 #clue-map{
-    height:200px;
+    height:400px;
 
 }
 

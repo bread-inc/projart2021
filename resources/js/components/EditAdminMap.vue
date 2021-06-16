@@ -168,7 +168,7 @@ export default {
 
 <style>
 #admin-map{
-    height:200px;
+    height:400px;
 
 }
 
