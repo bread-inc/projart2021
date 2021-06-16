@@ -102,19 +102,14 @@ export default {
       this.mapleaf = mapObject;
     },
 
-    click(test){
+    click(mapObject){
+       let x = mapObject.layerX;
+       let y = mapObject.layerY;
 
-
-
-       let x = test.layerX;
-       let y = test.layerY;
-
-
-       let  latiLongi = this.mapleaf.layerPointToLatLng([x , y]);
+        let  latiLongi = this.mapleaf.layerPointToLatLng([x , y]);
 
         this.valuex =latiLongi.lat;
         this.valuey =latiLongi.lng;
-
     },
 
     storeCircle(circleObject)
@@ -129,9 +124,9 @@ export default {
 
     },
 
-
-    //peuplage de la map avec tout les regions
-
+    /**
+     * Get the position of user
+     */
     async getUserPosition() {
       // check if API is supported
       if (navigator.geolocation) {
@@ -146,6 +141,9 @@ export default {
       }
     },
 
+    /**
+     * distance bettwen question and userlocatio
+     */
     getDistance() {
       let distance = this.mapleaf.distance(this.userLocation, [
         this.question.coord_x,
@@ -154,6 +152,9 @@ export default {
       this.$emit("getDistance", distance);
     },
 
+    /**
+     * Center update
+     */
     centerUpdated(center) {
       this.center = center;
     },

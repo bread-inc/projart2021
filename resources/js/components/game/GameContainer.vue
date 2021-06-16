@@ -34,7 +34,7 @@
              <h2>Bravo</h2>
        </div>
         <p> bravo vous avez validé la question à {{ parseInt(distance) }} de l'objectif</p>
-        <p>{{data.questions[0].end_text}}</p>
+        <p>{{currentQuestion.end_text}}</p>
       </question-success>
       <question-failure
         v-if="showQuestionFailure"
@@ -60,7 +60,7 @@
           <h2>Bravo !</h2>
       </div>
 
-    <p>Super vous avez terminé le quizz, découvrzez votre score</p>
+     <p>Super vous avez terminé le quizz, découvrez votre score</p>
       </quiz-success>
     </div>
     <div class="interface" v-show="playState">
