@@ -2,14 +2,19 @@
 
 
   <div id="admin-map">
+      <div class="form-group">
         <label for="coord_x">Coordonnée X</label>
         <input class="form-control" name="coord_x" type="text" v-model="this.valuex" placeholder="Cordone X" />
+      </div>
+      <div class="form-group">
         <label for="coord_y">Coordonnée Y</label>
         <input class="form-control" name="coord_y" type="text" v-model="this.valuey" placeholder="Cordone Y" />
+      </div>
+      <div class="form-group">
         <label for="radius">Radius indice</label>
         <input class="form-control" name="radius" v-model.number="this.radiusCircle" placeholder="Radius">
-
-
+      </div>
+         <p>Clique sur la carte pour ajouter le position de la question</p>
     <l-map
       @click ="click"
       ref="map"
@@ -21,14 +26,14 @@
       ]"
       @update:center="centerUpdated"
     >
+
       <l-tile-layer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         layer-type="base"
         name="OpenStreetMap"
       ></l-tile-layer>
-          <l-circle @ready="storeCircle" :lat-lng="[this.valuex || 0, this.valuey|| 0]" :radius="this.radiusCircle" color="blue" />
+          <l-circle :lat-lng="[this.valuex || 0, this.valuey|| 0]" :radius="this.radiusCircle" color="blue" />
       <l-marker
-      @ready="storemarker"
         :lat-lng="[
           this.valuex || 0,
           this.valuey || 0,
@@ -36,9 +41,8 @@
       >
       </l-marker>
     </l-map>
-     <input type="submit" value="Enregistrer les modifications" class="btn btn-primary">
+     <input type="submit" value="Enregistrer la question" class="btn btn-primary">
   </div>
-
 </template>
 <script>
 import {
@@ -50,10 +54,8 @@ import {
   LCircle,
   LTooltip,
 } from "@vue-leaflet/vue-leaflet";
-import QuizItem from "./quizzes/QuizItem.vue"
-import QuizList from "./quizzes/QuizList.vue"
 export default {
-  components: { LMap, LTooltip, LTileLayer, LMarker, LPopup, LCircleMarker, LCircle, "quiz-item" :QuizItem, "quiz-list" :QuizList},
+  components: { LMap, LTooltip, LTileLayer, LMarker, LPopup, LCircleMarker, LCircle},
   props: {
    data: Object,
   },
@@ -72,10 +74,6 @@ export default {
 
   init() {
     this.mapleaf = null;
-    this.circleLeaflet = null;
-    this.popupLeaflet = null;
-    this.makrerLeaf = null;
-
   },
   watch:{
       field: function (val) {
@@ -91,17 +89,16 @@ export default {
     this.mapIsReady = true;
  },
 
-  emits: ["getDistance"],
-
   methods: {
-
-      storemarker(markerObject) {
-      this.makrerLeaf = markerObject;
-    },
     storemap(mapObject) {
       this.mapleaf = mapObject;
     },
 
+
+    /**
+     * Generate the position on click on map
+     * @param {mapObject} map object of vueleaflet
+     */
     click(mapObject){
        let x = mapObject.layerX;
        let y = mapObject.layerY;
@@ -112,17 +109,6 @@ export default {
         this.valuey =latiLongi.lng;
     },
 
-    storeCircle(circleObject)
-    {
-
-        this.circleLeaflet = circleObject;
-    },
-    popUpObject(popupObject)
-    {
-
-        console.log(popupObject.getLatLng());
-
-    },
 
     /**
      * Get the position of user
@@ -139,17 +125,6 @@ export default {
           };
         });
       }
-    },
-
-    /**
-     * distance bettwen question and userlocatio
-     */
-    getDistance() {
-      let distance = this.mapleaf.distance(this.userLocation, [
-        this.question.coord_x,
-        this.question.coord_y,
-      ]);
-      this.$emit("getDistance", distance);
     },
 
     /**

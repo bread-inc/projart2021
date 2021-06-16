@@ -1,11 +1,12 @@
 <template>
   <div id="clue-map">
+      <div class="form-group">
         <label for="radius">Radius indice</label>
         <input class="form-control" name="radius" v-model.number="this.radiusCircle" placeholder="Radius">
+      </div>
     <l-map
       ref="map"
       :zoom="zoom"
-      @ready="storemap"
       :center="[
         this.data.coord_x || 0,
         this.data.coord_y || 0,
@@ -17,9 +18,8 @@
         layer-type="base"
         name="OpenStreetMap"
       ></l-tile-layer>
-          <l-circle @ready="storeCircle" :lat-lng="[this.data.coord_x|| 0, this.data.coord_y || 0]" :radius="this.radiusCircle" color="blue" />
+          <l-circle :lat-lng="[this.data.coord_x|| 0, this.data.coord_y || 0]" :radius="this.radiusCircle" color="blue" />
       <l-marker
-      @ready="storemarker"
         :lat-lng="[
          this.data.coord_x || 0,
          this.data.coord_y || 0,
@@ -29,7 +29,6 @@
     </l-map>
      <input type="submit" value="Enregistrer" class="btn btn-primary">
   </div>
-
 </template>
 <script>
 import {
@@ -41,10 +40,8 @@ import {
   LCircle,
   LTooltip,
 } from "@vue-leaflet/vue-leaflet";
-import QuizItem from "./quizzes/QuizItem.vue"
-import QuizList from "./quizzes/QuizList.vue"
 export default {
-  components: { LMap, LTooltip, LTileLayer, LMarker, LPopup, LCircleMarker, LCircle, "quiz-item" :QuizItem, "quiz-list" :QuizList},
+  components: { LMap, LTooltip, LTileLayer, LMarker, LPopup, LCircleMarker, LCircle},
   props: {
    data: Object,
   },
@@ -58,34 +55,7 @@ export default {
       radiusCircle:0
     };
   },
-
-  init() {
-    this.mapleaf = null;
-    this.circleLeaflet = null;
-    this.popupLeaflet = null;
-    this.makrerLeaf = null;
-
-  },
-
   methods: {
-
-      storemarker(markerObject) {
-      this.makrerLeaf = markerObject;
-    },
-    storemap(mapObject) {
-      this.mapleaf = mapObject;
-    },
-
-
-    storeCircle(circleObject)
-    {
-
-        this.circleLeaflet = circleObject;
-    },
-    popUpObject(popupObject)
-    {
-
-    },
 
     centerUpdated(center) {
       this.center = center;
