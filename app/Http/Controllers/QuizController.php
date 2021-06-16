@@ -114,20 +114,4 @@ class QuizController extends Controller
 
         return redirect(route('quiz.index'))->withOk("Le quiz " . $id . " a été supprimé avec succès.");
     }
-
-    /**
-     * Show profile, for users (not admin)
-     * 
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function profile($id)
-    {
-        $quiz = Quiz::findOrFail($id);
-        $questions = $quiz->questions;
-        $scores = $quiz->scores;
-        $badges = $quiz->badges;
-
-        return compact('quiz');
-    }
 }
