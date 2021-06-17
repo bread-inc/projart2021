@@ -46,7 +46,7 @@
         </l-popup>
       </l-marker>
       <l-circle @ready="storeCircle" v-for="region in regions"
-        :lat-lng="[region.center_x || 0, region.center_y || 0]">
+        :lat-lng="[region.center_x || 0, region.center_y || 0]" :radius="5000">
 <l-popup @ready="popUpObject">
           <quiz-list :quizzes="region.quizzes"></quiz-list>
         </l-popup>
@@ -112,7 +112,7 @@ export default {
 
     storeCircle(circleObject) {
       this.circleLeaflet = circleObject;
-      this.circleLeaflet.setStyle({fill: true,fillColor: "#FF9554",color:"#FF6100", radius:5000});
+      this.circleLeaflet.setStyle({fill: true,fillColor: "#FF9554",color:"#FF6100"});
     },
     popUpObject(popupObject) {
       this.popupLeaflet = popupObject;
