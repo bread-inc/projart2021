@@ -37,6 +37,12 @@ class RegionsTableSeeder extends Seeder
             "center_x" => 47.09634484226212, 
             "center_y" => 6.817970161421444,
             "image" => "/images/regions/5.jpg"
+        ],
+        [
+            "name" => "Lausanne",
+            "center_x" => 46.52436140697891,
+            "center_y" => 6.630443582311496,
+            "image" => "/images/regions/6.jpg"
         ]
     ];
     /**

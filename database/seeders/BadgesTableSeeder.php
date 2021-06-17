@@ -92,7 +92,7 @@ class BadgesTableSeeder extends Seeder
         ],
         [
             'label' => 'Le podium !',
-            'description' => "T'es dans les meilleurs ! D’ailleurs, je me demande si les deux autres n'ont pas trichés, parce que franchement, on sait tous que tu es le meilleur.",
+            'description' => "T'es dans les meilleurs ! D’ailleurs, je me demande si les autres n'ont pas trichés, parce que franchement, on sait tous que tu es le meilleur.",
             'pictogram' => "fa-podium-star",
             'color' => "#BF4452",
             'type' => 'score',
@@ -125,7 +125,7 @@ class BadgesTableSeeder extends Seeder
         // Début du badge
         [
             'label' => 'Aventurier de l\'Ouest',
-            'description' => "Les côtes de Morges n'ont presque plus de secrets pour toi !",
+            'description' => "Les côtes de Morges n\'ont presque plus de secrets pour toi !",
             'pictogram' => "fa-ship", // icône Fontawesome
             'color' => "#BF4452", // couleur héxa du fond du badge
             'type' => 'score', // region | score | time
@@ -134,6 +134,22 @@ class BadgesTableSeeder extends Seeder
             'badgeable_id' => 2 // id de la Region ou du Quiz, il est affiché dans l'interface admin
         ],
         // Fin du badge
+    ];
+
+    private $badgesGeneve = [
+        // Début du badge
+        [
+            'label' => 'Héro de l\'Escalade',
+            'description' => 'La vielle ville est pour toi une deuxième nature!',
+            'pictogram' => "fa-place-of-worship", // icône Fontawesome
+            'color' => "#f5e342", // couleur héxa du fond du badge
+            'type' => 'score', // region | score | time
+            'criterium' => 80, // %age des quizzes réussis dans la région | score minimal | temps maximal
+            'badgeable_type' => 'App\Models\Quiz', // XXX = Region | Quiz
+            'badgeable_id' => 7 // id de la Region ou du Quiz, il est affiché dans l'interface admin
+        ],
+        // Fin du badge
+        //... suite des badges
     ];
 
     /**
@@ -148,7 +164,8 @@ class BadgesTableSeeder extends Seeder
         $this->createBadges($this->badgesBern); // 2 badges
         $this->createBadges($this->badgesMorges); // 4 badges
         $this->createBadges($this->badgesHeig); // 1 badge
+        $this->createBadges($this->badgesGeneve); // 1 badge
 
-        // Total : 6 badges
+        // Total : 8 badges
     }
 }

@@ -194,7 +194,7 @@ class QuizzesTableGlobalSeeder extends Seeder
             // Début d'un quiz
             [
                 "title" => "HEIG-VD",
-                "description" => "que ce soit à saint-Roch ou Cheseaux attention à retrouver votre chemin",
+                "description" => "Que ce soit à St-Roch ou Cheseaux, attention à retrouver votre chemin.",
                 "difficulty" => 1,
                 "user_id" => 1, // = admin
                 "questions" => [
@@ -205,23 +205,23 @@ class QuizzesTableGlobalSeeder extends Seeder
                         'coord_y' => 6.6473795997117655,
                         'radius' => 50, // rayon de tolérance pour la validation de la question
                         'description' => "Dans une ancienne usine je me situe,
-                        à deux pas de la gare, ma carrure impressionne",
-                        'end_text' => "la salle de classe 155, lieu emblématique des quelques semaines de cours passées
+                        à deux pas de la gare, ma carrure impressionne.",
+                        'end_text' => "La salle de classe 155, lieu emblématique des quelques semaines de cours passées
                         en présentiel et antre du groupe MTHW durant le projet d'articulation, cette salle n'a plus de secrets
                         pour vous puisque vous y êtes.",
                         'clues' => [
                             // Début d'un indice
                             [
                                 "radius" => 500, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "entre deux ruisseaux, je trône"
+                                "description" => "Entre deux ruisseaux, je trône."
                             ],
                             [
                                 "radius" => 100, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "au fond d'un couloir obscure... attention à ne pas vous perdre"
+                                "description" => "Au fond d'un couloir obscure... Attention à ne pas vous perdre."
                             ],
                             [
                                 "radius" => 50, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "en face des toilettes."
+                                "description" => "En face des toilettes."
                             ],
                             // fin d'un indice
                             // ... la suite des indices
@@ -255,7 +255,7 @@ class QuizzesTableGlobalSeeder extends Seeder
                         'coord_y' => 6.6475446,
                         'radius' => 10, // rayon de tolérance pour la validation de la question
                         'description' => "C’est en suivant les mouettes que vous me retrouverez le plus facilement.",
-                        'end_text' => "voyage immobile - Denis Perret-Gentil: La figure humaine est sa principale source d'inspiration et la céramique l'une de ses techniques favorites. Il a de nombreuses expositions à son actif de peintures et sculptures en Suisse et à l'étranger depuis 1982, et a réalisé plusieurs œuvres monumentales dont le voyage immobile.",
+                        'end_text' => "Voyage immobile - Denis Perret-Gentil: La figure humaine est sa principale source d'inspiration et la céramique l'une de ses techniques favorites. Il a de nombreuses expositions à son actif de peintures et sculptures en Suisse et à l'étranger depuis 1982, et a réalisé plusieurs œuvres monumentales dont le voyage immobile.",
                         'clues' => [
                             // Début d'un indice
                             [
@@ -348,7 +348,7 @@ class QuizzesTableGlobalSeeder extends Seeder
                         'coord_y' => 6.6416377,
                         'radius' => 10, // rayon de tolérance pour la validation de la question
                         'description' => "Une jolie vue sur la rivière.",
-                        'end_text' => "Le Quai de Nogent: Le Quai de Nogent, un lieu incontournable d’Yverdon, vous pouvez y faire diverses activités de plein air. Si le soleil est de sortie, vous risquez de voir passer, des vélos, des joggeurs ou encore des personnes à rollers. Durant l’été, le quai de Nogent accueille divers événements tel que la Dérivée, un lieu éphémère de rencontre et d’échange, entre festival et espace culturel, qui propose des activités mêlant culture et développement durable.",
+                        'end_text' => "Le Quai de Nogent, un lieu incontournable d’Yverdon, vous pouvez y faire diverses activités de plein air. Si le soleil est de sortie, vous risquez de voir passer, des vélos, des joggeurs ou encore des personnes à rollers. Durant l’été, le quai de Nogent accueille divers événements tel que la Dérivée, un lieu éphémère de rencontre et d’échange, entre festival et espace culturel, qui propose des activités mêlant culture et développement durable.",
                         'clues' => [
                             // Début d'un indice
                             [
@@ -410,7 +410,7 @@ class QuizzesTableGlobalSeeder extends Seeder
                             ],
                             [
                                 "radius" => 500, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "À défaut d’être l’alpha et l’Omega, je suis voisin d’un delta"
+                                "description" => "À défaut d’être l’Alpha et l’Omega, je suis voisin d’un delta."
                             ],
                             [
                                 "radius" => 100, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
@@ -435,15 +435,15 @@ class QuizzesTableGlobalSeeder extends Seeder
                             // Début des indices
                             [
                                 "radius" => 1000, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "Il m’est d’avis que vous devriez vous recentrer"
+                                "description" => "Il m’est d’avis que vous devriez vous recentrer."
                             ],
                             [
                                 "radius" => 300, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "Guettez mes hauteurs"
+                                "description" => "Guettez mes hauteurs."
                             ],
                             [
                                 "radius" => 150, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
-                                "description" => "Entre le château et l’église trône"
+                                "description" => "Entre le château et l’église trône."
                             ],
                             // Fin des indices
                         ]
@@ -623,7 +623,7 @@ class QuizzesTableGlobalSeeder extends Seeder
                             ],
                             [
                                 "radius" => 300, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "entre la route et la piscine, pas facile d'y faire tenir autant de terrains . . ."
+                                "description" => "entre la route et la piscine, pas facile d'y faire tenir autant de terrains..."
                             ],
                             [
                                 "radius" => 70, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
@@ -674,7 +674,7 @@ class QuizzesTableGlobalSeeder extends Seeder
                             // Début d'un indice
                             [
                                 "radius" => 1000, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "regardez le ciel, mes mats vous appellent."
+                                "description" => "Regardez le ciel, mes mats vous appellent."
                             ],
                             [
                                 "radius" => 300, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
@@ -682,7 +682,7 @@ class QuizzesTableGlobalSeeder extends Seeder
                             ],
                             [
                                 "radius" => 70, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "une bande de terre avant le grand saut !"
+                                "description" => "Une bande de terre avant le grand saut !"
                             ],
                             // fin d'un indice
                             // ... la suite des indices
@@ -700,15 +700,15 @@ class QuizzesTableGlobalSeeder extends Seeder
                             // Début d'un indice
                             [
                                 "radius" => 1000, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "suivez le chemin. Boisé, il vous tiendra au frais"
+                                "description" => "Suivez le chemin. Boisé, il vous tiendra au frais."
                             ],
                             [
                                 "radius" => 300, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "prenez garde à ne pas me louper. Ouvrez l'oeil"
+                                "description" => "Prenez garde à ne pas me louper. Ouvrez l'oeil."
                             ],
                             [
                                 "radius" => 70, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "sous les branches, je me cache."
+                                "description" => "Sous les branches, je me cache."
                             ],
                             // fin d'un indice
                             // ... la suite des indices
@@ -721,21 +721,20 @@ class QuizzesTableGlobalSeeder extends Seeder
                         'coord_y' => 6.482499,
                         'radius' => 50, // rayon de tolérance pour la validation de la question
                         'description' => "Une plage inespérée, en face des Montagnes et du lac, observe tranquillement un des ports.",
-                        'end_text' => "Le stand de tir, haut lieu des fêtes estudiantines en soirée, la plage offre l'après midi un spot
-                                        idéal pour se relaxer ou quelques grillades",
+                        'end_text' => "Le stand de tir, haut lieu des fêtes estudiantines en soirée, la plage offre l'après midi un spot idéal pour se relaxer ou quelques grillades",
                         'clues' => [
                             // Début d'un indice
                             [
                                 "radius" => 1000, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "au fond du chemin boisé, une oasis de calme."
+                                "description" => "Au fond du chemin boisé, une oasis de calme."
                             ],
                             [
                                 "radius" => 300, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "ne vous perdez pas en route et suivez le lac !"
+                                "description" => "Ne vous perdez pas en route et suivez le lac !"
                             ],
                             [
                                 "radius" => 70, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "vous y êtes presque !"
+                                "description" => "Vous y êtes presque !"
                             ],
                             // fin d'un indice
                             // ... la suite des indices
@@ -760,13 +759,13 @@ class QuizzesTableGlobalSeeder extends Seeder
                         'coord_x' => 46.515807,
                         'coord_y' => 6.515388,
                         'radius' => 50, // rayon de tolérance pour la validation de la question
-                        'description' => "en direction de préverenge, arretez-vous pour admirer la vue et les joueurs de volley.",
+                        'description' => "En direction de Préverenge, arretez-vous pour admirer la vue et les joueurs de volley.",
                         'end_text' => "Avant de prendre le chemin des oiseaux, observez le paysage. Au fond, la petite île, c'est l'île aux oiseaux.",
                         'clues' => [
                             // Début d'un indice
                             [
                                 "radius" => 1000, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "proche d'un énième port, celui-ci mène à Préverenge. "
+                                "description" => "Proche d'un énième port, celui-ci mène à Préverenge. "
                             ],
                             [
                                 "radius" => 300, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
@@ -774,7 +773,7 @@ class QuizzesTableGlobalSeeder extends Seeder
                             ],
                             [
                                 "radius" => 70, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "suivez le bord, vous y êtes presque !"
+                                "description" => "Suivez le bord, vous y êtes presque !"
                             ],
                             // fin d'un indice
                             // ... la suite des indices
@@ -793,7 +792,7 @@ class QuizzesTableGlobalSeeder extends Seeder
                             // Début d'un indice
                             [
                                 "radius" => 1000, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "prenez la direction de Préverenge"
+                                "description" => "Prenez la direction de Préverenge"
                             ],
                             [
                                 "radius" => 300, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
@@ -801,7 +800,7 @@ class QuizzesTableGlobalSeeder extends Seeder
                             ],
                             [
                                 "radius" => 70, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "placez-vous face au Temple."
+                                "description" => "Placez-vous face au Temple."
                             ],
                             // fin d'un indice
                             // ... la suite des indices
@@ -819,15 +818,15 @@ class QuizzesTableGlobalSeeder extends Seeder
                             // Début d'un indice
                             [
                                 "radius" => 1000, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "la direction d'Echichens tu devrais emprunter."
+                                "description" => "La direction d'Echichens tu devrais emprunter."
                             ],
                             [
                                 "radius" => 300, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "pour du bon vin, il faut grimper."
+                                "description" => "Pour du bon vin, il faut grimper."
                             ],
                             [
                                 "radius" => 70, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "à la croisée des chemins"
+                                "description" => "À la croisée des chemins."
                             ],
                             // fin d'un indice
                             // ... la suite des indices
@@ -853,7 +852,7 @@ class QuizzesTableGlobalSeeder extends Seeder
                             ],
                             [
                                 "radius" => 70, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
-                                "description" => "à deux pas d'un carrefour."
+                                "description" => "À deux pas d'un carrefour."
                             ],
                             // fin d'un indice
                             // ... la suite des indices
@@ -869,6 +868,157 @@ class QuizzesTableGlobalSeeder extends Seeder
     ];
     // Fin des quizzes de Morges
 
+    private $quizzesGeneve = [
+        "region_id" => 2, // Yverdon : 1, Genève : 2, Morges : 3, Berne : 4, CDF : 5
+        "quizzes" =>  [
+            // Début d'un quiz
+            [
+                "title" => "La vieille ville",
+                "description" => "Formément le centre de Genève, la vieille ville cache de nombreuses perles historiques",
+                "difficulty" => "1",
+                "user_id" => 1, // = admin
+                "questions" => [
+                    // Début d'une question
+                    [
+                        'picture' => "storage/images/questions/geneve1.jpg", // Q$quiz_idQ$question_id.jpg
+                        'coord_x' => 46.20129798628067,
+                        'coord_y' => 6.147882265457924,
+                        'radius' => 100, // rayon de tolérance pour la validation de la question
+                        'description' => "Surveillant la ville, je fais le lien avec le ciel",
+                        'end_text' => "Depuis bientôt un millénaire, la Cathédrale de St.Pierre est le centre spirituelle de la ville. Son architecture Gothique écho le style Catholique en vogue durant sa construction. De nos jours c'est un édifige qui suit la traidition Calviniste.",
+                        'clues' => [
+                            // Début d'un indice
+                            [
+                                "radius" => 1000, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
+                                "description" => "En hauteur parmis les anciens."
+                            ],
+                            [
+                                "radius" => 500, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
+                                "description" => "Mes tours vous appellent."
+                            ],
+                            [
+                                "radius" => 100, // entre 10 et 1000, mais doit être plus grand que la tolérance de la question
+                                "description" => "En moi, tu peux placer ta foi."
+                            ],
+                            // fin d'un indice
+                            // ... la suite des indices
+    
+                        ]
+                    ],
+                    // fin d'une question
+                    // ... la suite des questions
+                ]
+            ],
+            // fin d'un quiz
+            // ... la suite des quizzes, si on en ajoute plus d'un à la fois
+        ]
+    ];
+    // Fin des quiz de Genève
+
+    private $quizzesLausanne = [
+        "region_id" => 6, // Yverdon : 1, Genève : 2, Morges : 3, Berne : 4, CDF : 5, Lausanne : 6
+        "quizzes" =>  [
+            // Début d'un quiz
+            [
+                "title" => "La ville de Lausanne",
+                "description" => "Lausanne est une ville à la rive nord du lac Léman au canton de vaud",
+                "difficulty" => 2,
+                "user_id" => 1, // = admin
+                "questions" => [
+                    // Début d'une question
+                    [
+                        'coord_x' => 46.51958,
+                        'coord_y' => 6.63254,
+                        'radius' => 20, // rayon de tolérance pour la validation de la question, entre 1 et 100m
+                        'description' => "En dessous de ma fontaine tu peux t'installer;\n".
+                        "Une horloge me chante chaque heure et des danseurs font une ronde autour d'elle, et rentre après  \n".
+                        "À deux pas des tulipes vous me trouverez.",
+                        'end_text' => "Vous voilà arrivé !\n
+                        La place de Pahud existe depuis le IXe siècle, elle hébèrge un marché depuis ce temps là et jusqu'à ce jour. 
+                        La fontaine était d'abord en faites d'un tronc d'arbre, puis en pierre en 1557. En 1585, une statue de la justice y a été installée.
+                        \nAu premier étage dd'un immeuble à coté de la fontaine, une horloge animée a été réalisé en 1964 à l'occasion de l'exposition nationale suisse.",
+                        'clues' => [
+                            // Début des indices
+                            [
+                                "radius" => 1000, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
+                                "description" => "Vous pouvez y faire vos courses de fruits et légumes, les mercredis et samedis."
+                            ],
+                            [
+                                "radius" => 500, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
+                                "description" => "Entre une madeleine et une mercerie, vous choisiriez quoi ?"
+                            ],
+                            [
+                                "radius" => 100, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
+                                "description" => "Vive les mariés !"
+                            ],
+                            // Fin des indices
+                        ]
+                    ],
+                    // fin d'une question
+                    // Début d'une question
+                    [
+                        'coord_x' => 47.561508,
+                        'coord_y' => 8.074240,
+                        'radius' => 20, // rayon de tolérance pour la validation de la question, entre 1 et 100m
+                        'description' => "Je raconte l'histoire des sports \n".
+                        "Je regarde les montagnes et profite du lac Léman toute année\n",
+                        'end_text' => "Le musée olympique est le deuxième musée le plus visité en suisse. Il a ouvert ses portes en 1993. Il présente des expositions temporaires 
+                        et d'autres permanentes sur 3 étages. Les thèmes exposés sont en tour du monde du sport et l'esprit olympique ",
+                        'clues' => [
+                            // Début des indices
+                            [
+                                "radius" => 1000, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
+                                "description" => "T'as envie de marché au bord du lac ?"
+                            ],
+                            [
+                                "radius" => 300, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
+                                "description" => "Est ce que tu aimerais aller à la piscine ?"
+                            ],
+                            [
+                                "radius" => 150, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
+                                "description" => "Une petite glace pour t'accompagner et marcher à droite du château."
+                            ],
+                            // Fin des indices
+                        ]
+                    ],
+                    // fin d'une question
+                    
+                    // Début d'une question
+                    [
+                        'coord_x' => 46.506811,
+                        'coord_y' => 6.628395,
+                        'radius' => 20, // rayon de tolérance pour la validation de la question, entre 1 et 100m
+                        'description' => "Pas loin du léman;\n".
+                        "J'héberges des visiteurs de la ville de Lausanne\n",
+                        'end_text' => "Le château d'ouchy a été construit entre 1889 et 1893, Il appartient au groupe hôtelier Sandoz Foundation.\n
+                        au début seule une tour a été construite, ensuite après un siècle, la construction du reste a été réalisé pour héberger les évêques. Après son rachat part Jean-Jacques Mercier, il a été complètement rasé en 1885 
+                        à l'exception de la tour, il a été reconstruit pour en faire sa fonction actuelle, hôtel.",
+                        'clues' => [
+                            // Début des indices
+                            [
+                                "radius" => 1000, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
+                                "description" => "Je suis le voisin d'un arrêt de métro."
+                            ],
+                            [
+                                "radius" => 500, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
+                                "description" => "Sur le chemin des amoureux du bord du lac, vous me trouverez."
+                            ],
+                            [
+                                "radius" => 100, // entre 10 et 1000m, mais doit être plus grand que la tolérance de la question
+                                "description" => "Une croisière avec le bâteau la Suisse, vous interesse?"
+                            ],
+                            // Fin des indices
+                        ]
+                    ],
+                    // fin d'une question
+                    
+                ]
+            ],
+            // fin d'un quiz
+        ]
+    ];
+    // Fin des quizzes de Lausanne
+
     /**
      * Run the database seeds.
      *
@@ -880,6 +1030,9 @@ class QuizzesTableGlobalSeeder extends Seeder
         $this->createQuiz($this->quizzesHeig, 4, 17); // 1 quiz, 1 question
         $this->createQuiz($this->quizzesYverdon, 5, 18); // 1 quiz, 4 questions
         $this->createQuiz($this->quizzesBerne, 6, 22); // 1 quiz, 5 questions
-        // Total : 4 quizzes, 17 questions
+        $this->createQuiz($this->quizzesGeneve, 7, 27); // 1 quiz, 1 question
+        $this->createQuiz($this->quizzesLausanne, 8, 28); // 1 quiz, 3 question
+
+        // Total : 8 quizzes, 30 questions
     }
 }

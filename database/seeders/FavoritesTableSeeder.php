@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class FavoritesTableSeeder extends Seeder
 {
     /**
-     * Attributes 10 random quizzes between the 5 users
+     * Creates 8 random assignations of quizzes to users, as favorites
      *
      * @return void
      */
@@ -17,9 +17,9 @@ class FavoritesTableSeeder extends Seeder
     {
         DB::table('favorites')->delete();
 
-        for ($i=1; $i <= 10; $i++) {
+        for ($i=1; $i <= 8; $i++) {
             DB::table('favorites')->insert([
-                'quiz_id' => rand(1, 6),
+                'quiz_id' => $i,
                 'user_id' => rand(1, 15),
             ]);
         }

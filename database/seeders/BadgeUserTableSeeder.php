@@ -14,17 +14,17 @@ class BadgeUserTableSeeder extends Seeder
     }
 
     /**
-     * Creates 15 random badges attribution.
+     * Creates 1 random assignation of each badge to 1 user.
      *
      * @return void
      */
     public function run()
     {
         DB::table('badge_user')->delete();
-        for ($i=1; $i <= 15; $i++) { 
+        for ($i=1; $i <= 8; $i++) { 
             $date = $this->randDate();
             DB::table('badge_user')->insert([
-                'badge_id' => rand(1, 6),
+                'badge_id' => $i,
                 'user_id' => rand(1, 15),
                 'created_at' => $date,
                 'updated_at' => $date,
