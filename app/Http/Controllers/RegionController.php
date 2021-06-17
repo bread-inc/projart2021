@@ -93,7 +93,7 @@ class RegionController extends Controller
         $userIds = new Collection();
         foreach ($mergedScores as $score) {
             $id = $score->user_id;
-            if (property_exists($id, $userIds)) {
+            if (isset($userIds[$id])) {
                 $userIds[$id]->score += $score->score;
             } else {
                 $userIds[$id] = $score;
