@@ -152,7 +152,7 @@
             </button>
 
             <v-pannellum
-              :src="'/' + currentQuestion.picture"
+              :src="'/bread/' + currentQuestion.picture"
               style="height: 43vh; width: auto"
               :minHfov="30"
               :showZoom="true"
