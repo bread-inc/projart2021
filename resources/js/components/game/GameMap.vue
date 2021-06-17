@@ -26,16 +26,14 @@
         name="OpenStreetMap"
       ></l-tile-layer>
       <l-marker
-      @ready="sycnhroPosUser"
+        @ready="sycnhroPosUser"
         :lat-lng="[
           userLocation.lat || defaultLocation.lat,
           userLocation.lng || defaultLocation.lng,
-        ]"
-
-      >
-        <l-icon :iconUrl="`/bread/storage/images/position.png`"
-        :icon-size="[45, 45]" />
+        ]"  >
         <l-popup> You are here </l-popup>
+          <l-icon :iconUrl="`/bread/storage/images/position.png`"
+        :icon-size="[45, 45]" />
       </l-marker>
       <l-circle v-if="clue.radius" @ready="storeClue" :lat-lng="clueLocation"
       :radius="parseInt(clue.radius)"/>
@@ -79,7 +77,6 @@ export default {
       zoom: 18,
       minZoom: 12,
       maxZoom: 19,
-
       clueLocation: Array,
     };
   },
@@ -132,12 +129,14 @@ export default {
             lat: pos.coords.latitude,
             lng: pos.coords.longitude,
           };
+          console.log(this.userLocation.lat);
+            console.log(this.userLocation.lng);
         });
       }
     },
 
     // Returns the distance from the question to parent component
-    getDistance() {
+   async getDistance() {
     this.getUserPosition;
       let distance = this.mapleaf.distance(this.userLocation, [
         this.question.coord_x,
@@ -157,7 +156,7 @@ export default {
 
      sycnhroPosUser()
     {
-        setInterval(this.getUserPosition, 2500);
+        setInterval(this.getUserPosition, 2000);
 
     },
 
