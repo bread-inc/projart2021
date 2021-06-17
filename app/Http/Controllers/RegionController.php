@@ -42,6 +42,7 @@ class RegionController extends Controller
 
         dd($regions);
 
+
         return view('game_desktop')->with('regions', json_encode($regions));
     }
 
