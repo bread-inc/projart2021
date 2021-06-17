@@ -598,6 +598,7 @@ pre code {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
+  
 }
 
 .col {
@@ -699,7 +700,9 @@ pre code {
 
 .col-12 {
   flex: 0 0 100%;
-  max-width: 100%;
+  max-width: 50%; 
+  text-align: center !important ;
+  background-color: fuchsia;
 }
 
 .order-first {

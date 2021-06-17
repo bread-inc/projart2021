@@ -1,7 +1,7 @@
 <template>
   <div class="row mb-2">
     <button class="btn-desk-locate" @click="this.centerUser">
-      <img id="loc" src="/storage/images/locate.png" />
+      <img id="loc" src="/bread/storage/images/locate.png" />
     </button>
     <quiz-list> </quiz-list>
   </div>
@@ -32,7 +32,7 @@
         ]"
       >
         <l-icon
-          :iconUrl="`/storage/images/position.png`"
+          :iconUrl="`/bread/storage/images/position.png`"
           :icon-size="[45, 45]"
         />
 
@@ -42,7 +42,7 @@
         v-for="region in regions"
         :lat-lng="[region.center_x || 0, region.center_y || 0]"
       >
-        <l-icon :iconUrl="`/storage/images/marker.png`" />
+        <l-icon :iconUrl="`/bread/storage/images/marker.png`" />
         <l-popup @ready="popUpObject">
           <quiz-list :quizzes="region.quizzes"></quiz-list>
         </l-popup>

@@ -66,6 +66,8 @@ class RegionController extends Controller
             $mergedScores = $mergedScores->merge($quiz->scores()->get());
         }
 
+
+
         return view('public.regions.region_show')->with(compact('region', 'mergedScores'));
     }
 
@@ -87,6 +89,18 @@ class RegionController extends Controller
             $mergedScores = $mergedScores->merge($quiz->scores()->get());
         }
 
+        // Total scores on user_id
+        $userIds = new Collection();
+        foreach ($mergedScores as $score) {
+            $id = $score->user_id;
+            if (property_exists($id, $userIds)) {
+                $userIds[$id]->score += $score->score;
+            } else {
+                $userIds[$id] = $score;
+            }
+        }
+        
+        $mergedScores = $userIds;
         return view('public.regions.regional_scores', compact('region', 'mergedScores'));
     }
 }
