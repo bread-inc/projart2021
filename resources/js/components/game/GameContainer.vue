@@ -54,7 +54,7 @@
           <h2>Bravo</h2>
         </div>
         <p>
-          Bravo vous avez validé la question à {{ parseInt(distance) }} de
+          Bravo vous avez validé la question à {{ parseInt(distance) }} mètres de
           l'objectif
         </p>
         <p>{{ currentQuestion.end_text }}</p>
