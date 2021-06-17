@@ -54,8 +54,8 @@
           <h2>Bravo</h2>
         </div>
         <p>
-          Bravo vous avez validé la question à {{ parseInt(distance) }} de
-          l'objectif
+          Bravo vous avez validé la question à {{ parseInt(distance) }}m de
+          l'objectif.
         </p>
         <p>{{ currentQuestion.end_text }}</p>
       </question-success>
@@ -72,8 +72,8 @@
           <h2>Oops</h2>
         </div>
         <p>
-          Dommage Vous n’êtes pas encore au bon endroit. Mais ne vous découragez
-          pas !
+          Dommage. Vous n’êtes pas encore au bon endroit. Mais ne vous découragez
+          pas ! Vous n'êtes qu'à {{ parseInt(distance)}}m de l'obectif.
         </p>
       </question-failure>
       <quiz-success
