@@ -119,20 +119,6 @@
 
 <dl class="phpdocumentor-table-of-contents">
                     <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-Http-Controllers-ScoreController.html#method_create">create()</a>
-    <span>
-                        &nbsp;: <abbr title="\Illuminate\Http\Response">Response</abbr>    </span>
-</dt>
-<dd>Show the form for creating a new resource.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-Http-Controllers-ScoreController.html#method_destroy">destroy()</a>
-    <span>
-                        &nbsp;: <abbr title="\Illuminate\Http\Response">Response</abbr>    </span>
-</dt>
-<dd>Remove the specified resource from storage.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Http-Traits-ScoreboardTrait.html#method_getUserGlobalScore">getUserGlobalScore()</a>
     <span>
                         &nbsp;: float    </span>
@@ -154,11 +140,11 @@
 <dd>Returns the global rankings data in JSON.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-Http-Controllers-ScoreController.html#method_store">store()</a>
+    <a href="classes/App-Http-Traits-ScoreboardTrait.html#method_scoreboardTop">scoreboardTop()</a>
     <span>
-                        &nbsp;: <abbr title="\Illuminate\Http\Response">Response</abbr>    </span>
+                        &nbsp;: string|false    </span>
 </dt>
-<dd>Store a newly created resource in storage.</dd>
+<dd>Returns given integer of global rankings starting from the top</dd>
 
         </dl>
 
@@ -179,85 +165,6 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_create">
-        create()
-        <a href="classes/App-Http-Controllers-ScoreController.html#method_create" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="app/Http/Controllers/ScoreController.php"><a href="files/app-http-controllers-scorecontroller.html"><abbr title="app/Http/Controllers/ScoreController.php">ScoreController.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">30</span>
-</aside>
-
-        <p class="phpdocumentor-summary">Show the form for creating a new resource.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">create</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Illuminate\Http\Response">Response</abbr></span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><abbr title="\Illuminate\Http\Response">Response</abbr></span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_destroy">
-        destroy()
-        <a href="classes/App-Http-Controllers-ScoreController.html#method_destroy" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="app/Http/Controllers/ScoreController.php"><a href="files/app-http-controllers-scorecontroller.html"><abbr title="app/Http/Controllers/ScoreController.php">ScoreController.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">52</span>
-</aside>
-
-        <p class="phpdocumentor-summary">Remove the specified resource from storage.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">destroy</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Illuminate\Http\Response">Response</abbr></span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$id</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><abbr title="\Illuminate\Http\Response">Response</abbr></span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_getUserGlobalScore">
         getUserGlobalScore()
         <a href="classes/App-Http-Traits-ScoreboardTrait.html#method_getUserGlobalScore" class="headerlink"><i class="fas fa-link"></i></a>
@@ -265,7 +172,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="app/Http/Traits/ScoreboardTrait.php"><a href="files/app-http-traits-scoreboardtrait.html"><abbr title="app/Http/Traits/ScoreboardTrait.php">ScoreboardTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">51</span>
+    <span class="phpdocumentor-element-found-in__line">64</span>
 </aside>
 
         <p class="phpdocumentor-summary">Returns the user&#039;s global score, the total of all his scores</p>
@@ -363,7 +270,7 @@
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string|false</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>The JSON encoded global scoreboard, or false if empty</p>
+            <section class="phpdocumentor-description"><p>JSON encoded global scoreboard, false if empty</p>
 </section>
 
     
@@ -374,42 +281,42 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_store">
-        store()
-        <a href="classes/App-Http-Controllers-ScoreController.html#method_store" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_scoreboardTop">
+        scoreboardTop()
+        <a href="classes/App-Http-Traits-ScoreboardTrait.html#method_scoreboardTop" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="app/Http/Controllers/ScoreController.php"><a href="files/app-http-controllers-scorecontroller.html"><abbr title="app/Http/Controllers/ScoreController.php">ScoreController.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Http/Traits/ScoreboardTrait.php"><a href="files/app-http-traits-scoreboardtrait.html"><abbr title="app/Http/Traits/ScoreboardTrait.php">ScoreboardTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">41</span>
+    <span class="phpdocumentor-element-found-in__line">51</span>
 </aside>
 
-        <p class="phpdocumentor-summary">Store a newly created resource in storage.</p>
+        <p class="phpdocumentor-summary">Returns given integer of global rankings starting from the top</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">store</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Illuminate\Http\Request">Request</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$request</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Illuminate\Http\Response">Response</abbr></span></code>
+                <span class="phpdocumentor-signature__name">scoreboardTop</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$n</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|false</span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$request</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Illuminate\Http\Request">Request</abbr></span>
+                <span class="phpdocumentor-signature__argument__name">$n</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><abbr title="\Illuminate\Http\Response">Response</abbr></span>
+    <span class="phpdocumentor-signature__response_type">string|false</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
+            <section class="phpdocumentor-description"><p>JSON encoded scoreboard, false if empty</p>
+</section>
 
     
 </article>

@@ -311,11 +311,6 @@ Search.appendIndex(
             "summary": "Remove\u0020the\u0020specified\u0020resource\u0020from\u0020storage.",
             "url": "classes/App-Http-Controllers-QuizController.html#method_destroy"
         },                {
-            "fqsen": "\\App\\Http\\Controllers\\QuizController\u003A\u003Aprofile\u0028\u0029",
-            "name": "profile",
-            "summary": "Show\u0020profile,\u0020for\u0020users\u0020\u0028not\u0020admin\u0029",
-            "url": "classes/App-Http-Controllers-QuizController.html#method_profile"
-        },                {
             "fqsen": "\\App\\Http\\Controllers\\RegionController",
             "name": "RegionController",
             "summary": "",
@@ -351,21 +346,6 @@ Search.appendIndex(
             "summary": "Display\u0020a\u0020listing\u0020of\u0020the\u0020resource.",
             "url": "classes/App-Http-Controllers-ScoreController.html#method_index"
         },                {
-            "fqsen": "\\App\\Http\\Controllers\\ScoreController\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
-            "summary": "Show\u0020the\u0020form\u0020for\u0020creating\u0020a\u0020new\u0020resource.",
-            "url": "classes/App-Http-Controllers-ScoreController.html#method_create"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\ScoreController\u003A\u003Astore\u0028\u0029",
-            "name": "store",
-            "summary": "Store\u0020a\u0020newly\u0020created\u0020resource\u0020in\u0020storage.",
-            "url": "classes/App-Http-Controllers-ScoreController.html#method_store"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\ScoreController\u003A\u003Adestroy\u0028\u0029",
-            "name": "destroy",
-            "summary": "Remove\u0020the\u0020specified\u0020resource\u0020from\u0020storage.",
-            "url": "classes/App-Http-Controllers-ScoreController.html#method_destroy"
-        },                {
             "fqsen": "\\App\\Http\\Controllers\\UserController",
             "name": "UserController",
             "summary": "",
@@ -396,6 +376,11 @@ Search.appendIndex(
             "summary": "Store\u0020a\u0020newly\u0020created\u0020resource\u0020in\u0020storage.",
             "url": "classes/App-Http-Controllers-UserController.html#method_store"
         },                {
+            "fqsen": "\\App\\Http\\Controllers\\UserController\u003A\u003AisAdmin\u0028\u0029",
+            "name": "isAdmin",
+            "summary": "Return\u0020if\u0020the\u0020selected\u0020user\u0020is\u0020an\u0020administrator",
+            "url": "classes/App-Http-Controllers-UserController.html#method_isAdmin"
+        },                {
             "fqsen": "\\App\\Http\\Controllers\\UserController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
             "summary": "Display\u0020the\u0020specified\u0020resource.",
@@ -416,10 +401,15 @@ Search.appendIndex(
             "summary": "Remove\u0020the\u0020specified\u0020resource\u0020from\u0020storage.",
             "url": "classes/App-Http-Controllers-UserController.html#method_destroy"
         },                {
-            "fqsen": "\\App\\Http\\Controllers\\UserController\u003A\u003AisAdmin\u0028\u0029",
-            "name": "isAdmin",
-            "summary": "Return\u0020if\u0020the\u0020selected\u0020user\u0020is\u0020an\u0020administrator",
-            "url": "classes/App-Http-Controllers-UserController.html#method_isAdmin"
+            "fqsen": "\\App\\Http\\Controllers\\UserController\u003A\u003AshowUser\u0028\u0029",
+            "name": "showUser",
+            "summary": "Display\u0020the\u0020user\u0020profile.\u0020The\u0020route\u0020is\u0020public.",
+            "url": "classes/App-Http-Controllers-UserController.html#method_showUser"
+        },                {
+            "fqsen": "\\App\\Http\\Controllers\\UserController\u003A\u003AeditProfile\u0028\u0029",
+            "name": "editProfile",
+            "summary": "Edit\u0020the\u0020user\u0020profile\u0020\u0028public\u0029.\u0020In\u0020development.",
+            "url": "classes/App-Http-Controllers-UserController.html#method_editProfile"
         },                {
             "fqsen": "\\App\\Http\\Controllers\\UserController\u003A\u003AaddBadges\u0028\u0029",
             "name": "addBadges",
@@ -430,21 +420,6 @@ Search.appendIndex(
             "name": "storeBadges",
             "summary": "Save\u0020the\u0020selected\u0020badges\u0020for\u0020the\u0020user.\u0020The\u0020user\u0027s\u0020id\u0020is\u0020stored\u0020in\u0020a\u0020form\u0027s\u0020hidden\u0020input.",
             "url": "classes/App-Http-Controllers-UserController.html#method_storeBadges"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\UserController\u003A\u003AdeleteScore\u0028\u0029",
-            "name": "deleteScore",
-            "summary": "In\u0020development.\u0020Deletes\u0020a\u0020score\u0020a\u0020user\u0020achieved.",
-            "url": "classes/App-Http-Controllers-UserController.html#method_deleteScore"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\UserController\u003A\u003AshowUser\u0028\u0029",
-            "name": "showUser",
-            "summary": "Display\u0020the\u0020user\u0020profile.\u0020The\u0020route\u0020is\u0020public.",
-            "url": "classes/App-Http-Controllers-UserController.html#method_showUser"
-        },                {
-            "fqsen": "\\App\\Http\\Controllers\\UserController\u003A\u003AeditProfile\u0028\u0029",
-            "name": "editProfile",
-            "summary": "Edit\u0020the\u0020user\u0020profile\u0020\u0028public\u0029.\u0020In\u0020development.",
-            "url": "classes/App-Http-Controllers-UserController.html#method_editProfile"
         },                {
             "fqsen": "\\App\\Http\\Controllers\\UserController\u003A\u003AaddQuizToFavorite\u0028\u0029",
             "name": "addQuizToFavorite",
@@ -700,6 +675,11 @@ Search.appendIndex(
             "name": "scoreboard",
             "summary": "Returns\u0020the\u0020global\u0020rankings\u0020data\u0020in\u0020JSON.",
             "url": "classes/App-Http-Traits-ScoreboardTrait.html#method_scoreboard"
+        },                {
+            "fqsen": "\\App\\Http\\Traits\\ScoreboardTrait\u003A\u003AscoreboardTop\u0028\u0029",
+            "name": "scoreboardTop",
+            "summary": "Returns\u0020given\u0020integer\u0020of\u0020global\u0020rankings\u0020starting\u0020from\u0020the\u0020top",
+            "url": "classes/App-Http-Traits-ScoreboardTrait.html#method_scoreboardTop"
         },                {
             "fqsen": "\\App\\Http\\Traits\\ScoreboardTrait\u003A\u003AgetUserGlobalScore\u0028\u0029",
             "name": "getUserGlobalScore",
