@@ -6,15 +6,18 @@
           <h5>{{quiz.title}}</h5>
       </div>
       <div class="label">
-          <small v-if="quiz.difficulty">{{quiz.difficulty}}</small>
+          <small>{{quiz.title}}</small>
           <small></small>
       </div>
   </a>
   <!-- .element -->
 </template>
-
 <script>
 export default {
   props: ["quiz"],
 };
 </script>
+
+<style>
+
+</style>

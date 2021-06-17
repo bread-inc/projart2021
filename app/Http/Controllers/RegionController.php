@@ -25,7 +25,7 @@ class RegionController extends Controller
 
     /**
      * Sends the data for the desktop map and display the map page, with all region's quizzes.
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function mapDesktop()
@@ -40,7 +40,7 @@ class RegionController extends Controller
             }
         }
 
-        dd($regions);
+       // dd($regions);
 
 
         return view('game_desktop')->with('regions', json_encode($regions));
@@ -72,7 +72,7 @@ class RegionController extends Controller
 
     /**
      * Display the scores view of the specified region.
-     * 
+     *
      * @param int $id the region's id
      * @return \Illuminate\Http\Response
      */
