@@ -52,7 +52,7 @@ a:hover, a:active, a:focus {
     background-color: white;
     border: 1px solid var(--red-primary);
     color: var(--dark-primary);
-    max-width: 350px;
+    
 }
 
 /* Profile picture */
