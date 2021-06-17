@@ -15,8 +15,9 @@ class RegionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-        $regions=Region::all();
+    public function index()
+    {
+        $regions = Region::all();
 
 
         return view('public.regions.index')->with('regions', $regions);
@@ -27,25 +28,21 @@ class RegionController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function mapDesktop() {
+    public function mapDesktop()
+    {
 
-         $data =[];
-         $regio =[];
-         $quiz=[];
+        $regions = Region::all();
 
-         foreach (Region::all() as $element)
-         {
-            $r = Region::findOrFail($element->id);
-            array_push($regio,$r);
-         }
-
-        foreach($regio as $element)
-        {
-            $regio["quiz"]=$element->quizzes;
+        foreach ($regions as $region) {
+            $region['quizzes'] = $region->quizzes;
+            foreach ($region['quizzes'] as $quiz) {
+                $quiz['picture'] = $quiz->questions->first()->picture;
+            }
         }
 
-        return view('game_desktop')->with('regions', json_encode($regio));
+        dd($regions);
 
+        return view('game_desktop')->with('regions', json_encode($regions));
     }
 
     /**
@@ -54,7 +51,8 @@ class RegionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
+    public function show($id)
+    {
         $region = Region::findOrFail($id);
         $quizzes = $region->quizzes->all();
         $scores = [];
@@ -77,7 +75,8 @@ class RegionController extends Controller
      * @param int $id the region's id
      * @return \Illuminate\Http\Response
      */
-    public function scores($id) {
+    public function scores($id)
+    {
         $region = Region::findOrFail($id);
         $quizzes = $region->quizzes->all();
         $scores = [];
@@ -99,7 +98,7 @@ class RegionController extends Controller
                 $userIds[$id] = $score;
             }
         }
-        
+
         $mergedScores = $userIds;
         return view('public.regions.regional_scores', compact('region', 'mergedScores'));
     }
