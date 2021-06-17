@@ -24,8 +24,7 @@
         userLocation.lat || 0,
         userLocation.lng || 0,
       ]"
-      @update:center="centerUpdated"
-    >
+      @update:center="centerUpdated">
 
       <l-tile-layer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -69,17 +68,15 @@ export default {
       radiusCircle: 0,
       valuex: 0,
       valuey: 0,
+      layerX: 0,
+      layerY:0,
     };
   },
 
   init() {
     this.mapleaf = null;
   },
-  watch:{
-      field: function (val) {
-          this.$root.bladeValue = val;
-      }
-  },
+
  async beforeMount() {
     // Leaflet imports
 
@@ -99,11 +96,14 @@ export default {
      * Generate the position on click on map
      * @param {mapObject} map object of vueleaflet
      */
-    click(mapObject){
-       let x = mapObject.layerX;
-       let y = mapObject.layerY;
+    click(clickObject){
 
-        let  latiLongi = this.mapleaf.layerPointToLatLng([x , y]);
+        this.layerX  = clickObject.layerX;
+        this.layerY = clickObject.layerY;
+
+        console.log(clickObject);
+        console.log("test");
+        let latiLongi = this.mapleaf.layerPointToLatLng([this.layerX  , this.layerY]);
 
         this.valuex =latiLongi.lat;
         this.valuey =latiLongi.lng;

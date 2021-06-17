@@ -3,7 +3,6 @@
     <button class="btn-desk-locate" @click="this.centerUser">
       <img id="loc" src="/bread/storage/images/locate.png" />
     </button>
-    <quiz-list> </quiz-list>
   </div>
   <div id="game-map">
     <l-map
@@ -35,8 +34,7 @@
           :iconUrl="`/bread/storage/images/position.png`"
           :icon-size="[45, 45]"
         />
-
-        <l-popup @ready="storePopup"> You are here </l-popup>
+        <l-popup> You are here </l-popup>
       </l-marker>
       <l-marker
         v-for="region in regions"
@@ -47,15 +45,12 @@
           <quiz-list :quizzes="region.quizzes"></quiz-list>
         </l-popup>
       </l-marker>
-
       <l-circle @ready="storeCircle" v-for="region in regions"
-        :lat-lng="[region.center_x || 0, region.center_y || 0]" radius="5000">
+        :lat-lng="[region.center_x || 0, region.center_y || 0]">
 <l-popup @ready="popUpObject">
           <quiz-list :quizzes="region.quizzes"></quiz-list>
         </l-popup>
       </l-circle>
-
-
     </l-map>
   </div>
 </template>
@@ -110,8 +105,6 @@ export default {
     this.mapIsReady = true;
   },
 
-  emits: ["getDistance"],
-
   methods: {
     storemap(mapObject) {
       this.mapleaf = mapObject;
@@ -119,11 +112,10 @@ export default {
 
     storeCircle(circleObject) {
       this.circleLeaflet = circleObject;
-      this.circleLeaflet.setStyle({fill: true,fillColor: "#FF9554",color:"#FF6100" });
+      this.circleLeaflet.setStyle({fill: true,fillColor: "#FF9554",color:"#FF6100", radius:5000});
     },
     popUpObject(popupObject) {
       this.popupLeaflet = popupObject;
-      console.log(this.popupLeaflet.isOpen());
     },
 
     async getUserPosition() {
@@ -145,15 +137,6 @@ export default {
         this.mapleaf.panTo([this.userLocation.lat, this.userLocation.lng]);
     },
 
-
-    getDistance() {
-      let distance = this.mapleaf.distance(this.userLocation, [
-        this.question.coord_x,
-        this.question.coord_y,
-      ]);
-      this.$emit("getDistance", distance);
-    },
-
     centerUpdated(center) {
       this.center = center;
     },
@@ -163,6 +146,5 @@ export default {
 
 <style>
 #game-map {
-  /*height:600px;*/
 }
 </style>
