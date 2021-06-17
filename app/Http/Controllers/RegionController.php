@@ -43,7 +43,6 @@ class RegionController extends Controller
         {
             $regio["quiz"]=$element->quizzes;
         }
-
         return view('game_desktop')->with('regions', json_encode($regio));
 
     }
