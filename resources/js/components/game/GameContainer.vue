@@ -72,8 +72,9 @@
           <h2>Oops</h2>
         </div>
         <p>
-          Dommage. Vous n’êtes pas encore au bon endroit. Mais ne vous découragez
-          pas ! Vous n'êtes qu'à {{ parseInt(distance)}}m de l'obectif.
+          Dommage. Vous n’êtes pas encore au bon endroit. Mais ne vous
+          découragez pas ! Vous n'êtes qu'à {{ parseInt(distance) }}m de
+          l'obectif.
         </p>
       </question-failure>
       <quiz-success
@@ -165,8 +166,10 @@
             <div class="SkipCenter"></div>
           </div>
           <div v-show="!showQuestionTab">
+            <p class="textQuestion" v-if="previousClues" v-for="clue in previousClues">Indice {{clue.id}}/{{currentQuestion.clues.length}} : {{clue.description}}</p>
+
             <p class="textQuestion" v-if="currentClue">
-              Indice : {{ currentClue.description }}
+              Indice {{clueIndex+1}}/{{currentQuestion.clues.length}} : {{ currentClue.description }}
             </p>
             <p class="textQuestion" v-else>
               Vous n'avez pas encore utilisé d'indice!
@@ -238,7 +241,13 @@ export default {
     currentClue() {
       return this.currentQuestion.clues[this.clueIndex];
     },
-    previousClues() {},
+    previousClues() {
+      let prevClues = [];
+      for (let i = 0; i < this.clueIndex; i++) {
+        prevClues.push({"id" : i+1, "description": this.currentQuestion.clues[i].description});
+      }
+      return prevClues;
+    },
 
     playState() {
       if (

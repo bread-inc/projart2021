@@ -129,8 +129,6 @@ export default {
             lat: pos.coords.latitude,
             lng: pos.coords.longitude,
           };
-          console.log(this.userLocation.lat);
-            console.log(this.userLocation.lng);
         });
       }
     },
