@@ -174,13 +174,15 @@
             <p class="textQuestion" v-else>
               Vous n'avez pas encore utilisé d'indice!
             </p>
+            <div id="btnClueCont">
             <button
               v-if="clueIndex < currentQuestion.clues.length - 1"
-              class="btn btn-gradient mr-2 col"
+              class="btn btnClue btn-gradient mr-2 col"
               @click="nextClue"
             >
               Nouvel indice
             </button>
+            </div>
           </div>
         </template>
       </game-drawer>

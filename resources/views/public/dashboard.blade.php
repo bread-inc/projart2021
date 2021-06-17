@@ -31,7 +31,7 @@
             @if(auth()->check())
             <div class="col-8"><h2><b>Préparez votre prochaine aventure</b></h2></div>
             <div class="col-4">
-                <img class="dashboard-region-image" src="{{asset("storage" . App\Models\Region::first()->image)}}" alt="{{App\Models\Region::first()->name}}">
+                <img class="dashboard-region-image" src="/bread/storage/images/imageAccueil.png">
             </div>
             @else
             <div class="col-8"><h2><b>Connectez-vous pour préparer votre prochaine aventure</b></h2></div>

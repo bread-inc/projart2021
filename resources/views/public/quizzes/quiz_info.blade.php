@@ -47,7 +47,7 @@
             <table class="score-table">
                 <tbody>
                     <?php $i = 1; ?>
-                    @foreach ($quiz->scores->take(10)->sortByDesc('score') as $score)
+                    @foreach ($quiz->scores->sortByDesc('score')->take(10) as $score)
                     
                     @if(auth()->check() && $score->user_id == auth()->id())
                     <tr class="my-score">

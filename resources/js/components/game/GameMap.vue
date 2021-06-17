@@ -31,8 +31,7 @@
           userLocation.lat || defaultLocation.lat,
           userLocation.lng || defaultLocation.lng,
         ]"  >
-        <l-popup> You are here </l-popup>
-          <l-icon :iconUrl="`/bread/storage/images/position.png`"
+  <l-icon :iconUrl="`/bread/storage/images/position.png`"
         :icon-size="[45, 45]" />
       </l-marker>
       <l-circle v-if="clue.radius" @ready="storeClue" :lat-lng="clueLocation"
@@ -125,6 +124,7 @@ export default {
     async getUserPosition() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((pos) => {
+        pos.enableHighAccuracy = true;
           this.userLocation = {
             lat: pos.coords.latitude,
             lng: pos.coords.longitude,
@@ -154,7 +154,14 @@ export default {
 
      sycnhroPosUser()
     {
-        setInterval(this.getUserPosition, 2000);
+          navigator.geolocation.watchPosition((pos) => {
+         pos.enableHighAccuracy = true;
+          this.userLocation = {
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude,
+          };
+
+        });
 
     },
 
