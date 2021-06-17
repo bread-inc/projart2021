@@ -6,7 +6,7 @@
           <h5>{{quiz.title}}</h5>
       </div>
       <div class="label">
-          <small>{{quiz.title}}</small>
+          <small class="titleQuizMap">{{quiz.title}}</small>
           <small></small>
       </div>
   </a>

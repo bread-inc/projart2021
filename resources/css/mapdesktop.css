@@ -71,6 +71,14 @@
         transform: translate3d(0px, -140px, 0px);
     }
 
+    .titleQuizMap{
+
+        font-size: var(--xs-fs);
+        font-weight: 900;
+        color: black;
+
+    }
+
     
 
     .leaflet-popup-content {
