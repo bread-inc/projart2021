@@ -26,7 +26,10 @@
         @skip="(showQuestionDescSkip = true), (showQuestionSkip = false)"
       >
         <div class="imageGamePopup">
-          <img src="/bread/storage/images/confirmeposition.png" alt="skip image" />
+          <img
+            src="/bread/storage/images/confirmeposition.png"
+            alt="skip image"
+          />
           <h2>Attention !</h2>
         </div>
         <p>Êtes vous sûr de vouloir passer la question?</p>
@@ -40,7 +43,7 @@
 
       <question-success
         v-if="showQuestionSuccess"
-        @close="(showQuestionSuccess = false), questionIndex++"
+        @close="(showQuestionSuccess = false), nextQuestion()"
       >
         <div class="imageGamePopup">
           <img
@@ -173,7 +176,7 @@
               class="btn btn-gradient mr-2 col"
               @click="nextClue"
             >
-              Clue
+              Nouvel indice
             </button>
           </div>
         </template>
@@ -235,6 +238,8 @@ export default {
     currentClue() {
       return this.currentQuestion.clues[this.clueIndex];
     },
+    previousClues() {},
+
     playState() {
       if (
         this.showQuestionSkip ||
@@ -304,7 +309,7 @@ export default {
       if (this.distance < tolerance) {
         if (this.questionIndex >= this.data.questions.length - 1) {
           this.validateCounter();
-          this.endQuiz();
+          this.showQuestionSuccess = true;
         } else {
           this.validateCounter();
           this.showQuestionSuccess = true;
