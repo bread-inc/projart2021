@@ -69,7 +69,7 @@
     <section id="last-quizzes" class="container box p-md-3 my-5 my-md-0">
         <div class="row">
             <div class="col-12">
-                <h2>Derniers quizzes réalisés</h2>
+                <h2>Derniers quiz réalisés</h2>
                 
                 <div class="horizontal-slider-container">
                     <div class="horizontal-slider">

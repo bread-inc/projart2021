@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Tous les quizzes</b></h1>
+<h1>Tous les quiz</b></h1>
 
 <a class="btn btn-primary float-left my-3" href="{{route('quiz.create')}}">Nouveau quiz</a>
 

@@ -6,7 +6,7 @@
     <a href="{{route('home')}}" class="btn btn-light btn-square">Tableau de bord</a>
 
     <div class="menu-group">
-        <h3>Les quizzes</h3>
+        <h3>Les quiz</h3>
         <ul>
             <li><a href="{{route('region.index')}}"><i class="far fa-mountains mr-2"></i>Les régions</a></li>
             <li><a href="{{route('map.desktop')}}"><i class="far fa-map mr-2"></i>La carte</a></li>

@@ -80,7 +80,7 @@
         <section id="region-recently-added" class="box mt-3 m-md-0">
             <div class="row my-3 m-md-0">
                 <div class="col-12">
-                    <h2>Tous les quizzes</h2>
+                    <h2>Tous les quiz</h2>
                 </div>
     
                 @foreach ($region->quizzes as $quiz)
