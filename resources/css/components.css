@@ -133,10 +133,20 @@ input[type=text], input[type=password], input[type=email] {
    
 }
 
+.quizMap{
+
+
+   /* min-height: 220px;*/
+        min-width: 170px;
+}
+
 @media screen and (min-width: 768px) {
     .quiz-3x>.quiz-thumb{
         height: auto;
         min-height: 120px;
+
+        
+    }
     }
 }
 

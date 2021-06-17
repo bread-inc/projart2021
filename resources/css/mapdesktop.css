@@ -71,9 +71,11 @@
         transform: translate3d(0px, -140px, 0px);
     }
 
+    
+
     .leaflet-popup-content {
         
-        width: 350px;
+        width: 400px !important;
         overflow-y: scroll;
     }
     
