@@ -1,4 +1,4 @@
-<p align="center"><img src="/storage/app/public/images/logo/logo.png" width="250"></p>
+<p align="center"><img src="/public/storage/images/logo/logo.png" width="250"></p>
 
 
 ## About SwissGuesser
@@ -16,11 +16,11 @@ To install the app, you need to follow the next steps :
 
 3. Download the vendor and node modules folders : `composer i` `npm i` ;
 
-4. Update the `.env` file (database access e.g.) ;
+4. *In development environnement, create the `database/database.sqlite` file ;*
 
-5. Update the `.gitignore` file and add the `node_modules/` and `vendor/` folders and the `.env` file to avoid pushing them ;
+5. Update the `.env` file (database access e.g.) ;
 
-6. *In development environnement, create the `database.sqlite` file ;*
+6. Update the `.gitignore` file and add the `node_modules/` and `vendor/` folders and the `.env` file to avoid pushing them ;
 
 7. Migrate all the tables : `php artisan migrate:install`, `php artisan migrate` ;
 
